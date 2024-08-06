@@ -22,20 +22,74 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="editor_holder"></div>
+    <h1>Modulix Editor</h1>
+
+    <main class="modulix-editor">
+      <div>
+        <h2>Contenu</h2>
+        <div id="editor_holder"></div>
+      </div>
+
+      <div class="modulix-editor__render">
+        <h2>JSON à copier/coller</h2>
+        <textarea
+          id="json_output"
+          class="modulix-editor-render__input"
+        ></textarea>
+      </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
     <script type="module">
       import { schema } from './modulix.json-schema.js';
 
       const element = document.getElementById('editor_holder');
-      new JSONEditor(element, {
+      const jsonOutput = document.getElementById('json_output');
+      const editor = new JSONEditor(element, {
         schema,
         theme: 'spectre',
         iconlib: 'fontawesome5',
+        no_additional_properties: true,
+        disable_edit_json: true,
+        disable_properties: true,
+        disable_array_reorder: true,
+        disable_collapse: true,
+        form_name_root: 'Module',
       });
+
+      editor.on('change', () => {
+        if (JSON.stringify(editor.getValue(), null, 2) !== jsonOutput.value) {
+          jsonOutput.value = JSON.stringify(editor.getValue(), null, 2);
+        }
+
+        displayJsonOutputError();
+      });
+
+      jsonOutput.addEventListener('focusout', () => {
+        try {
+          const value = JSON.parse(jsonOutput.value);
+          editor.setValue(value);
+        } catch (error) {
+          console.error(error);
+        }
+
+        displayJsonOutputError();
+      });
+
+      function displayJsonOutputError() {
+        try {
+          JSON.parse(jsonOutput.value);
+          jsonOutput.classList.remove(
+            'modulix-editor-render__input--has-error'
+          );
+        } catch {
+          jsonOutput.classList.add('modulix-editor-render__input--has-error');
+        }
+      }
     </script>
   </body>
 </html>
