@@ -29,7 +29,12 @@ export const schema = {
 				},
 				"level": {
 					"type": "string",
-					"enum": ["Débutant", "Intermédiaire", "Avancé", "Expert"]
+					"enum": [
+						"Débutant",
+						"Intermédiaire",
+						"Avancé",
+						"Expert"
+					]
 				},
 				"objectives": {
 					"type": "array",
@@ -39,7 +44,13 @@ export const schema = {
 					}
 				}
 			},
-			"required": ["image", "description", "duration", "level", "objectives"],
+			"required": [
+				"image",
+				"description",
+				"duration",
+				"level",
+				"objectives"
+			],
 			"additionalProperties": false
 		},
 		"transitionTexts": {
@@ -55,7 +66,9 @@ export const schema = {
 						"type": "string"
 					}
 				},
-				"required": ["grainId", "content"],
+				"required": [
+					"grainId"
+				],
 				"additionalProperties": false
 			}
 		},
@@ -70,7 +83,10 @@ export const schema = {
 					},
 					"type": {
 						"type": "string",
-						"enum": ["lesson", "activity"]
+						"enum": [
+							"lesson",
+							"activity"
+						]
 					},
 					"title": {
 						"type": "string"
@@ -85,7 +101,9 @@ export const schema = {
 									"properties": {
 										"type": {
 											"type": "string",
-											"enum": ["element"]
+											"enum": [
+												"element"
+											]
 										},
 										"element": {
 											"oneOf": [
@@ -99,13 +117,18 @@ export const schema = {
 														},
 														"type": {
 															"type": "string",
-															"enum": ["text"]
+															"enum": [
+																"text"
+															]
 														},
 														"content": {
 															"type": "string"
 														}
 													},
-													"required": ["id", "type", "content"],
+													"required": [
+														"id",
+														"type"
+													],
 													"additionalProperties": false
 												},
 												{
@@ -118,7 +141,9 @@ export const schema = {
 														},
 														"type": {
 															"type": "string",
-															"enum": ["image"]
+															"enum": [
+																"image"
+															]
 														},
 														"url": {
 															"type": "string",
@@ -131,7 +156,12 @@ export const schema = {
 															"type": "string"
 														}
 													},
-													"required": ["id", "type", "url", "alt", "alternativeText"],
+													"required": [
+														"id",
+														"type",
+														"url",
+														"alt"
+													],
 													"additionalProperties": false
 												},
 												{
@@ -144,7 +174,9 @@ export const schema = {
 														},
 														"type": {
 															"type": "string",
-															"enum": ["qcu"]
+															"enum": [
+																"qcu"
+															]
 														},
 														"instruction": {
 															"type": "string"
@@ -162,7 +194,6 @@ export const schema = {
 																		"type": "string"
 																	}
 																},
-																"required": ["content"],
 																"additionalProperties": false
 															}
 														},
@@ -176,7 +207,6 @@ export const schema = {
 																	"type": "string"
 																}
 															},
-															"required": ["valid", "invalid"],
 															"additionalProperties": false
 														},
 														"solution": {
@@ -184,7 +214,13 @@ export const schema = {
 															"pattern": "^[0-9]+$"
 														}
 													},
-													"required": ["id", "type", "instruction", "proposals", "feedbacks"],
+													"required": [
+														"id",
+														"type",
+														"instruction",
+														"proposals",
+														"feedbacks"
+													],
 													"additionalProperties": false
 												},
 												{
@@ -197,7 +233,9 @@ export const schema = {
 														},
 														"type": {
 															"type": "string",
-															"enum": ["qcm"]
+															"enum": [
+																"qcm"
+															]
 														},
 														"instruction": {
 															"type": "string"
@@ -216,7 +254,6 @@ export const schema = {
 																		"type": "string"
 																	}
 																},
-																"required": ["content"],
 																"additionalProperties": false
 															}
 														},
@@ -230,7 +267,6 @@ export const schema = {
 																	"type": "string"
 																}
 															},
-															"required": ["valid", "invalid"],
 															"additionalProperties": false
 														},
 														"solutions": {
@@ -242,7 +278,14 @@ export const schema = {
 															}
 														}
 													},
-													"required": ["id", "type", "instruction", "proposals", "feedbacks", "solutions"],
+													"required": [
+														"id",
+														"type",
+														"instruction",
+														"proposals",
+														"feedbacks",
+														"solutions"
+													],
 													"additionalProperties": false
 												},
 												{
@@ -255,7 +298,9 @@ export const schema = {
 														},
 														"type": {
 															"type": "string",
-															"enum": ["qrocm"]
+															"enum": [
+																"qrocm"
+															]
 														},
 														"instruction": {
 															"type": "string"
@@ -265,20 +310,26 @@ export const schema = {
 															"items": {
 																"oneOf": [
 																	{
+																		"title": "text",
 																		"type": "object",
 																		"properties": {
 																			"type": {
 																				"type": "string",
-																				"enum": ["text"]
+																				"enum": [
+																					"text"
+																				]
 																			},
 																			"content": {
 																				"type": "string"
 																			}
 																		},
-																		"required": ["type", "content"],
+																		"required": [
+																			"type"
+																		],
 																		"additionalProperties": false
 																	},
 																	{
+																		"title": "input",
 																		"type": "object",
 																		"properties": {
 																			"input": {
@@ -286,11 +337,16 @@ export const schema = {
 																			},
 																			"type": {
 																				"type": "string",
-																				"enum": ["input"]
+																				"enum": [
+																					"input"
+																				]
 																			},
 																			"inputType": {
 																				"type": "string",
-																				"enum": ["text", "number"]
+																				"enum": [
+																					"text",
+																					"number"
+																				]
 																			},
 																			"size": {
 																				"type": "number",
@@ -298,7 +354,10 @@ export const schema = {
 																			},
 																			"display": {
 																				"type": "string",
-																				"enum": ["inline", "block"]
+																				"enum": [
+																					"inline",
+																					"block"
+																				]
 																			},
 																			"placeholder": {
 																				"type": "string"
@@ -314,7 +373,11 @@ export const schema = {
 																				"uniqueItems": true,
 																				"items": {
 																					"type": "string",
-																					"enum": ["t1", "t2", "t3"]
+																					"enum": [
+																						"t1",
+																						"t2",
+																						"t3"
+																					]
 																				}
 																			},
 																			"solutions": {
@@ -339,6 +402,7 @@ export const schema = {
 																		"additionalProperties": false
 																	},
 																	{
+																		"title": "select",
 																		"type": "object",
 																		"properties": {
 																			"input": {
@@ -346,11 +410,16 @@ export const schema = {
 																			},
 																			"type": {
 																				"type": "string",
-																				"enum": ["select"]
+																				"enum": [
+																					"select"
+																				]
 																			},
 																			"display": {
 																				"type": "string",
-																				"enum": ["inline", "block"]
+																				"enum": [
+																					"inline",
+																					"block"
+																				]
 																			},
 																			"placeholder": {
 																				"type": "string"
@@ -377,7 +446,9 @@ export const schema = {
 																							"type": "string"
 																						}
 																					},
-																					"required": ["content"],
+																					"required": [
+																						"content"
+																					],
 																					"additionalProperties": false
 																				}
 																			},
@@ -415,11 +486,16 @@ export const schema = {
 																	"type": "string"
 																}
 															},
-															"required": ["valid", "invalid"],
 															"additionalProperties": false
 														}
 													},
-													"required": ["id", "type", "instruction", "proposals", "feedbacks"],
+													"required": [
+														"id",
+														"type",
+														"instruction",
+														"proposals",
+														"feedbacks"
+													],
 													"additionalProperties": false
 												},
 												{
@@ -432,12 +508,18 @@ export const schema = {
 														},
 														"type": {
 															"type": "string",
-															"enum": ["video"]
+															"enum": [
+																"video"
+															]
 														},
 														"title": {
 															"type": "string"
 														},
 														"url": {
+															"type": "string",
+															"format": "uri"
+														},
+														"poster": {
 															"type": "string",
 															"format": "uri"
 														},
@@ -449,24 +531,691 @@ export const schema = {
 															"type": "string"
 														}
 													},
-													"required": ["id", "type", "title", "url", "subtitles", "transcription"],
+													"required": [
+														"id",
+														"type",
+														"title",
+														"url",
+														"subtitles"
+													],
+													"additionalProperties": false
+												},
+												{
+													"title": "embed",
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string",
+															"format": "uuid"
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"embed"
+															]
+														},
+														"isCompletionRequired": {
+															"type": "boolean"
+														},
+														"title": {
+															"type": "string"
+														},
+														"url": {
+															"type": "string",
+															"format": "uri"
+														},
+														"instruction": {
+															"type": "string"
+														},
+														"solution": {
+															"oneOf": [
+																null
+															]
+														},
+														"height": {
+															"type": "number",
+															"minimum": 0
+														}
+													},
+													"required": [
+														"id",
+														"type",
+														"isCompletionRequired",
+														"title",
+														"url",
+														"height"
+													],
+													"additionalProperties": false
+												},
+												{
+													"title": "download",
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string",
+															"format": "uuid"
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"download"
+															]
+														},
+														"files": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"url": {
+																		"type": "string",
+																		"format": "uri"
+																	},
+																	"format": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"url",
+																	"format"
+																],
+																"additionalProperties": false
+															}
+														}
+													},
+													"required": [
+														"id",
+														"type",
+														"files"
+													],
 													"additionalProperties": false
 												}
 											]
 										}
 									},
-									"required": ["type", "element"],
+									"required": [
+										"type",
+										"element"
+									],
+									"additionalProperties": false
+								},
+								{
+									"title": "stepper",
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string",
+											"enum": [
+												"stepper"
+											]
+										},
+										"steps": {
+											"type": "array",
+											"minItems": 2,
+											"items": {
+												"type": "object",
+												"properties": {
+													"elements": {
+														"type": "array",
+														"items": {
+															"oneOf": [
+																{
+																	"title": "text",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"text"
+																			]
+																		},
+																		"content": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"type"
+																	],
+																	"additionalProperties": false
+																},
+																{
+																	"title": "image",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"image"
+																			]
+																		},
+																		"url": {
+																			"type": "string",
+																			"format": "uri"
+																		},
+																		"alt": {
+																			"type": "string"
+																		},
+																		"alternativeText": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"type",
+																		"url",
+																		"alt"
+																	],
+																	"additionalProperties": false
+																},
+																{
+																	"title": "qcu",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"qcu"
+																			]
+																		},
+																		"instruction": {
+																			"type": "string"
+																		},
+																		"proposals": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"type": "string",
+																						"pattern": "^[0-9]+$"
+																					},
+																					"content": {
+																						"type": "string"
+																					}
+																				},
+																				"additionalProperties": false
+																			}
+																		},
+																		"feedbacks": {
+																			"type": "object",
+																			"properties": {
+																				"valid": {
+																					"type": "string"
+																				},
+																				"invalid": {
+																					"type": "string"
+																				}
+																			},
+																			"additionalProperties": false
+																		},
+																		"solution": {
+																			"type": "string",
+																			"pattern": "^[0-9]+$"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"type",
+																		"instruction",
+																		"proposals",
+																		"feedbacks"
+																	],
+																	"additionalProperties": false
+																},
+																{
+																	"title": "qcm",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"qcm"
+																			]
+																		},
+																		"instruction": {
+																			"type": "string"
+																		},
+																		"proposals": {
+																			"type": "array",
+																			"minItems": 3,
+																			"items": {
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"type": "string",
+																						"pattern": "^[0-9]+$"
+																					},
+																					"content": {
+																						"type": "string"
+																					}
+																				},
+																				"additionalProperties": false
+																			}
+																		},
+																		"feedbacks": {
+																			"type": "object",
+																			"properties": {
+																				"valid": {
+																					"type": "string"
+																				},
+																				"invalid": {
+																					"type": "string"
+																				}
+																			},
+																			"additionalProperties": false
+																		},
+																		"solutions": {
+																			"type": "array",
+																			"minItems": 2,
+																			"items": {
+																				"type": "string",
+																				"pattern": "^[0-9]+$"
+																			}
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"type",
+																		"instruction",
+																		"proposals",
+																		"feedbacks",
+																		"solutions"
+																	],
+																	"additionalProperties": false
+																},
+																{
+																	"title": "qrocm",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"qrocm"
+																			]
+																		},
+																		"instruction": {
+																			"type": "string"
+																		},
+																		"proposals": {
+																			"type": "array",
+																			"items": {
+																				"oneOf": [
+																					{
+																						"title": "text",
+																						"type": "object",
+																						"properties": {
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"text"
+																								]
+																							},
+																							"content": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"additionalProperties": false
+																					},
+																					{
+																						"title": "input",
+																						"type": "object",
+																						"properties": {
+																							"input": {
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"input"
+																								]
+																							},
+																							"inputType": {
+																								"type": "string",
+																								"enum": [
+																									"text",
+																									"number"
+																								]
+																							},
+																							"size": {
+																								"type": "number",
+																								"minimum": 1
+																							},
+																							"display": {
+																								"type": "string",
+																								"enum": [
+																									"inline",
+																									"block"
+																								]
+																							},
+																							"placeholder": {
+																								"type": "string"
+																							},
+																							"ariaLabel": {
+																								"type": "string"
+																							},
+																							"defaultValue": {
+																								"type": "string"
+																							},
+																							"tolerances": {
+																								"type": "array",
+																								"uniqueItems": true,
+																								"items": {
+																									"type": "string",
+																									"enum": [
+																										"t1",
+																										"t2",
+																										"t3"
+																									]
+																								}
+																							},
+																							"solutions": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
+																						},
+																						"required": [
+																							"input",
+																							"type",
+																							"inputType",
+																							"size",
+																							"display",
+																							"placeholder",
+																							"ariaLabel",
+																							"defaultValue",
+																							"tolerances",
+																							"solutions"
+																						],
+																						"additionalProperties": false
+																					},
+																					{
+																						"title": "select",
+																						"type": "object",
+																						"properties": {
+																							"input": {
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"select"
+																								]
+																							},
+																							"display": {
+																								"type": "string",
+																								"enum": [
+																									"inline",
+																									"block"
+																								]
+																							},
+																							"placeholder": {
+																								"type": "string"
+																							},
+																							"ariaLabel": {
+																								"type": "string"
+																							},
+																							"defaultValue": {
+																								"type": "string"
+																							},
+																							"tolerances": {
+																								"type": "array"
+																							},
+																							"options": {
+																								"type": "array",
+																								"items": {
+																									"type": "object",
+																									"properties": {
+																										"id": {
+																											"type": "string",
+																											"pattern": "^[0-9]+$"
+																										},
+																										"content": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"content"
+																									],
+																									"additionalProperties": false
+																								}
+																							},
+																							"solutions": {
+																								"type": "array",
+																								"items": {
+																									"type": "string",
+																									"pattern": "^[0-9]+$"
+																								}
+																							}
+																						},
+																						"required": [
+																							"input",
+																							"type",
+																							"display",
+																							"placeholder",
+																							"ariaLabel",
+																							"defaultValue",
+																							"tolerances",
+																							"options",
+																							"solutions"
+																						],
+																						"additionalProperties": false
+																					}
+																				]
+																			}
+																		},
+																		"feedbacks": {
+																			"type": "object",
+																			"properties": {
+																				"valid": {
+																					"type": "string"
+																				},
+																				"invalid": {
+																					"type": "string"
+																				}
+																			},
+																			"additionalProperties": false
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"type",
+																		"instruction",
+																		"proposals",
+																		"feedbacks"
+																	],
+																	"additionalProperties": false
+																},
+																{
+																	"title": "video",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"video"
+																			]
+																		},
+																		"title": {
+																			"type": "string"
+																		},
+																		"url": {
+																			"type": "string",
+																			"format": "uri"
+																		},
+																		"poster": {
+																			"type": "string",
+																			"format": "uri"
+																		},
+																		"subtitles": {
+																			"type": "string",
+																			"format": "uri"
+																		},
+																		"transcription": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"type",
+																		"title",
+																		"url",
+																		"subtitles"
+																	],
+																	"additionalProperties": false
+																},
+																{
+																	"title": "embed",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"embed"
+																			]
+																		},
+																		"isCompletionRequired": {
+																			"type": "boolean"
+																		},
+																		"title": {
+																			"type": "string"
+																		},
+																		"url": {
+																			"type": "string",
+																			"format": "uri"
+																		},
+																		"instruction": {
+																			"type": "string"
+																		},
+																		"solution": {
+																			"oneOf": [
+																				null
+																			]
+																		},
+																		"height": {
+																			"type": "number",
+																			"minimum": 0
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"type",
+																		"isCompletionRequired",
+																		"title",
+																		"url",
+																		"height"
+																	],
+																	"additionalProperties": false
+																},
+																{
+																	"title": "download",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"format": "uuid"
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"download"
+																			]
+																		},
+																		"files": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"properties": {
+																					"url": {
+																						"type": "string",
+																						"format": "uri"
+																					},
+																					"format": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"url",
+																					"format"
+																				],
+																				"additionalProperties": false
+																			}
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"type",
+																		"files"
+																	],
+																	"additionalProperties": false
+																}
+															]
+														}
+													}
+												},
+												"required": [
+													"elements"
+												],
+												"additionalProperties": false
+											}
+										}
+									},
+									"required": [
+										"type",
+										"steps"
+									],
 									"additionalProperties": false
 								}
 							]
 						}
 					}
 				},
-				"required": ["id", "type", "title"],
+				"required": [
+					"id",
+					"type",
+					"title"
+				],
 				"additionalProperties": false
 			}
 		}
 	},
-	"required": ["id", "slug", "title", "details", "grains"],
+	"required": [
+		"id",
+		"slug",
+		"title",
+		"details",
+		"grains"
+	],
 	"additionalProperties": false
 };
