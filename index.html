@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Modulix Editor</title>
+  </head>
+  <body>
+    <div id="editor_holder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+    <script type="module">
+      import { schema } from './modulix.json-schema.js';
+
+      const element = document.getElementById('editor_holder');
+      new JSONEditor(element, {
+        schema,
+      });
+    </script>
+  </body>
+</html>
