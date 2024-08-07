@@ -63,7 +63,11 @@ export const schema = {
 						"format": "uuid"
 					},
 					"content": {
-						"type": "string"
+						"type": "string",
+						"format": "xhtml",
+						"options": {
+							"wysiwyg": true
+						}
 					}
 				},
 				"required": [
@@ -122,7 +126,11 @@ export const schema = {
 															]
 														},
 														"content": {
-															"type": "string"
+															"type": "string",
+															"format": "xhtml",
+															"options": {
+																"wysiwyg": true
+															}
 														}
 													},
 													"required": [
@@ -153,7 +161,11 @@ export const schema = {
 															"type": "string"
 														},
 														"alternativeText": {
-															"type": "string"
+															"type": "string",
+															"format": "xhtml",
+															"options": {
+																"wysiwyg": true
+															}
 														}
 													},
 													"required": [
@@ -179,7 +191,11 @@ export const schema = {
 															]
 														},
 														"instruction": {
-															"type": "string"
+															"type": "string",
+															"format": "xhtml",
+															"options": {
+																"wysiwyg": true
+															}
 														},
 														"proposals": {
 															"type": "array",
@@ -191,7 +207,11 @@ export const schema = {
 																		"pattern": "^[0-9]+$"
 																	},
 																	"content": {
-																		"type": "string"
+																		"type": "string",
+																		"format": "xhtml",
+																		"options": {
+																			"wysiwyg": true
+																		}
 																	}
 																},
 																"additionalProperties": false
@@ -201,10 +221,18 @@ export const schema = {
 															"type": "object",
 															"properties": {
 																"valid": {
-																	"type": "string"
+																	"type": "string",
+																	"format": "xhtml",
+																	"options": {
+																		"wysiwyg": true
+																	}
 																},
 																"invalid": {
-																	"type": "string"
+																	"type": "string",
+																	"format": "xhtml",
+																	"options": {
+																		"wysiwyg": true
+																	}
 																}
 															},
 															"additionalProperties": false
@@ -238,7 +266,11 @@ export const schema = {
 															]
 														},
 														"instruction": {
-															"type": "string"
+															"type": "string",
+															"format": "xhtml",
+															"options": {
+																"wysiwyg": true
+															}
 														},
 														"proposals": {
 															"type": "array",
@@ -251,7 +283,11 @@ export const schema = {
 																		"pattern": "^[0-9]+$"
 																	},
 																	"content": {
-																		"type": "string"
+																		"type": "string",
+																		"format": "xhtml",
+																		"options": {
+																			"wysiwyg": true
+																		}
 																	}
 																},
 																"additionalProperties": false
@@ -261,10 +297,18 @@ export const schema = {
 															"type": "object",
 															"properties": {
 																"valid": {
-																	"type": "string"
+																	"type": "string",
+																	"format": "xhtml",
+																	"options": {
+																		"wysiwyg": true
+																	}
 																},
 																"invalid": {
-																	"type": "string"
+																	"type": "string",
+																	"format": "xhtml",
+																	"options": {
+																		"wysiwyg": true
+																	}
 																}
 															},
 															"additionalProperties": false
@@ -303,7 +347,11 @@ export const schema = {
 															]
 														},
 														"instruction": {
-															"type": "string"
+															"type": "string",
+															"format": "xhtml",
+															"options": {
+																"wysiwyg": true
+															}
 														},
 														"proposals": {
 															"type": "array",
@@ -320,7 +368,11 @@ export const schema = {
 																				]
 																			},
 																			"content": {
-																				"type": "string"
+																				"type": "string",
+																				"format": "xhtml",
+																				"options": {
+																					"wysiwyg": true
+																				}
 																			}
 																		},
 																		"required": [
@@ -480,10 +532,18 @@ export const schema = {
 															"type": "object",
 															"properties": {
 																"valid": {
-																	"type": "string"
+																	"type": "string",
+																	"format": "xhtml",
+																	"options": {
+																		"wysiwyg": true
+																	}
 																},
 																"invalid": {
-																	"type": "string"
+																	"type": "string",
+																	"format": "xhtml",
+																	"options": {
+																		"wysiwyg": true
+																	}
 																}
 															},
 															"additionalProperties": false
@@ -528,7 +588,11 @@ export const schema = {
 															"format": "uri"
 														},
 														"transcription": {
-															"type": "string"
+															"type": "string",
+															"format": "xhtml",
+															"options": {
+																"wysiwyg": true
+															}
 														}
 													},
 													"required": [
@@ -565,7 +629,11 @@ export const schema = {
 															"format": "uri"
 														},
 														"instruction": {
-															"type": "string"
+															"type": "string",
+															"format": "xhtml",
+															"options": {
+																"wysiwyg": true
+															}
 														},
 														"solution": {
 															"oneOf": [
@@ -673,7 +741,11 @@ export const schema = {
 																			]
 																		},
 																		"content": {
-																			"type": "string"
+																			"type": "string",
+																			"format": "xhtml",
+																			"options": {
+																				"wysiwyg": true
+																			}
 																		}
 																	},
 																	"required": [
@@ -704,7 +776,11 @@ export const schema = {
 																			"type": "string"
 																		},
 																		"alternativeText": {
-																			"type": "string"
+																			"type": "string",
+																			"format": "xhtml",
+																			"options": {
+																				"wysiwyg": true
+																			}
 																		}
 																	},
 																	"required": [
@@ -730,7 +806,11 @@ export const schema = {
 																			]
 																		},
 																		"instruction": {
-																			"type": "string"
+																			"type": "string",
+																			"format": "xhtml",
+																			"options": {
+																				"wysiwyg": true
+																			}
 																		},
 																		"proposals": {
 																			"type": "array",
@@ -742,7 +822,11 @@ export const schema = {
 																						"pattern": "^[0-9]+$"
 																					},
 																					"content": {
-																						"type": "string"
+																						"type": "string",
+																						"format": "xhtml",
+																						"options": {
+																							"wysiwyg": true
+																						}
 																					}
 																				},
 																				"additionalProperties": false
@@ -752,10 +836,18 @@ export const schema = {
 																			"type": "object",
 																			"properties": {
 																				"valid": {
-																					"type": "string"
+																					"type": "string",
+																					"format": "xhtml",
+																					"options": {
+																						"wysiwyg": true
+																					}
 																				},
 																				"invalid": {
-																					"type": "string"
+																					"type": "string",
+																					"format": "xhtml",
+																					"options": {
+																						"wysiwyg": true
+																					}
 																				}
 																			},
 																			"additionalProperties": false
@@ -789,7 +881,11 @@ export const schema = {
 																			]
 																		},
 																		"instruction": {
-																			"type": "string"
+																			"type": "string",
+																			"format": "xhtml",
+																			"options": {
+																				"wysiwyg": true
+																			}
 																		},
 																		"proposals": {
 																			"type": "array",
@@ -802,7 +898,11 @@ export const schema = {
 																						"pattern": "^[0-9]+$"
 																					},
 																					"content": {
-																						"type": "string"
+																						"type": "string",
+																						"format": "xhtml",
+																						"options": {
+																							"wysiwyg": true
+																						}
 																					}
 																				},
 																				"additionalProperties": false
@@ -812,10 +912,18 @@ export const schema = {
 																			"type": "object",
 																			"properties": {
 																				"valid": {
-																					"type": "string"
+																					"type": "string",
+																					"format": "xhtml",
+																					"options": {
+																						"wysiwyg": true
+																					}
 																				},
 																				"invalid": {
-																					"type": "string"
+																					"type": "string",
+																					"format": "xhtml",
+																					"options": {
+																						"wysiwyg": true
+																					}
 																				}
 																			},
 																			"additionalProperties": false
@@ -854,7 +962,11 @@ export const schema = {
 																			]
 																		},
 																		"instruction": {
-																			"type": "string"
+																			"type": "string",
+																			"format": "xhtml",
+																			"options": {
+																				"wysiwyg": true
+																			}
 																		},
 																		"proposals": {
 																			"type": "array",
@@ -871,7 +983,11 @@ export const schema = {
 																								]
 																							},
 																							"content": {
-																								"type": "string"
+																								"type": "string",
+																								"format": "xhtml",
+																								"options": {
+																									"wysiwyg": true
+																								}
 																							}
 																						},
 																						"required": [
@@ -1031,10 +1147,18 @@ export const schema = {
 																			"type": "object",
 																			"properties": {
 																				"valid": {
-																					"type": "string"
+																					"type": "string",
+																					"format": "xhtml",
+																					"options": {
+																						"wysiwyg": true
+																					}
 																				},
 																				"invalid": {
-																					"type": "string"
+																					"type": "string",
+																					"format": "xhtml",
+																					"options": {
+																						"wysiwyg": true
+																					}
 																				}
 																			},
 																			"additionalProperties": false
@@ -1079,7 +1203,11 @@ export const schema = {
 																			"format": "uri"
 																		},
 																		"transcription": {
-																			"type": "string"
+																			"type": "string",
+																			"format": "xhtml",
+																			"options": {
+																				"wysiwyg": true
+																			}
 																		}
 																	},
 																	"required": [
@@ -1116,7 +1244,11 @@ export const schema = {
 																			"format": "uri"
 																		},
 																		"instruction": {
-																			"type": "string"
+																			"type": "string",
+																			"format": "xhtml",
+																			"options": {
+																				"wysiwyg": true
+																			}
 																		},
 																		"solution": {
 																			"oneOf": [
