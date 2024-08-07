@@ -9,6 +9,7 @@ h1 {
 .modulix-editor {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .modulix-editor__render {
