@@ -28,3 +28,17 @@ h1 {
 .modulix-editor-render__input--has-error {
   border: 1px solid red;
 }
+
+.card-body:has(
+  > .btn-group > .json-editor-btn-delete:hover,
+  ~ .btn-group > .json-editor-btn-delete:hover
+) {
+  border-color: #ff4d4f;
+  transition: border ease-in 0.2s;
+}
+
+.json-editor-btn-delete:hover {
+  background: #ff4d4f;
+  border-color: #ff4d4f;
+  transition: all ease-in 0.2s;
+}
