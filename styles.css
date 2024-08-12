@@ -8,7 +8,7 @@ h1 {
 
 .modulix-editor {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 16px;
 }
 
@@ -30,9 +30,9 @@ h1 {
 }
 
 .card-body:has(
-  > .btn-group > .json-editor-btn-delete:hover,
-  ~ .btn-group > .json-editor-btn-delete:hover
-) {
+    > .btn-group > .json-editor-btn-delete:hover,
+    ~ .btn-group > .json-editor-btn-delete:hover
+  ) {
   border-color: #ff4d4f;
   transition: border ease-in 0.2s;
 }
