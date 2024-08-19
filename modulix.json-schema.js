@@ -42,6 +42,14 @@ export const schema = {
           "items": {
             "type": "string"
           }
+        },
+        "tabletSupport": {
+          "type": "string",
+          "enum": [
+            "obstructed",
+            "inconvenient",
+            "comfortable"
+          ]
         }
       },
       "required": [
@@ -49,7 +57,8 @@ export const schema = {
         "description",
         "duration",
         "level",
-        "objectives"
+        "objectives",
+        "tabletSupport"
       ],
       "additionalProperties": false
     },
@@ -97,7 +106,6 @@ export const schema = {
             "items": {
               "oneOf": [
                 {
-                  "title": "element",
                   "type": "object",
                   "properties": {
                     "type": {
@@ -109,7 +117,6 @@ export const schema = {
                     "element": {
                       "oneOf": [
                         {
-                          "title": "text",
                           "type": "object",
                           "properties": {
                             "id": {
@@ -131,10 +138,10 @@ export const schema = {
                             "id",
                             "type"
                           ],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "title": "text"
                         },
                         {
-                          "title": "image",
                           "type": "object",
                           "properties": {
                             "id": {
@@ -165,10 +172,10 @@ export const schema = {
                             "url",
                             "alt"
                           ],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "title": "image"
                         },
                         {
-                          "title": "qcu",
                           "type": "object",
                           "properties": {
                             "id": {
@@ -228,10 +235,10 @@ export const schema = {
                             "proposals",
                             "feedbacks"
                           ],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "title": "qcu"
                         },
                         {
-                          "title": "qcm",
                           "type": "object",
                           "properties": {
                             "id": {
@@ -297,10 +304,10 @@ export const schema = {
                             "feedbacks",
                             "solutions"
                           ],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "title": "qcm"
                         },
                         {
-                          "title": "qrocm",
                           "type": "object",
                           "properties": {
                             "id": {
@@ -322,7 +329,6 @@ export const schema = {
                               "items": {
                                 "oneOf": [
                                   {
-                                    "title": "text",
                                     "type": "object",
                                     "properties": {
                                       "type": {
@@ -339,10 +345,10 @@ export const schema = {
                                     "required": [
                                       "type"
                                     ],
-                                    "additionalProperties": false
+                                    "additionalProperties": false,
+                                    "title": "text"
                                   },
                                   {
-                                    "title": "input",
                                     "type": "object",
                                     "properties": {
                                       "input": {
@@ -412,10 +418,10 @@ export const schema = {
                                       "tolerances",
                                       "solutions"
                                     ],
-                                    "additionalProperties": false
+                                    "additionalProperties": false,
+                                    "title": "input"
                                   },
                                   {
-                                    "title": "select",
                                     "type": "object",
                                     "properties": {
                                       "input": {
@@ -484,7 +490,8 @@ export const schema = {
                                       "options",
                                       "solutions"
                                     ],
-                                    "additionalProperties": false
+                                    "additionalProperties": false,
+                                    "title": "select"
                                   }
                                 ]
                               }
@@ -511,10 +518,10 @@ export const schema = {
                             "proposals",
                             "feedbacks"
                           ],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "title": "qrocm"
                         },
                         {
-                          "title": "video",
                           "type": "object",
                           "properties": {
                             "id": {
@@ -554,10 +561,10 @@ export const schema = {
                             "url",
                             "subtitles"
                           ],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "title": "video"
                         },
                         {
-                          "title": "embed",
                           "type": "object",
                           "properties": {
                             "id": {
@@ -584,11 +591,6 @@ export const schema = {
                               "type": "string",
                               "format": "jodit"
                             },
-                            "solution": {
-                              "oneOf": [
-                                null
-                              ]
-                            },
                             "height": {
                               "type": "number",
                               "minimum": 0
@@ -602,10 +604,10 @@ export const schema = {
                             "url",
                             "height"
                           ],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "title": "embed"
                         },
                         {
-                          "title": "download",
                           "type": "object",
                           "properties": {
                             "id": {
@@ -644,7 +646,8 @@ export const schema = {
                             "type",
                             "files"
                           ],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "title": "download"
                         }
                       ]
                     }
@@ -653,10 +656,10 @@ export const schema = {
                     "type",
                     "element"
                   ],
-                  "additionalProperties": false
+                  "additionalProperties": false,
+                  "title": "element"
                 },
                 {
-                  "title": "stepper",
                   "type": "object",
                   "properties": {
                     "type": {
@@ -676,7 +679,6 @@ export const schema = {
                             "items": {
                               "oneOf": [
                                 {
-                                  "title": "text",
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -698,10 +700,10 @@ export const schema = {
                                     "id",
                                     "type"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "text"
                                 },
                                 {
-                                  "title": "image",
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -732,10 +734,10 @@ export const schema = {
                                     "url",
                                     "alt"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "image"
                                 },
                                 {
-                                  "title": "qcu",
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -795,10 +797,10 @@ export const schema = {
                                     "proposals",
                                     "feedbacks"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "qcu"
                                 },
                                 {
-                                  "title": "qcm",
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -864,10 +866,10 @@ export const schema = {
                                     "feedbacks",
                                     "solutions"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "qcm"
                                 },
                                 {
-                                  "title": "qrocm",
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -889,7 +891,6 @@ export const schema = {
                                       "items": {
                                         "oneOf": [
                                           {
-                                            "title": "text",
                                             "type": "object",
                                             "properties": {
                                               "type": {
@@ -906,10 +907,10 @@ export const schema = {
                                             "required": [
                                               "type"
                                             ],
-                                            "additionalProperties": false
+                                            "additionalProperties": false,
+                                            "title": "text"
                                           },
                                           {
-                                            "title": "input",
                                             "type": "object",
                                             "properties": {
                                               "input": {
@@ -979,10 +980,10 @@ export const schema = {
                                               "tolerances",
                                               "solutions"
                                             ],
-                                            "additionalProperties": false
+                                            "additionalProperties": false,
+                                            "title": "input"
                                           },
                                           {
-                                            "title": "select",
                                             "type": "object",
                                             "properties": {
                                               "input": {
@@ -1051,7 +1052,8 @@ export const schema = {
                                               "options",
                                               "solutions"
                                             ],
-                                            "additionalProperties": false
+                                            "additionalProperties": false,
+                                            "title": "select"
                                           }
                                         ]
                                       }
@@ -1078,10 +1080,10 @@ export const schema = {
                                     "proposals",
                                     "feedbacks"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "qrocm"
                                 },
                                 {
-                                  "title": "video",
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -1121,10 +1123,10 @@ export const schema = {
                                     "url",
                                     "subtitles"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "video"
                                 },
                                 {
-                                  "title": "embed",
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -1151,11 +1153,6 @@ export const schema = {
                                       "type": "string",
                                       "format": "jodit"
                                     },
-                                    "solution": {
-                                      "oneOf": [
-                                        null
-                                      ]
-                                    },
                                     "height": {
                                       "type": "number",
                                       "minimum": 0
@@ -1169,10 +1166,10 @@ export const schema = {
                                     "url",
                                     "height"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "embed"
                                 },
                                 {
-                                  "title": "download",
                                   "type": "object",
                                   "properties": {
                                     "id": {
@@ -1211,7 +1208,8 @@ export const schema = {
                                     "type",
                                     "files"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "download"
                                 }
                               ]
                             }
@@ -1228,7 +1226,8 @@ export const schema = {
                     "type",
                     "steps"
                   ],
-                  "additionalProperties": false
+                  "additionalProperties": false,
+                  "title": "stepper"
                 }
               ]
             }
