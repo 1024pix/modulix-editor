@@ -46,9 +46,9 @@ export const schema = {
         "tabletSupport": {
           "type": "string",
           "enum": [
-            "obstructed",
+            "comfortable",
             "inconvenient",
-            "comfortable"
+            "obstructed"
           ]
         }
       },
