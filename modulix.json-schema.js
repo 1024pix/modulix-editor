@@ -20,7 +20,8 @@ export const schema = {
           "format": "uri"
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "format": "jodit"
         },
         "duration": {
           "type": "integer",
@@ -40,7 +41,8 @@ export const schema = {
           "type": "array",
           "minItems": 1,
           "items": {
-            "type": "string"
+            "type": "string",
+            "format": "jodit"
           }
         },
         "tabletSupport": {
