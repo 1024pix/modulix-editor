@@ -23,7 +23,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/jodit@4.2.27/es2015/jodit.min.css"
+      href="https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/default.min.css"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
@@ -49,25 +49,12 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jodit@4.2.27/es2018/jodit.fat.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sceditor@3/minified/sceditor.min.js"></script>
     <script type="module">
       import { schema } from './modulix.json-schema.js';
 
       const element = document.getElementById('editor_holder');
       const jsonOutput = document.getElementById('json_output');
-
-      Jodit.defaultOptions.toolbarAdaptive = false;
-      Jodit.defaultOptions.buttons =
-        'paragraph,|,bold,italic,strikethrough,link,eraser,|,ul,ol,|,hr,|,source';
-      Jodit.defaultOptions.controls.paragraph.list = {
-        p: 'Pharagraph',
-        h3: 'Heading 3',
-        h4: 'Heading 4',
-        blockquote: 'Quote',
-        code: 'Source code',
-      };
-      Jodit.defaultOptions.controls.ul.list = null;
-      Jodit.defaultOptions.controls.ol.list = null;
 
       schema.format = 'categories';
       schema.properties.transitionTexts.items.properties.grainId.format = '';
