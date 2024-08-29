@@ -59,32 +59,6 @@
       schema.format = 'categories';
       schema.properties.transitionTexts.items.properties.grainId.format = '';
 
-      sceditor.command.remove('subscript');
-      sceditor.command.remove('superscript');
-      sceditor.command.remove('left');
-      sceditor.command.remove('center');
-      sceditor.command.remove('right');
-      sceditor.command.remove('justify');
-      sceditor.command.remove('font');
-      sceditor.command.remove('size');
-      sceditor.command.remove('color');
-      sceditor.command.remove('cut');
-      sceditor.command.remove('copy');
-      sceditor.command.remove('pastetext');
-      sceditor.command.remove('indent');
-      sceditor.command.remove('outdent');
-      sceditor.command.remove('image');
-      sceditor.command.remove('emoticon');
-      sceditor.command.remove('youtube');
-      sceditor.command.remove('date');
-      sceditor.command.remove('time');
-      sceditor.command.remove('ltr');
-      sceditor.command.remove('rtl');
-      sceditor.command.remove('print');
-      sceditor.command.remove('maximize');
-      console.log(sceditor);
-      //   console.log(JSON.stringify(sceditor.defaultOptions));
-
       const editor = new JSONEditor(element, {
         schema,
         theme: 'bootstrap5',
