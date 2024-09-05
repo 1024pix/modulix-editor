@@ -18,6 +18,10 @@ h1 {
   height: 80vh;
 }
 
+.modulix-editor-render__external-link {
+  color: black;
+}
+
 .modulix-editor-render__input {
   height: 100%;
   width: 100%;
