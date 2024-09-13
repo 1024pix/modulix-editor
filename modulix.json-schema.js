@@ -128,20 +128,80 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
-                                "text"
+                                "download"
                               ]
                             },
-                            "content": {
-                              "type": "string",
-                              "format": "jodit"
+                            "files": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "format": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "url",
+                                  "format"
+                                ],
+                                "additionalProperties": false
+                              }
                             }
                           },
                           "required": [
                             "id",
-                            "type"
+                            "type",
+                            "files"
                           ],
                           "additionalProperties": false,
-                          "title": "text"
+                          "title": "download"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "embed"
+                              ]
+                            },
+                            "isCompletionRequired": {
+                              "type": "boolean"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string",
+                              "format": "uri"
+                            },
+                            "instruction": {
+                              "type": "string",
+                              "format": "jodit"
+                            },
+                            "height": {
+                              "type": "number",
+                              "minimum": 0
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "isCompletionRequired",
+                            "title",
+                            "url",
+                            "height"
+                          ],
+                          "additionalProperties": false,
+                          "title": "embed"
                         },
                         {
                           "type": "object",
@@ -206,8 +266,16 @@ export const schema = {
                                   "content": {
                                     "type": "string",
                                     "format": "jodit"
+                                  },
+                                  "feedback": {
+                                    "type": "string",
+                                    "format": "jodit"
                                   }
                                 },
+                                "required": [
+                                  "id",
+                                  "content"
+                                ],
                                 "additionalProperties": false
                               }
                             },
@@ -235,7 +303,7 @@ export const schema = {
                             "type",
                             "instruction",
                             "proposals",
-                            "feedbacks"
+                            "solution"
                           ],
                           "additionalProperties": false,
                           "title": "qcu"
@@ -533,6 +601,52 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
+                                "separator"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type"
+                          ],
+                          "additionalProperties": false,
+                          "title": "separator"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "text"
+                              ]
+                            },
+                            "content": {
+                              "type": "string",
+                              "format": "jodit"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type"
+                          ],
+                          "additionalProperties": false,
+                          "title": "text"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "video"
                               ]
                             },
@@ -565,91 +679,6 @@ export const schema = {
                           ],
                           "additionalProperties": false,
                           "title": "video"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "embed"
-                              ]
-                            },
-                            "isCompletionRequired": {
-                              "type": "boolean"
-                            },
-                            "title": {
-                              "type": "string"
-                            },
-                            "url": {
-                              "type": "string",
-                              "format": "uri"
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "height": {
-                              "type": "number",
-                              "minimum": 0
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "isCompletionRequired",
-                            "title",
-                            "url",
-                            "height"
-                          ],
-                          "additionalProperties": false,
-                          "title": "embed"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "download"
-                              ]
-                            },
-                            "files": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "url": {
-                                    "type": "string",
-                                    "format": "uri"
-                                  },
-                                  "format": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "url",
-                                  "format"
-                                ],
-                                "additionalProperties": false
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "files"
-                          ],
-                          "additionalProperties": false,
-                          "title": "download"
                         }
                       ]
                     }
@@ -690,20 +719,80 @@ export const schema = {
                                     "type": {
                                       "type": "string",
                                       "enum": [
-                                        "text"
+                                        "download"
                                       ]
                                     },
-                                    "content": {
-                                      "type": "string",
-                                      "format": "jodit"
+                                    "files": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          },
+                                          "format": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "url",
+                                          "format"
+                                        ],
+                                        "additionalProperties": false
+                                      }
                                     }
                                   },
                                   "required": [
                                     "id",
-                                    "type"
+                                    "type",
+                                    "files"
                                   ],
                                   "additionalProperties": false,
-                                  "title": "text"
+                                  "title": "download"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "embed"
+                                      ]
+                                    },
+                                    "isCompletionRequired": {
+                                      "type": "boolean"
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "url": {
+                                      "type": "string",
+                                      "format": "uri"
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "height": {
+                                      "type": "number",
+                                      "minimum": 0
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "isCompletionRequired",
+                                    "title",
+                                    "url",
+                                    "height"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "embed"
                                 },
                                 {
                                   "type": "object",
@@ -768,8 +857,16 @@ export const schema = {
                                           "content": {
                                             "type": "string",
                                             "format": "jodit"
+                                          },
+                                          "feedback": {
+                                            "type": "string",
+                                            "format": "jodit"
                                           }
                                         },
+                                        "required": [
+                                          "id",
+                                          "content"
+                                        ],
                                         "additionalProperties": false
                                       }
                                     },
@@ -797,7 +894,7 @@ export const schema = {
                                     "type",
                                     "instruction",
                                     "proposals",
-                                    "feedbacks"
+                                    "solution"
                                   ],
                                   "additionalProperties": false,
                                   "title": "qcu"
@@ -1095,6 +1192,52 @@ export const schema = {
                                     "type": {
                                       "type": "string",
                                       "enum": [
+                                        "separator"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "separator"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "text"
+                                      ]
+                                    },
+                                    "content": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "text"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
                                         "video"
                                       ]
                                     },
@@ -1127,91 +1270,6 @@ export const schema = {
                                   ],
                                   "additionalProperties": false,
                                   "title": "video"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "embed"
-                                      ]
-                                    },
-                                    "isCompletionRequired": {
-                                      "type": "boolean"
-                                    },
-                                    "title": {
-                                      "type": "string"
-                                    },
-                                    "url": {
-                                      "type": "string",
-                                      "format": "uri"
-                                    },
-                                    "instruction": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "height": {
-                                      "type": "number",
-                                      "minimum": 0
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "isCompletionRequired",
-                                    "title",
-                                    "url",
-                                    "height"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "embed"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "download"
-                                      ]
-                                    },
-                                    "files": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "url": {
-                                            "type": "string",
-                                            "format": "uri"
-                                          },
-                                          "format": {
-                                            "type": "string"
-                                          }
-                                        },
-                                        "required": [
-                                          "url",
-                                          "format"
-                                        ],
-                                        "additionalProperties": false
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "files"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "download"
                                 }
                               ]
                             }
