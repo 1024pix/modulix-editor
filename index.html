@@ -53,6 +53,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jodit@4.2.27/es2018/jodit.fat.min.js"></script>
     <script type="module">
       import { schema } from './modulix.json-schema.js';
+      import LocalBackup from './LocalBackup.js';
 
       const element = document.getElementById('editor_holder');
       const jsonOutput = document.getElementById('json_output');
@@ -90,6 +91,7 @@
         }
 
         displayJsonOutputError();
+        LocalBackup.save(editor.getValue());
       });
 
       jsonOutput.addEventListener('focusout', () => {
@@ -113,6 +115,11 @@
           jsonOutput.classList.add('modulix-editor-render__input--has-error');
         }
       }
+
+      editor.on('ready', () => {
+         const schema = LocalBackup.load();
+         editor.setValue(schema);
+      });
     </script>
   </body>
 </html>
