@@ -42,7 +42,8 @@ export const schema = {
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "jodit"
+            "format": "jodit",
+            "title": "objective"
           }
         },
         "tabletSupport": {
@@ -81,7 +82,8 @@ export const schema = {
         "required": [
           "grainId"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "title": "transitionText"
       }
     },
     "grains": {
@@ -148,7 +150,8 @@ export const schema = {
                                   "url",
                                   "format"
                                 ],
-                                "additionalProperties": false
+                                "additionalProperties": false,
+                                "title": "file"
                               }
                             }
                           },
@@ -276,7 +279,8 @@ export const schema = {
                                   "id",
                                   "content"
                                 ],
-                                "additionalProperties": false
+                                "additionalProperties": false,
+                                "title": "proposal"
                               }
                             },
                             "feedbacks": {
@@ -340,7 +344,8 @@ export const schema = {
                                     "format": "jodit"
                                   }
                                 },
-                                "additionalProperties": false
+                                "additionalProperties": false,
+                                "title": "proposal"
                               }
                             },
                             "feedbacks": {
@@ -362,7 +367,8 @@ export const schema = {
                               "minItems": 2,
                               "items": {
                                 "type": "string",
-                                "pattern": "^[0-9]+$"
+                                "pattern": "^[0-9]+$",
+                                "title": "solution"
                               }
                             }
                           },
@@ -466,13 +472,15 @@ export const schema = {
                                             "t1",
                                             "t2",
                                             "t3"
-                                          ]
+                                          ],
+                                          "title": "tolerance"
                                         }
                                       },
                                       "solutions": {
                                         "type": "array",
                                         "items": {
-                                          "type": "string"
+                                          "type": "string",
+                                          "title": "solution"
                                         }
                                       }
                                     },
@@ -538,14 +546,16 @@ export const schema = {
                                           "required": [
                                             "content"
                                           ],
-                                          "additionalProperties": false
+                                          "additionalProperties": false,
+                                          "title": "option"
                                         }
                                       },
                                       "solutions": {
                                         "type": "array",
                                         "items": {
                                           "type": "string",
-                                          "pattern": "^[0-9]+$"
+                                          "pattern": "^[0-9]+$",
+                                          "title": "solution"
                                         }
                                       }
                                     },
@@ -563,7 +573,8 @@ export const schema = {
                                     "additionalProperties": false,
                                     "title": "select"
                                   }
-                                ]
+                                ],
+                                "title": "proposal"
                               }
                             },
                             "feedbacks": {
@@ -739,7 +750,8 @@ export const schema = {
                                           "url",
                                           "format"
                                         ],
-                                        "additionalProperties": false
+                                        "additionalProperties": false,
+                                        "title": "file"
                                       }
                                     }
                                   },
@@ -867,7 +879,8 @@ export const schema = {
                                           "id",
                                           "content"
                                         ],
-                                        "additionalProperties": false
+                                        "additionalProperties": false,
+                                        "title": "proposal"
                                       }
                                     },
                                     "feedbacks": {
@@ -931,7 +944,8 @@ export const schema = {
                                             "format": "jodit"
                                           }
                                         },
-                                        "additionalProperties": false
+                                        "additionalProperties": false,
+                                        "title": "proposal"
                                       }
                                     },
                                     "feedbacks": {
@@ -953,7 +967,8 @@ export const schema = {
                                       "minItems": 2,
                                       "items": {
                                         "type": "string",
-                                        "pattern": "^[0-9]+$"
+                                        "pattern": "^[0-9]+$",
+                                        "title": "solution"
                                       }
                                     }
                                   },
@@ -1057,13 +1072,15 @@ export const schema = {
                                                     "t1",
                                                     "t2",
                                                     "t3"
-                                                  ]
+                                                  ],
+                                                  "title": "tolerance"
                                                 }
                                               },
                                               "solutions": {
                                                 "type": "array",
                                                 "items": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "title": "solution"
                                                 }
                                               }
                                             },
@@ -1129,14 +1146,16 @@ export const schema = {
                                                   "required": [
                                                     "content"
                                                   ],
-                                                  "additionalProperties": false
+                                                  "additionalProperties": false,
+                                                  "title": "option"
                                                 }
                                               },
                                               "solutions": {
                                                 "type": "array",
                                                 "items": {
                                                   "type": "string",
-                                                  "pattern": "^[0-9]+$"
+                                                  "pattern": "^[0-9]+$",
+                                                  "title": "solution"
                                                 }
                                               }
                                             },
@@ -1154,7 +1173,8 @@ export const schema = {
                                             "additionalProperties": false,
                                             "title": "select"
                                           }
-                                        ]
+                                        ],
+                                        "title": "proposal"
                                       }
                                     },
                                     "feedbacks": {
@@ -1271,14 +1291,16 @@ export const schema = {
                                   "additionalProperties": false,
                                   "title": "video"
                                 }
-                              ]
+                              ],
+                              "title": "element"
                             }
                           }
                         },
                         "required": [
                           "elements"
                         ],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "title": "step"
                       }
                     }
                   },
@@ -1289,7 +1311,8 @@ export const schema = {
                   "additionalProperties": false,
                   "title": "stepper"
                 }
-              ]
+              ],
+              "title": "component"
             }
           }
         },
@@ -1298,7 +1321,8 @@ export const schema = {
           "type",
           "title"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "title": "grain"
       }
     }
   },
