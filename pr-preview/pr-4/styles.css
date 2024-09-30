@@ -1,0 +1,48 @@
+body {
+  padding: 8px;
+}
+
+h1 {
+  color: black;
+}
+
+.modulix-editor {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.modulix-editor__render {
+  position: sticky;
+  top: 0;
+  height: 80vh;
+}
+
+.modulix-editor-render__external-link {
+  color: black;
+}
+
+.modulix-editor-render__input {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.modulix-editor-render__input--has-error {
+  border: 1px solid red;
+}
+
+.card-body:has(
+    > .btn-group > .json-editor-btn-delete:hover,
+    ~ .btn-group > .json-editor-btn-delete:hover
+  ) {
+  border-color: #ff4d4f;
+  transition: border ease-in 0.2s;
+}
+
+.json-editor-btn-delete:hover {
+  background: #ff4d4f;
+  border-color: #ff4d4f;
+  transition: all ease-in 0.2s;
+}
