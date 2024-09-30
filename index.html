@@ -34,14 +34,27 @@
     <h1>Modulix Editor</h1>
 
     <main class="modulix-editor">
+
       <div>
+
+
+        <div class="mb-2">
+          <a class="btn btn-outline-info" href="https://app.pix.fr/modules/preview" target="_blank">
+            <span class="fa fa-eye"></span>
+            Prévisualiser
+          </a>
+          <button class="btn btn-outline-danger" id="reset-button">
+            <span class="fa fa-trash"></span>
+            Réinitialiser
+          </button>
+        </div>
         <h2>Contenu</h2>
         <div id="editor_holder"></div>
       </div>
 
       <div class="modulix-editor__render">
-        <a href="https://app.pix.fr/modules/preview" target="_blank" class="modulix-editor-render__external-link">Preview Modulix</a>
         <h2>JSON à copier/coller</h2>
+
         <textarea
           id="json_output"
           class="modulix-editor-render__input"
@@ -83,6 +96,13 @@
         disable_properties: true,
         disable_array_reorder: true,
         form_name_root: 'Module',
+      });
+
+      const resetButton = document.querySelector('#reset-button');
+      resetButton.addEventListener('click', () => {
+        if (window.confirm('Voulez-vous vraiment réinitialiser le module ? Toutes les modifications seront perdues.')) {
+          editor.setValue({})
+        }
       });
 
       editor.on('change', () => {
