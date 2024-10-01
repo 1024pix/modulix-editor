@@ -101,7 +101,8 @@
       const resetButton = document.querySelector('#reset-button');
       resetButton.addEventListener('click', () => {
         if (window.confirm('Voulez-vous vraiment réinitialiser le module ? Toutes les modifications seront perdues.')) {
-          editor.setValue({})
+          LocalBackup.delete();
+          window.location.reload();
         }
       });
 
@@ -138,7 +139,9 @@
 
       editor.on('ready', () => {
          const schema = LocalBackup.load();
-         editor.setValue(schema);
+         if (schema) {
+           editor.setValue(schema);
+         }
       });
     </script>
   </body>

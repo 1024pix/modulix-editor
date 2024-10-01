@@ -11,7 +11,12 @@ export default class LocalBackup {
     try {
       return JSON.parse(schemaAsString);
     } catch {
-      window.localStorage.removeItem(this.localStorageKey);
+      this.delete();
+      return null;
     }
+  }
+
+  static delete() {
+    window.localStorage.removeItem(this.localStorageKey);
   }
 }
