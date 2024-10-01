@@ -34,14 +34,27 @@
     <h1>Modulix Editor</h1>
 
     <main class="modulix-editor">
+
       <div>
+
+
+        <div class="mb-2">
+          <a class="btn btn-outline-info" href="https://app.pix.fr/modules/preview" target="_blank">
+            <span class="fa fa-eye"></span>
+            Prévisualiser
+          </a>
+          <button class="btn btn-outline-danger" id="reset-button">
+            <span class="fa fa-trash"></span>
+            Réinitialiser
+          </button>
+        </div>
         <h2>Contenu</h2>
         <div id="editor_holder"></div>
       </div>
 
       <div class="modulix-editor__render">
-        <a href="https://app.pix.fr/modules/preview" target="_blank" class="modulix-editor-render__external-link">Preview Modulix</a>
         <h2>JSON à copier/coller</h2>
+
         <textarea
           id="json_output"
           class="modulix-editor-render__input"
@@ -53,6 +66,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jodit@4.2.27/es2018/jodit.fat.min.js"></script>
     <script type="module">
       import { schema } from './modulix.json-schema.js';
+      import LocalBackup from './LocalBackup.js';
 
       const element = document.getElementById('editor_holder');
       const jsonOutput = document.getElementById('json_output');
@@ -84,12 +98,20 @@
         form_name_root: 'Module',
       });
 
+      const resetButton = document.querySelector('#reset-button');
+      resetButton.addEventListener('click', () => {
+        if (window.confirm('Voulez-vous vraiment réinitialiser le module ? Toutes les modifications seront perdues.')) {
+          editor.setValue({})
+        }
+      });
+
       editor.on('change', () => {
         if (JSON.stringify(editor.getValue(), null, 2) !== jsonOutput.value) {
           jsonOutput.value = JSON.stringify(editor.getValue(), null, 2);
         }
 
         displayJsonOutputError();
+        LocalBackup.save(editor.getValue());
       });
 
       jsonOutput.addEventListener('focusout', () => {
@@ -113,6 +135,11 @@
           jsonOutput.classList.add('modulix-editor-render__input--has-error');
         }
       }
+
+      editor.on('ready', () => {
+         const schema = LocalBackup.load();
+         editor.setValue(schema);
+      });
     </script>
   </body>
 </html>
