@@ -216,6 +216,116 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
+                                "flashcards"
+                              ]
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "instruction": {
+                              "type": "string",
+                              "format": "jodit"
+                            },
+                            "introImage": {
+                              "type": "object",
+                              "properties": {
+                                "url": {
+                                  "type": "string",
+                                  "format": "uri"
+                                }
+                              },
+                              "required": [
+                                "url"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "cards": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "recto": {
+                                    "type": "object",
+                                    "properties": {
+                                      "image": {
+                                        "type": "object",
+                                        "properties": {
+                                          "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          }
+                                        },
+                                        "required": [
+                                          "url"
+                                        ],
+                                        "additionalProperties": false
+                                      },
+                                      "text": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "text"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "verso": {
+                                    "type": "object",
+                                    "properties": {
+                                      "image": {
+                                        "type": "object",
+                                        "properties": {
+                                          "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          }
+                                        },
+                                        "required": [
+                                          "url"
+                                        ],
+                                        "additionalProperties": false
+                                      },
+                                      "text": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      }
+                                    },
+                                    "required": [
+                                      "text"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "required": [
+                                  "id"
+                                ],
+                                "additionalProperties": false,
+                                "title": "card"
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "title"
+                          ],
+                          "additionalProperties": false,
+                          "title": "flashcards"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "image"
                               ]
                             },
@@ -805,6 +915,116 @@ export const schema = {
                                   ],
                                   "additionalProperties": false,
                                   "title": "embed"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "flashcards"
+                                      ]
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "introImage": {
+                                      "type": "object",
+                                      "properties": {
+                                        "url": {
+                                          "type": "string",
+                                          "format": "uri"
+                                        }
+                                      },
+                                      "required": [
+                                        "url"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "cards": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "recto": {
+                                            "type": "object",
+                                            "properties": {
+                                              "image": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "url": {
+                                                    "type": "string",
+                                                    "format": "uri"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "url"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "text": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "text"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          "verso": {
+                                            "type": "object",
+                                            "properties": {
+                                              "image": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "url": {
+                                                    "type": "string",
+                                                    "format": "uri"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "url"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "text": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              }
+                                            },
+                                            "required": [
+                                              "text"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "card"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "title"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "flashcards"
                                 },
                                 {
                                   "type": "object",
