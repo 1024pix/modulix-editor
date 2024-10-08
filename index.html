@@ -99,13 +99,12 @@
       });
 
       const previewButton = document.querySelector('#preview-button');
+      let previewWindow;
       previewButton.addEventListener('click', () => {
         const moduleContent = editor.getValue();
         const windowName = `modulix-preview-${moduleContent.id}`;
-        const previewWindow = window.open('https://app.dev.pix.fr/modules/preview', windowName);
-        window.setTimeout(() => {
-          previewWindow.postMessage({ from: 'modulix-editor', moduleContent }, '*');
-        }, 1000);
+        previewWindow = window.open('https://app.pix.fr/modules/preview', windowName);
+        window.setTimeout(() => sendDataForPreview(previewWindow, moduleContent), 1000);
       });
 
       const resetButton = document.querySelector('#reset-button');
@@ -123,6 +122,8 @@
 
         displayJsonOutputError();
         LocalBackup.save(editor.getValue());
+        const moduleContent = editor.getValue();
+        sendDataForPreview(previewWindow, moduleContent)
       });
 
       jsonOutput.addEventListener('focusout', () => {
@@ -136,6 +137,13 @@
         displayJsonOutputError();
       });
 
+      editor.on('ready', () => {
+        const schema = LocalBackup.load();
+        if (schema) {
+          editor.setValue(schema);
+        }
+      });
+
       function displayJsonOutputError() {
         try {
           JSON.parse(jsonOutput.value);
@@ -147,12 +155,14 @@
         }
       }
 
-      editor.on('ready', () => {
-         const schema = LocalBackup.load();
-         if (schema) {
-           editor.setValue(schema);
-         }
-      });
+      /**
+       * Send module content to Pix App preview
+       * @param moduleContent
+       * @param previewWindow
+       */
+      function sendDataForPreview(previewWindow, moduleContent) {
+        previewWindow?.postMessage({from: 'modulix-editor', moduleContent}, '*');
+      }
     </script>
   </body>
 </html>
