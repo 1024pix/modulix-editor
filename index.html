@@ -39,10 +39,10 @@
 
 
         <div class="mb-2">
-          <a class="btn btn-outline-info" href="https://app.pix.fr/modules/preview" target="_blank">
+          <button class="btn btn-outline-info" id="preview-button">
             <span class="fa fa-eye"></span>
-            Prévisualiser
-          </a>
+            Previsualiser
+          </button>
           <button class="btn btn-outline-danger" id="reset-button">
             <span class="fa fa-trash"></span>
             Réinitialiser
@@ -96,6 +96,15 @@
         disable_properties: true,
         disable_array_reorder: true,
         form_name_root: 'Module',
+      });
+
+      const previewButton = document.querySelector('#preview-button');
+      previewButton.addEventListener('click', () => {
+        const previewWindow = window.open('https://app.pix.fr/modules/preview', 'modulix-preview');
+        window.setTimeout(() => {
+          const moduleContent = editor.getValue();
+          previewWindow.postMessage({ from: 'modulix-editor', moduleContent }, '*');
+        }, 1000);
       });
 
       const resetButton = document.querySelector('#reset-button');
