@@ -100,9 +100,10 @@
 
       const previewButton = document.querySelector('#preview-button');
       previewButton.addEventListener('click', () => {
-        const previewWindow = window.open('https://app.pix.fr/modules/preview', 'modulix-preview');
+        const moduleContent = editor.getValue();
+        const windowName = `modulix-preview-${moduleContent.id}`;
+        const previewWindow = window.open('https://app.dev.pix.fr/modules/preview', windowName);
         window.setTimeout(() => {
-          const moduleContent = editor.getValue();
           previewWindow.postMessage({ from: 'modulix-editor', moduleContent }, '*');
         }, 1000);
       });
