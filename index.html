@@ -104,7 +104,14 @@
         const moduleContent = editor.getValue();
         const windowName = `modulix-preview-${moduleContent.id}`;
         previewWindow = window.open('https://app.pix.fr/modules/preview', windowName);
-        window.setTimeout(() => sendDataForPreview(previewWindow, moduleContent), 1000);
+      });
+
+      window.addEventListener('message', (event) => {
+
+        if (event.data?.from === 'pix-app' && event.data?.message === 'Ready to receive content !') {
+          const moduleContent = editor.getValue();
+          sendDataForPreview(previewWindow, moduleContent);
+        }
       });
 
       const resetButton = document.querySelector('#reset-button');
