@@ -103,8 +103,7 @@
       previewButton.addEventListener('click', () => {
         const moduleContent = editor.getValue();
         const windowName = `modulix-preview-${moduleContent.id}`;
-        // previewWindow = window.open('https://app.pix.fr/modules/preview', windowName);
-        previewWindow = window.open('http://localhost:4200/modules/preview', windowName);
+        previewWindow = window.open('https://app.pix.fr/modules/preview', windowName);
       });
 
       window.addEventListener('message', (event) => {
