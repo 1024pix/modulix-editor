@@ -7,15 +7,20 @@ h1 {
 }
 
 .modulix-editor {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
   gap: 16px;
 }
 
+.modulix-editor__editor {
+  flex-grow: 1;
+}
+
 .modulix-editor__render {
+  display: none;
   position: sticky;
   top: 0;
   height: 80vh;
+  width: 35%;
 }
 
 .modulix-editor-render__external-link {

@@ -35,13 +35,15 @@
 
     <main class="modulix-editor">
 
-      <div>
-
-
+      <div class="modulix-editor__editor">
         <div class="mb-2">
           <button class="btn btn-outline-info" id="preview-button">
             <span class="fa fa-eye"></span>
             Previsualiser
+          </button>
+          <button class="btn btn-outline-success" id="toggle-json-button">
+            <span class="fa fa-code"></span>
+            Afficher le JSON
           </button>
           <button class="btn btn-outline-danger" id="reset-button">
             <span class="fa fa-trash"></span>
@@ -52,7 +54,7 @@
         <div id="editor_holder"></div>
       </div>
 
-      <div class="modulix-editor__render">
+      <div class="modulix-editor__render" id="json-output-pane">
         <h2>JSON à copier/coller</h2>
 
         <textarea
@@ -112,6 +114,14 @@
           const moduleContent = editor.getValue();
           sendDataForPreview(previewWindow, moduleContent);
         }
+      });
+
+      const jsonOutputPane = document.querySelector('#json-output-pane');
+      const toggleCodeButton = document.querySelector('#toggle-json-button');
+      let jsonOutputPaneDisplayed = false;
+      toggleCodeButton.addEventListener('click', () => {
+        jsonOutputPaneDisplayed = !jsonOutputPaneDisplayed;
+        jsonOutputPane.style.display = jsonOutputPaneDisplayed ? 'block' : 'none';
       });
 
       const resetButton = document.querySelector('#reset-button');
