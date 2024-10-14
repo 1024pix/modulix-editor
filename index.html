@@ -105,7 +105,7 @@
       previewButton.addEventListener('click', () => {
         const moduleContent = editor.getValue();
         const windowName = `modulix-preview-${moduleContent.id}`;
-        previewWindow = window.open('https://app.pix.fr/modules/preview', windowName);
+        previewWindow = window.open('https://app.recette.pix.fr/modules/preview', windowName);
       });
 
       window.addEventListener('message', (event) => {
