@@ -45,6 +45,10 @@
             <span class="fa fa-code"></span>
             Afficher le JSON
           </button>
+          <button class="btn btn-outline-warning" id="download-json-button">
+            <span class="fa fa-download"></span>
+            Télécharger le JSON
+          </button>
           <button class="btn btn-outline-danger" id="reset-button">
             <span class="fa fa-trash"></span>
             Réinitialiser
@@ -122,6 +126,21 @@
       toggleCodeButton.addEventListener('click', () => {
         jsonOutputPaneDisplayed = !jsonOutputPaneDisplayed;
         jsonOutputPane.style.display = jsonOutputPaneDisplayed ? 'block' : 'none';
+      });
+
+      const downloadButton = document.querySelector('#download-json-button');
+      downloadButton.addEventListener('click', () => {
+
+        const downloadLink = document.createElement('a');
+        const json = editor.getValue();
+        const jsonContent = JSON.stringify(json, null, 2);
+        downloadLink.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonContent));
+        downloadLink.setAttribute('download', `${json.slug}.json`);
+
+        downloadLink.style.display = 'none';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
       });
 
       const resetButton = document.querySelector('#reset-button');
