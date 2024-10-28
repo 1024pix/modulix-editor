@@ -219,12 +219,12 @@ export const schema = {
                                 "flashcards"
                               ]
                             },
-                            "title": {
-                              "type": "string"
-                            },
                             "instruction": {
                               "type": "string",
                               "format": "jodit"
+                            },
+                            "title": {
+                              "type": "string"
                             },
                             "introImage": {
                               "type": "object",
@@ -929,12 +929,12 @@ export const schema = {
                                         "flashcards"
                                       ]
                                     },
-                                    "title": {
-                                      "type": "string"
-                                    },
                                     "instruction": {
                                       "type": "string",
                                       "format": "jodit"
+                                    },
+                                    "title": {
+                                      "type": "string"
                                     },
                                     "introImage": {
                                       "type": "object",
