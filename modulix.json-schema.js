@@ -99,7 +99,10 @@ export const schema = {
             "type": "string",
             "enum": [
               "lesson",
-              "activity"
+              "activity",
+              "discovery",
+              "challenge",
+              "summary"
             ]
           },
           "title": {
