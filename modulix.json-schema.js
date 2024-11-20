@@ -12,6 +12,9 @@ export const schema = {
     "title": {
       "type": "string"
     },
+    "isBeta": {
+      "type": "boolean"
+    },
     "details": {
       "type": "object",
       "properties": {
@@ -1400,6 +1403,7 @@ export const schema = {
     "id",
     "slug",
     "title",
+    "isBeta",
     "details",
     "grains"
   ],
