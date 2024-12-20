@@ -222,6 +222,36 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
+                                "expand"
+                              ]
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "content": {
+                              "type": "string",
+                              "format": "jodit"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "title",
+                            "content"
+                          ],
+                          "additionalProperties": false,
+                          "title": "expand"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "flashcards"
                               ]
                             },
@@ -878,6 +908,36 @@ export const schema = {
                                   ],
                                   "additionalProperties": false,
                                   "title": "download"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "expand"
+                                      ]
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "content": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "title",
+                                    "content"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "expand"
                                 },
                                 {
                                   "type": "object",
