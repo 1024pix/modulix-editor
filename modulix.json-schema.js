@@ -378,6 +378,12 @@ export const schema = {
                             "alternativeText": {
                               "type": "string",
                               "format": "jodit"
+                            },
+                            "legend": {
+                              "type": "string"
+                            },
+                            "licence": {
+                              "type": "string"
                             }
                           },
                           "required": [
@@ -965,6 +971,12 @@ export const schema = {
                                     "alternativeText": {
                                       "type": "string",
                                       "format": "jodit"
+                                    },
+                                    "legend": {
+                                      "type": "string"
+                                    },
+                                    "licence": {
+                                      "type": "string"
                                     }
                                   },
                                   "required": [
