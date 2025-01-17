@@ -196,6 +196,9 @@ export const schema = {
                               "type": "string",
                               "format": "jodit"
                             },
+                            "solution": {
+                              "type": "string"
+                            },
                             "height": {
                               "type": "number",
                               "minimum": 0
