@@ -635,6 +635,7 @@ export const schema = {
                                         "type": "array",
                                         "items": {
                                           "type": "string",
+                                          "minLength": 1,
                                           "title": "solution"
                                         }
                                       }
@@ -1228,6 +1229,7 @@ export const schema = {
                                                 "type": "array",
                                                 "items": {
                                                   "type": "string",
+                                                  "minLength": 1,
                                                   "title": "solution"
                                                 }
                                               }
