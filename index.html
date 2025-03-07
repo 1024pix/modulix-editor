@@ -94,7 +94,6 @@
       Jodit.defaultOptions.controls.ol.list = null;
 
       schema.format = 'categories';
-      schema.properties.transitionTexts.items.properties.grainId.format = '';
 
       const editor = new JSONEditor(element, {
         schema,
@@ -104,7 +103,7 @@
         disable_edit_json: true,
         disable_properties: true,
         disable_array_reorder: false,
-        form_name_root: 'Module',
+        form_name_root: 'Formulaire',
       });
 
       const previewButton = document.querySelector('#preview-button');
