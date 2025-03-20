@@ -432,25 +432,12 @@ export const schema = {
                                 },
                                 "required": [
                                   "id",
-                                  "content"
+                                  "content",
+                                  "feedback"
                                 ],
                                 "additionalProperties": false,
                                 "title": "proposal"
                               }
-                            },
-                            "feedbacks": {
-                              "type": "object",
-                              "properties": {
-                                "valid": {
-                                  "type": "string",
-                                  "format": "jodit"
-                                },
-                                "invalid": {
-                                  "type": "string",
-                                  "format": "jodit"
-                                }
-                              },
-                              "additionalProperties": false
                             },
                             "solution": {
                               "type": "string",
@@ -1026,25 +1013,12 @@ export const schema = {
                                         },
                                         "required": [
                                           "id",
-                                          "content"
+                                          "content",
+                                          "feedback"
                                         ],
                                         "additionalProperties": false,
                                         "title": "proposal"
                                       }
-                                    },
-                                    "feedbacks": {
-                                      "type": "object",
-                                      "properties": {
-                                        "valid": {
-                                          "type": "string",
-                                          "format": "jodit"
-                                        },
-                                        "invalid": {
-                                          "type": "string",
-                                          "format": "jodit"
-                                        }
-                                      },
-                                      "additionalProperties": false
                                     },
                                     "solution": {
                                       "type": "string",
