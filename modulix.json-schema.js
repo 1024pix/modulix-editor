@@ -136,6 +136,35 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
+                                "custom"
+                              ]
+                            },
+                            "tagName": {
+                              "type": "string"
+                            },
+                            "props": {
+                              "type": "object"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "tagName",
+                            "props"
+                          ],
+                          "additionalProperties": false,
+                          "title": "custom"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "download"
                               ]
                             },
@@ -426,8 +455,18 @@ export const schema = {
                                     "format": "jodit"
                                   },
                                   "feedback": {
-                                    "type": "string",
-                                    "format": "jodit"
+                                    "type": "object",
+                                    "properties": {
+                                      "state": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "diagnosis": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      }
+                                    },
+                                    "additionalProperties": false
                                   }
                                 },
                                 "required": [
@@ -494,12 +533,32 @@ export const schema = {
                               "type": "object",
                               "properties": {
                                 "valid": {
-                                  "type": "string",
-                                  "format": "jodit"
+                                  "type": "object",
+                                  "properties": {
+                                    "state": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "diagnosis": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "invalid": {
-                                  "type": "string",
-                                  "format": "jodit"
+                                  "type": "object",
+                                  "properties": {
+                                    "state": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "diagnosis": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "additionalProperties": false
@@ -724,12 +783,32 @@ export const schema = {
                               "type": "object",
                               "properties": {
                                 "valid": {
-                                  "type": "string",
-                                  "format": "jodit"
+                                  "type": "object",
+                                  "properties": {
+                                    "state": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "diagnosis": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 },
                                 "invalid": {
-                                  "type": "string",
-                                  "format": "jodit"
+                                  "type": "object",
+                                  "properties": {
+                                    "state": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "diagnosis": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "additionalProperties": false
@@ -863,6 +942,35 @@ export const schema = {
                             "type": "array",
                             "items": {
                               "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "custom"
+                                      ]
+                                    },
+                                    "tagName": {
+                                      "type": "string"
+                                    },
+                                    "props": {
+                                      "type": "object"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "tagName",
+                                    "props"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "custom"
+                                },
                                 {
                                   "type": "object",
                                   "properties": {
@@ -1007,8 +1115,18 @@ export const schema = {
                                             "format": "jodit"
                                           },
                                           "feedback": {
-                                            "type": "string",
-                                            "format": "jodit"
+                                            "type": "object",
+                                            "properties": {
+                                              "state": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "diagnosis": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              }
+                                            },
+                                            "additionalProperties": false
                                           }
                                         },
                                         "required": [
@@ -1075,12 +1193,32 @@ export const schema = {
                                       "type": "object",
                                       "properties": {
                                         "valid": {
-                                          "type": "string",
-                                          "format": "jodit"
+                                          "type": "object",
+                                          "properties": {
+                                            "state": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "invalid": {
-                                          "type": "string",
-                                          "format": "jodit"
+                                          "type": "object",
+                                          "properties": {
+                                            "state": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "additionalProperties": false
@@ -1305,12 +1443,32 @@ export const schema = {
                                       "type": "object",
                                       "properties": {
                                         "valid": {
-                                          "type": "string",
-                                          "format": "jodit"
+                                          "type": "object",
+                                          "properties": {
+                                            "state": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "additionalProperties": false
                                         },
                                         "invalid": {
-                                          "type": "string",
-                                          "format": "jodit"
+                                          "type": "object",
+                                          "properties": {
+                                            "state": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "additionalProperties": false
                                         }
                                       },
                                       "additionalProperties": false
