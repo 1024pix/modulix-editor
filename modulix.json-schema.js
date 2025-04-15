@@ -105,7 +105,8 @@ export const schema = {
               "activity",
               "discovery",
               "challenge",
-              "summary"
+              "summary",
+              "transition"
             ]
           },
           "title": {
@@ -466,6 +467,10 @@ export const schema = {
                                         "format": "jodit"
                                       }
                                     },
+                                    "required": [
+                                      "state",
+                                      "diagnosis"
+                                    ],
                                     "additionalProperties": false
                                   }
                                 },
@@ -544,6 +549,10 @@ export const schema = {
                                       "format": "jodit"
                                     }
                                   },
+                                  "required": [
+                                    "state",
+                                    "diagnosis"
+                                  ],
                                   "additionalProperties": false
                                 },
                                 "invalid": {
@@ -558,6 +567,10 @@ export const schema = {
                                       "format": "jodit"
                                     }
                                   },
+                                  "required": [
+                                    "state",
+                                    "diagnosis"
+                                  ],
                                   "additionalProperties": false
                                 }
                               },
@@ -794,6 +807,10 @@ export const schema = {
                                       "format": "jodit"
                                     }
                                   },
+                                  "required": [
+                                    "state",
+                                    "diagnosis"
+                                  ],
                                   "additionalProperties": false
                                 },
                                 "invalid": {
@@ -808,6 +825,10 @@ export const schema = {
                                       "format": "jodit"
                                     }
                                   },
+                                  "required": [
+                                    "state",
+                                    "diagnosis"
+                                  ],
                                   "additionalProperties": false
                                 }
                               },
@@ -1126,6 +1147,10 @@ export const schema = {
                                                 "format": "jodit"
                                               }
                                             },
+                                            "required": [
+                                              "state",
+                                              "diagnosis"
+                                            ],
                                             "additionalProperties": false
                                           }
                                         },
@@ -1204,6 +1229,10 @@ export const schema = {
                                               "format": "jodit"
                                             }
                                           },
+                                          "required": [
+                                            "state",
+                                            "diagnosis"
+                                          ],
                                           "additionalProperties": false
                                         },
                                         "invalid": {
@@ -1218,6 +1247,10 @@ export const schema = {
                                               "format": "jodit"
                                             }
                                           },
+                                          "required": [
+                                            "state",
+                                            "diagnosis"
+                                          ],
                                           "additionalProperties": false
                                         }
                                       },
@@ -1454,6 +1487,10 @@ export const schema = {
                                               "format": "jodit"
                                             }
                                           },
+                                          "required": [
+                                            "state",
+                                            "diagnosis"
+                                          ],
                                           "additionalProperties": false
                                         },
                                         "invalid": {
@@ -1468,6 +1505,10 @@ export const schema = {
                                               "format": "jodit"
                                             }
                                           },
+                                          "required": [
+                                            "state",
+                                            "diagnosis"
+                                          ],
                                           "additionalProperties": false
                                         }
                                       },
