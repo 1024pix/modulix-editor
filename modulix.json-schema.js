@@ -68,27 +68,6 @@ export const schema = {
       ],
       "additionalProperties": false
     },
-    "transitionTexts": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "grainId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "content": {
-            "type": "string",
-            "format": "jodit"
-          }
-        },
-        "required": [
-          "grainId"
-        ],
-        "additionalProperties": false,
-        "title": "transitionText"
-      }
-    },
     "grains": {
       "type": "array",
       "items": {
