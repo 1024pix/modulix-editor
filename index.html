@@ -34,7 +34,6 @@
     <h1>Modulix Editor</h1>
 
     <main class="modulix-editor">
-
       <div class="modulix-editor__editor">
         <div class="mb-2">
           <button class="btn btn-outline-info" id="preview-button">
@@ -95,7 +94,6 @@
       Jodit.defaultOptions.controls.ol.list = null;
 
       schema.format = 'categories';
-      schema.properties.transitionTexts.items.properties.grainId.format = '';
 
       const editor = new JSONEditor(element, {
         schema,
@@ -113,12 +111,17 @@
       previewButton.addEventListener('click', () => {
         const moduleContent = editor.getValue();
         const windowName = `modulix-preview-${moduleContent.id}`;
-        previewWindow = window.open('https://app.recette.pix.fr/modules/preview', windowName);
+        previewWindow = window.open(
+          'https://app.recette.pix.fr/modules/preview',
+          windowName
+        );
       });
 
       window.addEventListener('message', (event) => {
-
-        if (event.data?.from === 'pix-app' && event.data?.message === 'Ready to receive content !') {
+        if (
+          event.data?.from === 'pix-app' &&
+          event.data?.message === 'Ready to receive content !'
+        ) {
           const moduleContent = editor.getValue();
           sendDataForPreview(previewWindow, moduleContent);
         }
@@ -129,16 +132,21 @@
       let jsonOutputPaneDisplayed = false;
       toggleCodeButton.addEventListener('click', () => {
         jsonOutputPaneDisplayed = !jsonOutputPaneDisplayed;
-        jsonOutputPane.style.display = jsonOutputPaneDisplayed ? 'block' : 'none';
+        jsonOutputPane.style.display = jsonOutputPaneDisplayed
+          ? 'block'
+          : 'none';
       });
 
       const downloadButton = document.querySelector('#download-json-button');
       downloadButton.addEventListener('click', () => {
-
         const downloadLink = document.createElement('a');
         const json = editor.getValue();
         const jsonContent = JSON.stringify(json, null, 2);
-        downloadLink.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonContent));
+        downloadLink.setAttribute(
+          'href',
+          'data:application/json;charset=utf-8,' +
+            encodeURIComponent(jsonContent)
+        );
         downloadLink.setAttribute('download', `${json.slug}.json`);
 
         downloadLink.style.display = 'none';
@@ -149,7 +157,11 @@
 
       const resetButton = document.querySelector('#reset-button');
       resetButton.addEventListener('click', () => {
-        if (window.confirm('Voulez-vous vraiment réinitialiser le module ? Toutes les modifications seront perdues.')) {
+        if (
+          window.confirm(
+            'Voulez-vous vraiment réinitialiser le module ? Toutes les modifications seront perdues.'
+          )
+        ) {
           LocalBackup.delete();
           window.location.reload();
         }
@@ -178,7 +190,7 @@
         displayJsonOutputError();
         LocalBackup.save(editor.getValue());
         const moduleContent = editor.getValue();
-        sendDataForPreview(previewWindow, moduleContent)
+        sendDataForPreview(previewWindow, moduleContent);
       });
 
       jsonOutput.addEventListener('focusout', () => {
@@ -216,7 +228,10 @@
        * @param previewWindow
        */
       function sendDataForPreview(previewWindow, moduleContent) {
-        previewWindow?.postMessage({from: 'modulix-editor', moduleContent}, '*');
+        previewWindow?.postMessage(
+          { from: 'modulix-editor', moduleContent },
+          '*'
+        );
       }
     </script>
   </body>
