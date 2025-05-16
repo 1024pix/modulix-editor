@@ -487,6 +487,74 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
+                                "qcu-declarative"
+                              ]
+                            },
+                            "instruction": {
+                              "type": "string",
+                              "format": "jodit"
+                            },
+                            "proposals": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "pattern": "^[0-9]+$"
+                                  },
+                                  "content": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "feedback": {
+                                    "type": "object",
+                                    "properties": {
+                                      "state": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "diagnosis": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      }
+                                    },
+                                    "required": [
+                                      "state",
+                                      "diagnosis"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "content",
+                                  "feedback"
+                                ],
+                                "additionalProperties": false,
+                                "title": "proposal"
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "instruction",
+                            "proposals"
+                          ],
+                          "additionalProperties": false,
+                          "title": "qcu-declarative"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "qcm"
                               ]
                             },
@@ -1156,6 +1224,74 @@ export const schema = {
                                   ],
                                   "additionalProperties": false,
                                   "title": "qcu"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "qcu-declarative"
+                                      ]
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "proposals": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "pattern": "^[0-9]+$"
+                                          },
+                                          "content": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "feedback": {
+                                            "type": "object",
+                                            "properties": {
+                                              "state": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "diagnosis": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              }
+                                            },
+                                            "required": [
+                                              "state",
+                                              "diagnosis"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "content",
+                                          "feedback"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "proposal"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "instruction",
+                                    "proposals"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "qcu-declarative"
                                 },
                                 {
                                   "type": "object",
