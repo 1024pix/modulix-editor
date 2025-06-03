@@ -414,6 +414,85 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
+                                "qab"
+                              ]
+                            },
+                            "instruction": {
+                              "type": "string",
+                              "format": "jodit"
+                            },
+                            "cards": {
+                              "type": "array",
+                              "minItems": 1,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "text": {
+                                    "type": "string"
+                                  },
+                                  "image": {
+                                    "type": "object",
+                                    "properties": {
+                                      "url": {
+                                        "type": "string",
+                                        "format": "uri"
+                                      },
+                                      "altText": {
+                                        "type": "string",
+                                        "format": "uri"
+                                      }
+                                    },
+                                    "required": [
+                                      "url",
+                                      "altText"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "proposalA": {
+                                    "type": "string"
+                                  },
+                                  "proposalB": {
+                                    "type": "string"
+                                  },
+                                  "solution": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "text",
+                                  "proposalA",
+                                  "proposalB",
+                                  "solution"
+                                ],
+                                "additionalProperties": false,
+                                "title": "card"
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "instruction",
+                            "cards"
+                          ],
+                          "additionalProperties": false,
+                          "title": "qab"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "qcu"
                               ]
                             },
@@ -740,8 +819,16 @@ export const schema = {
                                       "solutions": {
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "minLength": 1,
+                                          "oneOf": [
+                                            {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            {
+                                              "type": "number",
+                                              "minimum": 1
+                                            }
+                                          ],
                                           "title": "solution"
                                         }
                                       }
@@ -1488,8 +1575,16 @@ export const schema = {
                                               "solutions": {
                                                 "type": "array",
                                                 "items": {
-                                                  "type": "string",
-                                                  "minLength": 1,
+                                                  "oneOf": [
+                                                    {
+                                                      "type": "string",
+                                                      "minLength": 1
+                                                    },
+                                                    {
+                                                      "type": "number",
+                                                      "minimum": 1
+                                                    }
+                                                  ],
                                                   "title": "solution"
                                                 }
                                               }
