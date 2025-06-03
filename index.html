@@ -95,6 +95,7 @@
       Jodit.defaultOptions.controls.ol.list = null;
 
       schema.format = 'categories';
+      schema.properties.grains.items.headerTemplate = '#{{i1}} {{ self.title }}';
 
       const editor = new JSONEditor(element, {
         schema,
