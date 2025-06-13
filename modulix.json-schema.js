@@ -120,10 +120,57 @@ export const schema = {
                               ]
                             },
                             "tagName": {
-                              "type": "string"
+                              "type": "string",
+                              "enum": [
+                                "message-conversation",
+                                "cartes-a-retourner",
+                                "qcu-image"
+                              ]
                             },
                             "props": {
-                              "type": "object"
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "messages": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "userName": {
+                                            "type": "string"
+                                          },
+                                          "direction": {
+                                            "type": "string",
+                                            "enum": [
+                                              "incoming",
+                                              "outgoing"
+                                            ]
+                                          },
+                                          "content": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "userName",
+                                          "direction",
+                                          "content"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "message"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "title",
+                                    "messages"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
                             }
                           },
                           "required": [
@@ -1111,10 +1158,57 @@ export const schema = {
                                       ]
                                     },
                                     "tagName": {
-                                      "type": "string"
+                                      "type": "string",
+                                      "enum": [
+                                        "message-conversation",
+                                        "cartes-a-retourner",
+                                        "qcu-image"
+                                      ]
                                     },
                                     "props": {
-                                      "type": "object"
+                                      "oneOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "title": {
+                                              "type": "string"
+                                            },
+                                            "messages": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "userName": {
+                                                    "type": "string"
+                                                  },
+                                                  "direction": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "incoming",
+                                                      "outgoing"
+                                                    ]
+                                                  },
+                                                  "content": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "userName",
+                                                  "direction",
+                                                  "content"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "message"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "title",
+                                            "messages"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      ]
                                     }
                                   },
                                   "required": [
