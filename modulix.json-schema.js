@@ -122,13 +122,312 @@ export const schema = {
                             "tagName": {
                               "type": "string",
                               "enum": [
+                                "image-quiz",
+                                "image-quizzes",
+                                "llm-compare-messages",
+                                "llm-prompt-select",
                                 "message-conversation",
-                                "cartes-a-retourner",
                                 "qcu-image"
                               ]
                             },
                             "props": {
                               "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "multiple": {
+                                      "type": "boolean"
+                                    },
+                                    "maxChoicesPerLine": {
+                                      "type": "number"
+                                    },
+                                    "hideChoicesName": {
+                                      "type": "boolean"
+                                    },
+                                    "orderChoices": {
+                                      "type": "boolean"
+                                    },
+                                    "imageChoicesSize": {
+                                      "type": "string",
+                                      "enum": [
+                                        "icon",
+                                        "medium",
+                                        "large"
+                                      ]
+                                    },
+                                    "choices": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "name": {
+                                            "type": "string"
+                                          },
+                                          "image": {
+                                            "type": "object",
+                                            "properties": {
+                                              "src": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "src"
+                                            ],
+                                            "additionalProperties": true
+                                          },
+                                          "response": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "name"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "choice"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "choices"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "image-quizz"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "quizzes": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "name": {
+                                            "type": "string"
+                                          },
+                                          "multiple": {
+                                            "type": "boolean"
+                                          },
+                                          "maxChoicesPerLine": {
+                                            "type": "number"
+                                          },
+                                          "hideChoicesName": {
+                                            "type": "boolean"
+                                          },
+                                          "orderChoices": {
+                                            "type": "boolean"
+                                          },
+                                          "imageChoicesSize": {
+                                            "type": "string",
+                                            "enum": [
+                                              "icon",
+                                              "medium",
+                                              "large"
+                                            ]
+                                          },
+                                          "choices": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string"
+                                                },
+                                                "image": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "src": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "src"
+                                                  ],
+                                                  "additionalProperties": true
+                                                },
+                                                "response": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "name"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "choice"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "name",
+                                          "choices"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "quizze"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "quizzes"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "image-quizzes"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "conversation1": {
+                                      "type": "object",
+                                      "properties": {
+                                        "title": {
+                                          "type": "string"
+                                        },
+                                        "llmName": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "title",
+                                        "llmName"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "conversation2": {
+                                      "type": "object",
+                                      "properties": {
+                                        "title": {
+                                          "type": "string"
+                                        },
+                                        "llmName": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "title",
+                                        "llmName"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "userName": {
+                                      "type": "string"
+                                    },
+                                    "messages": {
+                                      "type": "array",
+                                      "items": {
+                                        "oneOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "direction": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "outbound"
+                                                ]
+                                              },
+                                              "content": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "direction",
+                                              "content"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "array",
+                                            "minItems": 2,
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "direction": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "inbound"
+                                                  ]
+                                                },
+                                                "content": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "direction",
+                                                "content"
+                                              ],
+                                              "additionalProperties": false
+                                            }
+                                          }
+                                        ],
+                                        "title": "message"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "conversation1",
+                                    "conversation2",
+                                    "userName",
+                                    "messages"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "llm-compare-messages"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "messages": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "direction": {
+                                            "type": "string",
+                                            "enum": [
+                                              "inbound",
+                                              "outbound"
+                                            ]
+                                          },
+                                          "content": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "direction",
+                                          "content"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "message"
+                                      }
+                                    },
+                                    "prompts": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "prompt": {
+                                            "type": "string"
+                                          },
+                                          "response": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "prompt",
+                                          "response"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "prompt"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "messages",
+                                    "prompts"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "llm-prompt-select"
+                                },
                                 {
                                   "type": "object",
                                   "properties": {
@@ -168,7 +467,73 @@ export const schema = {
                                     "title",
                                     "messages"
                                   ],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "title": "message-conversation"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "multiple": {
+                                      "type": "boolean"
+                                    },
+                                    "maxChoicesPerLine": {
+                                      "type": "number"
+                                    },
+                                    "hideChoicesName": {
+                                      "type": "boolean"
+                                    },
+                                    "orderChoices": {
+                                      "type": "boolean"
+                                    },
+                                    "imageChoicesSize": {
+                                      "type": "string",
+                                      "enum": [
+                                        "icon",
+                                        "medium",
+                                        "large"
+                                      ]
+                                    },
+                                    "choices": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "name": {
+                                            "type": "string"
+                                          },
+                                          "image": {
+                                            "type": "object",
+                                            "properties": {
+                                              "src": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "src"
+                                            ],
+                                            "additionalProperties": true
+                                          },
+                                          "response": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "name"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "choice"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "name",
+                                    "choices"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "qcu-image"
                                 }
                               ]
                             }
@@ -489,8 +854,7 @@ export const schema = {
                                         "format": "uri"
                                       },
                                       "altText": {
-                                        "type": "string",
-                                        "format": "uri"
+                                        "type": "string"
                                       }
                                     },
                                     "required": [
@@ -1160,13 +1524,312 @@ export const schema = {
                                     "tagName": {
                                       "type": "string",
                                       "enum": [
+                                        "image-quiz",
+                                        "image-quizzes",
+                                        "llm-compare-messages",
+                                        "llm-prompt-select",
                                         "message-conversation",
-                                        "cartes-a-retourner",
                                         "qcu-image"
                                       ]
                                     },
                                     "props": {
                                       "oneOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "name": {
+                                              "type": "string"
+                                            },
+                                            "multiple": {
+                                              "type": "boolean"
+                                            },
+                                            "maxChoicesPerLine": {
+                                              "type": "number"
+                                            },
+                                            "hideChoicesName": {
+                                              "type": "boolean"
+                                            },
+                                            "orderChoices": {
+                                              "type": "boolean"
+                                            },
+                                            "imageChoicesSize": {
+                                              "type": "string",
+                                              "enum": [
+                                                "icon",
+                                                "medium",
+                                                "large"
+                                              ]
+                                            },
+                                            "choices": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "name": {
+                                                    "type": "string"
+                                                  },
+                                                  "image": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "src": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "src"
+                                                    ],
+                                                    "additionalProperties": true
+                                                  },
+                                                  "response": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "name"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "choice"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "name",
+                                            "choices"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "image-quizz"
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "quizzes": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "name": {
+                                                    "type": "string"
+                                                  },
+                                                  "multiple": {
+                                                    "type": "boolean"
+                                                  },
+                                                  "maxChoicesPerLine": {
+                                                    "type": "number"
+                                                  },
+                                                  "hideChoicesName": {
+                                                    "type": "boolean"
+                                                  },
+                                                  "orderChoices": {
+                                                    "type": "boolean"
+                                                  },
+                                                  "imageChoicesSize": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "icon",
+                                                      "medium",
+                                                      "large"
+                                                    ]
+                                                  },
+                                                  "choices": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "name": {
+                                                          "type": "string"
+                                                        },
+                                                        "image": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "src": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "src"
+                                                          ],
+                                                          "additionalProperties": true
+                                                        },
+                                                        "response": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "name"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "choice"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "name",
+                                                  "choices"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "quizze"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "quizzes"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "image-quizzes"
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "conversation1": {
+                                              "type": "object",
+                                              "properties": {
+                                                "title": {
+                                                  "type": "string"
+                                                },
+                                                "llmName": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "title",
+                                                "llmName"
+                                              ],
+                                              "additionalProperties": false
+                                            },
+                                            "conversation2": {
+                                              "type": "object",
+                                              "properties": {
+                                                "title": {
+                                                  "type": "string"
+                                                },
+                                                "llmName": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "title",
+                                                "llmName"
+                                              ],
+                                              "additionalProperties": false
+                                            },
+                                            "userName": {
+                                              "type": "string"
+                                            },
+                                            "messages": {
+                                              "type": "array",
+                                              "items": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "direction": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "outbound"
+                                                        ]
+                                                      },
+                                                      "content": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "direction",
+                                                      "content"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  {
+                                                    "type": "array",
+                                                    "minItems": 2,
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "direction": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "inbound"
+                                                          ]
+                                                        },
+                                                        "content": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "direction",
+                                                        "content"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    }
+                                                  }
+                                                ],
+                                                "title": "message"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "conversation1",
+                                            "conversation2",
+                                            "userName",
+                                            "messages"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "llm-compare-messages"
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "messages": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "direction": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "inbound",
+                                                      "outbound"
+                                                    ]
+                                                  },
+                                                  "content": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "direction",
+                                                  "content"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "message"
+                                              }
+                                            },
+                                            "prompts": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "prompt": {
+                                                    "type": "string"
+                                                  },
+                                                  "response": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "prompt",
+                                                  "response"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "prompt"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "messages",
+                                            "prompts"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "llm-prompt-select"
+                                        },
                                         {
                                           "type": "object",
                                           "properties": {
@@ -1206,7 +1869,73 @@ export const schema = {
                                             "title",
                                             "messages"
                                           ],
-                                          "additionalProperties": false
+                                          "additionalProperties": false,
+                                          "title": "message-conversation"
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "name": {
+                                              "type": "string"
+                                            },
+                                            "multiple": {
+                                              "type": "boolean"
+                                            },
+                                            "maxChoicesPerLine": {
+                                              "type": "number"
+                                            },
+                                            "hideChoicesName": {
+                                              "type": "boolean"
+                                            },
+                                            "orderChoices": {
+                                              "type": "boolean"
+                                            },
+                                            "imageChoicesSize": {
+                                              "type": "string",
+                                              "enum": [
+                                                "icon",
+                                                "medium",
+                                                "large"
+                                              ]
+                                            },
+                                            "choices": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "name": {
+                                                    "type": "string"
+                                                  },
+                                                  "image": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "src": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "src"
+                                                    ],
+                                                    "additionalProperties": true
+                                                  },
+                                                  "response": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "name"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "choice"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "name",
+                                            "choices"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "qcu-image"
                                         }
                                       ]
                                     }
@@ -1262,6 +1991,52 @@ export const schema = {
                                   ],
                                   "additionalProperties": false,
                                   "title": "download"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "embed"
+                                      ]
+                                    },
+                                    "isCompletionRequired": {
+                                      "type": "boolean"
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "url": {
+                                      "type": "string",
+                                      "format": "uri"
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "solution": {
+                                      "type": "string"
+                                    },
+                                    "height": {
+                                      "type": "number",
+                                      "minimum": 0
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "isCompletionRequired",
+                                    "title",
+                                    "url",
+                                    "height"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "embed"
                                 },
                                 {
                                   "type": "object",
