@@ -1045,6 +1045,74 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
+                                "qcu-discovery"
+                              ]
+                            },
+                            "instruction": {
+                              "type": "string",
+                              "format": "jodit"
+                            },
+                            "proposals": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "pattern": "^[0-9]+$"
+                                  },
+                                  "content": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "feedback": {
+                                    "type": "object",
+                                    "properties": {
+                                      "diagnosis": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      }
+                                    },
+                                    "required": [
+                                      "diagnosis"
+                                    ],
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "content",
+                                  "feedback"
+                                ],
+                                "additionalProperties": false,
+                                "title": "proposal"
+                              }
+                            },
+                            "solution": {
+                              "type": "string",
+                              "pattern": "^[0-9]+$"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "instruction",
+                            "proposals",
+                            "solution"
+                          ],
+                          "additionalProperties": false,
+                          "title": "qcu-discovery"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "qcm"
                               ]
                             },
@@ -2248,6 +2316,74 @@ export const schema = {
                                   ],
                                   "additionalProperties": false,
                                   "title": "qcu-declarative"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "qcu-discovery"
+                                      ]
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "proposals": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "pattern": "^[0-9]+$"
+                                          },
+                                          "content": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "feedback": {
+                                            "type": "object",
+                                            "properties": {
+                                              "diagnosis": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              }
+                                            },
+                                            "required": [
+                                              "diagnosis"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "content",
+                                          "feedback"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "proposal"
+                                      }
+                                    },
+                                    "solution": {
+                                      "type": "string",
+                                      "pattern": "^[0-9]+$"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "instruction",
+                                    "proposals",
+                                    "solution"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "qcu-discovery"
                                 },
                                 {
                                   "type": "object",
