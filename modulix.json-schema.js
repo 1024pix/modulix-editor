@@ -1000,17 +1000,12 @@ export const schema = {
                                   "feedback": {
                                     "type": "object",
                                     "properties": {
-                                      "state": {
-                                        "type": "string",
-                                        "format": "jodit"
-                                      },
                                       "diagnosis": {
                                         "type": "string",
                                         "format": "jodit"
                                       }
                                     },
                                     "required": [
-                                      "state",
                                       "diagnosis"
                                     ],
                                     "additionalProperties": false
@@ -2282,17 +2277,12 @@ export const schema = {
                                           "feedback": {
                                             "type": "object",
                                             "properties": {
-                                              "state": {
-                                                "type": "string",
-                                                "format": "jodit"
-                                              },
                                               "diagnosis": {
                                                 "type": "string",
                                                 "format": "jodit"
                                               }
                                             },
                                             "required": [
-                                              "state",
                                               "diagnosis"
                                             ],
                                             "additionalProperties": false
