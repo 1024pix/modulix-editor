@@ -924,13 +924,27 @@ export const schema = {
                                 "additionalProperties": false,
                                 "title": "card"
                               }
+                            },
+                            "feedback": {
+                              "type": "object",
+                              "properties": {
+                                "diagnosis": {
+                                  "type": "string",
+                                  "format": "jodit"
+                                }
+                              },
+                              "required": [
+                                "diagnosis"
+                              ],
+                              "additionalProperties": false
                             }
                           },
                           "required": [
                             "id",
                             "type",
                             "instruction",
-                            "cards"
+                            "cards",
+                            "feedback"
                           ],
                           "additionalProperties": false,
                           "title": "qab"
