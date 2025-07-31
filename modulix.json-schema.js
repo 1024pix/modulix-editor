@@ -557,6 +557,47 @@ export const schema = {
                             "type": {
                               "type": "string",
                               "enum": [
+                                "custom-draft"
+                              ]
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "url": {
+                              "type": "string",
+                              "format": "uri"
+                            },
+                            "instruction": {
+                              "type": "string",
+                              "format": "jodit"
+                            },
+                            "height": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 550
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "title",
+                            "url",
+                            "instruction",
+                            "height"
+                          ],
+                          "additionalProperties": false,
+                          "title": "custom-draft"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "download"
                               ]
                             },
@@ -2011,6 +2052,47 @@ export const schema = {
                                   ],
                                   "additionalProperties": false,
                                   "title": "custom"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "custom-draft"
+                                      ]
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "url": {
+                                      "type": "string",
+                                      "format": "uri"
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "height": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 550
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "type",
+                                    "title",
+                                    "url",
+                                    "instruction",
+                                    "height"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "custom-draft"
                                 },
                                 {
                                   "type": "object",
