@@ -127,6 +127,7 @@ export const schema = {
                                 "llm-compare-messages",
                                 "llm-prompt-select",
                                 "message-conversation",
+                                "pix-carousel",
                                 "qcu-image"
                               ]
                             },
@@ -469,6 +470,180 @@ export const schema = {
                                   ],
                                   "additionalProperties": false,
                                   "title": "message-conversation"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "image",
+                                        "image-text",
+                                        "text"
+                                      ]
+                                    },
+                                    "slides": {
+                                      "oneOf": [
+                                        {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "title": {
+                                                "type": "string"
+                                              },
+                                              "description": {
+                                                "type": "string"
+                                              },
+                                              "displayWidth": {
+                                                "type": "number",
+                                                "minimum": 0
+                                              },
+                                              "image": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "src": {
+                                                    "type": "string"
+                                                  },
+                                                  "alt": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "src",
+                                                  "alt"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "license": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "name": {
+                                                    "type": "string"
+                                                  },
+                                                  "attribution": {
+                                                    "type": "string"
+                                                  },
+                                                  "url": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "name",
+                                                  "attribution",
+                                                  "url"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "title",
+                                              "description",
+                                              "displayWidth",
+                                              "image"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          "title": "image"
+                                        },
+                                        {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "title": {
+                                                "type": "string"
+                                              },
+                                              "description": {
+                                                "type": "string"
+                                              },
+                                              "displayHeight": {
+                                                "type": "number",
+                                                "minimum": 0
+                                              },
+                                              "text": {
+                                                "type": "string"
+                                              },
+                                              "image": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "src": {
+                                                    "type": "string"
+                                                  },
+                                                  "alt": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "src",
+                                                  "alt"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "title",
+                                              "description",
+                                              "displayHeight",
+                                              "text",
+                                              "image"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          "title": "image-text"
+                                        },
+                                        {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "title": {
+                                                "type": "string"
+                                              },
+                                              "description": {
+                                                "type": "string"
+                                              },
+                                              "text": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "title",
+                                              "description",
+                                              "text"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          "title": "text"
+                                        }
+                                      ]
+                                    },
+                                    "aspectRatio": {
+                                      "type": "number",
+                                      "minimum": 0
+                                    },
+                                    "randomSlides": {
+                                      "type": "boolean"
+                                    },
+                                    "titleLevel": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 6
+                                    },
+                                    "disableAnimation": {
+                                      "type": "boolean"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "slides",
+                                    "aspectRatio",
+                                    "randomSlides",
+                                    "titleLevel",
+                                    "disableAnimation"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "pix-carousel"
                                 },
                                 {
                                   "type": "object",
@@ -1647,6 +1822,7 @@ export const schema = {
                                         "llm-compare-messages",
                                         "llm-prompt-select",
                                         "message-conversation",
+                                        "pix-carousel",
                                         "qcu-image"
                                       ]
                                     },
@@ -1989,6 +2165,180 @@ export const schema = {
                                           ],
                                           "additionalProperties": false,
                                           "title": "message-conversation"
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "image",
+                                                "image-text",
+                                                "text"
+                                              ]
+                                            },
+                                            "slides": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "description": {
+                                                        "type": "string"
+                                                      },
+                                                      "displayWidth": {
+                                                        "type": "number",
+                                                        "minimum": 0
+                                                      },
+                                                      "image": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "src": {
+                                                            "type": "string"
+                                                          },
+                                                          "alt": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "src",
+                                                          "alt"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      },
+                                                      "license": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "name": {
+                                                            "type": "string"
+                                                          },
+                                                          "attribution": {
+                                                            "type": "string"
+                                                          },
+                                                          "url": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "name",
+                                                          "attribution",
+                                                          "url"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "title",
+                                                      "description",
+                                                      "displayWidth",
+                                                      "image"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  "title": "image"
+                                                },
+                                                {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "description": {
+                                                        "type": "string"
+                                                      },
+                                                      "displayHeight": {
+                                                        "type": "number",
+                                                        "minimum": 0
+                                                      },
+                                                      "text": {
+                                                        "type": "string"
+                                                      },
+                                                      "image": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "src": {
+                                                            "type": "string"
+                                                          },
+                                                          "alt": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "src",
+                                                          "alt"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "title",
+                                                      "description",
+                                                      "displayHeight",
+                                                      "text",
+                                                      "image"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  "title": "image-text"
+                                                },
+                                                {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "description": {
+                                                        "type": "string"
+                                                      },
+                                                      "text": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "title",
+                                                      "description",
+                                                      "text"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  "title": "text"
+                                                }
+                                              ]
+                                            },
+                                            "aspectRatio": {
+                                              "type": "number",
+                                              "minimum": 0
+                                            },
+                                            "randomSlides": {
+                                              "type": "boolean"
+                                            },
+                                            "titleLevel": {
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "maximum": 6
+                                            },
+                                            "disableAnimation": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "type",
+                                            "slides",
+                                            "aspectRatio",
+                                            "randomSlides",
+                                            "titleLevel",
+                                            "disableAnimation"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "pix-carousel"
                                         },
                                         {
                                           "type": "object",
