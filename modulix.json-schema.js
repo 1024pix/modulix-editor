@@ -125,9 +125,11 @@ export const schema = {
                                 "image-quiz",
                                 "image-quizzes",
                                 "llm-compare-messages",
+                                "llm-messages",
                                 "llm-prompt-select",
                                 "message-conversation",
                                 "pix-carousel",
+                                "pix-cursor",
                                 "qcu-image"
                               ]
                             },
@@ -196,7 +198,7 @@ export const schema = {
                                     "choices"
                                   ],
                                   "additionalProperties": false,
-                                  "title": "image-quizz"
+                                  "title": "image-quiz"
                                 },
                                 {
                                   "type": "object",
@@ -400,6 +402,44 @@ export const schema = {
                                         "additionalProperties": false,
                                         "title": "message"
                                       }
+                                    }
+                                  },
+                                  "required": [
+                                    "messages"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "llm-messages"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "speed": {
+                                      "type": "number",
+                                      "minimum": 0
+                                    },
+                                    "messages": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "direction": {
+                                            "type": "string",
+                                            "enum": [
+                                              "inbound",
+                                              "outbound"
+                                            ]
+                                          },
+                                          "content": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "direction",
+                                          "content"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "message"
+                                      }
                                     },
                                     "prompts": {
                                       "type": "array",
@@ -539,7 +579,6 @@ export const schema = {
                                             "required": [
                                               "title",
                                               "description",
-                                              "displayWidth",
                                               "image"
                                             ],
                                             "additionalProperties": false
@@ -584,7 +623,6 @@ export const schema = {
                                             "required": [
                                               "title",
                                               "description",
-                                              "displayHeight",
                                               "text",
                                               "image"
                                             ],
@@ -639,11 +677,59 @@ export const schema = {
                                     "slides",
                                     "aspectRatio",
                                     "randomSlides",
-                                    "titleLevel",
                                     "disableAnimation"
                                   ],
                                   "additionalProperties": false,
                                   "title": "pix-carousel"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "options": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "label": {
+                                            "type": "string"
+                                          },
+                                          "feedback": {
+                                            "type": "object",
+                                            "properties": {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "bad",
+                                                  "neutral",
+                                                  "close",
+                                                  "good"
+                                                ]
+                                              },
+                                              "text": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "type",
+                                              "text"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "label",
+                                          "feedback"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "option"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "options"
+                                  ],
+                                  "additionalProperties": false,
+                                  "title": "pix-cursor"
                                 },
                                 {
                                   "type": "object",
@@ -1820,9 +1906,11 @@ export const schema = {
                                         "image-quiz",
                                         "image-quizzes",
                                         "llm-compare-messages",
+                                        "llm-messages",
                                         "llm-prompt-select",
                                         "message-conversation",
                                         "pix-carousel",
+                                        "pix-cursor",
                                         "qcu-image"
                                       ]
                                     },
@@ -1891,7 +1979,7 @@ export const schema = {
                                             "choices"
                                           ],
                                           "additionalProperties": false,
-                                          "title": "image-quizz"
+                                          "title": "image-quiz"
                                         },
                                         {
                                           "type": "object",
@@ -2095,6 +2183,44 @@ export const schema = {
                                                 "additionalProperties": false,
                                                 "title": "message"
                                               }
+                                            }
+                                          },
+                                          "required": [
+                                            "messages"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "llm-messages"
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "speed": {
+                                              "type": "number",
+                                              "minimum": 0
+                                            },
+                                            "messages": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "direction": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "inbound",
+                                                      "outbound"
+                                                    ]
+                                                  },
+                                                  "content": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "direction",
+                                                  "content"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "message"
+                                              }
                                             },
                                             "prompts": {
                                               "type": "array",
@@ -2234,7 +2360,6 @@ export const schema = {
                                                     "required": [
                                                       "title",
                                                       "description",
-                                                      "displayWidth",
                                                       "image"
                                                     ],
                                                     "additionalProperties": false
@@ -2279,7 +2404,6 @@ export const schema = {
                                                     "required": [
                                                       "title",
                                                       "description",
-                                                      "displayHeight",
                                                       "text",
                                                       "image"
                                                     ],
@@ -2334,11 +2458,59 @@ export const schema = {
                                             "slides",
                                             "aspectRatio",
                                             "randomSlides",
-                                            "titleLevel",
                                             "disableAnimation"
                                           ],
                                           "additionalProperties": false,
                                           "title": "pix-carousel"
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "options": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "label": {
+                                                    "type": "string"
+                                                  },
+                                                  "feedback": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "bad",
+                                                          "neutral",
+                                                          "close",
+                                                          "good"
+                                                        ]
+                                                      },
+                                                      "text": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "type",
+                                                      "text"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  }
+                                                },
+                                                "required": [
+                                                  "label",
+                                                  "feedback"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "option"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "options"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "pix-cursor"
                                         },
                                         {
                                           "type": "object",
