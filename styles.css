@@ -11,6 +11,17 @@ h1 {
   gap: 16px;
 }
 
+.modulix-editor__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modulix-editor__logo {
+  width: 48px;
+  height: 48px;
+}
+
 .modulix-editor__editor {
   flex-grow: 1;
 }
