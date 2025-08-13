@@ -99,11 +99,18 @@
       Jodit.defaultOptions.controls.ol.list = null;
 
       schema.format = 'categories';
-      schema.properties.grains.items.headerTemplate = '#{{i1}} {{ self.title }}';
+      schema.properties.sections.items.headerTemplate =
+        '#{{i1}} {{ self.type }}';
+      schema.properties.sections.items.properties.grains.items.headerTemplate =
+        '#{{i1}} {{ self.title }}';
 
       // Force text element in top of list
-      schema.properties.grains.items.properties.components.items.oneOf[0].properties.element.oneOf.sort(sortTextElementFirst);
-      schema.properties.grains.items.properties.components.items.oneOf[1].properties.steps.items.properties.elements.items.oneOf.sort(sortTextElementFirst);
+      schema.properties.sections.items.properties.grains.items.properties.components.items.oneOf[0].properties.element.oneOf.sort(
+        sortTextElementFirst
+      );
+      schema.properties.sections.items.properties.grains.items.properties.components.items.oneOf[1].properties.steps.items.properties.elements.items.oneOf.sort(
+        sortTextElementFirst
+      );
 
       const editor = new JSONEditor(element, {
         schema,

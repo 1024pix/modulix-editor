@@ -68,7 +68,7 @@ export const schema = {
       ],
       "additionalProperties": false
     },
-    "grains": {
+    "sections": {
       "type": "array",
       "items": {
         "type": "object",
@@ -80,132 +80,82 @@ export const schema = {
           "type": {
             "type": "string",
             "enum": [
-              "lesson",
-              "activity",
-              "discovery",
-              "challenge",
-              "summary",
-              "transition"
+              "question-yourself",
+              "explore-to-understand",
+              "retain-the-essentials",
+              "practise",
+              "go-further",
+              "blank"
             ]
           },
-          "title": {
-            "type": "string"
-          },
-          "components": {
+          "grains": {
             "type": "array",
             "items": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "enum": [
-                        "element"
-                      ]
-                    },
-                    "element": {
-                      "oneOf": [
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "custom"
-                              ]
-                            },
-                            "tagName": {
-                              "type": "string",
-                              "enum": [
-                                "image-quiz",
-                                "image-quizzes",
-                                "llm-compare-messages",
-                                "llm-messages",
-                                "llm-prompt-select",
-                                "message-conversation",
-                                "pix-carousel",
-                                "pix-cursor",
-                                "qcu-image"
-                              ]
-                            },
-                            "props": {
-                              "oneOf": [
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "multiple": {
-                                      "type": "boolean"
-                                    },
-                                    "maxChoicesPerLine": {
-                                      "type": "number"
-                                    },
-                                    "hideChoicesName": {
-                                      "type": "boolean"
-                                    },
-                                    "orderChoices": {
-                                      "type": "boolean"
-                                    },
-                                    "imageChoicesSize": {
-                                      "type": "string",
-                                      "enum": [
-                                        "icon",
-                                        "medium",
-                                        "large"
-                                      ]
-                                    },
-                                    "choices": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "name": {
-                                            "type": "string"
-                                          },
-                                          "image": {
-                                            "type": "object",
-                                            "properties": {
-                                              "src": {
-                                                "type": "string"
-                                              }
-                                            },
-                                            "required": [
-                                              "src"
-                                            ],
-                                            "additionalProperties": true
-                                          },
-                                          "response": {
-                                            "type": "string"
-                                          }
-                                        },
-                                        "required": [
-                                          "name"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "choice"
-                                      }
-                                    }
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "lesson",
+                    "activity",
+                    "discovery",
+                    "challenge",
+                    "summary",
+                    "transition"
+                  ]
+                },
+                "title": {
+                  "type": "string"
+                },
+                "components": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "element"
+                            ]
+                          },
+                          "element": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
                                   },
-                                  "required": [
-                                    "name",
-                                    "choices"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "image-quiz"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "quizzes": {
-                                      "type": "array",
-                                      "items": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "custom"
+                                    ]
+                                  },
+                                  "tagName": {
+                                    "type": "string",
+                                    "enum": [
+                                      "image-quiz",
+                                      "image-quizzes",
+                                      "llm-compare-messages",
+                                      "llm-messages",
+                                      "llm-prompt-select",
+                                      "message-conversation",
+                                      "pix-carousel",
+                                      "pix-cursor",
+                                      "qcu-image"
+                                    ]
+                                  },
+                                  "props": {
+                                    "oneOf": [
+                                      {
                                         "type": "object",
                                         "properties": {
                                           "name": {
@@ -268,87 +218,197 @@ export const schema = {
                                           "choices"
                                         ],
                                         "additionalProperties": false,
-                                        "title": "quizze"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "quizzes"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "image-quizzes"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "conversation1": {
-                                      "type": "object",
-                                      "properties": {
-                                        "title": {
-                                          "type": "string"
-                                        },
-                                        "llmName": {
-                                          "type": "string"
-                                        }
+                                        "title": "image-quiz"
                                       },
-                                      "required": [
-                                        "title",
-                                        "llmName"
-                                      ],
-                                      "additionalProperties": false
-                                    },
-                                    "conversation2": {
-                                      "type": "object",
-                                      "properties": {
-                                        "title": {
-                                          "type": "string"
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "quizzes": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string"
+                                                },
+                                                "multiple": {
+                                                  "type": "boolean"
+                                                },
+                                                "maxChoicesPerLine": {
+                                                  "type": "number"
+                                                },
+                                                "hideChoicesName": {
+                                                  "type": "boolean"
+                                                },
+                                                "orderChoices": {
+                                                  "type": "boolean"
+                                                },
+                                                "imageChoicesSize": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "icon",
+                                                    "medium",
+                                                    "large"
+                                                  ]
+                                                },
+                                                "choices": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "name": {
+                                                        "type": "string"
+                                                      },
+                                                      "image": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "src": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "src"
+                                                        ],
+                                                        "additionalProperties": true
+                                                      },
+                                                      "response": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "name"
+                                                    ],
+                                                    "additionalProperties": false,
+                                                    "title": "choice"
+                                                  }
+                                                }
+                                              },
+                                              "required": [
+                                                "name",
+                                                "choices"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "quizze"
+                                            }
+                                          }
                                         },
-                                        "llmName": {
-                                          "type": "string"
-                                        }
+                                        "required": [
+                                          "quizzes"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "image-quizzes"
                                       },
-                                      "required": [
-                                        "title",
-                                        "llmName"
-                                      ],
-                                      "additionalProperties": false
-                                    },
-                                    "userName": {
-                                      "type": "string"
-                                    },
-                                    "messages": {
-                                      "type": "array",
-                                      "items": {
-                                        "oneOf": [
-                                          {
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "conversation1": {
                                             "type": "object",
                                             "properties": {
-                                              "direction": {
-                                                "type": "string",
-                                                "enum": [
-                                                  "outbound"
-                                                ]
+                                              "title": {
+                                                "type": "string"
                                               },
-                                              "content": {
+                                              "llmName": {
                                                 "type": "string"
                                               }
                                             },
                                             "required": [
-                                              "direction",
-                                              "content"
+                                              "title",
+                                              "llmName"
                                             ],
                                             "additionalProperties": false
                                           },
-                                          {
+                                          "conversation2": {
+                                            "type": "object",
+                                            "properties": {
+                                              "title": {
+                                                "type": "string"
+                                              },
+                                              "llmName": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "title",
+                                              "llmName"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          "userName": {
+                                            "type": "string"
+                                          },
+                                          "messages": {
                                             "type": "array",
-                                            "minItems": 2,
+                                            "items": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "direction": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "outbound"
+                                                      ]
+                                                    },
+                                                    "content": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "direction",
+                                                    "content"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                {
+                                                  "type": "array",
+                                                  "minItems": 2,
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "direction": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "inbound"
+                                                        ]
+                                                      },
+                                                      "content": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "direction",
+                                                      "content"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  }
+                                                }
+                                              ],
+                                              "title": "message"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "conversation1",
+                                          "conversation2",
+                                          "userName",
+                                          "messages"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "llm-compare-messages"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "messages": {
+                                            "type": "array",
                                             "items": {
                                               "type": "object",
                                               "properties": {
                                                 "direction": {
                                                   "type": "string",
                                                   "enum": [
-                                                    "inbound"
+                                                    "inbound",
+                                                    "outbound"
                                                   ]
                                                 },
                                                 "content": {
@@ -359,1634 +419,1524 @@ export const schema = {
                                                 "direction",
                                                 "content"
                                               ],
-                                              "additionalProperties": false
+                                              "additionalProperties": false,
+                                              "title": "message"
                                             }
                                           }
+                                        },
+                                        "required": [
+                                          "messages"
                                         ],
-                                        "title": "message"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "conversation1",
-                                    "conversation2",
-                                    "userName",
-                                    "messages"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "llm-compare-messages"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "messages": {
-                                      "type": "array",
-                                      "items": {
+                                        "additionalProperties": false,
+                                        "title": "llm-messages"
+                                      },
+                                      {
                                         "type": "object",
                                         "properties": {
-                                          "direction": {
+                                          "speed": {
+                                            "type": "number",
+                                            "minimum": 0
+                                          },
+                                          "messages": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "direction": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "inbound",
+                                                    "outbound"
+                                                  ]
+                                                },
+                                                "content": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "direction",
+                                                "content"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "message"
+                                            }
+                                          },
+                                          "prompts": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "prompt": {
+                                                  "type": "string"
+                                                },
+                                                "response": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "prompt",
+                                                "response"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "prompt"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "messages",
+                                          "prompts"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "llm-prompt-select"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "messages": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "userName": {
+                                                  "type": "string"
+                                                },
+                                                "direction": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "incoming",
+                                                    "outgoing"
+                                                  ]
+                                                },
+                                                "content": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "userName",
+                                                "direction",
+                                                "content"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "message"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "title",
+                                          "messages"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "message-conversation"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "type": {
                                             "type": "string",
                                             "enum": [
-                                              "inbound",
-                                              "outbound"
-                                            ]
-                                          },
-                                          "content": {
-                                            "type": "string"
-                                          }
-                                        },
-                                        "required": [
-                                          "direction",
-                                          "content"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "message"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "messages"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "llm-messages"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "speed": {
-                                      "type": "number",
-                                      "minimum": 0
-                                    },
-                                    "messages": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "direction": {
-                                            "type": "string",
-                                            "enum": [
-                                              "inbound",
-                                              "outbound"
-                                            ]
-                                          },
-                                          "content": {
-                                            "type": "string"
-                                          }
-                                        },
-                                        "required": [
-                                          "direction",
-                                          "content"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "message"
-                                      }
-                                    },
-                                    "prompts": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "prompt": {
-                                            "type": "string"
-                                          },
-                                          "response": {
-                                            "type": "string"
-                                          }
-                                        },
-                                        "required": [
-                                          "prompt",
-                                          "response"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "prompt"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "messages",
-                                    "prompts"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "llm-prompt-select"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "title": {
-                                      "type": "string"
-                                    },
-                                    "messages": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "userName": {
-                                            "type": "string"
-                                          },
-                                          "direction": {
-                                            "type": "string",
-                                            "enum": [
-                                              "incoming",
-                                              "outgoing"
-                                            ]
-                                          },
-                                          "content": {
-                                            "type": "string"
-                                          }
-                                        },
-                                        "required": [
-                                          "userName",
-                                          "direction",
-                                          "content"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "message"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "title",
-                                    "messages"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "message-conversation"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "image",
-                                        "image-text",
-                                        "text"
-                                      ]
-                                    },
-                                    "slides": {
-                                      "oneOf": [
-                                        {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "object",
-                                            "properties": {
-                                              "title": {
-                                                "type": "string"
-                                              },
-                                              "description": {
-                                                "type": "string"
-                                              },
-                                              "displayWidth": {
-                                                "type": "number",
-                                                "minimum": 0
-                                              },
-                                              "image": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "src": {
-                                                    "type": "string"
-                                                  },
-                                                  "alt": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "src",
-                                                  "alt"
-                                                ],
-                                                "additionalProperties": false
-                                              },
-                                              "license": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "name": {
-                                                    "type": "string"
-                                                  },
-                                                  "attribution": {
-                                                    "type": "string"
-                                                  },
-                                                  "url": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "name",
-                                                  "attribution",
-                                                  "url"
-                                                ],
-                                                "additionalProperties": false
-                                              }
-                                            },
-                                            "required": [
-                                              "title",
-                                              "description",
-                                              "image"
-                                            ],
-                                            "additionalProperties": false
-                                          },
-                                          "title": "image"
-                                        },
-                                        {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "object",
-                                            "properties": {
-                                              "title": {
-                                                "type": "string"
-                                              },
-                                              "description": {
-                                                "type": "string"
-                                              },
-                                              "displayHeight": {
-                                                "type": "number",
-                                                "minimum": 0
-                                              },
-                                              "text": {
-                                                "type": "string"
-                                              },
-                                              "image": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "src": {
-                                                    "type": "string"
-                                                  },
-                                                  "alt": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "src",
-                                                  "alt"
-                                                ],
-                                                "additionalProperties": false
-                                              }
-                                            },
-                                            "required": [
-                                              "title",
-                                              "description",
-                                              "text",
-                                              "image"
-                                            ],
-                                            "additionalProperties": false
-                                          },
-                                          "title": "image-text"
-                                        },
-                                        {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "object",
-                                            "properties": {
-                                              "title": {
-                                                "type": "string"
-                                              },
-                                              "description": {
-                                                "type": "string"
-                                              },
-                                              "text": {
-                                                "type": "string"
-                                              }
-                                            },
-                                            "required": [
-                                              "title",
-                                              "description",
+                                              "image",
+                                              "image-text",
                                               "text"
-                                            ],
-                                            "additionalProperties": false
+                                            ]
                                           },
-                                          "title": "text"
-                                        }
-                                      ]
-                                    },
-                                    "aspectRatio": {
-                                      "type": "number",
-                                      "minimum": 0
-                                    },
-                                    "randomSlides": {
-                                      "type": "boolean"
-                                    },
-                                    "titleLevel": {
-                                      "type": "integer",
-                                      "minimum": 0,
-                                      "maximum": 6
-                                    },
-                                    "disableAnimation": {
-                                      "type": "boolean"
-                                    }
-                                  },
-                                  "required": [
-                                    "type",
-                                    "slides",
-                                    "aspectRatio",
-                                    "randomSlides",
-                                    "disableAnimation"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "pix-carousel"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "options": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "label": {
-                                            "type": "string"
-                                          },
-                                          "feedback": {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
-                                                "type": "string",
-                                                "enum": [
-                                                  "bad",
-                                                  "neutral",
-                                                  "close",
-                                                  "good"
-                                                ]
+                                          "slides": {
+                                            "oneOf": [
+                                              {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "title": {
+                                                      "type": "string"
+                                                    },
+                                                    "description": {
+                                                      "type": "string"
+                                                    },
+                                                    "displayWidth": {
+                                                      "type": "number",
+                                                      "minimum": 0
+                                                    },
+                                                    "image": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "src": {
+                                                          "type": "string"
+                                                        },
+                                                        "alt": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "src",
+                                                        "alt"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    },
+                                                    "license": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "name": {
+                                                          "type": "string"
+                                                        },
+                                                        "attribution": {
+                                                          "type": "string"
+                                                        },
+                                                        "url": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "name",
+                                                        "attribution",
+                                                        "url"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "title",
+                                                    "description",
+                                                    "image"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                "title": "image"
                                               },
-                                              "text": {
-                                                "type": "string"
+                                              {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "title": {
+                                                      "type": "string"
+                                                    },
+                                                    "description": {
+                                                      "type": "string"
+                                                    },
+                                                    "displayHeight": {
+                                                      "type": "number",
+                                                      "minimum": 0
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    },
+                                                    "image": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "src": {
+                                                          "type": "string"
+                                                        },
+                                                        "alt": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "src",
+                                                        "alt"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "title",
+                                                    "description",
+                                                    "text",
+                                                    "image"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                "title": "image-text"
+                                              },
+                                              {
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "title": {
+                                                      "type": "string"
+                                                    },
+                                                    "description": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "title",
+                                                    "description",
+                                                    "text"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                "title": "text"
                                               }
-                                            },
-                                            "required": [
-                                              "type",
-                                              "text"
-                                            ],
-                                            "additionalProperties": false
+                                            ]
+                                          },
+                                          "aspectRatio": {
+                                            "type": "number",
+                                            "minimum": 0
+                                          },
+                                          "randomSlides": {
+                                            "type": "boolean"
+                                          },
+                                          "titleLevel": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 6
+                                          },
+                                          "disableAnimation": {
+                                            "type": "boolean"
                                           }
                                         },
                                         "required": [
-                                          "label",
-                                          "feedback"
+                                          "type",
+                                          "slides",
+                                          "aspectRatio",
+                                          "randomSlides",
+                                          "disableAnimation"
                                         ],
                                         "additionalProperties": false,
-                                        "title": "option"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "options"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "pix-cursor"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "multiple": {
-                                      "type": "boolean"
-                                    },
-                                    "maxChoicesPerLine": {
-                                      "type": "number"
-                                    },
-                                    "hideChoicesName": {
-                                      "type": "boolean"
-                                    },
-                                    "orderChoices": {
-                                      "type": "boolean"
-                                    },
-                                    "imageChoicesSize": {
-                                      "type": "string",
-                                      "enum": [
-                                        "icon",
-                                        "medium",
-                                        "large"
-                                      ]
-                                    },
-                                    "choices": {
-                                      "type": "array",
-                                      "items": {
+                                        "title": "pix-carousel"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "options": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "label": {
+                                                  "type": "string"
+                                                },
+                                                "feedback": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "bad",
+                                                        "neutral",
+                                                        "close",
+                                                        "good"
+                                                      ]
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "type",
+                                                    "text"
+                                                  ],
+                                                  "additionalProperties": false
+                                                }
+                                              },
+                                              "required": [
+                                                "label",
+                                                "feedback"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "option"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "options"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "pix-cursor"
+                                      },
+                                      {
                                         "type": "object",
                                         "properties": {
                                           "name": {
                                             "type": "string"
                                           },
-                                          "image": {
-                                            "type": "object",
-                                            "properties": {
-                                              "src": {
-                                                "type": "string"
-                                              }
-                                            },
-                                            "required": [
-                                              "src"
-                                            ],
-                                            "additionalProperties": true
+                                          "multiple": {
+                                            "type": "boolean"
                                           },
-                                          "response": {
-                                            "type": "string"
+                                          "maxChoicesPerLine": {
+                                            "type": "number"
+                                          },
+                                          "hideChoicesName": {
+                                            "type": "boolean"
+                                          },
+                                          "orderChoices": {
+                                            "type": "boolean"
+                                          },
+                                          "imageChoicesSize": {
+                                            "type": "string",
+                                            "enum": [
+                                              "icon",
+                                              "medium",
+                                              "large"
+                                            ]
+                                          },
+                                          "choices": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string"
+                                                },
+                                                "image": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "src": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "src"
+                                                  ],
+                                                  "additionalProperties": true
+                                                },
+                                                "response": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "name"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "choice"
+                                            }
                                           }
                                         },
                                         "required": [
-                                          "name"
+                                          "name",
+                                          "choices"
                                         ],
                                         "additionalProperties": false,
-                                        "title": "choice"
+                                        "title": "qcu-image"
                                       }
-                                    }
-                                  },
-                                  "required": [
-                                    "name",
-                                    "choices"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "qcu-image"
-                                }
-                              ]
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "tagName",
-                            "props"
-                          ],
-                          "additionalProperties": false,
-                          "title": "custom"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "custom-draft"
-                              ]
-                            },
-                            "title": {
-                              "type": "string"
-                            },
-                            "url": {
-                              "type": "string",
-                              "format": "uri"
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "height": {
-                              "type": "integer",
-                              "minimum": 0,
-                              "maximum": 550
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "title",
-                            "url",
-                            "instruction",
-                            "height"
-                          ],
-                          "additionalProperties": false,
-                          "title": "custom-draft"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "download"
-                              ]
-                            },
-                            "files": {
-                              "type": "array",
-                              "items": {
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "tagName",
+                                  "props"
+                                ],
+                                "additionalProperties": false,
+                                "title": "custom"
+                              },
+                              {
                                 "type": "object",
                                 "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "custom-draft"
+                                    ]
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
                                   "url": {
                                     "type": "string",
                                     "format": "uri"
                                   },
-                                  "format": {
-                                    "type": "string"
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "height": {
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 550
                                   }
                                 },
                                 "required": [
+                                  "id",
+                                  "type",
+                                  "title",
                                   "url",
-                                  "format"
+                                  "instruction",
+                                  "height"
                                 ],
                                 "additionalProperties": false,
-                                "title": "file"
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "files"
-                          ],
-                          "additionalProperties": false,
-                          "title": "download"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "embed"
-                              ]
-                            },
-                            "isCompletionRequired": {
-                              "type": "boolean"
-                            },
-                            "title": {
-                              "type": "string"
-                            },
-                            "url": {
-                              "type": "string",
-                              "format": "uri"
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "solution": {
-                              "type": "string"
-                            },
-                            "height": {
-                              "type": "number",
-                              "minimum": 0
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "isCompletionRequired",
-                            "title",
-                            "url",
-                            "height"
-                          ],
-                          "additionalProperties": false,
-                          "title": "embed"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "expand"
-                              ]
-                            },
-                            "title": {
-                              "type": "string"
-                            },
-                            "content": {
-                              "type": "string",
-                              "format": "jodit"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "title",
-                            "content"
-                          ],
-                          "additionalProperties": false,
-                          "title": "expand"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "flashcards"
-                              ]
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "title": {
-                              "type": "string"
-                            },
-                            "introImage": {
-                              "type": "object",
-                              "properties": {
-                                "url": {
-                                  "type": "string",
-                                  "format": "uri"
-                                }
+                                "title": "custom-draft"
                               },
-                              "required": [
-                                "url"
-                              ],
-                              "additionalProperties": false
-                            },
-                            "cards": {
-                              "type": "array",
-                              "items": {
+                              {
                                 "type": "object",
                                 "properties": {
                                   "id": {
                                     "type": "string",
                                     "format": "uuid"
                                   },
-                                  "recto": {
-                                    "type": "object",
-                                    "properties": {
-                                      "image": {
-                                        "type": "object",
-                                        "properties": {
-                                          "url": {
-                                            "type": "string",
-                                            "format": "uri"
-                                          }
-                                        },
-                                        "required": [
-                                          "url"
-                                        ],
-                                        "additionalProperties": false
-                                      },
-                                      "text": {
-                                        "type": "string"
-                                      }
-                                    },
-                                    "required": [
-                                      "text"
-                                    ],
-                                    "additionalProperties": false
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "download"
+                                    ]
                                   },
-                                  "verso": {
-                                    "type": "object",
-                                    "properties": {
-                                      "image": {
-                                        "type": "object",
-                                        "properties": {
-                                          "url": {
-                                            "type": "string",
-                                            "format": "uri"
-                                          }
+                                  "files": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "url": {
+                                          "type": "string",
+                                          "format": "uri"
                                         },
-                                        "required": [
-                                          "url"
-                                        ],
-                                        "additionalProperties": false
+                                        "format": {
+                                          "type": "string"
+                                        }
                                       },
-                                      "text": {
-                                        "type": "string",
-                                        "format": "jodit"
-                                      }
-                                    },
-                                    "required": [
-                                      "text"
-                                    ],
-                                    "additionalProperties": false
+                                      "required": [
+                                        "url",
+                                        "format"
+                                      ],
+                                      "additionalProperties": false,
+                                      "title": "file"
+                                    }
                                   }
                                 },
                                 "required": [
-                                  "id"
+                                  "id",
+                                  "type",
+                                  "files"
                                 ],
                                 "additionalProperties": false,
-                                "title": "card"
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "title"
-                          ],
-                          "additionalProperties": false,
-                          "title": "flashcards"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "image"
-                              ]
-                            },
-                            "url": {
-                              "type": "string",
-                              "format": "uri"
-                            },
-                            "alt": {
-                              "type": "string"
-                            },
-                            "alternativeText": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "legend": {
-                              "type": "string"
-                            },
-                            "licence": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "url",
-                            "alt"
-                          ],
-                          "additionalProperties": false,
-                          "title": "image"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "qab"
-                              ]
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "cards": {
-                              "type": "array",
-                              "minItems": 1,
-                              "items": {
+                                "title": "download"
+                              },
+                              {
                                 "type": "object",
                                 "properties": {
                                   "id": {
                                     "type": "string",
                                     "format": "uuid"
                                   },
-                                  "text": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "embed"
+                                    ]
+                                  },
+                                  "isCompletionRequired": {
+                                    "type": "boolean"
+                                  },
+                                  "title": {
                                     "type": "string"
                                   },
-                                  "image": {
+                                  "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "solution": {
+                                    "type": "string"
+                                  },
+                                  "height": {
+                                    "type": "number",
+                                    "minimum": 0
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "isCompletionRequired",
+                                  "title",
+                                  "url",
+                                  "height"
+                                ],
+                                "additionalProperties": false,
+                                "title": "embed"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "expand"
+                                    ]
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "content": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "title",
+                                  "content"
+                                ],
+                                "additionalProperties": false,
+                                "title": "expand"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "flashcards"
+                                    ]
+                                  },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "introImage": {
                                     "type": "object",
                                     "properties": {
                                       "url": {
                                         "type": "string",
                                         "format": "uri"
-                                      },
-                                      "altText": {
-                                        "type": "string"
                                       }
                                     },
                                     "required": [
-                                      "url",
-                                      "altText"
+                                      "url"
                                     ],
                                     "additionalProperties": false
                                   },
-                                  "proposalA": {
-                                    "type": "string"
-                                  },
-                                  "proposalB": {
-                                    "type": "string"
-                                  },
-                                  "solution": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "text",
-                                  "proposalA",
-                                  "proposalB",
-                                  "solution"
-                                ],
-                                "additionalProperties": false,
-                                "title": "card"
-                              }
-                            },
-                            "feedback": {
-                              "type": "object",
-                              "properties": {
-                                "diagnosis": {
-                                  "type": "string",
-                                  "format": "jodit"
-                                }
-                              },
-                              "required": [
-                                "diagnosis"
-                              ],
-                              "additionalProperties": false
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "instruction",
-                            "cards",
-                            "feedback"
-                          ],
-                          "additionalProperties": false,
-                          "title": "qab"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "qcu"
-                              ]
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "proposals": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "pattern": "^[0-9]+$"
-                                  },
-                                  "content": {
-                                    "type": "string",
-                                    "format": "jodit"
-                                  },
-                                  "feedback": {
-                                    "type": "object",
-                                    "properties": {
-                                      "state": {
-                                        "type": "string",
-                                        "format": "jodit"
-                                      },
-                                      "diagnosis": {
-                                        "type": "string",
-                                        "format": "jodit"
-                                      }
-                                    },
-                                    "required": [
-                                      "state",
-                                      "diagnosis"
-                                    ],
-                                    "additionalProperties": false
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "content",
-                                  "feedback"
-                                ],
-                                "additionalProperties": false,
-                                "title": "proposal"
-                              }
-                            },
-                            "solution": {
-                              "type": "string",
-                              "pattern": "^[0-9]+$"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "instruction",
-                            "proposals",
-                            "solution"
-                          ],
-                          "additionalProperties": false,
-                          "title": "qcu"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "qcu-declarative"
-                              ]
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "proposals": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "pattern": "^[0-9]+$"
-                                  },
-                                  "content": {
-                                    "type": "string",
-                                    "format": "jodit"
-                                  },
-                                  "feedback": {
-                                    "type": "object",
-                                    "properties": {
-                                      "diagnosis": {
-                                        "type": "string",
-                                        "format": "jodit"
-                                      }
-                                    },
-                                    "required": [
-                                      "diagnosis"
-                                    ],
-                                    "additionalProperties": false
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "content",
-                                  "feedback"
-                                ],
-                                "additionalProperties": false,
-                                "title": "proposal"
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "instruction",
-                            "proposals"
-                          ],
-                          "additionalProperties": false,
-                          "title": "qcu-declarative"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "qcu-discovery"
-                              ]
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "proposals": {
-                              "type": "array",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "pattern": "^[0-9]+$"
-                                  },
-                                  "content": {
-                                    "type": "string",
-                                    "format": "jodit"
-                                  },
-                                  "feedback": {
-                                    "type": "object",
-                                    "properties": {
-                                      "diagnosis": {
-                                        "type": "string",
-                                        "format": "jodit"
-                                      }
-                                    },
-                                    "required": [
-                                      "diagnosis"
-                                    ],
-                                    "additionalProperties": false
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "content",
-                                  "feedback"
-                                ],
-                                "additionalProperties": false,
-                                "title": "proposal"
-                              }
-                            },
-                            "solution": {
-                              "type": "string",
-                              "pattern": "^[0-9]+$"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "instruction",
-                            "proposals",
-                            "solution"
-                          ],
-                          "additionalProperties": false,
-                          "title": "qcu-discovery"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "qcm"
-                              ]
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "proposals": {
-                              "type": "array",
-                              "minItems": 3,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "pattern": "^[0-9]+$"
-                                  },
-                                  "content": {
-                                    "type": "string",
-                                    "format": "jodit"
-                                  }
-                                },
-                                "additionalProperties": false,
-                                "title": "proposal"
-                              }
-                            },
-                            "feedbacks": {
-                              "type": "object",
-                              "properties": {
-                                "valid": {
-                                  "type": "object",
-                                  "properties": {
-                                    "state": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "diagnosis": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    }
-                                  },
-                                  "required": [
-                                    "state",
-                                    "diagnosis"
-                                  ],
-                                  "additionalProperties": false
-                                },
-                                "invalid": {
-                                  "type": "object",
-                                  "properties": {
-                                    "state": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "diagnosis": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    }
-                                  },
-                                  "required": [
-                                    "state",
-                                    "diagnosis"
-                                  ],
-                                  "additionalProperties": false
-                                }
-                              },
-                              "additionalProperties": false
-                            },
-                            "solutions": {
-                              "type": "array",
-                              "minItems": 2,
-                              "items": {
-                                "type": "string",
-                                "pattern": "^[0-9]+$",
-                                "title": "solution"
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "instruction",
-                            "proposals",
-                            "feedbacks",
-                            "solutions"
-                          ],
-                          "additionalProperties": false,
-                          "title": "qcm"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "qrocm"
-                              ]
-                            },
-                            "instruction": {
-                              "type": "string",
-                              "format": "jodit"
-                            },
-                            "proposals": {
-                              "type": "array",
-                              "items": {
-                                "oneOf": [
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "type": {
-                                        "type": "string",
-                                        "enum": [
-                                          "text"
-                                        ]
-                                      },
-                                      "content": {
-                                        "type": "string",
-                                        "format": "jodit"
-                                      }
-                                    },
-                                    "required": [
-                                      "type"
-                                    ],
-                                    "additionalProperties": false,
-                                    "title": "text"
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "input": {
-                                        "type": "string"
-                                      },
-                                      "type": {
-                                        "type": "string",
-                                        "enum": [
-                                          "input"
-                                        ]
-                                      },
-                                      "inputType": {
-                                        "type": "string",
-                                        "enum": [
-                                          "text",
-                                          "number"
-                                        ]
-                                      },
-                                      "size": {
-                                        "type": "number",
-                                        "minimum": 1
-                                      },
-                                      "display": {
-                                        "type": "string",
-                                        "enum": [
-                                          "inline",
-                                          "block"
-                                        ]
-                                      },
-                                      "placeholder": {
-                                        "type": "string"
-                                      },
-                                      "ariaLabel": {
-                                        "type": "string"
-                                      },
-                                      "defaultValue": {
-                                        "type": "string"
-                                      },
-                                      "tolerances": {
-                                        "type": "array",
-                                        "uniqueItems": true,
-                                        "items": {
+                                  "cards": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
                                           "type": "string",
-                                          "enum": [
-                                            "t1",
-                                            "t2",
-                                            "t3"
-                                          ],
-                                          "title": "tolerance"
-                                        }
-                                      },
-                                      "solutions": {
-                                        "type": "array",
-                                        "items": {
-                                          "oneOf": [
-                                            {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            {
-                                              "type": "number",
-                                              "minimum": 1
-                                            }
-                                          ],
-                                          "title": "solution"
-                                        }
-                                      }
-                                    },
-                                    "required": [
-                                      "input",
-                                      "type",
-                                      "inputType",
-                                      "size",
-                                      "display",
-                                      "placeholder",
-                                      "ariaLabel",
-                                      "defaultValue",
-                                      "tolerances",
-                                      "solutions"
-                                    ],
-                                    "additionalProperties": false,
-                                    "title": "input"
-                                  },
-                                  {
-                                    "type": "object",
-                                    "properties": {
-                                      "input": {
-                                        "type": "string"
-                                      },
-                                      "type": {
-                                        "type": "string",
-                                        "enum": [
-                                          "select"
-                                        ]
-                                      },
-                                      "display": {
-                                        "type": "string",
-                                        "enum": [
-                                          "inline",
-                                          "block"
-                                        ]
-                                      },
-                                      "placeholder": {
-                                        "type": "string"
-                                      },
-                                      "ariaLabel": {
-                                        "type": "string"
-                                      },
-                                      "defaultValue": {
-                                        "type": "string"
-                                      },
-                                      "tolerances": {
-                                        "type": "array"
-                                      },
-                                      "options": {
-                                        "type": "array",
-                                        "items": {
+                                          "format": "uuid"
+                                        },
+                                        "recto": {
                                           "type": "object",
                                           "properties": {
-                                            "id": {
-                                              "type": "string",
-                                              "pattern": "^[0-9]+$"
+                                            "image": {
+                                              "type": "object",
+                                              "properties": {
+                                                "url": {
+                                                  "type": "string",
+                                                  "format": "uri"
+                                                }
+                                              },
+                                              "required": [
+                                                "url"
+                                              ],
+                                              "additionalProperties": false
                                             },
-                                            "content": {
+                                            "text": {
                                               "type": "string"
                                             }
                                           },
                                           "required": [
-                                            "content"
+                                            "text"
                                           ],
-                                          "additionalProperties": false,
-                                          "title": "option"
+                                          "additionalProperties": false
+                                        },
+                                        "verso": {
+                                          "type": "object",
+                                          "properties": {
+                                            "image": {
+                                              "type": "object",
+                                              "properties": {
+                                                "url": {
+                                                  "type": "string",
+                                                  "format": "uri"
+                                                }
+                                              },
+                                              "required": [
+                                                "url"
+                                              ],
+                                              "additionalProperties": false
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "required": [
+                                            "text"
+                                          ],
+                                          "additionalProperties": false
                                         }
                                       },
-                                      "solutions": {
-                                        "type": "array",
-                                        "items": {
+                                      "required": [
+                                        "id"
+                                      ],
+                                      "additionalProperties": false,
+                                      "title": "card"
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "title"
+                                ],
+                                "additionalProperties": false,
+                                "title": "flashcards"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "image"
+                                    ]
+                                  },
+                                  "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "alt": {
+                                    "type": "string"
+                                  },
+                                  "alternativeText": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "legend": {
+                                    "type": "string"
+                                  },
+                                  "licence": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "url",
+                                  "alt"
+                                ],
+                                "additionalProperties": false,
+                                "title": "image"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "qab"
+                                    ]
+                                  },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "cards": {
+                                    "type": "array",
+                                    "minItems": 1,
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
                                           "type": "string",
-                                          "pattern": "^[0-9]+$",
-                                          "title": "solution"
+                                          "format": "uuid"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        },
+                                        "image": {
+                                          "type": "object",
+                                          "properties": {
+                                            "url": {
+                                              "type": "string",
+                                              "format": "uri"
+                                            },
+                                            "altText": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "url",
+                                            "altText"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        "proposalA": {
+                                          "type": "string"
+                                        },
+                                        "proposalB": {
+                                          "type": "string"
+                                        },
+                                        "solution": {
+                                          "type": "string"
                                         }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "text",
+                                        "proposalA",
+                                        "proposalB",
+                                        "solution"
+                                      ],
+                                      "additionalProperties": false,
+                                      "title": "card"
+                                    }
+                                  },
+                                  "feedback": {
+                                    "type": "object",
+                                    "properties": {
+                                      "diagnosis": {
+                                        "type": "string",
+                                        "format": "jodit"
                                       }
                                     },
                                     "required": [
-                                      "input",
-                                      "type",
-                                      "display",
-                                      "placeholder",
-                                      "ariaLabel",
-                                      "defaultValue",
-                                      "tolerances",
-                                      "options",
-                                      "solutions"
+                                      "diagnosis"
                                     ],
-                                    "additionalProperties": false,
-                                    "title": "select"
+                                    "additionalProperties": false
                                   }
-                                ],
-                                "title": "proposal"
-                              }
-                            },
-                            "feedbacks": {
-                              "type": "object",
-                              "properties": {
-                                "valid": {
-                                  "type": "object",
-                                  "properties": {
-                                    "state": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "diagnosis": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    }
-                                  },
-                                  "required": [
-                                    "state",
-                                    "diagnosis"
-                                  ],
-                                  "additionalProperties": false
                                 },
-                                "invalid": {
-                                  "type": "object",
-                                  "properties": {
-                                    "state": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "diagnosis": {
-                                      "type": "string",
-                                      "format": "jodit"
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "cards",
+                                  "feedback"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qab"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "qcu"
+                                    ]
+                                  },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "proposals": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "pattern": "^[0-9]+$"
+                                        },
+                                        "content": {
+                                          "type": "string",
+                                          "format": "jodit"
+                                        },
+                                        "feedback": {
+                                          "type": "object",
+                                          "properties": {
+                                            "state": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "required": [
+                                            "state",
+                                            "diagnosis"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "content",
+                                        "feedback"
+                                      ],
+                                      "additionalProperties": false,
+                                      "title": "proposal"
                                     }
                                   },
-                                  "required": [
-                                    "state",
-                                    "diagnosis"
-                                  ],
-                                  "additionalProperties": false
-                                }
+                                  "solution": {
+                                    "type": "string",
+                                    "pattern": "^[0-9]+$"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "proposals",
+                                  "solution"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qcu"
                               },
-                              "additionalProperties": false
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "instruction",
-                            "proposals",
-                            "feedbacks"
-                          ],
-                          "additionalProperties": false,
-                          "title": "qrocm"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "separator"
-                              ]
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type"
-                          ],
-                          "additionalProperties": false,
-                          "title": "separator"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "text"
-                              ]
-                            },
-                            "content": {
-                              "type": "string",
-                              "format": "jodit"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type"
-                          ],
-                          "additionalProperties": false,
-                          "title": "text"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid"
-                            },
-                            "type": {
-                              "type": "string",
-                              "enum": [
-                                "video"
-                              ]
-                            },
-                            "title": {
-                              "type": "string"
-                            },
-                            "url": {
-                              "type": "string",
-                              "format": "uri"
-                            },
-                            "poster": {
-                              "type": "string",
-                              "format": "uri"
-                            },
-                            "subtitles": {
-                              "type": "string",
-                              "format": "uri"
-                            },
-                            "transcription": {
-                              "type": "string",
-                              "format": "jodit"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "type",
-                            "title",
-                            "url",
-                            "subtitles"
-                          ],
-                          "additionalProperties": false,
-                          "title": "video"
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "type",
-                    "element"
-                  ],
-                  "additionalProperties": false,
-                  "title": "element"
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "enum": [
-                        "stepper"
-                      ]
-                    },
-                    "steps": {
-                      "type": "array",
-                      "minItems": 2,
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "elements": {
-                            "type": "array",
-                            "items": {
-                              "oneOf": [
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "qcu-declarative"
+                                    ]
+                                  },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "proposals": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "pattern": "^[0-9]+$"
+                                        },
+                                        "content": {
+                                          "type": "string",
+                                          "format": "jodit"
+                                        },
+                                        "feedback": {
+                                          "type": "object",
+                                          "properties": {
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "required": [
+                                            "diagnosis"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "content",
+                                        "feedback"
+                                      ],
+                                      "additionalProperties": false,
+                                      "title": "proposal"
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "proposals"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qcu-declarative"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "qcu-discovery"
+                                    ]
+                                  },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "proposals": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "pattern": "^[0-9]+$"
+                                        },
+                                        "content": {
+                                          "type": "string",
+                                          "format": "jodit"
+                                        },
+                                        "feedback": {
+                                          "type": "object",
+                                          "properties": {
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "required": [
+                                            "diagnosis"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "content",
+                                        "feedback"
+                                      ],
+                                      "additionalProperties": false,
+                                      "title": "proposal"
+                                    }
+                                  },
+                                  "solution": {
+                                    "type": "string",
+                                    "pattern": "^[0-9]+$"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "proposals",
+                                  "solution"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qcu-discovery"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "qcm"
+                                    ]
+                                  },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "proposals": {
+                                    "type": "array",
+                                    "minItems": 3,
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "pattern": "^[0-9]+$"
+                                        },
+                                        "content": {
+                                          "type": "string",
+                                          "format": "jodit"
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "title": "proposal"
+                                    }
+                                  },
+                                  "feedbacks": {
+                                    "type": "object",
+                                    "properties": {
+                                      "valid": {
+                                        "type": "object",
+                                        "properties": {
+                                          "state": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "diagnosis": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "state",
+                                          "diagnosis"
+                                        ],
+                                        "additionalProperties": false
+                                      },
+                                      "invalid": {
+                                        "type": "object",
+                                        "properties": {
+                                          "state": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "diagnosis": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "state",
+                                          "diagnosis"
+                                        ],
+                                        "additionalProperties": false
+                                      }
                                     },
-                                    "type": {
+                                    "additionalProperties": false
+                                  },
+                                  "solutions": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "items": {
                                       "type": "string",
-                                      "enum": [
-                                        "custom"
-                                      ]
-                                    },
-                                    "tagName": {
-                                      "type": "string",
-                                      "enum": [
-                                        "image-quiz",
-                                        "image-quizzes",
-                                        "llm-compare-messages",
-                                        "llm-messages",
-                                        "llm-prompt-select",
-                                        "message-conversation",
-                                        "pix-carousel",
-                                        "pix-cursor",
-                                        "qcu-image"
-                                      ]
-                                    },
-                                    "props": {
+                                      "pattern": "^[0-9]+$",
+                                      "title": "solution"
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "proposals",
+                                  "feedbacks",
+                                  "solutions"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qcm"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "qrocm"
+                                    ]
+                                  },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
+                                  "proposals": {
+                                    "type": "array",
+                                    "items": {
                                       "oneOf": [
                                         {
                                           "type": "object",
                                           "properties": {
-                                            "name": {
-                                              "type": "string"
-                                            },
-                                            "multiple": {
-                                              "type": "boolean"
-                                            },
-                                            "maxChoicesPerLine": {
-                                              "type": "number"
-                                            },
-                                            "hideChoicesName": {
-                                              "type": "boolean"
-                                            },
-                                            "orderChoices": {
-                                              "type": "boolean"
-                                            },
-                                            "imageChoicesSize": {
+                                            "type": {
                                               "type": "string",
                                               "enum": [
-                                                "icon",
-                                                "medium",
-                                                "large"
+                                                "text"
                                               ]
                                             },
-                                            "choices": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "name": {
-                                                    "type": "string"
-                                                  },
-                                                  "image": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "src": {
-                                                        "type": "string"
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "src"
-                                                    ],
-                                                    "additionalProperties": true
-                                                  },
-                                                  "response": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "name"
-                                                ],
-                                                "additionalProperties": false,
-                                                "title": "choice"
-                                              }
+                                            "content": {
+                                              "type": "string",
+                                              "format": "jodit"
                                             }
                                           },
                                           "required": [
-                                            "name",
-                                            "choices"
+                                            "type"
                                           ],
                                           "additionalProperties": false,
-                                          "title": "image-quiz"
+                                          "title": "text"
                                         },
                                         {
                                           "type": "object",
                                           "properties": {
-                                            "quizzes": {
+                                            "input": {
+                                              "type": "string"
+                                            },
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "input"
+                                              ]
+                                            },
+                                            "inputType": {
+                                              "type": "string",
+                                              "enum": [
+                                                "text",
+                                                "number"
+                                              ]
+                                            },
+                                            "size": {
+                                              "type": "number",
+                                              "minimum": 1
+                                            },
+                                            "display": {
+                                              "type": "string",
+                                              "enum": [
+                                                "inline",
+                                                "block"
+                                              ]
+                                            },
+                                            "placeholder": {
+                                              "type": "string"
+                                            },
+                                            "ariaLabel": {
+                                              "type": "string"
+                                            },
+                                            "defaultValue": {
+                                              "type": "string"
+                                            },
+                                            "tolerances": {
+                                              "type": "array",
+                                              "uniqueItems": true,
+                                              "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "t1",
+                                                  "t2",
+                                                  "t3"
+                                                ],
+                                                "title": "tolerance"
+                                              }
+                                            },
+                                            "solutions": {
                                               "type": "array",
                                               "items": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string",
+                                                    "minLength": 1
+                                                  },
+                                                  {
+                                                    "type": "number",
+                                                    "minimum": 1
+                                                  }
+                                                ],
+                                                "title": "solution"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "input",
+                                            "type",
+                                            "inputType",
+                                            "size",
+                                            "display",
+                                            "placeholder",
+                                            "ariaLabel",
+                                            "defaultValue",
+                                            "tolerances",
+                                            "solutions"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "input"
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "input": {
+                                              "type": "string"
+                                            },
+                                            "type": {
+                                              "type": "string",
+                                              "enum": [
+                                                "select"
+                                              ]
+                                            },
+                                            "display": {
+                                              "type": "string",
+                                              "enum": [
+                                                "inline",
+                                                "block"
+                                              ]
+                                            },
+                                            "placeholder": {
+                                              "type": "string"
+                                            },
+                                            "ariaLabel": {
+                                              "type": "string"
+                                            },
+                                            "defaultValue": {
+                                              "type": "string"
+                                            },
+                                            "tolerances": {
+                                              "type": "array"
+                                            },
+                                            "options": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string",
+                                                    "pattern": "^[0-9]+$"
+                                                  },
+                                                  "content": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "content"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "option"
+                                              }
+                                            },
+                                            "solutions": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "pattern": "^[0-9]+$",
+                                                "title": "solution"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "input",
+                                            "type",
+                                            "display",
+                                            "placeholder",
+                                            "ariaLabel",
+                                            "defaultValue",
+                                            "tolerances",
+                                            "options",
+                                            "solutions"
+                                          ],
+                                          "additionalProperties": false,
+                                          "title": "select"
+                                        }
+                                      ],
+                                      "title": "proposal"
+                                    }
+                                  },
+                                  "feedbacks": {
+                                    "type": "object",
+                                    "properties": {
+                                      "valid": {
+                                        "type": "object",
+                                        "properties": {
+                                          "state": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "diagnosis": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "state",
+                                          "diagnosis"
+                                        ],
+                                        "additionalProperties": false
+                                      },
+                                      "invalid": {
+                                        "type": "object",
+                                        "properties": {
+                                          "state": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "diagnosis": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "state",
+                                          "diagnosis"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "proposals",
+                                  "feedbacks"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qrocm"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "separator"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type"
+                                ],
+                                "additionalProperties": false,
+                                "title": "separator"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "text"
+                                    ]
+                                  },
+                                  "content": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type"
+                                ],
+                                "additionalProperties": false,
+                                "title": "text"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "video"
+                                    ]
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "poster": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "subtitles": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "transcription": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "title",
+                                  "url",
+                                  "subtitles"
+                                ],
+                                "additionalProperties": false,
+                                "title": "video"
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "element"
+                        ],
+                        "additionalProperties": false,
+                        "title": "element"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "stepper"
+                            ]
+                          },
+                          "steps": {
+                            "type": "array",
+                            "minItems": 2,
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "elements": {
+                                  "type": "array",
+                                  "items": {
+                                    "oneOf": [
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "custom"
+                                            ]
+                                          },
+                                          "tagName": {
+                                            "type": "string",
+                                            "enum": [
+                                              "image-quiz",
+                                              "image-quizzes",
+                                              "llm-compare-messages",
+                                              "llm-messages",
+                                              "llm-prompt-select",
+                                              "message-conversation",
+                                              "pix-carousel",
+                                              "pix-cursor",
+                                              "qcu-image"
+                                            ]
+                                          },
+                                          "props": {
+                                            "oneOf": [
+                                              {
                                                 "type": "object",
                                                 "properties": {
                                                   "name": {
@@ -2049,87 +1999,197 @@ export const schema = {
                                                   "choices"
                                                 ],
                                                 "additionalProperties": false,
-                                                "title": "quizze"
-                                              }
-                                            }
-                                          },
-                                          "required": [
-                                            "quizzes"
-                                          ],
-                                          "additionalProperties": false,
-                                          "title": "image-quizzes"
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "conversation1": {
-                                              "type": "object",
-                                              "properties": {
-                                                "title": {
-                                                  "type": "string"
-                                                },
-                                                "llmName": {
-                                                  "type": "string"
-                                                }
+                                                "title": "image-quiz"
                                               },
-                                              "required": [
-                                                "title",
-                                                "llmName"
-                                              ],
-                                              "additionalProperties": false
-                                            },
-                                            "conversation2": {
-                                              "type": "object",
-                                              "properties": {
-                                                "title": {
-                                                  "type": "string"
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "quizzes": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "name": {
+                                                          "type": "string"
+                                                        },
+                                                        "multiple": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "maxChoicesPerLine": {
+                                                          "type": "number"
+                                                        },
+                                                        "hideChoicesName": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "orderChoices": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "imageChoicesSize": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "icon",
+                                                            "medium",
+                                                            "large"
+                                                          ]
+                                                        },
+                                                        "choices": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "name": {
+                                                                "type": "string"
+                                                              },
+                                                              "image": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "src": {
+                                                                    "type": "string"
+                                                                  }
+                                                                },
+                                                                "required": [
+                                                                  "src"
+                                                                ],
+                                                                "additionalProperties": true
+                                                              },
+                                                              "response": {
+                                                                "type": "string"
+                                                              }
+                                                            },
+                                                            "required": [
+                                                              "name"
+                                                            ],
+                                                            "additionalProperties": false,
+                                                            "title": "choice"
+                                                          }
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "name",
+                                                        "choices"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "quizze"
+                                                    }
+                                                  }
                                                 },
-                                                "llmName": {
-                                                  "type": "string"
-                                                }
+                                                "required": [
+                                                  "quizzes"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "image-quizzes"
                                               },
-                                              "required": [
-                                                "title",
-                                                "llmName"
-                                              ],
-                                              "additionalProperties": false
-                                            },
-                                            "userName": {
-                                              "type": "string"
-                                            },
-                                            "messages": {
-                                              "type": "array",
-                                              "items": {
-                                                "oneOf": [
-                                                  {
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "conversation1": {
                                                     "type": "object",
                                                     "properties": {
-                                                      "direction": {
-                                                        "type": "string",
-                                                        "enum": [
-                                                          "outbound"
-                                                        ]
+                                                      "title": {
+                                                        "type": "string"
                                                       },
-                                                      "content": {
+                                                      "llmName": {
                                                         "type": "string"
                                                       }
                                                     },
                                                     "required": [
-                                                      "direction",
-                                                      "content"
+                                                      "title",
+                                                      "llmName"
                                                     ],
                                                     "additionalProperties": false
                                                   },
-                                                  {
+                                                  "conversation2": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "llmName": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "title",
+                                                      "llmName"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  "userName": {
+                                                    "type": "string"
+                                                  },
+                                                  "messages": {
                                                     "type": "array",
-                                                    "minItems": 2,
+                                                    "items": {
+                                                      "oneOf": [
+                                                        {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "direction": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "outbound"
+                                                              ]
+                                                            },
+                                                            "content": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "direction",
+                                                            "content"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        },
+                                                        {
+                                                          "type": "array",
+                                                          "minItems": 2,
+                                                          "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "direction": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                  "inbound"
+                                                                ]
+                                                              },
+                                                              "content": {
+                                                                "type": "string"
+                                                              }
+                                                            },
+                                                            "required": [
+                                                              "direction",
+                                                              "content"
+                                                            ],
+                                                            "additionalProperties": false
+                                                          }
+                                                        }
+                                                      ],
+                                                      "title": "message"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "conversation1",
+                                                  "conversation2",
+                                                  "userName",
+                                                  "messages"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "llm-compare-messages"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "messages": {
+                                                    "type": "array",
                                                     "items": {
                                                       "type": "object",
                                                       "properties": {
                                                         "direction": {
                                                           "type": "string",
                                                           "enum": [
-                                                            "inbound"
+                                                            "inbound",
+                                                            "outbound"
                                                           ]
                                                         },
                                                         "content": {
@@ -2140,1335 +2200,1305 @@ export const schema = {
                                                         "direction",
                                                         "content"
                                                       ],
-                                                      "additionalProperties": false
+                                                      "additionalProperties": false,
+                                                      "title": "message"
                                                     }
                                                   }
+                                                },
+                                                "required": [
+                                                  "messages"
                                                 ],
-                                                "title": "message"
-                                              }
-                                            }
-                                          },
-                                          "required": [
-                                            "conversation1",
-                                            "conversation2",
-                                            "userName",
-                                            "messages"
-                                          ],
-                                          "additionalProperties": false,
-                                          "title": "llm-compare-messages"
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "messages": {
-                                              "type": "array",
-                                              "items": {
+                                                "additionalProperties": false,
+                                                "title": "llm-messages"
+                                              },
+                                              {
                                                 "type": "object",
                                                 "properties": {
-                                                  "direction": {
+                                                  "speed": {
+                                                    "type": "number",
+                                                    "minimum": 0
+                                                  },
+                                                  "messages": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "direction": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "inbound",
+                                                            "outbound"
+                                                          ]
+                                                        },
+                                                        "content": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "direction",
+                                                        "content"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "message"
+                                                    }
+                                                  },
+                                                  "prompts": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "prompt": {
+                                                          "type": "string"
+                                                        },
+                                                        "response": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "prompt",
+                                                        "response"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "prompt"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "messages",
+                                                  "prompts"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "llm-prompt-select"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "title": {
+                                                    "type": "string"
+                                                  },
+                                                  "messages": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "userName": {
+                                                          "type": "string"
+                                                        },
+                                                        "direction": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "incoming",
+                                                            "outgoing"
+                                                          ]
+                                                        },
+                                                        "content": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "userName",
+                                                        "direction",
+                                                        "content"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "message"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "title",
+                                                  "messages"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "message-conversation"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "type": {
                                                     "type": "string",
                                                     "enum": [
-                                                      "inbound",
-                                                      "outbound"
-                                                    ]
-                                                  },
-                                                  "content": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "direction",
-                                                  "content"
-                                                ],
-                                                "additionalProperties": false,
-                                                "title": "message"
-                                              }
-                                            }
-                                          },
-                                          "required": [
-                                            "messages"
-                                          ],
-                                          "additionalProperties": false,
-                                          "title": "llm-messages"
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "speed": {
-                                              "type": "number",
-                                              "minimum": 0
-                                            },
-                                            "messages": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "direction": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                      "inbound",
-                                                      "outbound"
-                                                    ]
-                                                  },
-                                                  "content": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "direction",
-                                                  "content"
-                                                ],
-                                                "additionalProperties": false,
-                                                "title": "message"
-                                              }
-                                            },
-                                            "prompts": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "prompt": {
-                                                    "type": "string"
-                                                  },
-                                                  "response": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "prompt",
-                                                  "response"
-                                                ],
-                                                "additionalProperties": false,
-                                                "title": "prompt"
-                                              }
-                                            }
-                                          },
-                                          "required": [
-                                            "messages",
-                                            "prompts"
-                                          ],
-                                          "additionalProperties": false,
-                                          "title": "llm-prompt-select"
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "title": {
-                                              "type": "string"
-                                            },
-                                            "messages": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "userName": {
-                                                    "type": "string"
-                                                  },
-                                                  "direction": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                      "incoming",
-                                                      "outgoing"
-                                                    ]
-                                                  },
-                                                  "content": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "userName",
-                                                  "direction",
-                                                  "content"
-                                                ],
-                                                "additionalProperties": false,
-                                                "title": "message"
-                                              }
-                                            }
-                                          },
-                                          "required": [
-                                            "title",
-                                            "messages"
-                                          ],
-                                          "additionalProperties": false,
-                                          "title": "message-conversation"
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "type": {
-                                              "type": "string",
-                                              "enum": [
-                                                "image",
-                                                "image-text",
-                                                "text"
-                                              ]
-                                            },
-                                            "slides": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "array",
-                                                  "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "title": {
-                                                        "type": "string"
-                                                      },
-                                                      "description": {
-                                                        "type": "string"
-                                                      },
-                                                      "displayWidth": {
-                                                        "type": "number",
-                                                        "minimum": 0
-                                                      },
-                                                      "image": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "src": {
-                                                            "type": "string"
-                                                          },
-                                                          "alt": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "required": [
-                                                          "src",
-                                                          "alt"
-                                                        ],
-                                                        "additionalProperties": false
-                                                      },
-                                                      "license": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "name": {
-                                                            "type": "string"
-                                                          },
-                                                          "attribution": {
-                                                            "type": "string"
-                                                          },
-                                                          "url": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "required": [
-                                                          "name",
-                                                          "attribution",
-                                                          "url"
-                                                        ],
-                                                        "additionalProperties": false
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "title",
-                                                      "description",
-                                                      "image"
-                                                    ],
-                                                    "additionalProperties": false
-                                                  },
-                                                  "title": "image"
-                                                },
-                                                {
-                                                  "type": "array",
-                                                  "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "title": {
-                                                        "type": "string"
-                                                      },
-                                                      "description": {
-                                                        "type": "string"
-                                                      },
-                                                      "displayHeight": {
-                                                        "type": "number",
-                                                        "minimum": 0
-                                                      },
-                                                      "text": {
-                                                        "type": "string"
-                                                      },
-                                                      "image": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "src": {
-                                                            "type": "string"
-                                                          },
-                                                          "alt": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "required": [
-                                                          "src",
-                                                          "alt"
-                                                        ],
-                                                        "additionalProperties": false
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "title",
-                                                      "description",
-                                                      "text",
-                                                      "image"
-                                                    ],
-                                                    "additionalProperties": false
-                                                  },
-                                                  "title": "image-text"
-                                                },
-                                                {
-                                                  "type": "array",
-                                                  "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "title": {
-                                                        "type": "string"
-                                                      },
-                                                      "description": {
-                                                        "type": "string"
-                                                      },
-                                                      "text": {
-                                                        "type": "string"
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "title",
-                                                      "description",
+                                                      "image",
+                                                      "image-text",
                                                       "text"
-                                                    ],
-                                                    "additionalProperties": false
+                                                    ]
                                                   },
-                                                  "title": "text"
-                                                }
-                                              ]
-                                            },
-                                            "aspectRatio": {
-                                              "type": "number",
-                                              "minimum": 0
-                                            },
-                                            "randomSlides": {
-                                              "type": "boolean"
-                                            },
-                                            "titleLevel": {
-                                              "type": "integer",
-                                              "minimum": 0,
-                                              "maximum": 6
-                                            },
-                                            "disableAnimation": {
-                                              "type": "boolean"
-                                            }
-                                          },
-                                          "required": [
-                                            "type",
-                                            "slides",
-                                            "aspectRatio",
-                                            "randomSlides",
-                                            "disableAnimation"
-                                          ],
-                                          "additionalProperties": false,
-                                          "title": "pix-carousel"
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "options": {
-                                              "type": "array",
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "label": {
-                                                    "type": "string"
-                                                  },
-                                                  "feedback": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "type": {
-                                                        "type": "string",
-                                                        "enum": [
-                                                          "bad",
-                                                          "neutral",
-                                                          "close",
-                                                          "good"
-                                                        ]
+                                                  "slides": {
+                                                    "oneOf": [
+                                                      {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "title": {
+                                                              "type": "string"
+                                                            },
+                                                            "description": {
+                                                              "type": "string"
+                                                            },
+                                                            "displayWidth": {
+                                                              "type": "number",
+                                                              "minimum": 0
+                                                            },
+                                                            "image": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "src": {
+                                                                  "type": "string"
+                                                                },
+                                                                "alt": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "src",
+                                                                "alt"
+                                                              ],
+                                                              "additionalProperties": false
+                                                            },
+                                                            "license": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "name": {
+                                                                  "type": "string"
+                                                                },
+                                                                "attribution": {
+                                                                  "type": "string"
+                                                                },
+                                                                "url": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "name",
+                                                                "attribution",
+                                                                "url"
+                                                              ],
+                                                              "additionalProperties": false
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "title",
+                                                            "description",
+                                                            "image"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        },
+                                                        "title": "image"
                                                       },
-                                                      "text": {
-                                                        "type": "string"
+                                                      {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "title": {
+                                                              "type": "string"
+                                                            },
+                                                            "description": {
+                                                              "type": "string"
+                                                            },
+                                                            "displayHeight": {
+                                                              "type": "number",
+                                                              "minimum": 0
+                                                            },
+                                                            "text": {
+                                                              "type": "string"
+                                                            },
+                                                            "image": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "src": {
+                                                                  "type": "string"
+                                                                },
+                                                                "alt": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "src",
+                                                                "alt"
+                                                              ],
+                                                              "additionalProperties": false
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "title",
+                                                            "description",
+                                                            "text",
+                                                            "image"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        },
+                                                        "title": "image-text"
+                                                      },
+                                                      {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "title": {
+                                                              "type": "string"
+                                                            },
+                                                            "description": {
+                                                              "type": "string"
+                                                            },
+                                                            "text": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "title",
+                                                            "description",
+                                                            "text"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        },
+                                                        "title": "text"
                                                       }
-                                                    },
-                                                    "required": [
-                                                      "type",
-                                                      "text"
-                                                    ],
-                                                    "additionalProperties": false
+                                                    ]
+                                                  },
+                                                  "aspectRatio": {
+                                                    "type": "number",
+                                                    "minimum": 0
+                                                  },
+                                                  "randomSlides": {
+                                                    "type": "boolean"
+                                                  },
+                                                  "titleLevel": {
+                                                    "type": "integer",
+                                                    "minimum": 0,
+                                                    "maximum": 6
+                                                  },
+                                                  "disableAnimation": {
+                                                    "type": "boolean"
                                                   }
                                                 },
                                                 "required": [
-                                                  "label",
-                                                  "feedback"
+                                                  "type",
+                                                  "slides",
+                                                  "aspectRatio",
+                                                  "randomSlides",
+                                                  "disableAnimation"
                                                 ],
                                                 "additionalProperties": false,
-                                                "title": "option"
-                                              }
-                                            }
-                                          },
-                                          "required": [
-                                            "options"
-                                          ],
-                                          "additionalProperties": false,
-                                          "title": "pix-cursor"
-                                        },
-                                        {
-                                          "type": "object",
-                                          "properties": {
-                                            "name": {
-                                              "type": "string"
-                                            },
-                                            "multiple": {
-                                              "type": "boolean"
-                                            },
-                                            "maxChoicesPerLine": {
-                                              "type": "number"
-                                            },
-                                            "hideChoicesName": {
-                                              "type": "boolean"
-                                            },
-                                            "orderChoices": {
-                                              "type": "boolean"
-                                            },
-                                            "imageChoicesSize": {
-                                              "type": "string",
-                                              "enum": [
-                                                "icon",
-                                                "medium",
-                                                "large"
-                                              ]
-                                            },
-                                            "choices": {
-                                              "type": "array",
-                                              "items": {
+                                                "title": "pix-carousel"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "options": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "label": {
+                                                          "type": "string"
+                                                        },
+                                                        "feedback": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "bad",
+                                                                "neutral",
+                                                                "close",
+                                                                "good"
+                                                              ]
+                                                            },
+                                                            "text": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "type",
+                                                            "text"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "label",
+                                                        "feedback"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "option"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "options"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "pix-cursor"
+                                              },
+                                              {
                                                 "type": "object",
                                                 "properties": {
                                                   "name": {
                                                     "type": "string"
                                                   },
-                                                  "image": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "src": {
-                                                        "type": "string"
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "src"
-                                                    ],
-                                                    "additionalProperties": true
+                                                  "multiple": {
+                                                    "type": "boolean"
                                                   },
-                                                  "response": {
-                                                    "type": "string"
+                                                  "maxChoicesPerLine": {
+                                                    "type": "number"
+                                                  },
+                                                  "hideChoicesName": {
+                                                    "type": "boolean"
+                                                  },
+                                                  "orderChoices": {
+                                                    "type": "boolean"
+                                                  },
+                                                  "imageChoicesSize": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "icon",
+                                                      "medium",
+                                                      "large"
+                                                    ]
+                                                  },
+                                                  "choices": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "name": {
+                                                          "type": "string"
+                                                        },
+                                                        "image": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "src": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "src"
+                                                          ],
+                                                          "additionalProperties": true
+                                                        },
+                                                        "response": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "name"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "choice"
+                                                    }
                                                   }
                                                 },
                                                 "required": [
-                                                  "name"
+                                                  "name",
+                                                  "choices"
                                                 ],
                                                 "additionalProperties": false,
-                                                "title": "choice"
+                                                "title": "qcu-image"
                                               }
-                                            }
-                                          },
-                                          "required": [
-                                            "name",
-                                            "choices"
-                                          ],
-                                          "additionalProperties": false,
-                                          "title": "qcu-image"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "tagName",
-                                    "props"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "custom"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "custom-draft"
-                                      ]
-                                    },
-                                    "title": {
-                                      "type": "string"
-                                    },
-                                    "url": {
-                                      "type": "string",
-                                      "format": "uri"
-                                    },
-                                    "instruction": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "height": {
-                                      "type": "integer",
-                                      "minimum": 0,
-                                      "maximum": 550
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "title",
-                                    "url",
-                                    "instruction",
-                                    "height"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "custom-draft"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "download"
-                                      ]
-                                    },
-                                    "files": {
-                                      "type": "array",
-                                      "items": {
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "tagName",
+                                          "props"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "custom"
+                                      },
+                                      {
                                         "type": "object",
                                         "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "custom-draft"
+                                            ]
+                                          },
+                                          "title": {
+                                            "type": "string"
+                                          },
                                           "url": {
                                             "type": "string",
                                             "format": "uri"
                                           },
-                                          "format": {
+                                          "instruction": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "height": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 550
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "title",
+                                          "url",
+                                          "instruction",
+                                          "height"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "custom-draft"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "download"
+                                            ]
+                                          },
+                                          "files": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "url": {
+                                                  "type": "string",
+                                                  "format": "uri"
+                                                },
+                                                "format": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "url",
+                                                "format"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "file"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "files"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "download"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "embed"
+                                            ]
+                                          },
+                                          "isCompletionRequired": {
+                                            "type": "boolean"
+                                          },
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          },
+                                          "instruction": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "solution": {
+                                            "type": "string"
+                                          },
+                                          "height": {
+                                            "type": "number",
+                                            "minimum": 0
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "isCompletionRequired",
+                                          "title",
+                                          "url",
+                                          "height"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "embed"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "expand"
+                                            ]
+                                          },
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "content": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "title",
+                                          "content"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "expand"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "image"
+                                            ]
+                                          },
+                                          "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          },
+                                          "alt": {
+                                            "type": "string"
+                                          },
+                                          "alternativeText": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "legend": {
+                                            "type": "string"
+                                          },
+                                          "licence": {
                                             "type": "string"
                                           }
                                         },
                                         "required": [
+                                          "id",
+                                          "type",
                                           "url",
-                                          "format"
+                                          "alt"
                                         ],
                                         "additionalProperties": false,
-                                        "title": "file"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "files"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "download"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "embed"
-                                      ]
-                                    },
-                                    "isCompletionRequired": {
-                                      "type": "boolean"
-                                    },
-                                    "title": {
-                                      "type": "string"
-                                    },
-                                    "url": {
-                                      "type": "string",
-                                      "format": "uri"
-                                    },
-                                    "instruction": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "solution": {
-                                      "type": "string"
-                                    },
-                                    "height": {
-                                      "type": "number",
-                                      "minimum": 0
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "isCompletionRequired",
-                                    "title",
-                                    "url",
-                                    "height"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "embed"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "expand"
-                                      ]
-                                    },
-                                    "title": {
-                                      "type": "string"
-                                    },
-                                    "content": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "title",
-                                    "content"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "expand"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "image"
-                                      ]
-                                    },
-                                    "url": {
-                                      "type": "string",
-                                      "format": "uri"
-                                    },
-                                    "alt": {
-                                      "type": "string"
-                                    },
-                                    "alternativeText": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "legend": {
-                                      "type": "string"
-                                    },
-                                    "licence": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "url",
-                                    "alt"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "image"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "qcu"
-                                      ]
-                                    },
-                                    "instruction": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "proposals": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "pattern": "^[0-9]+$"
-                                          },
-                                          "content": {
-                                            "type": "string",
-                                            "format": "jodit"
-                                          },
-                                          "feedback": {
-                                            "type": "object",
-                                            "properties": {
-                                              "state": {
-                                                "type": "string",
-                                                "format": "jodit"
-                                              },
-                                              "diagnosis": {
-                                                "type": "string",
-                                                "format": "jodit"
-                                              }
-                                            },
-                                            "required": [
-                                              "state",
-                                              "diagnosis"
-                                            ],
-                                            "additionalProperties": false
-                                          }
-                                        },
-                                        "required": [
-                                          "id",
-                                          "content",
-                                          "feedback"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "proposal"
-                                      }
-                                    },
-                                    "solution": {
-                                      "type": "string",
-                                      "pattern": "^[0-9]+$"
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "instruction",
-                                    "proposals",
-                                    "solution"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "qcu"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "qcu-declarative"
-                                      ]
-                                    },
-                                    "instruction": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "proposals": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "pattern": "^[0-9]+$"
-                                          },
-                                          "content": {
-                                            "type": "string",
-                                            "format": "jodit"
-                                          },
-                                          "feedback": {
-                                            "type": "object",
-                                            "properties": {
-                                              "diagnosis": {
-                                                "type": "string",
-                                                "format": "jodit"
-                                              }
-                                            },
-                                            "required": [
-                                              "diagnosis"
-                                            ],
-                                            "additionalProperties": false
-                                          }
-                                        },
-                                        "required": [
-                                          "id",
-                                          "content",
-                                          "feedback"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "proposal"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "instruction",
-                                    "proposals"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "qcu-declarative"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "qcu-discovery"
-                                      ]
-                                    },
-                                    "instruction": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "proposals": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "pattern": "^[0-9]+$"
-                                          },
-                                          "content": {
-                                            "type": "string",
-                                            "format": "jodit"
-                                          },
-                                          "feedback": {
-                                            "type": "object",
-                                            "properties": {
-                                              "diagnosis": {
-                                                "type": "string",
-                                                "format": "jodit"
-                                              }
-                                            },
-                                            "required": [
-                                              "diagnosis"
-                                            ],
-                                            "additionalProperties": false
-                                          }
-                                        },
-                                        "required": [
-                                          "id",
-                                          "content",
-                                          "feedback"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "proposal"
-                                      }
-                                    },
-                                    "solution": {
-                                      "type": "string",
-                                      "pattern": "^[0-9]+$"
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "instruction",
-                                    "proposals",
-                                    "solution"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "qcu-discovery"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "qcm"
-                                      ]
-                                    },
-                                    "instruction": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "proposals": {
-                                      "type": "array",
-                                      "minItems": 3,
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "pattern": "^[0-9]+$"
-                                          },
-                                          "content": {
-                                            "type": "string",
-                                            "format": "jodit"
-                                          }
-                                        },
-                                        "additionalProperties": false,
-                                        "title": "proposal"
-                                      }
-                                    },
-                                    "feedbacks": {
-                                      "type": "object",
-                                      "properties": {
-                                        "valid": {
-                                          "type": "object",
-                                          "properties": {
-                                            "state": {
-                                              "type": "string",
-                                              "format": "jodit"
-                                            },
-                                            "diagnosis": {
-                                              "type": "string",
-                                              "format": "jodit"
-                                            }
-                                          },
-                                          "required": [
-                                            "state",
-                                            "diagnosis"
-                                          ],
-                                          "additionalProperties": false
-                                        },
-                                        "invalid": {
-                                          "type": "object",
-                                          "properties": {
-                                            "state": {
-                                              "type": "string",
-                                              "format": "jodit"
-                                            },
-                                            "diagnosis": {
-                                              "type": "string",
-                                              "format": "jodit"
-                                            }
-                                          },
-                                          "required": [
-                                            "state",
-                                            "diagnosis"
-                                          ],
-                                          "additionalProperties": false
-                                        }
+                                        "title": "image"
                                       },
-                                      "additionalProperties": false
-                                    },
-                                    "solutions": {
-                                      "type": "array",
-                                      "minItems": 2,
-                                      "items": {
-                                        "type": "string",
-                                        "pattern": "^[0-9]+$",
-                                        "title": "solution"
-                                      }
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "instruction",
-                                    "proposals",
-                                    "feedbacks",
-                                    "solutions"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "qcm"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "qrocm"
-                                      ]
-                                    },
-                                    "instruction": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    },
-                                    "proposals": {
-                                      "type": "array",
-                                      "items": {
-                                        "oneOf": [
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "type": {
-                                                "type": "string",
-                                                "enum": [
-                                                  "text"
-                                                ]
-                                              },
-                                              "content": {
-                                                "type": "string",
-                                                "format": "jodit"
-                                              }
-                                            },
-                                            "required": [
-                                              "type"
-                                            ],
-                                            "additionalProperties": false,
-                                            "title": "text"
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
                                           },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "input": {
-                                                "type": "string"
-                                              },
-                                              "type": {
-                                                "type": "string",
-                                                "enum": [
-                                                  "input"
-                                                ]
-                                              },
-                                              "inputType": {
-                                                "type": "string",
-                                                "enum": [
-                                                  "text",
-                                                  "number"
-                                                ]
-                                              },
-                                              "size": {
-                                                "type": "number",
-                                                "minimum": 1
-                                              },
-                                              "display": {
-                                                "type": "string",
-                                                "enum": [
-                                                  "inline",
-                                                  "block"
-                                                ]
-                                              },
-                                              "placeholder": {
-                                                "type": "string"
-                                              },
-                                              "ariaLabel": {
-                                                "type": "string"
-                                              },
-                                              "defaultValue": {
-                                                "type": "string"
-                                              },
-                                              "tolerances": {
-                                                "type": "array",
-                                                "uniqueItems": true,
-                                                "items": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "qcu"
+                                            ]
+                                          },
+                                          "instruction": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "proposals": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
                                                   "type": "string",
-                                                  "enum": [
-                                                    "t1",
-                                                    "t2",
-                                                    "t3"
-                                                  ],
-                                                  "title": "tolerance"
-                                                }
-                                              },
-                                              "solutions": {
-                                                "type": "array",
-                                                "items": {
-                                                  "oneOf": [
-                                                    {
-                                                      "type": "string",
-                                                      "minLength": 1
-                                                    },
-                                                    {
-                                                      "type": "number",
-                                                      "minimum": 1
-                                                    }
-                                                  ],
-                                                  "title": "solution"
-                                                }
-                                              }
-                                            },
-                                            "required": [
-                                              "input",
-                                              "type",
-                                              "inputType",
-                                              "size",
-                                              "display",
-                                              "placeholder",
-                                              "ariaLabel",
-                                              "defaultValue",
-                                              "tolerances",
-                                              "solutions"
-                                            ],
-                                            "additionalProperties": false,
-                                            "title": "input"
-                                          },
-                                          {
-                                            "type": "object",
-                                            "properties": {
-                                              "input": {
-                                                "type": "string"
-                                              },
-                                              "type": {
-                                                "type": "string",
-                                                "enum": [
-                                                  "select"
-                                                ]
-                                              },
-                                              "display": {
-                                                "type": "string",
-                                                "enum": [
-                                                  "inline",
-                                                  "block"
-                                                ]
-                                              },
-                                              "placeholder": {
-                                                "type": "string"
-                                              },
-                                              "ariaLabel": {
-                                                "type": "string"
-                                              },
-                                              "defaultValue": {
-                                                "type": "string"
-                                              },
-                                              "tolerances": {
-                                                "type": "array"
-                                              },
-                                              "options": {
-                                                "type": "array",
-                                                "items": {
+                                                  "pattern": "^[0-9]+$"
+                                                },
+                                                "content": {
+                                                  "type": "string",
+                                                  "format": "jodit"
+                                                },
+                                                "feedback": {
                                                   "type": "object",
                                                   "properties": {
-                                                    "id": {
+                                                    "state": {
                                                       "type": "string",
-                                                      "pattern": "^[0-9]+$"
+                                                      "format": "jodit"
                                                     },
-                                                    "content": {
-                                                      "type": "string"
+                                                    "diagnosis": {
+                                                      "type": "string",
+                                                      "format": "jodit"
                                                     }
                                                   },
                                                   "required": [
-                                                    "content"
+                                                    "state",
+                                                    "diagnosis"
                                                   ],
-                                                  "additionalProperties": false,
-                                                  "title": "option"
+                                                  "additionalProperties": false
                                                 }
                                               },
-                                              "solutions": {
-                                                "type": "array",
-                                                "items": {
+                                              "required": [
+                                                "id",
+                                                "content",
+                                                "feedback"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "proposal"
+                                            }
+                                          },
+                                          "solution": {
+                                            "type": "string",
+                                            "pattern": "^[0-9]+$"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "instruction",
+                                          "proposals",
+                                          "solution"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qcu"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "qcu-declarative"
+                                            ]
+                                          },
+                                          "instruction": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "proposals": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
                                                   "type": "string",
-                                                  "pattern": "^[0-9]+$",
-                                                  "title": "solution"
+                                                  "pattern": "^[0-9]+$"
+                                                },
+                                                "content": {
+                                                  "type": "string",
+                                                  "format": "jodit"
+                                                },
+                                                "feedback": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "diagnosis": {
+                                                      "type": "string",
+                                                      "format": "jodit"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "diagnosis"
+                                                  ],
+                                                  "additionalProperties": false
                                                 }
+                                              },
+                                              "required": [
+                                                "id",
+                                                "content",
+                                                "feedback"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "proposal"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "instruction",
+                                          "proposals"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qcu-declarative"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "qcu-discovery"
+                                            ]
+                                          },
+                                          "instruction": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "proposals": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "string",
+                                                  "pattern": "^[0-9]+$"
+                                                },
+                                                "content": {
+                                                  "type": "string",
+                                                  "format": "jodit"
+                                                },
+                                                "feedback": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "diagnosis": {
+                                                      "type": "string",
+                                                      "format": "jodit"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "diagnosis"
+                                                  ],
+                                                  "additionalProperties": false
+                                                }
+                                              },
+                                              "required": [
+                                                "id",
+                                                "content",
+                                                "feedback"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "proposal"
+                                            }
+                                          },
+                                          "solution": {
+                                            "type": "string",
+                                            "pattern": "^[0-9]+$"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "instruction",
+                                          "proposals",
+                                          "solution"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qcu-discovery"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "qcm"
+                                            ]
+                                          },
+                                          "instruction": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "proposals": {
+                                            "type": "array",
+                                            "minItems": 3,
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "string",
+                                                  "pattern": "^[0-9]+$"
+                                                },
+                                                "content": {
+                                                  "type": "string",
+                                                  "format": "jodit"
+                                                }
+                                              },
+                                              "additionalProperties": false,
+                                              "title": "proposal"
+                                            }
+                                          },
+                                          "feedbacks": {
+                                            "type": "object",
+                                            "properties": {
+                                              "valid": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "state": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  },
+                                                  "diagnosis": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "state",
+                                                  "diagnosis"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "invalid": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "state": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  },
+                                                  "diagnosis": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "state",
+                                                  "diagnosis"
+                                                ],
+                                                "additionalProperties": false
                                               }
                                             },
-                                            "required": [
-                                              "input",
-                                              "type",
-                                              "display",
-                                              "placeholder",
-                                              "ariaLabel",
-                                              "defaultValue",
-                                              "tolerances",
-                                              "options",
-                                              "solutions"
-                                            ],
-                                            "additionalProperties": false,
-                                            "title": "select"
+                                            "additionalProperties": false
+                                          },
+                                          "solutions": {
+                                            "type": "array",
+                                            "minItems": 2,
+                                            "items": {
+                                              "type": "string",
+                                              "pattern": "^[0-9]+$",
+                                              "title": "solution"
+                                            }
                                           }
-                                        ],
-                                        "title": "proposal"
-                                      }
-                                    },
-                                    "feedbacks": {
-                                      "type": "object",
-                                      "properties": {
-                                        "valid": {
-                                          "type": "object",
-                                          "properties": {
-                                            "state": {
-                                              "type": "string",
-                                              "format": "jodit"
-                                            },
-                                            "diagnosis": {
-                                              "type": "string",
-                                              "format": "jodit"
-                                            }
-                                          },
-                                          "required": [
-                                            "state",
-                                            "diagnosis"
-                                          ],
-                                          "additionalProperties": false
                                         },
-                                        "invalid": {
-                                          "type": "object",
-                                          "properties": {
-                                            "state": {
-                                              "type": "string",
-                                              "format": "jodit"
-                                            },
-                                            "diagnosis": {
-                                              "type": "string",
-                                              "format": "jodit"
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "instruction",
+                                          "proposals",
+                                          "feedbacks",
+                                          "solutions"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qcm"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "qrocm"
+                                            ]
+                                          },
+                                          "instruction": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
+                                          "proposals": {
+                                            "type": "array",
+                                            "items": {
+                                              "oneOf": [
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "text"
+                                                      ]
+                                                    },
+                                                    "content": {
+                                                      "type": "string",
+                                                      "format": "jodit"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "type"
+                                                  ],
+                                                  "additionalProperties": false,
+                                                  "title": "text"
+                                                },
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "input": {
+                                                      "type": "string"
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "input"
+                                                      ]
+                                                    },
+                                                    "inputType": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "text",
+                                                        "number"
+                                                      ]
+                                                    },
+                                                    "size": {
+                                                      "type": "number",
+                                                      "minimum": 1
+                                                    },
+                                                    "display": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "inline",
+                                                        "block"
+                                                      ]
+                                                    },
+                                                    "placeholder": {
+                                                      "type": "string"
+                                                    },
+                                                    "ariaLabel": {
+                                                      "type": "string"
+                                                    },
+                                                    "defaultValue": {
+                                                      "type": "string"
+                                                    },
+                                                    "tolerances": {
+                                                      "type": "array",
+                                                      "uniqueItems": true,
+                                                      "items": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "t1",
+                                                          "t2",
+                                                          "t3"
+                                                        ],
+                                                        "title": "tolerance"
+                                                      }
+                                                    },
+                                                    "solutions": {
+                                                      "type": "array",
+                                                      "items": {
+                                                        "oneOf": [
+                                                          {
+                                                            "type": "string",
+                                                            "minLength": 1
+                                                          },
+                                                          {
+                                                            "type": "number",
+                                                            "minimum": 1
+                                                          }
+                                                        ],
+                                                        "title": "solution"
+                                                      }
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "input",
+                                                    "type",
+                                                    "inputType",
+                                                    "size",
+                                                    "display",
+                                                    "placeholder",
+                                                    "ariaLabel",
+                                                    "defaultValue",
+                                                    "tolerances",
+                                                    "solutions"
+                                                  ],
+                                                  "additionalProperties": false,
+                                                  "title": "input"
+                                                },
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "input": {
+                                                      "type": "string"
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "select"
+                                                      ]
+                                                    },
+                                                    "display": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "inline",
+                                                        "block"
+                                                      ]
+                                                    },
+                                                    "placeholder": {
+                                                      "type": "string"
+                                                    },
+                                                    "ariaLabel": {
+                                                      "type": "string"
+                                                    },
+                                                    "defaultValue": {
+                                                      "type": "string"
+                                                    },
+                                                    "tolerances": {
+                                                      "type": "array"
+                                                    },
+                                                    "options": {
+                                                      "type": "array",
+                                                      "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "string",
+                                                            "pattern": "^[0-9]+$"
+                                                          },
+                                                          "content": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "content"
+                                                        ],
+                                                        "additionalProperties": false,
+                                                        "title": "option"
+                                                      }
+                                                    },
+                                                    "solutions": {
+                                                      "type": "array",
+                                                      "items": {
+                                                        "type": "string",
+                                                        "pattern": "^[0-9]+$",
+                                                        "title": "solution"
+                                                      }
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "input",
+                                                    "type",
+                                                    "display",
+                                                    "placeholder",
+                                                    "ariaLabel",
+                                                    "defaultValue",
+                                                    "tolerances",
+                                                    "options",
+                                                    "solutions"
+                                                  ],
+                                                  "additionalProperties": false,
+                                                  "title": "select"
+                                                }
+                                              ],
+                                              "title": "proposal"
                                             }
                                           },
-                                          "required": [
-                                            "state",
-                                            "diagnosis"
-                                          ],
-                                          "additionalProperties": false
-                                        }
+                                          "feedbacks": {
+                                            "type": "object",
+                                            "properties": {
+                                              "valid": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "state": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  },
+                                                  "diagnosis": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "state",
+                                                  "diagnosis"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "invalid": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "state": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  },
+                                                  "diagnosis": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "state",
+                                                  "diagnosis"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "instruction",
+                                          "proposals",
+                                          "feedbacks"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qrocm"
                                       },
-                                      "additionalProperties": false
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "instruction",
-                                    "proposals",
-                                    "feedbacks"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "qrocm"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "separator"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "separator"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "text"
-                                      ]
-                                    },
-                                    "content": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "text"
-                                },
-                                {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "format": "uuid"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "video"
-                                      ]
-                                    },
-                                    "title": {
-                                      "type": "string"
-                                    },
-                                    "url": {
-                                      "type": "string",
-                                      "format": "uri"
-                                    },
-                                    "poster": {
-                                      "type": "string",
-                                      "format": "uri"
-                                    },
-                                    "subtitles": {
-                                      "type": "string",
-                                      "format": "uri"
-                                    },
-                                    "transcription": {
-                                      "type": "string",
-                                      "format": "jodit"
-                                    }
-                                  },
-                                  "required": [
-                                    "id",
-                                    "type",
-                                    "title",
-                                    "url",
-                                    "subtitles"
-                                  ],
-                                  "additionalProperties": false,
-                                  "title": "video"
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "separator"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "separator"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "text"
+                                            ]
+                                          },
+                                          "content": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "text"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "video"
+                                            ]
+                                          },
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          },
+                                          "poster": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          },
+                                          "subtitles": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          },
+                                          "transcription": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "title",
+                                          "url",
+                                          "subtitles"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "video"
+                                      }
+                                    ],
+                                    "title": "element"
+                                  }
                                 }
+                              },
+                              "required": [
+                                "elements"
                               ],
-                              "title": "element"
+                              "additionalProperties": false,
+                              "title": "step"
                             }
                           }
                         },
                         "required": [
-                          "elements"
+                          "type",
+                          "steps"
                         ],
                         "additionalProperties": false,
-                        "title": "step"
+                        "title": "stepper"
                       }
-                    }
-                  },
-                  "required": [
-                    "type",
-                    "steps"
-                  ],
-                  "additionalProperties": false,
-                  "title": "stepper"
+                    ],
+                    "title": "component"
+                  }
                 }
+              },
+              "required": [
+                "id",
+                "type",
+                "title"
               ],
-              "title": "component"
+              "additionalProperties": false,
+              "title": "grain"
             }
           }
         },
         "required": [
           "id",
           "type",
-          "title"
+          "grains"
         ],
         "additionalProperties": false,
-        "title": "grain"
+        "title": "section"
       }
     }
   },
@@ -3478,7 +3508,7 @@ export const schema = {
     "title",
     "isBeta",
     "details",
-    "grains"
+    "sections"
   ],
   "additionalProperties": false
 };
