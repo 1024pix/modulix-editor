@@ -142,6 +142,7 @@ export const schema = {
                                   "tagName": {
                                     "type": "string",
                                     "enum": [
+                                      "complete-phrase",
                                       "image-quiz",
                                       "image-quizzes",
                                       "llm-compare-messages",
@@ -155,6 +156,59 @@ export const schema = {
                                   },
                                   "props": {
                                     "oneOf": [
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "listOfProbabilityBarsLists": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "name": {
+                                                    "type": "string"
+                                                  },
+                                                  "percent": {
+                                                    "type": "integer"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "name",
+                                                  "percent"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "title": "listOfProbabilityBarsList"
+                                            }
+                                          },
+                                          "userMessage": {
+                                            "type": "string"
+                                          },
+                                          "llmMessage": {
+                                            "type": "string"
+                                          },
+                                          "wordsToAdd": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "title": "wordsToAdd"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "titleLevel",
+                                          "listOfProbabilityBarsLists",
+                                          "userMessage",
+                                          "llmMessage",
+                                          "wordsToAdd"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "complete-phrase"
+                                      },
                                       {
                                         "type": "object",
                                         "properties": {
@@ -689,6 +743,9 @@ export const schema = {
                                             "maximum": 6
                                           },
                                           "disableAnimation": {
+                                            "type": "boolean"
+                                          },
+                                          "disableLoop": {
                                             "type": "boolean"
                                           }
                                         },
@@ -1923,6 +1980,7 @@ export const schema = {
                                           "tagName": {
                                             "type": "string",
                                             "enum": [
+                                              "complete-phrase",
                                               "image-quiz",
                                               "image-quizzes",
                                               "llm-compare-messages",
@@ -1936,6 +1994,59 @@ export const schema = {
                                           },
                                           "props": {
                                             "oneOf": [
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "listOfProbabilityBarsLists": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "array",
+                                                      "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "name": {
+                                                            "type": "string"
+                                                          },
+                                                          "percent": {
+                                                            "type": "integer"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "name",
+                                                          "percent"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      },
+                                                      "title": "listOfProbabilityBarsList"
+                                                    }
+                                                  },
+                                                  "userMessage": {
+                                                    "type": "string"
+                                                  },
+                                                  "llmMessage": {
+                                                    "type": "string"
+                                                  },
+                                                  "wordsToAdd": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "string",
+                                                      "title": "wordsToAdd"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "titleLevel",
+                                                  "listOfProbabilityBarsLists",
+                                                  "userMessage",
+                                                  "llmMessage",
+                                                  "wordsToAdd"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "complete-phrase"
+                                              },
                                               {
                                                 "type": "object",
                                                 "properties": {
@@ -2470,6 +2581,9 @@ export const schema = {
                                                     "maximum": 6
                                                   },
                                                   "disableAnimation": {
+                                                    "type": "boolean"
+                                                  },
+                                                  "disableLoop": {
                                                     "type": "boolean"
                                                   }
                                                 },
