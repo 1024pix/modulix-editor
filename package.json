@@ -2,7 +2,8 @@
   "name": "modulix-editor",
   "version": "1.0.0",
   "scripts": {
-    "dev": "npx live-server"
+    "dev": "npx live-server",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -14,5 +15,8 @@
     "url": "https://github.com/1024pix/modulix-editor/issues"
   },
   "homepage": "https://github.com/1024pix/modulix-editor#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
 }

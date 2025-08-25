@@ -12,9 +12,9 @@ h1 {
 }
 
 .modulix-editor__title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .modulix-editor__logo {
@@ -50,9 +50,9 @@ h1 {
 }
 
 .card-body:has(
-    > .btn-group > .json-editor-btn-delete:hover,
-    ~ .btn-group > .json-editor-btn-delete:hover
-  ) {
+  > .btn-group > .json-editor-btn-delete:hover,
+  ~ .btn-group > .json-editor-btn-delete:hover
+) {
   border-color: #ff4d4f;
   transition: border ease-in 0.2s;
 }
