@@ -145,13 +145,13 @@ export const schema = {
                                       "complete-phrase",
                                       "image-quiz",
                                       "image-quizzes",
-                                      "llm-compare-messages",
-                                      "llm-messages",
-                                      "llm-prompt-select",
                                       "message-conversation",
+                                      "pix-article",
                                       "pix-carousel",
                                       "pix-cursor",
-                                      "qcu-image"
+                                      "llm-compare-messages",
+                                      "llm-messages",
+                                      "llm-prompt-select"
                                     ]
                                   },
                                   "props": {
@@ -355,197 +355,6 @@ export const schema = {
                                       {
                                         "type": "object",
                                         "properties": {
-                                          "conversation1": {
-                                            "type": "object",
-                                            "properties": {
-                                              "title": {
-                                                "type": "string"
-                                              },
-                                              "llmName": {
-                                                "type": "string"
-                                              }
-                                            },
-                                            "required": [
-                                              "title",
-                                              "llmName"
-                                            ],
-                                            "additionalProperties": false
-                                          },
-                                          "conversation2": {
-                                            "type": "object",
-                                            "properties": {
-                                              "title": {
-                                                "type": "string"
-                                              },
-                                              "llmName": {
-                                                "type": "string"
-                                              }
-                                            },
-                                            "required": [
-                                              "title",
-                                              "llmName"
-                                            ],
-                                            "additionalProperties": false
-                                          },
-                                          "userName": {
-                                            "type": "string"
-                                          },
-                                          "messages": {
-                                            "type": "array",
-                                            "items": {
-                                              "oneOf": [
-                                                {
-                                                  "type": "object",
-                                                  "properties": {
-                                                    "direction": {
-                                                      "type": "string",
-                                                      "enum": [
-                                                        "outbound"
-                                                      ]
-                                                    },
-                                                    "content": {
-                                                      "type": "string"
-                                                    }
-                                                  },
-                                                  "required": [
-                                                    "direction",
-                                                    "content"
-                                                  ],
-                                                  "additionalProperties": false
-                                                },
-                                                {
-                                                  "type": "array",
-                                                  "minItems": 2,
-                                                  "items": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "direction": {
-                                                        "type": "string",
-                                                        "enum": [
-                                                          "inbound"
-                                                        ]
-                                                      },
-                                                      "content": {
-                                                        "type": "string"
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "direction",
-                                                      "content"
-                                                    ],
-                                                    "additionalProperties": false
-                                                  }
-                                                }
-                                              ],
-                                              "title": "message"
-                                            }
-                                          }
-                                        },
-                                        "required": [
-                                          "conversation1",
-                                          "conversation2",
-                                          "userName",
-                                          "messages"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "llm-compare-messages"
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "messages": {
-                                            "type": "array",
-                                            "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "direction": {
-                                                  "type": "string",
-                                                  "enum": [
-                                                    "inbound",
-                                                    "outbound"
-                                                  ]
-                                                },
-                                                "content": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "direction",
-                                                "content"
-                                              ],
-                                              "additionalProperties": false,
-                                              "title": "message"
-                                            }
-                                          }
-                                        },
-                                        "required": [
-                                          "messages"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "llm-messages"
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
-                                          "speed": {
-                                            "type": "number",
-                                            "minimum": 0
-                                          },
-                                          "messages": {
-                                            "type": "array",
-                                            "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "direction": {
-                                                  "type": "string",
-                                                  "enum": [
-                                                    "inbound",
-                                                    "outbound"
-                                                  ]
-                                                },
-                                                "content": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "direction",
-                                                "content"
-                                              ],
-                                              "additionalProperties": false,
-                                              "title": "message"
-                                            }
-                                          },
-                                          "prompts": {
-                                            "type": "array",
-                                            "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "prompt": {
-                                                  "type": "string"
-                                                },
-                                                "response": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "prompt",
-                                                "response"
-                                              ],
-                                              "additionalProperties": false,
-                                              "title": "prompt"
-                                            }
-                                          }
-                                        },
-                                        "required": [
-                                          "messages",
-                                          "prompts"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "llm-prompt-select"
-                                      },
-                                      {
-                                        "type": "object",
-                                        "properties": {
                                           "title": {
                                             "type": "string"
                                           },
@@ -584,6 +393,46 @@ export const schema = {
                                         ],
                                         "additionalProperties": false,
                                         "title": "message-conversation"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "author": {
+                                            "type": "string"
+                                          },
+                                          "date": {
+                                            "type": "string"
+                                          },
+                                          "paragraphs": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "title": "paragraph"
+                                            }
+                                          },
+                                          "highlightedSentence": {
+                                            "type": "string"
+                                          },
+                                          "colorOfHighlightSentence": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "titleLevel",
+                                          "title",
+                                          "author",
+                                          "date",
+                                          "highlightedSentence",
+                                          "colorOfHighlightSentence"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "pix-article"
                                       },
                                       {
                                         "type": "object",
@@ -811,67 +660,193 @@ export const schema = {
                                       {
                                         "type": "object",
                                         "properties": {
-                                          "name": {
+                                          "conversation1": {
+                                            "type": "object",
+                                            "properties": {
+                                              "title": {
+                                                "type": "string"
+                                              },
+                                              "llmName": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "title",
+                                              "llmName"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          "conversation2": {
+                                            "type": "object",
+                                            "properties": {
+                                              "title": {
+                                                "type": "string"
+                                              },
+                                              "llmName": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "title",
+                                              "llmName"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          "userName": {
                                             "type": "string"
                                           },
-                                          "multiple": {
-                                            "type": "boolean"
-                                          },
-                                          "maxChoicesPerLine": {
-                                            "type": "number"
-                                          },
-                                          "hideChoicesName": {
-                                            "type": "boolean"
-                                          },
-                                          "orderChoices": {
-                                            "type": "boolean"
-                                          },
-                                          "imageChoicesSize": {
-                                            "type": "string",
-                                            "enum": [
-                                              "icon",
-                                              "medium",
-                                              "large"
-                                            ]
-                                          },
-                                          "choices": {
+                                          "messages": {
                                             "type": "array",
                                             "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "name": {
-                                                  "type": "string"
-                                                },
-                                                "image": {
+                                              "oneOf": [
+                                                {
                                                   "type": "object",
                                                   "properties": {
-                                                    "src": {
+                                                    "direction": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "outbound"
+                                                      ]
+                                                    },
+                                                    "content": {
                                                       "type": "string"
                                                     }
                                                   },
                                                   "required": [
-                                                    "src"
+                                                    "direction",
+                                                    "content"
                                                   ],
-                                                  "additionalProperties": true
+                                                  "additionalProperties": false
+                                                },
+                                                {
+                                                  "type": "array",
+                                                  "minItems": 2,
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "direction": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                          "inbound"
+                                                        ]
+                                                      },
+                                                      "content": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "direction",
+                                                      "content"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  }
+                                                }
+                                              ],
+                                              "title": "message"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "conversation1",
+                                          "conversation2",
+                                          "userName",
+                                          "messages"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "llm-compare-messages"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "messages": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "direction": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "inbound",
+                                                    "outbound"
+                                                  ]
+                                                },
+                                                "content": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "direction",
+                                                "content"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "message"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "messages"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "llm-messages"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "speed": {
+                                            "type": "number",
+                                            "minimum": 0
+                                          },
+                                          "messages": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "direction": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "inbound",
+                                                    "outbound"
+                                                  ]
+                                                },
+                                                "content": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "direction",
+                                                "content"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "message"
+                                            }
+                                          },
+                                          "prompts": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "prompt": {
+                                                  "type": "string"
                                                 },
                                                 "response": {
                                                   "type": "string"
                                                 }
                                               },
                                               "required": [
-                                                "name"
+                                                "prompt",
+                                                "response"
                                               ],
                                               "additionalProperties": false,
-                                              "title": "choice"
+                                              "title": "prompt"
                                             }
                                           }
                                         },
                                         "required": [
-                                          "name",
-                                          "choices"
+                                          "messages",
+                                          "prompts"
                                         ],
                                         "additionalProperties": false,
-                                        "title": "qcu-image"
+                                        "title": "llm-prompt-select"
                                       }
                                     ]
                                   }
@@ -1983,13 +1958,13 @@ export const schema = {
                                               "complete-phrase",
                                               "image-quiz",
                                               "image-quizzes",
-                                              "llm-compare-messages",
-                                              "llm-messages",
-                                              "llm-prompt-select",
                                               "message-conversation",
+                                              "pix-article",
                                               "pix-carousel",
                                               "pix-cursor",
-                                              "qcu-image"
+                                              "llm-compare-messages",
+                                              "llm-messages",
+                                              "llm-prompt-select"
                                             ]
                                           },
                                           "props": {
@@ -2193,197 +2168,6 @@ export const schema = {
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "conversation1": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "title": {
-                                                        "type": "string"
-                                                      },
-                                                      "llmName": {
-                                                        "type": "string"
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "title",
-                                                      "llmName"
-                                                    ],
-                                                    "additionalProperties": false
-                                                  },
-                                                  "conversation2": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "title": {
-                                                        "type": "string"
-                                                      },
-                                                      "llmName": {
-                                                        "type": "string"
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "title",
-                                                      "llmName"
-                                                    ],
-                                                    "additionalProperties": false
-                                                  },
-                                                  "userName": {
-                                                    "type": "string"
-                                                  },
-                                                  "messages": {
-                                                    "type": "array",
-                                                    "items": {
-                                                      "oneOf": [
-                                                        {
-                                                          "type": "object",
-                                                          "properties": {
-                                                            "direction": {
-                                                              "type": "string",
-                                                              "enum": [
-                                                                "outbound"
-                                                              ]
-                                                            },
-                                                            "content": {
-                                                              "type": "string"
-                                                            }
-                                                          },
-                                                          "required": [
-                                                            "direction",
-                                                            "content"
-                                                          ],
-                                                          "additionalProperties": false
-                                                        },
-                                                        {
-                                                          "type": "array",
-                                                          "minItems": 2,
-                                                          "items": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                              "direction": {
-                                                                "type": "string",
-                                                                "enum": [
-                                                                  "inbound"
-                                                                ]
-                                                              },
-                                                              "content": {
-                                                                "type": "string"
-                                                              }
-                                                            },
-                                                            "required": [
-                                                              "direction",
-                                                              "content"
-                                                            ],
-                                                            "additionalProperties": false
-                                                          }
-                                                        }
-                                                      ],
-                                                      "title": "message"
-                                                    }
-                                                  }
-                                                },
-                                                "required": [
-                                                  "conversation1",
-                                                  "conversation2",
-                                                  "userName",
-                                                  "messages"
-                                                ],
-                                                "additionalProperties": false,
-                                                "title": "llm-compare-messages"
-                                              },
-                                              {
-                                                "type": "object",
-                                                "properties": {
-                                                  "messages": {
-                                                    "type": "array",
-                                                    "items": {
-                                                      "type": "object",
-                                                      "properties": {
-                                                        "direction": {
-                                                          "type": "string",
-                                                          "enum": [
-                                                            "inbound",
-                                                            "outbound"
-                                                          ]
-                                                        },
-                                                        "content": {
-                                                          "type": "string"
-                                                        }
-                                                      },
-                                                      "required": [
-                                                        "direction",
-                                                        "content"
-                                                      ],
-                                                      "additionalProperties": false,
-                                                      "title": "message"
-                                                    }
-                                                  }
-                                                },
-                                                "required": [
-                                                  "messages"
-                                                ],
-                                                "additionalProperties": false,
-                                                "title": "llm-messages"
-                                              },
-                                              {
-                                                "type": "object",
-                                                "properties": {
-                                                  "speed": {
-                                                    "type": "number",
-                                                    "minimum": 0
-                                                  },
-                                                  "messages": {
-                                                    "type": "array",
-                                                    "items": {
-                                                      "type": "object",
-                                                      "properties": {
-                                                        "direction": {
-                                                          "type": "string",
-                                                          "enum": [
-                                                            "inbound",
-                                                            "outbound"
-                                                          ]
-                                                        },
-                                                        "content": {
-                                                          "type": "string"
-                                                        }
-                                                      },
-                                                      "required": [
-                                                        "direction",
-                                                        "content"
-                                                      ],
-                                                      "additionalProperties": false,
-                                                      "title": "message"
-                                                    }
-                                                  },
-                                                  "prompts": {
-                                                    "type": "array",
-                                                    "items": {
-                                                      "type": "object",
-                                                      "properties": {
-                                                        "prompt": {
-                                                          "type": "string"
-                                                        },
-                                                        "response": {
-                                                          "type": "string"
-                                                        }
-                                                      },
-                                                      "required": [
-                                                        "prompt",
-                                                        "response"
-                                                      ],
-                                                      "additionalProperties": false,
-                                                      "title": "prompt"
-                                                    }
-                                                  }
-                                                },
-                                                "required": [
-                                                  "messages",
-                                                  "prompts"
-                                                ],
-                                                "additionalProperties": false,
-                                                "title": "llm-prompt-select"
-                                              },
-                                              {
-                                                "type": "object",
-                                                "properties": {
                                                   "title": {
                                                     "type": "string"
                                                   },
@@ -2422,6 +2206,46 @@ export const schema = {
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "message-conversation"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "title": {
+                                                    "type": "string"
+                                                  },
+                                                  "author": {
+                                                    "type": "string"
+                                                  },
+                                                  "date": {
+                                                    "type": "string"
+                                                  },
+                                                  "paragraphs": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "string",
+                                                      "title": "paragraph"
+                                                    }
+                                                  },
+                                                  "highlightedSentence": {
+                                                    "type": "string"
+                                                  },
+                                                  "colorOfHighlightSentence": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "titleLevel",
+                                                  "title",
+                                                  "author",
+                                                  "date",
+                                                  "highlightedSentence",
+                                                  "colorOfHighlightSentence"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "pix-article"
                                               },
                                               {
                                                 "type": "object",
@@ -2649,67 +2473,193 @@ export const schema = {
                                               {
                                                 "type": "object",
                                                 "properties": {
-                                                  "name": {
+                                                  "conversation1": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "llmName": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "title",
+                                                      "llmName"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  "conversation2": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "title": {
+                                                        "type": "string"
+                                                      },
+                                                      "llmName": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "title",
+                                                      "llmName"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  "userName": {
                                                     "type": "string"
                                                   },
-                                                  "multiple": {
-                                                    "type": "boolean"
-                                                  },
-                                                  "maxChoicesPerLine": {
-                                                    "type": "number"
-                                                  },
-                                                  "hideChoicesName": {
-                                                    "type": "boolean"
-                                                  },
-                                                  "orderChoices": {
-                                                    "type": "boolean"
-                                                  },
-                                                  "imageChoicesSize": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                      "icon",
-                                                      "medium",
-                                                      "large"
-                                                    ]
-                                                  },
-                                                  "choices": {
+                                                  "messages": {
                                                     "type": "array",
                                                     "items": {
-                                                      "type": "object",
-                                                      "properties": {
-                                                        "name": {
-                                                          "type": "string"
-                                                        },
-                                                        "image": {
+                                                      "oneOf": [
+                                                        {
                                                           "type": "object",
                                                           "properties": {
-                                                            "src": {
+                                                            "direction": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "outbound"
+                                                              ]
+                                                            },
+                                                            "content": {
                                                               "type": "string"
                                                             }
                                                           },
                                                           "required": [
-                                                            "src"
+                                                            "direction",
+                                                            "content"
                                                           ],
-                                                          "additionalProperties": true
+                                                          "additionalProperties": false
+                                                        },
+                                                        {
+                                                          "type": "array",
+                                                          "minItems": 2,
+                                                          "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "direction": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                  "inbound"
+                                                                ]
+                                                              },
+                                                              "content": {
+                                                                "type": "string"
+                                                              }
+                                                            },
+                                                            "required": [
+                                                              "direction",
+                                                              "content"
+                                                            ],
+                                                            "additionalProperties": false
+                                                          }
+                                                        }
+                                                      ],
+                                                      "title": "message"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "conversation1",
+                                                  "conversation2",
+                                                  "userName",
+                                                  "messages"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "llm-compare-messages"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "messages": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "direction": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "inbound",
+                                                            "outbound"
+                                                          ]
+                                                        },
+                                                        "content": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "direction",
+                                                        "content"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "message"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "messages"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "llm-messages"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "speed": {
+                                                    "type": "number",
+                                                    "minimum": 0
+                                                  },
+                                                  "messages": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "direction": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "inbound",
+                                                            "outbound"
+                                                          ]
+                                                        },
+                                                        "content": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "direction",
+                                                        "content"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "message"
+                                                    }
+                                                  },
+                                                  "prompts": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "prompt": {
+                                                          "type": "string"
                                                         },
                                                         "response": {
                                                           "type": "string"
                                                         }
                                                       },
                                                       "required": [
-                                                        "name"
+                                                        "prompt",
+                                                        "response"
                                                       ],
                                                       "additionalProperties": false,
-                                                      "title": "choice"
+                                                      "title": "prompt"
                                                     }
                                                   }
                                                 },
                                                 "required": [
-                                                  "name",
-                                                  "choices"
+                                                  "messages",
+                                                  "prompts"
                                                 ],
                                                 "additionalProperties": false,
-                                                "title": "qcu-image"
+                                                "title": "llm-prompt-select"
                                               }
                                             ]
                                           }
