@@ -151,7 +151,8 @@ export const schema = {
                                       "pix-cursor",
                                       "llm-compare-messages",
                                       "llm-messages",
-                                      "llm-prompt-select"
+                                      "llm-prompt-select",
+                                      "qcm-deepfake"
                                     ]
                                   },
                                   "props": {
@@ -847,6 +848,34 @@ export const schema = {
                                         ],
                                         "additionalProperties": false,
                                         "title": "llm-prompt-select"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "successImage": {
+                                            "type": "string"
+                                          },
+                                          "failImage": {
+                                            "type": "string"
+                                          },
+                                          "infoImage": {
+                                            "type": "string"
+                                          },
+                                          "searchImage": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "successImage",
+                                          "failImage",
+                                          "infoImage",
+                                          "searchImage"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qcm-deepfake"
                                       }
                                     ]
                                   }
@@ -1964,7 +1993,8 @@ export const schema = {
                                               "pix-cursor",
                                               "llm-compare-messages",
                                               "llm-messages",
-                                              "llm-prompt-select"
+                                              "llm-prompt-select",
+                                              "qcm-deepfake"
                                             ]
                                           },
                                           "props": {
@@ -2660,6 +2690,34 @@ export const schema = {
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "llm-prompt-select"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "successImage": {
+                                                    "type": "string"
+                                                  },
+                                                  "failImage": {
+                                                    "type": "string"
+                                                  },
+                                                  "infoImage": {
+                                                    "type": "string"
+                                                  },
+                                                  "searchImage": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "successImage",
+                                                  "failImage",
+                                                  "infoImage",
+                                                  "searchImage"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "qcm-deepfake"
                                               }
                                             ]
                                           }
