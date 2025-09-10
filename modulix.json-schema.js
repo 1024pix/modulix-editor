@@ -34,10 +34,10 @@ export const schema = {
         "level": {
           "type": "string",
           "enum": [
-            "Débutant",
-            "Intermédiaire",
-            "Avancé",
-            "Expert"
+            "novice",
+            "independent",
+            "advanced",
+            "expert"
           ]
         },
         "objectives": {
