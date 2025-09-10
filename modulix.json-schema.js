@@ -142,6 +142,7 @@ export const schema = {
                                   "tagName": {
                                     "type": "string",
                                     "enum": [
+                                      "calcul-impact",
                                       "complete-phrase",
                                       "image-quiz",
                                       "image-quizzes",
@@ -157,6 +158,19 @@ export const schema = {
                                   },
                                   "props": {
                                     "oneOf": [
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "required": [
+                                          "titleLevel"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "calcul-impact"
+                                      },
                                       {
                                         "type": "object",
                                         "properties": {
@@ -376,6 +390,22 @@ export const schema = {
                                                 },
                                                 "content": {
                                                   "type": "string"
+                                                },
+                                                "image": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "src": {
+                                                      "type": "string"
+                                                    },
+                                                    "alt": {
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "src",
+                                                    "alt"
+                                                  ],
+                                                  "additionalProperties": true
                                                 }
                                               },
                                               "required": [
@@ -1984,6 +2014,7 @@ export const schema = {
                                           "tagName": {
                                             "type": "string",
                                             "enum": [
+                                              "calcul-impact",
                                               "complete-phrase",
                                               "image-quiz",
                                               "image-quizzes",
@@ -1999,6 +2030,19 @@ export const schema = {
                                           },
                                           "props": {
                                             "oneOf": [
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "titleLevel"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "calcul-impact"
+                                              },
                                               {
                                                 "type": "object",
                                                 "properties": {
@@ -2218,6 +2262,22 @@ export const schema = {
                                                         },
                                                         "content": {
                                                           "type": "string"
+                                                        },
+                                                        "image": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "src": {
+                                                              "type": "string"
+                                                            },
+                                                            "alt": {
+                                                              "type": "string"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "src",
+                                                            "alt"
+                                                          ],
+                                                          "additionalProperties": true
                                                         }
                                                       },
                                                       "required": [
