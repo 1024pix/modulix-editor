@@ -143,6 +143,7 @@ export const schema = {
                                     "type": "string",
                                     "enum": [
                                       "calcul-impact",
+                                      "clickable-image",
                                       "complete-phrase",
                                       "image-quiz",
                                       "image-quizzes",
@@ -170,6 +171,94 @@ export const schema = {
                                         ],
                                         "additionalProperties": false,
                                         "title": "calcul-impact"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "image": {
+                                            "type": "object",
+                                            "properties": {
+                                              "src": {
+                                                "type": "string"
+                                              },
+                                              "alt": {
+                                                "type": "string"
+                                              },
+                                              "width": {
+                                                "type": "number"
+                                              },
+                                              "height": {
+                                                "type": "number"
+                                              }
+                                            },
+                                            "required": [
+                                              "src",
+                                              "alt"
+                                            ],
+                                            "additionalProperties": true
+                                          },
+                                          "areas": {
+                                            "type": "array",
+                                            "minItems": 1,
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "shape": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "rect"
+                                                  ]
+                                                },
+                                                "coords": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "x1": {
+                                                      "type": "number"
+                                                    },
+                                                    "y1": {
+                                                      "type": "number"
+                                                    },
+                                                    "x2": {
+                                                      "type": "number"
+                                                    },
+                                                    "y2": {
+                                                      "type": "number"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "x1",
+                                                    "y1",
+                                                    "x2",
+                                                    "y2"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                "info": {
+                                                  "type": "string"
+                                                },
+                                                "tooltipPosition": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "bottom"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "shape",
+                                                "coords",
+                                                "info"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "area"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "image",
+                                          "areas"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "clickable-image"
                                       },
                                       {
                                         "type": "object",
@@ -2015,6 +2104,7 @@ export const schema = {
                                             "type": "string",
                                             "enum": [
                                               "calcul-impact",
+                                              "clickable-image",
                                               "complete-phrase",
                                               "image-quiz",
                                               "image-quizzes",
@@ -2042,6 +2132,94 @@ export const schema = {
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "calcul-impact"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "image": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "src": {
+                                                        "type": "string"
+                                                      },
+                                                      "alt": {
+                                                        "type": "string"
+                                                      },
+                                                      "width": {
+                                                        "type": "number"
+                                                      },
+                                                      "height": {
+                                                        "type": "number"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "src",
+                                                      "alt"
+                                                    ],
+                                                    "additionalProperties": true
+                                                  },
+                                                  "areas": {
+                                                    "type": "array",
+                                                    "minItems": 1,
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "shape": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "rect"
+                                                          ]
+                                                        },
+                                                        "coords": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "x1": {
+                                                              "type": "number"
+                                                            },
+                                                            "y1": {
+                                                              "type": "number"
+                                                            },
+                                                            "x2": {
+                                                              "type": "number"
+                                                            },
+                                                            "y2": {
+                                                              "type": "number"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "x1",
+                                                            "y1",
+                                                            "x2",
+                                                            "y2"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        },
+                                                        "info": {
+                                                          "type": "string"
+                                                        },
+                                                        "tooltipPosition": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "bottom"
+                                                          ]
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "shape",
+                                                        "coords",
+                                                        "info"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "area"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "image",
+                                                  "areas"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "clickable-image"
                                               },
                                               {
                                                 "type": "object",
