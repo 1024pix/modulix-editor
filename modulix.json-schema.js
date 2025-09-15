@@ -143,8 +143,10 @@ export const schema = {
                                     "type": "string",
                                     "enum": [
                                       "calcul-impact",
+                                      "capacity-calculation",
                                       "clickable-image",
                                       "complete-phrase",
+                                      "flip-cards",
                                       "image-quiz",
                                       "image-quizzes",
                                       "message-conversation",
@@ -171,6 +173,214 @@ export const schema = {
                                         ],
                                         "additionalProperties": false,
                                         "title": "calcul-impact"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "image": {
+                                            "type": "object",
+                                            "properties": {
+                                              "src": {
+                                                "type": "string"
+                                              },
+                                              "alt": {
+                                                "type": "string"
+                                              },
+                                              "width": {
+                                                "type": "number"
+                                              },
+                                              "height": {
+                                                "type": "number"
+                                              }
+                                            },
+                                            "required": [
+                                              "src",
+                                              "alt"
+                                            ],
+                                            "additionalProperties": true
+                                          },
+                                          "areas": {
+                                            "type": "array",
+                                            "minItems": 1,
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "shape": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "rect"
+                                                  ]
+                                                },
+                                                "coords": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "x1": {
+                                                      "type": "number"
+                                                    },
+                                                    "y1": {
+                                                      "type": "number"
+                                                    },
+                                                    "x2": {
+                                                      "type": "number"
+                                                    },
+                                                    "y2": {
+                                                      "type": "number"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "x1",
+                                                    "y1",
+                                                    "x2",
+                                                    "y2"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                "info": {
+                                                  "type": "string"
+                                                },
+                                                "tooltipPosition": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "bottom"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "shape",
+                                                "coords",
+                                                "info"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "area"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "image",
+                                          "areas"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "clickable-image"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "required": [
+                                          "titleLevel"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "calcul-impact"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "images": {
+                                            "type": "object",
+                                            "properties": {
+                                              "initial": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "capacityImg": {
+                                                    "type": "string"
+                                                  },
+                                                  "consumptionImg": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "capacityImg",
+                                                  "consumptionImg"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "normal_weak": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "capacityImg": {
+                                                    "type": "string"
+                                                  },
+                                                  "consumptionImg": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "capacityImg",
+                                                  "consumptionImg"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "normal_medium": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "capacityImg": {
+                                                    "type": "string"
+                                                  },
+                                                  "consumptionImg": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "capacityImg",
+                                                  "consumptionImg"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "warning": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "capacityImg": {
+                                                    "type": "string"
+                                                  },
+                                                  "consumptionImg": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "capacityImg",
+                                                  "consumptionImg"
+                                                ],
+                                                "additionalProperties": false
+                                              },
+                                              "error": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "capacityImg": {
+                                                    "type": "string"
+                                                  },
+                                                  "consumptionImg": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "capacityImg",
+                                                  "consumptionImg"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "initial",
+                                              "normal_weak",
+                                              "normal_medium",
+                                              "warning",
+                                              "error"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "titleLevel",
+                                          "images"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "capacity-calculation"
                                       },
                                       {
                                         "type": "object",
@@ -312,6 +522,51 @@ export const schema = {
                                         ],
                                         "additionalProperties": false,
                                         "title": "complete-phrase"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "name": {
+                                            "type": "string"
+                                          },
+                                          "cardList": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string"
+                                                },
+                                                "description": {
+                                                  "type": "string"
+                                                },
+                                                "icon": {
+                                                  "type": "string"
+                                                },
+                                                "image": {
+                                                  "type": "string"
+                                                },
+                                                "titleLevel": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "name",
+                                                "description",
+                                                "icon",
+                                                "image"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "cardList"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "name",
+                                          "cardList"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "flip-cards"
                                       },
                                       {
                                         "type": "object",
@@ -2104,8 +2359,10 @@ export const schema = {
                                             "type": "string",
                                             "enum": [
                                               "calcul-impact",
+                                              "capacity-calculation",
                                               "clickable-image",
                                               "complete-phrase",
+                                              "flip-cards",
                                               "image-quiz",
                                               "image-quizzes",
                                               "message-conversation",
@@ -2132,6 +2389,214 @@ export const schema = {
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "calcul-impact"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "image": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "src": {
+                                                        "type": "string"
+                                                      },
+                                                      "alt": {
+                                                        "type": "string"
+                                                      },
+                                                      "width": {
+                                                        "type": "number"
+                                                      },
+                                                      "height": {
+                                                        "type": "number"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "src",
+                                                      "alt"
+                                                    ],
+                                                    "additionalProperties": true
+                                                  },
+                                                  "areas": {
+                                                    "type": "array",
+                                                    "minItems": 1,
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "shape": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "rect"
+                                                          ]
+                                                        },
+                                                        "coords": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "x1": {
+                                                              "type": "number"
+                                                            },
+                                                            "y1": {
+                                                              "type": "number"
+                                                            },
+                                                            "x2": {
+                                                              "type": "number"
+                                                            },
+                                                            "y2": {
+                                                              "type": "number"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "x1",
+                                                            "y1",
+                                                            "x2",
+                                                            "y2"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        },
+                                                        "info": {
+                                                          "type": "string"
+                                                        },
+                                                        "tooltipPosition": {
+                                                          "type": "string",
+                                                          "enum": [
+                                                            "bottom"
+                                                          ]
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "shape",
+                                                        "coords",
+                                                        "info"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "area"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "image",
+                                                  "areas"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "clickable-image"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "titleLevel"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "calcul-impact"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "images": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "initial": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "capacityImg": {
+                                                            "type": "string"
+                                                          },
+                                                          "consumptionImg": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "capacityImg",
+                                                          "consumptionImg"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      },
+                                                      "normal_weak": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "capacityImg": {
+                                                            "type": "string"
+                                                          },
+                                                          "consumptionImg": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "capacityImg",
+                                                          "consumptionImg"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      },
+                                                      "normal_medium": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "capacityImg": {
+                                                            "type": "string"
+                                                          },
+                                                          "consumptionImg": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "capacityImg",
+                                                          "consumptionImg"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      },
+                                                      "warning": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "capacityImg": {
+                                                            "type": "string"
+                                                          },
+                                                          "consumptionImg": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "capacityImg",
+                                                          "consumptionImg"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      },
+                                                      "error": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "capacityImg": {
+                                                            "type": "string"
+                                                          },
+                                                          "consumptionImg": {
+                                                            "type": "string"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "capacityImg",
+                                                          "consumptionImg"
+                                                        ],
+                                                        "additionalProperties": false
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "initial",
+                                                      "normal_weak",
+                                                      "normal_medium",
+                                                      "warning",
+                                                      "error"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  }
+                                                },
+                                                "required": [
+                                                  "titleLevel",
+                                                  "images"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "capacity-calculation"
                                               },
                                               {
                                                 "type": "object",
@@ -2273,6 +2738,51 @@ export const schema = {
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "complete-phrase"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "name": {
+                                                    "type": "string"
+                                                  },
+                                                  "cardList": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "name": {
+                                                          "type": "string"
+                                                        },
+                                                        "description": {
+                                                          "type": "string"
+                                                        },
+                                                        "icon": {
+                                                          "type": "string"
+                                                        },
+                                                        "image": {
+                                                          "type": "string"
+                                                        },
+                                                        "titleLevel": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "name",
+                                                        "description",
+                                                        "icon",
+                                                        "image"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "cardList"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "name",
+                                                  "cardList"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "flip-cards"
                                               },
                                               {
                                                 "type": "object",
