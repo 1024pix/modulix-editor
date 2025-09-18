@@ -429,6 +429,9 @@ export const schema = {
                                       {
                                         "type": "object",
                                         "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
                                           "name": {
                                             "type": "string"
                                           },
@@ -447,9 +450,6 @@ export const schema = {
                                                   "type": "string"
                                                 },
                                                 "image": {
-                                                  "type": "string"
-                                                },
-                                                "titleLevel": {
                                                   "type": "string"
                                                 }
                                               },
@@ -2549,6 +2549,9 @@ export const schema = {
                                               {
                                                 "type": "object",
                                                 "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
                                                   "name": {
                                                     "type": "string"
                                                   },
@@ -2567,9 +2570,6 @@ export const schema = {
                                                           "type": "string"
                                                         },
                                                         "image": {
-                                                          "type": "string"
-                                                        },
-                                                        "titleLevel": {
                                                           "type": "string"
                                                         }
                                                       },
