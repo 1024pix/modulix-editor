@@ -139,6 +139,10 @@ export const schema = {
                                       "custom"
                                     ]
                                   },
+                                  "instruction": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  },
                                   "tagName": {
                                     "type": "string",
                                     "enum": [
@@ -1156,6 +1160,7 @@ export const schema = {
                                 "required": [
                                   "id",
                                   "type",
+                                  "instruction",
                                   "tagName",
                                   "props"
                                 ],
@@ -2254,6 +2259,10 @@ export const schema = {
                                               "custom"
                                             ]
                                           },
+                                          "instruction": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          },
                                           "tagName": {
                                             "type": "string",
                                             "enum": [
@@ -3271,6 +3280,7 @@ export const schema = {
                                         "required": [
                                           "id",
                                           "type",
+                                          "instruction",
                                           "tagName",
                                           "props"
                                         ],
