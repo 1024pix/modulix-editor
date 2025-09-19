@@ -87,6 +87,14 @@
             >
               <span class="fa fa-broom"></span>
             </button>
+            <button
+              class="btn btn-secondary"
+              id="collapse-all-button"
+              aria-label="Tout replier"
+              data-tooltip="Tout replier"
+            >
+              <span class="fa fa-compress"></span>
+            </button>
           </div>
         </header>
 
@@ -247,6 +255,22 @@
         const output = JSON.parse(jsonValue);
         jsonOutput.value = JSON.stringify(output, null, 2);
         editor.setValue(output);
+      });
+
+      const collapseAllButton = document.getElementById('collapse-all-button');
+      collapseAllButton.addEventListener('click', () => {
+        const grainCollapseButtons = document.querySelectorAll(
+          '#sections .card-title.level-5 button[title="Collapse"]',
+        );
+        const sectionCollapseButtons = document.querySelectorAll(
+          '#sections .card-title.level-3 button[title="Collapse"]',
+        );
+        for (const button of [
+          ...grainCollapseButtons,
+          ...sectionCollapseButtons,
+        ]) {
+          button.click();
+        }
       });
 
       editor.on('change', () => {
