@@ -152,6 +152,13 @@
         sortTextElementFirst,
       );
 
+      schema.properties.sections.items.properties.grains.items.options = {
+        collapsed: true,
+      };
+      schema.properties.sections.items.options = {
+        collapsed: true,
+      };
+
       const editor = new JSONEditor(element, {
         schema,
         theme: 'bootstrap5',
