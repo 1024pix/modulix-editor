@@ -2,7 +2,9 @@
   "name": "modulix-editor",
   "version": "1.0.0",
   "scripts": {
-    "dev": "npx live-server",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "format": "prettier --write ."
   },
   "repository": {
@@ -17,6 +19,7 @@
   "homepage": "https://github.com/1024pix/modulix-editor#readme",
   "description": "",
   "devDependencies": {
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "vite": "^7.1.5"
   }
 }
