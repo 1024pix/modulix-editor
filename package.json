@@ -24,6 +24,7 @@
     "vite": "^7.1.5"
   },
   "dependencies": {
+    "@json-editor/json-editor": "^2.15.2",
     "bootstrap": "^5.3.8"
   }
 }
