@@ -100,6 +100,7 @@ export const schema = {
                 "type": {
                   "type": "string",
                   "enum": [
+                    "short-lesson",
                     "lesson",
                     "activity",
                     "discovery",
