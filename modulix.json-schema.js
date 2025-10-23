@@ -100,13 +100,13 @@ export const schema = {
                 "type": {
                   "type": "string",
                   "enum": [
-                    "short-lesson",
                     "lesson",
                     "activity",
                     "discovery",
                     "challenge",
                     "summary",
-                    "transition"
+                    "transition",
+                    "short-lesson"
                   ]
                 },
                 "title": {
@@ -173,9 +173,6 @@ export const schema = {
                                             "type": "number"
                                           }
                                         },
-                                        "required": [
-                                          "titleLevel"
-                                        ],
                                         "additionalProperties": false,
                                         "title": "calcul-impact"
                                       },
@@ -280,7 +277,6 @@ export const schema = {
                                           }
                                         },
                                         "required": [
-                                          "titleLevel",
                                           "images"
                                         ],
                                         "additionalProperties": false,
@@ -418,7 +414,6 @@ export const schema = {
                                           }
                                         },
                                         "required": [
-                                          "titleLevel",
                                           "listOfProbabilityBarsLists",
                                           "userMessage",
                                           "llmMessage",
@@ -703,7 +698,6 @@ export const schema = {
                                           }
                                         },
                                         "required": [
-                                          "titleLevel",
                                           "title",
                                           "author",
                                           "date",
@@ -858,17 +852,11 @@ export const schema = {
                                               }
                                             ]
                                           },
-                                          "aspectRatio": {
-                                            "type": "number",
-                                            "minimum": 0
-                                          },
                                           "randomSlides": {
                                             "type": "boolean"
                                           },
                                           "titleLevel": {
-                                            "type": "integer",
-                                            "minimum": 0,
-                                            "maximum": 6
+                                            "type": "integer"
                                           },
                                           "disableAnimation": {
                                             "type": "boolean"
@@ -880,7 +868,6 @@ export const schema = {
                                         "required": [
                                           "type",
                                           "slides",
-                                          "aspectRatio",
                                           "randomSlides",
                                           "disableAnimation"
                                         ],
@@ -2293,9 +2280,6 @@ export const schema = {
                                                     "type": "number"
                                                   }
                                                 },
-                                                "required": [
-                                                  "titleLevel"
-                                                ],
                                                 "additionalProperties": false,
                                                 "title": "calcul-impact"
                                               },
@@ -2400,7 +2384,6 @@ export const schema = {
                                                   }
                                                 },
                                                 "required": [
-                                                  "titleLevel",
                                                   "images"
                                                 ],
                                                 "additionalProperties": false,
@@ -2538,7 +2521,6 @@ export const schema = {
                                                   }
                                                 },
                                                 "required": [
-                                                  "titleLevel",
                                                   "listOfProbabilityBarsLists",
                                                   "userMessage",
                                                   "llmMessage",
@@ -2823,7 +2805,6 @@ export const schema = {
                                                   }
                                                 },
                                                 "required": [
-                                                  "titleLevel",
                                                   "title",
                                                   "author",
                                                   "date",
@@ -2978,17 +2959,11 @@ export const schema = {
                                                       }
                                                     ]
                                                   },
-                                                  "aspectRatio": {
-                                                    "type": "number",
-                                                    "minimum": 0
-                                                  },
                                                   "randomSlides": {
                                                     "type": "boolean"
                                                   },
                                                   "titleLevel": {
-                                                    "type": "integer",
-                                                    "minimum": 0,
-                                                    "maximum": 6
+                                                    "type": "integer"
                                                   },
                                                   "disableAnimation": {
                                                     "type": "boolean"
@@ -3000,7 +2975,6 @@ export const schema = {
                                                 "required": [
                                                   "type",
                                                   "slides",
-                                                  "aspectRatio",
                                                   "randomSlides",
                                                   "disableAnimation"
                                                 ],
