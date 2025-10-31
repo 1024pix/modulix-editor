@@ -182,102 +182,12 @@ export const schema = {
                                           "titleLevel": {
                                             "type": "number"
                                           },
-                                          "images": {
-                                            "type": "object",
-                                            "properties": {
-                                              "initial": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "capacityImg": {
-                                                    "type": "string"
-                                                  },
-                                                  "consumptionImg": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "capacityImg",
-                                                  "consumptionImg"
-                                                ],
-                                                "additionalProperties": false
-                                              },
-                                              "normal_weak": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "capacityImg": {
-                                                    "type": "string"
-                                                  },
-                                                  "consumptionImg": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "capacityImg",
-                                                  "consumptionImg"
-                                                ],
-                                                "additionalProperties": false
-                                              },
-                                              "normal_medium": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "capacityImg": {
-                                                    "type": "string"
-                                                  },
-                                                  "consumptionImg": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "capacityImg",
-                                                  "consumptionImg"
-                                                ],
-                                                "additionalProperties": false
-                                              },
-                                              "warning": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "capacityImg": {
-                                                    "type": "string"
-                                                  },
-                                                  "consumptionImg": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "capacityImg",
-                                                  "consumptionImg"
-                                                ],
-                                                "additionalProperties": false
-                                              },
-                                              "error": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "capacityImg": {
-                                                    "type": "string"
-                                                  },
-                                                  "consumptionImg": {
-                                                    "type": "string"
-                                                  }
-                                                },
-                                                "required": [
-                                                  "capacityImg",
-                                                  "consumptionImg"
-                                                ],
-                                                "additionalProperties": false
-                                              }
-                                            },
-                                            "required": [
-                                              "initial",
-                                              "normal_weak",
-                                              "normal_medium",
-                                              "warning",
-                                              "error"
-                                            ],
-                                            "additionalProperties": false
+                                          "capacityImage": {
+                                            "type": "string"
                                           }
                                         },
                                         "required": [
-                                          "images"
+                                          "capacityImage"
                                         ],
                                         "additionalProperties": false,
                                         "title": "capacity-calculation"
@@ -2289,102 +2199,12 @@ export const schema = {
                                                   "titleLevel": {
                                                     "type": "number"
                                                   },
-                                                  "images": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                      "initial": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "capacityImg": {
-                                                            "type": "string"
-                                                          },
-                                                          "consumptionImg": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "required": [
-                                                          "capacityImg",
-                                                          "consumptionImg"
-                                                        ],
-                                                        "additionalProperties": false
-                                                      },
-                                                      "normal_weak": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "capacityImg": {
-                                                            "type": "string"
-                                                          },
-                                                          "consumptionImg": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "required": [
-                                                          "capacityImg",
-                                                          "consumptionImg"
-                                                        ],
-                                                        "additionalProperties": false
-                                                      },
-                                                      "normal_medium": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "capacityImg": {
-                                                            "type": "string"
-                                                          },
-                                                          "consumptionImg": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "required": [
-                                                          "capacityImg",
-                                                          "consumptionImg"
-                                                        ],
-                                                        "additionalProperties": false
-                                                      },
-                                                      "warning": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "capacityImg": {
-                                                            "type": "string"
-                                                          },
-                                                          "consumptionImg": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "required": [
-                                                          "capacityImg",
-                                                          "consumptionImg"
-                                                        ],
-                                                        "additionalProperties": false
-                                                      },
-                                                      "error": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "capacityImg": {
-                                                            "type": "string"
-                                                          },
-                                                          "consumptionImg": {
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "required": [
-                                                          "capacityImg",
-                                                          "consumptionImg"
-                                                        ],
-                                                        "additionalProperties": false
-                                                      }
-                                                    },
-                                                    "required": [
-                                                      "initial",
-                                                      "normal_weak",
-                                                      "normal_medium",
-                                                      "warning",
-                                                      "error"
-                                                    ],
-                                                    "additionalProperties": false
+                                                  "capacityImage": {
+                                                    "type": "string"
                                                   }
                                                 },
                                                 "required": [
-                                                  "images"
+                                                  "capacityImage"
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "capacity-calculation"
