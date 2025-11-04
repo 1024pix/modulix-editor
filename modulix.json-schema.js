@@ -2057,6 +2057,41 @@ export const schema = {
                                   "type": {
                                     "type": "string",
                                     "enum": [
+                                      "short-video"
+                                    ]
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "transcription": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "title",
+                                  "url",
+                                  "transcription"
+                                ],
+                                "additionalProperties": false,
+                                "title": "short-video"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
                                       "text"
                                     ]
                                   },
@@ -3861,6 +3896,41 @@ export const schema = {
                                         ],
                                         "additionalProperties": false,
                                         "title": "separator"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "short-video"
+                                            ]
+                                          },
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          },
+                                          "transcription": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "title",
+                                          "url",
+                                          "transcription"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "short-video"
                                       },
                                       {
                                         "type": "object",
