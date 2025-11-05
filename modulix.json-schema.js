@@ -702,10 +702,6 @@ export const schema = {
                                                     "description": {
                                                       "type": "string"
                                                     },
-                                                    "displayHeight": {
-                                                      "type": "number",
-                                                      "minimum": 0
-                                                    },
                                                     "text": {
                                                       "type": "string"
                                                     },
@@ -773,6 +769,9 @@ export const schema = {
                                           },
                                           "disableLoop": {
                                             "type": "boolean"
+                                          },
+                                          "imageTextDisplay": {
+                                            "type": "string"
                                           }
                                         },
                                         "required": [
@@ -2754,10 +2753,6 @@ export const schema = {
                                                             "description": {
                                                               "type": "string"
                                                             },
-                                                            "displayHeight": {
-                                                              "type": "number",
-                                                              "minimum": 0
-                                                            },
                                                             "text": {
                                                               "type": "string"
                                                             },
@@ -2825,6 +2820,9 @@ export const schema = {
                                                   },
                                                   "disableLoop": {
                                                     "type": "boolean"
+                                                  },
+                                                  "imageTextDisplay": {
+                                                    "type": "string"
                                                   }
                                                 },
                                                 "required": [
