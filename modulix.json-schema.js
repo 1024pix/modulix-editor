@@ -5,6 +5,9 @@ export const schema = {
       "type": "string",
       "format": "uuid"
     },
+    "shortId": {
+      "type": "string"
+    },
     "slug": {
       "type": "string",
       "pattern": "^[a-z0-9-]+$"
@@ -4045,6 +4048,7 @@ export const schema = {
   },
   "required": [
     "id",
+    "shortId",
     "slug",
     "title",
     "isBeta",
