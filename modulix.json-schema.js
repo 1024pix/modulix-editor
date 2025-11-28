@@ -226,12 +226,6 @@ export const schema = {
                                             "items": {
                                               "type": "object",
                                               "properties": {
-                                                "shape": {
-                                                  "type": "string",
-                                                  "enum": [
-                                                    "rect"
-                                                  ]
-                                                },
                                                 "coords": {
                                                   "type": "object",
                                                   "properties": {
@@ -256,6 +250,22 @@ export const schema = {
                                                   ],
                                                   "additionalProperties": false
                                                 },
+                                                "spot": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "x": {
+                                                      "type": "number"
+                                                    },
+                                                    "y": {
+                                                      "type": "number"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "x",
+                                                    "y"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
                                                 "info": {
                                                   "type": "string"
                                                 },
@@ -267,7 +277,6 @@ export const schema = {
                                                 }
                                               },
                                               "required": [
-                                                "shape",
                                                 "coords",
                                                 "info"
                                               ],
@@ -2277,12 +2286,6 @@ export const schema = {
                                                     "items": {
                                                       "type": "object",
                                                       "properties": {
-                                                        "shape": {
-                                                          "type": "string",
-                                                          "enum": [
-                                                            "rect"
-                                                          ]
-                                                        },
                                                         "coords": {
                                                           "type": "object",
                                                           "properties": {
@@ -2307,6 +2310,22 @@ export const schema = {
                                                           ],
                                                           "additionalProperties": false
                                                         },
+                                                        "spot": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "x": {
+                                                              "type": "number"
+                                                            },
+                                                            "y": {
+                                                              "type": "number"
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "x",
+                                                            "y"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        },
                                                         "info": {
                                                           "type": "string"
                                                         },
@@ -2318,7 +2337,6 @@ export const schema = {
                                                         }
                                                       },
                                                       "required": [
-                                                        "shape",
                                                         "coords",
                                                         "info"
                                                       ],
