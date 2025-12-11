@@ -260,10 +260,6 @@ export const schema = {
                                                       "type": "number"
                                                     }
                                                   },
-                                                  "required": [
-                                                    "x",
-                                                    "y"
-                                                  ],
                                                   "additionalProperties": false
                                                 },
                                                 "info": {
@@ -779,7 +775,7 @@ export const schema = {
                                           "disableAnimation": {
                                             "type": "boolean"
                                           },
-                                          "disableLoop": {
+                                          "enableLoop": {
                                             "type": "boolean"
                                           },
                                           "imageTextDisplay": {
@@ -2320,10 +2316,6 @@ export const schema = {
                                                               "type": "number"
                                                             }
                                                           },
-                                                          "required": [
-                                                            "x",
-                                                            "y"
-                                                          ],
                                                           "additionalProperties": false
                                                         },
                                                         "info": {
@@ -2839,7 +2831,7 @@ export const schema = {
                                                   "disableAnimation": {
                                                     "type": "boolean"
                                                   },
-                                                  "disableLoop": {
+                                                  "enableLoop": {
                                                     "type": "boolean"
                                                   },
                                                   "imageTextDisplay": {
