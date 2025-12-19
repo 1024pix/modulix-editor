@@ -595,7 +595,7 @@ export const schema = {
                                           "titleLevel": {
                                             "type": "number"
                                           },
-                                          "conversations": {
+                                          "messages": {
                                             "type": "array",
                                             "items": {
                                               "type": "object",
@@ -603,21 +603,41 @@ export const schema = {
                                                 "senderName": {
                                                   "type": "string"
                                                 },
-                                                "message": {
+                                                "content": {
+                                                  "type": "string"
+                                                },
+                                                "title": {
+                                                  "type": "string"
+                                                },
+                                                "goodFeelings": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "string",
+                                                    "title": "goodFeeling"
+                                                  }
+                                                },
+                                                "victory": {
+                                                  "type": "string"
+                                                },
+                                                "loose": {
                                                   "type": "string"
                                                 }
                                               },
                                               "required": [
                                                 "senderName",
-                                                "message"
+                                                "content",
+                                                "title",
+                                                "goodFeelings",
+                                                "victory",
+                                                "loose"
                                               ],
                                               "additionalProperties": false,
-                                              "title": "conversation"
+                                              "title": "message"
                                             }
                                           }
                                         },
                                         "required": [
-                                          "conversations"
+                                          "messages"
                                         ],
                                         "additionalProperties": false,
                                         "title": "phishing-message"
@@ -2837,7 +2857,7 @@ export const schema = {
                                                   "titleLevel": {
                                                     "type": "number"
                                                   },
-                                                  "conversations": {
+                                                  "messages": {
                                                     "type": "array",
                                                     "items": {
                                                       "type": "object",
@@ -2845,21 +2865,41 @@ export const schema = {
                                                         "senderName": {
                                                           "type": "string"
                                                         },
-                                                        "message": {
+                                                        "content": {
+                                                          "type": "string"
+                                                        },
+                                                        "title": {
+                                                          "type": "string"
+                                                        },
+                                                        "goodFeelings": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "string",
+                                                            "title": "goodFeeling"
+                                                          }
+                                                        },
+                                                        "victory": {
+                                                          "type": "string"
+                                                        },
+                                                        "loose": {
                                                           "type": "string"
                                                         }
                                                       },
                                                       "required": [
                                                         "senderName",
-                                                        "message"
+                                                        "content",
+                                                        "title",
+                                                        "goodFeelings",
+                                                        "victory",
+                                                        "loose"
                                                       ],
                                                       "additionalProperties": false,
-                                                      "title": "conversation"
+                                                      "title": "message"
                                                     }
                                                   }
                                                 },
                                                 "required": [
-                                                  "conversations"
+                                                  "messages"
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "phishing-message"
