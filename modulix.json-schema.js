@@ -158,13 +158,16 @@ export const schema = {
                                       "image-quiz",
                                       "image-quizzes",
                                       "message-conversation",
+                                      "phishing-message",
+                                      "phishing-notification",
                                       "pix-article",
                                       "pix-carousel",
                                       "pix-cursor",
                                       "llm-compare-messages",
                                       "llm-messages",
                                       "llm-prompt-select",
-                                      "qcm-deepfake"
+                                      "qcm-deepfake",
+                                      "select-conversation"
                                     ]
                                   },
                                   "props": {
@@ -585,6 +588,118 @@ export const schema = {
                                         ],
                                         "additionalProperties": false,
                                         "title": "message-conversation"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "conversations": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "senderName": {
+                                                  "type": "string"
+                                                },
+                                                "message": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "senderName",
+                                                "message"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "conversation"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "conversations"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "phishing-message"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "notifications": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "icon": {
+                                                  "type": "string"
+                                                },
+                                                "sender": {
+                                                  "type": "string"
+                                                },
+                                                "content": {
+                                                  "type": "string"
+                                                },
+                                                "category": {
+                                                  "type": "string"
+                                                },
+                                                "time": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "hours": {
+                                                      "type": "number"
+                                                    },
+                                                    "minutes": {
+                                                      "type": "number"
+                                                    }
+                                                  },
+                                                  "additionalProperties": false
+                                                }
+                                              },
+                                              "required": [
+                                                "icon",
+                                                "sender",
+                                                "content",
+                                                "category",
+                                                "time"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "notification"
+                                            }
+                                          },
+                                          "categories": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "name": {
+                                                  "type": "string"
+                                                },
+                                                "icon": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "name",
+                                                "icon"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "categorie"
+                                            }
+                                          },
+                                          "informationMessage": {
+                                            "type": "string"
+                                          },
+                                          "titleLevel": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "required": [
+                                          "notifications",
+                                          "categories",
+                                          "informationMessage"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "phishing-notification"
                                       },
                                       {
                                         "type": "object",
@@ -1058,6 +1173,77 @@ export const schema = {
                                         ],
                                         "additionalProperties": false,
                                         "title": "qcm-deepfake"
+                                      },
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "incomingMessage": {
+                                            "type": "object",
+                                            "properties": {
+                                              "username": {
+                                                "type": "string"
+                                              },
+                                              "content": {
+                                                "type": "string"
+                                              },
+                                              "time": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "days": {
+                                                    "type": "number"
+                                                  },
+                                                  "minutes": {
+                                                    "type": "number"
+                                                  }
+                                                },
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "username",
+                                              "content",
+                                              "time"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          "username": {
+                                            "type": "string"
+                                          },
+                                          "responseChoices": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "content": {
+                                                  "type": "string"
+                                                },
+                                                "goodIdea": {
+                                                  "type": "boolean"
+                                                },
+                                                "feedback": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "content",
+                                                "goodIdea",
+                                                "feedback"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "responseChoice"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "incomingMessage",
+                                          "username",
+                                          "responseChoices"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "select-conversation"
                                       }
                                     ]
                                   }
@@ -2214,13 +2400,16 @@ export const schema = {
                                               "image-quiz",
                                               "image-quizzes",
                                               "message-conversation",
+                                              "phishing-message",
+                                              "phishing-notification",
                                               "pix-article",
                                               "pix-carousel",
                                               "pix-cursor",
                                               "llm-compare-messages",
                                               "llm-messages",
                                               "llm-prompt-select",
-                                              "qcm-deepfake"
+                                              "qcm-deepfake",
+                                              "select-conversation"
                                             ]
                                           },
                                           "props": {
@@ -2641,6 +2830,118 @@ export const schema = {
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "message-conversation"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "conversations": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "senderName": {
+                                                          "type": "string"
+                                                        },
+                                                        "message": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "senderName",
+                                                        "message"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "conversation"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "conversations"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "phishing-message"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "notifications": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "icon": {
+                                                          "type": "string"
+                                                        },
+                                                        "sender": {
+                                                          "type": "string"
+                                                        },
+                                                        "content": {
+                                                          "type": "string"
+                                                        },
+                                                        "category": {
+                                                          "type": "string"
+                                                        },
+                                                        "time": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "hours": {
+                                                              "type": "number"
+                                                            },
+                                                            "minutes": {
+                                                              "type": "number"
+                                                            }
+                                                          },
+                                                          "additionalProperties": false
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "icon",
+                                                        "sender",
+                                                        "content",
+                                                        "category",
+                                                        "time"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "notification"
+                                                    }
+                                                  },
+                                                  "categories": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "name": {
+                                                          "type": "string"
+                                                        },
+                                                        "icon": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "name",
+                                                        "icon"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "categorie"
+                                                    }
+                                                  },
+                                                  "informationMessage": {
+                                                    "type": "string"
+                                                  },
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "notifications",
+                                                  "categories",
+                                                  "informationMessage"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "phishing-notification"
                                               },
                                               {
                                                 "type": "object",
@@ -3114,6 +3415,77 @@ export const schema = {
                                                 ],
                                                 "additionalProperties": false,
                                                 "title": "qcm-deepfake"
+                                              },
+                                              {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "incomingMessage": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "username": {
+                                                        "type": "string"
+                                                      },
+                                                      "content": {
+                                                        "type": "string"
+                                                      },
+                                                      "time": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "days": {
+                                                            "type": "number"
+                                                          },
+                                                          "minutes": {
+                                                            "type": "number"
+                                                          }
+                                                        },
+                                                        "additionalProperties": false
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "username",
+                                                      "content",
+                                                      "time"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  "username": {
+                                                    "type": "string"
+                                                  },
+                                                  "responseChoices": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "content": {
+                                                          "type": "string"
+                                                        },
+                                                        "goodIdea": {
+                                                          "type": "boolean"
+                                                        },
+                                                        "feedback": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "content",
+                                                        "goodIdea",
+                                                        "feedback"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "responseChoice"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "incomingMessage",
+                                                  "username",
+                                                  "responseChoices"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "select-conversation"
                                               }
                                             ]
                                           }
