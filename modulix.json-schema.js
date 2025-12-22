@@ -131,58 +131,73 @@ export const schema = {
                           "element": {
                             "oneOf": [
                               {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "format": "uuid"
-                                  },
-                                  "type": {
-                                    "type": "string",
-                                    "enum": [
-                                      "custom"
-                                    ]
-                                  },
-                                  "instruction": {
-                                    "type": "string",
-                                    "format": "jodit"
-                                  },
-                                  "tagName": {
-                                    "type": "string",
-                                    "enum": [
-                                      "calcul-impact",
-                                      "capacity-calculation",
-                                      "clickable-image",
-                                      "complete-phrase",
-                                      "flip-cards",
-                                      "image-quiz",
-                                      "image-quizzes",
-                                      "message-conversation",
-                                      "phishing-message",
-                                      "phishing-notification",
-                                      "pix-article",
-                                      "pix-carousel",
-                                      "pix-cursor",
-                                      "llm-compare-messages",
-                                      "llm-messages",
-                                      "llm-prompt-select",
-                                      "qcm-deepfake",
-                                      "select-conversation"
-                                    ]
-                                  },
-                                  "props": {
-                                    "oneOf": [
-                                      {
+                                "oneOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "calcul-impact"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "titleLevel": {
                                             "type": "number"
                                           }
                                         },
-                                        "additionalProperties": false,
-                                        "title": "calcul-impact"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "calcul-impact"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "capacity-calculation"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "titleLevel": {
@@ -195,10 +210,42 @@ export const schema = {
                                         "required": [
                                           "capacityImage"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "capacity-calculation"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "capacity-calculation"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "clickable-image"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "image": {
@@ -288,10 +335,42 @@ export const schema = {
                                           "image",
                                           "areas"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "clickable-image"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "clickable-image"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "complete-phrase"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "titleLevel": {
@@ -340,10 +419,42 @@ export const schema = {
                                           "llmMessage",
                                           "wordsToAdd"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "complete-phrase"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "complete-phrase"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "flip-cards"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "titleLevel": {
@@ -385,10 +496,42 @@ export const schema = {
                                           "name",
                                           "cardList"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "flip-cards"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "flip-cards"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "image-quiz"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "name": {
@@ -450,10 +593,43 @@ export const schema = {
                                           "name",
                                           "choices"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "image-quiz"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName",
+                                      "props"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "image-quiz"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "image-quizzes"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "quizzes": {
@@ -528,10 +704,43 @@ export const schema = {
                                         "required": [
                                           "quizzes"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "image-quizzes"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName",
+                                      "props"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "image-quizzes"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "message-conversation"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "title": {
@@ -540,44 +749,134 @@ export const schema = {
                                           "messages": {
                                             "type": "array",
                                             "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "userName": {
-                                                  "type": "string"
-                                                },
-                                                "direction": {
-                                                  "type": "string",
-                                                  "enum": [
-                                                    "incoming",
-                                                    "outgoing"
-                                                  ]
-                                                },
-                                                "content": {
-                                                  "type": "string"
-                                                },
-                                                "image": {
+                                              "oneOf": [
+                                                {
                                                   "type": "object",
                                                   "properties": {
-                                                    "src": {
+                                                    "userName": {
                                                       "type": "string"
                                                     },
-                                                    "alt": {
+                                                    "direction": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "incoming",
+                                                        "outgoing"
+                                                      ]
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "Texte"
+                                                      ]
+                                                    },
+                                                    "content": {
                                                       "type": "string"
                                                     }
                                                   },
                                                   "required": [
-                                                    "src",
-                                                    "alt"
+                                                    "userName",
+                                                    "direction",
+                                                    "type",
+                                                    "content"
                                                   ],
-                                                  "additionalProperties": true
+                                                  "additionalProperties": false,
+                                                  "title": "Texte"
+                                                },
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "userName": {
+                                                      "type": "string"
+                                                    },
+                                                    "direction": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "incoming",
+                                                        "outgoing"
+                                                      ]
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "Texte + Image"
+                                                      ]
+                                                    },
+                                                    "content": {
+                                                      "type": "string"
+                                                    },
+                                                    "image": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "src": {
+                                                          "type": "string"
+                                                        },
+                                                        "alt": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "src",
+                                                        "alt"
+                                                      ],
+                                                      "additionalProperties": true
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "userName",
+                                                    "direction",
+                                                    "type",
+                                                    "content",
+                                                    "image"
+                                                  ],
+                                                  "additionalProperties": false,
+                                                  "title": "Texte + Image"
+                                                },
+                                                {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "userName": {
+                                                      "type": "string"
+                                                    },
+                                                    "direction": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "incoming",
+                                                        "outgoing"
+                                                      ]
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "Image seule"
+                                                      ]
+                                                    },
+                                                    "image": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "src": {
+                                                          "type": "string"
+                                                        },
+                                                        "alt": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "src",
+                                                        "alt"
+                                                      ],
+                                                      "additionalProperties": true
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "userName",
+                                                    "direction",
+                                                    "type",
+                                                    "image"
+                                                  ],
+                                                  "additionalProperties": false,
+                                                  "title": "Image seule"
                                                 }
-                                              },
-                                              "required": [
-                                                "userName",
-                                                "direction",
-                                                "content"
                                               ],
-                                              "additionalProperties": false,
                                               "title": "message"
                                             }
                                           }
@@ -586,10 +885,43 @@ export const schema = {
                                           "title",
                                           "messages"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "message-conversation"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName",
+                                      "props"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "message-conversation"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "phishing-message"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "titleLevel": {
@@ -639,10 +971,42 @@ export const schema = {
                                         "required": [
                                           "messages"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "phishing-message"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "phishing-message"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "phishing-notification"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "notifications": {
@@ -718,10 +1082,42 @@ export const schema = {
                                           "categories",
                                           "informationMessage"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "phishing-notification"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "phishing-notification"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "pix-article"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "titleLevel": {
@@ -753,14 +1149,44 @@ export const schema = {
                                         "required": [
                                           "title",
                                           "author",
-                                          "date",
-                                          "highlightedSentence",
-                                          "colorOfHighlightSentence"
+                                          "date"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "pix-article"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "pix-article"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "pix-carousel"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "type": {
@@ -910,6 +1336,9 @@ export const schema = {
                                           "disableAnimation": {
                                             "type": "boolean"
                                           },
+                                          "disableStyleAroundImage": {
+                                            "type": "boolean"
+                                          },
                                           "enableLoop": {
                                             "type": "boolean"
                                           },
@@ -923,10 +1352,43 @@ export const schema = {
                                           "randomSlides",
                                           "disableAnimation"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "pix-carousel"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName",
+                                      "props"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "pix-carousel"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "pix-cursor"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "options": {
@@ -972,10 +1434,42 @@ export const schema = {
                                         "required": [
                                           "options"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "pix-cursor"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "pix-cursor"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "llm-compare-messages"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "conversation1": {
@@ -1070,10 +1564,43 @@ export const schema = {
                                           "userName",
                                           "messages"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "llm-compare-messages"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName",
+                                      "props"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "llm-compare-messages"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "llm-messages"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "messages": {
@@ -1104,10 +1631,43 @@ export const schema = {
                                         "required": [
                                           "messages"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "llm-messages"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName",
+                                      "props"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "llm-messages"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "llm-prompt-select"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "speed": {
@@ -1163,10 +1723,43 @@ export const schema = {
                                           "messages",
                                           "prompts"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "llm-prompt-select"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName",
+                                      "props"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "llm-prompt-select"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "qcm-deepfake"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "titleLevel": {
@@ -1191,10 +1784,42 @@ export const schema = {
                                           "infoImage",
                                           "searchImage"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "qcm-deepfake"
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "qcm-deepfake"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
                                       },
-                                      {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
+                                          "select-conversation"
+                                        ]
+                                      },
+                                      "props": {
                                         "type": "object",
                                         "properties": {
                                           "titleLevel": {
@@ -1262,20 +1887,19 @@ export const schema = {
                                           "username",
                                           "responseChoices"
                                         ],
-                                        "additionalProperties": false,
-                                        "title": "select-conversation"
+                                        "additionalProperties": false
                                       }
-                                    ]
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "select-conversation"
                                   }
-                                },
-                                "required": [
-                                  "id",
-                                  "type",
-                                  "instruction",
-                                  "tagName",
-                                  "props"
                                 ],
-                                "additionalProperties": false,
                                 "title": "custom"
                               },
                               {
@@ -2393,58 +3017,73 @@ export const schema = {
                                   "items": {
                                     "oneOf": [
                                       {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "string",
-                                            "format": "uuid"
-                                          },
-                                          "type": {
-                                            "type": "string",
-                                            "enum": [
-                                              "custom"
-                                            ]
-                                          },
-                                          "instruction": {
-                                            "type": "string",
-                                            "format": "jodit"
-                                          },
-                                          "tagName": {
-                                            "type": "string",
-                                            "enum": [
-                                              "calcul-impact",
-                                              "capacity-calculation",
-                                              "clickable-image",
-                                              "complete-phrase",
-                                              "flip-cards",
-                                              "image-quiz",
-                                              "image-quizzes",
-                                              "message-conversation",
-                                              "phishing-message",
-                                              "phishing-notification",
-                                              "pix-article",
-                                              "pix-carousel",
-                                              "pix-cursor",
-                                              "llm-compare-messages",
-                                              "llm-messages",
-                                              "llm-prompt-select",
-                                              "qcm-deepfake",
-                                              "select-conversation"
-                                            ]
-                                          },
-                                          "props": {
-                                            "oneOf": [
-                                              {
+                                        "oneOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "calcul-impact"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "titleLevel": {
                                                     "type": "number"
                                                   }
                                                 },
-                                                "additionalProperties": false,
-                                                "title": "calcul-impact"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "calcul-impact"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "capacity-calculation"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "titleLevel": {
@@ -2457,10 +3096,42 @@ export const schema = {
                                                 "required": [
                                                   "capacityImage"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "capacity-calculation"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "capacity-calculation"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "clickable-image"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "image": {
@@ -2550,10 +3221,42 @@ export const schema = {
                                                   "image",
                                                   "areas"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "clickable-image"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "clickable-image"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "complete-phrase"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "titleLevel": {
@@ -2602,10 +3305,42 @@ export const schema = {
                                                   "llmMessage",
                                                   "wordsToAdd"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "complete-phrase"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "complete-phrase"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "flip-cards"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "titleLevel": {
@@ -2647,10 +3382,42 @@ export const schema = {
                                                   "name",
                                                   "cardList"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "flip-cards"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "flip-cards"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "image-quiz"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "name": {
@@ -2712,10 +3479,43 @@ export const schema = {
                                                   "name",
                                                   "choices"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "image-quiz"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName",
+                                              "props"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "image-quiz"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "image-quizzes"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "quizzes": {
@@ -2790,10 +3590,43 @@ export const schema = {
                                                 "required": [
                                                   "quizzes"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "image-quizzes"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName",
+                                              "props"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "image-quizzes"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "message-conversation"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "title": {
@@ -2802,44 +3635,134 @@ export const schema = {
                                                   "messages": {
                                                     "type": "array",
                                                     "items": {
-                                                      "type": "object",
-                                                      "properties": {
-                                                        "userName": {
-                                                          "type": "string"
-                                                        },
-                                                        "direction": {
-                                                          "type": "string",
-                                                          "enum": [
-                                                            "incoming",
-                                                            "outgoing"
-                                                          ]
-                                                        },
-                                                        "content": {
-                                                          "type": "string"
-                                                        },
-                                                        "image": {
+                                                      "oneOf": [
+                                                        {
                                                           "type": "object",
                                                           "properties": {
-                                                            "src": {
+                                                            "userName": {
                                                               "type": "string"
                                                             },
-                                                            "alt": {
+                                                            "direction": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "incoming",
+                                                                "outgoing"
+                                                              ]
+                                                            },
+                                                            "type": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "Texte"
+                                                              ]
+                                                            },
+                                                            "content": {
                                                               "type": "string"
                                                             }
                                                           },
                                                           "required": [
-                                                            "src",
-                                                            "alt"
+                                                            "userName",
+                                                            "direction",
+                                                            "type",
+                                                            "content"
                                                           ],
-                                                          "additionalProperties": true
+                                                          "additionalProperties": false,
+                                                          "title": "Texte"
+                                                        },
+                                                        {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "userName": {
+                                                              "type": "string"
+                                                            },
+                                                            "direction": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "incoming",
+                                                                "outgoing"
+                                                              ]
+                                                            },
+                                                            "type": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "Texte + Image"
+                                                              ]
+                                                            },
+                                                            "content": {
+                                                              "type": "string"
+                                                            },
+                                                            "image": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "src": {
+                                                                  "type": "string"
+                                                                },
+                                                                "alt": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "src",
+                                                                "alt"
+                                                              ],
+                                                              "additionalProperties": true
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "userName",
+                                                            "direction",
+                                                            "type",
+                                                            "content",
+                                                            "image"
+                                                          ],
+                                                          "additionalProperties": false,
+                                                          "title": "Texte + Image"
+                                                        },
+                                                        {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "userName": {
+                                                              "type": "string"
+                                                            },
+                                                            "direction": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "incoming",
+                                                                "outgoing"
+                                                              ]
+                                                            },
+                                                            "type": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "Image seule"
+                                                              ]
+                                                            },
+                                                            "image": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "src": {
+                                                                  "type": "string"
+                                                                },
+                                                                "alt": {
+                                                                  "type": "string"
+                                                                }
+                                                              },
+                                                              "required": [
+                                                                "src",
+                                                                "alt"
+                                                              ],
+                                                              "additionalProperties": true
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "userName",
+                                                            "direction",
+                                                            "type",
+                                                            "image"
+                                                          ],
+                                                          "additionalProperties": false,
+                                                          "title": "Image seule"
                                                         }
-                                                      },
-                                                      "required": [
-                                                        "userName",
-                                                        "direction",
-                                                        "content"
                                                       ],
-                                                      "additionalProperties": false,
                                                       "title": "message"
                                                     }
                                                   }
@@ -2848,10 +3771,43 @@ export const schema = {
                                                   "title",
                                                   "messages"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "message-conversation"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName",
+                                              "props"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "message-conversation"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "phishing-message"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "titleLevel": {
@@ -2901,10 +3857,42 @@ export const schema = {
                                                 "required": [
                                                   "messages"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "phishing-message"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "phishing-message"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "phishing-notification"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "notifications": {
@@ -2980,10 +3968,42 @@ export const schema = {
                                                   "categories",
                                                   "informationMessage"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "phishing-notification"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "phishing-notification"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "pix-article"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "titleLevel": {
@@ -3015,14 +4035,44 @@ export const schema = {
                                                 "required": [
                                                   "title",
                                                   "author",
-                                                  "date",
-                                                  "highlightedSentence",
-                                                  "colorOfHighlightSentence"
+                                                  "date"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "pix-article"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "pix-article"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "pix-carousel"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "type": {
@@ -3172,6 +4222,9 @@ export const schema = {
                                                   "disableAnimation": {
                                                     "type": "boolean"
                                                   },
+                                                  "disableStyleAroundImage": {
+                                                    "type": "boolean"
+                                                  },
                                                   "enableLoop": {
                                                     "type": "boolean"
                                                   },
@@ -3185,10 +4238,43 @@ export const schema = {
                                                   "randomSlides",
                                                   "disableAnimation"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "pix-carousel"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName",
+                                              "props"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "pix-carousel"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "pix-cursor"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "options": {
@@ -3234,10 +4320,42 @@ export const schema = {
                                                 "required": [
                                                   "options"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "pix-cursor"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "pix-cursor"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "llm-compare-messages"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "conversation1": {
@@ -3332,10 +4450,43 @@ export const schema = {
                                                   "userName",
                                                   "messages"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "llm-compare-messages"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName",
+                                              "props"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "llm-compare-messages"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "llm-messages"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "messages": {
@@ -3366,10 +4517,43 @@ export const schema = {
                                                 "required": [
                                                   "messages"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "llm-messages"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName",
+                                              "props"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "llm-messages"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "llm-prompt-select"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "speed": {
@@ -3425,10 +4609,43 @@ export const schema = {
                                                   "messages",
                                                   "prompts"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "llm-prompt-select"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName",
+                                              "props"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "llm-prompt-select"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "qcm-deepfake"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "titleLevel": {
@@ -3453,10 +4670,42 @@ export const schema = {
                                                   "infoImage",
                                                   "searchImage"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "qcm-deepfake"
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "qcm-deepfake"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
                                               },
-                                              {
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "select-conversation"
+                                                ]
+                                              },
+                                              "props": {
                                                 "type": "object",
                                                 "properties": {
                                                   "titleLevel": {
@@ -3524,20 +4773,19 @@ export const schema = {
                                                   "username",
                                                   "responseChoices"
                                                 ],
-                                                "additionalProperties": false,
-                                                "title": "select-conversation"
+                                                "additionalProperties": false
                                               }
-                                            ]
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "select-conversation"
                                           }
-                                        },
-                                        "required": [
-                                          "id",
-                                          "type",
-                                          "instruction",
-                                          "tagName",
-                                          "props"
                                         ],
-                                        "additionalProperties": false,
                                         "title": "custom"
                                       },
                                       {
