@@ -181,6 +181,9 @@
       schema.properties.shortId.default = generateId();
       schema.properties.shortId.readonly = true;
 
+      schema.properties.visibility.default = 'public';
+      schema.properties.visibility.readonly = true;
+
       const editor = new JSONEditor(element, {
         schema,
         theme: 'bootstrap5',
