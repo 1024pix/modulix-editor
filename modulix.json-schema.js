@@ -18,6 +18,13 @@ export const schema = {
     "isBeta": {
       "type": "boolean"
     },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "private",
+        "public"
+      ]
+    },
     "details": {
       "type": "object",
       "properties": {
@@ -5884,6 +5891,7 @@ export const schema = {
     "slug",
     "title",
     "isBeta",
+    "visibility",
     "details",
     "sections"
   ],
