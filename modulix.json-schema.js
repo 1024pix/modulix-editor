@@ -1114,6 +1114,87 @@ export const schema = {
                                       "tagName": {
                                         "type": "string",
                                         "enum": [
+                                          "pix-anonymisation"
+                                        ]
+                                      },
+                                      "props": {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "steps": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "fullSentence": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "content": {
+                                                        "type": "string"
+                                                      },
+                                                      "isAnonymizable": {
+                                                        "type": "boolean"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "content"
+                                                    ],
+                                                    "additionalProperties": false,
+                                                    "title": "fullSentence"
+                                                  }
+                                                },
+                                                "rephrase": {
+                                                  "type": "string"
+                                                },
+                                                "feedback": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "required": [
+                                                "rephrase",
+                                                "feedback"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "step"
+                                            }
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "pix-anonymisation"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "enum": [
                                           "pix-article"
                                         ]
                                       },
@@ -3979,6 +4060,87 @@ export const schema = {
                                             ],
                                             "additionalProperties": false,
                                             "title": "phishing-notification"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "pix-anonymisation"
+                                                ]
+                                              },
+                                              "props": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "steps": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "fullSentence": {
+                                                          "type": "array",
+                                                          "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "content": {
+                                                                "type": "string"
+                                                              },
+                                                              "isAnonymizable": {
+                                                                "type": "boolean"
+                                                              }
+                                                            },
+                                                            "required": [
+                                                              "content"
+                                                            ],
+                                                            "additionalProperties": false,
+                                                            "title": "fullSentence"
+                                                          }
+                                                        },
+                                                        "rephrase": {
+                                                          "type": "string"
+                                                        },
+                                                        "feedback": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "rephrase",
+                                                        "feedback"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "step"
+                                                    }
+                                                  }
+                                                },
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "pix-anonymisation"
                                           },
                                           {
                                             "type": "object",
