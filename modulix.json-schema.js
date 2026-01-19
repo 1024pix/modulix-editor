@@ -110,13 +110,13 @@ export const schema = {
                 "type": {
                   "type": "string",
                   "enum": [
-                    "lesson",
-                    "activity",
+                    "short-lesson",
                     "discovery",
+                    "activity",
                     "challenge",
+                    "lesson",
                     "summary",
-                    "transition",
-                    "short-lesson"
+                    "transition"
                   ]
                 },
                 "title": {
