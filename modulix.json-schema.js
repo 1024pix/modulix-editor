@@ -3001,8 +3001,7 @@ export const schema = {
                                   "id",
                                   "type",
                                   "title",
-                                  "url",
-                                  "transcription"
+                                  "url"
                                 ],
                                 "additionalProperties": false,
                                 "title": "short-video"
@@ -5766,8 +5765,7 @@ export const schema = {
                                           "id",
                                           "type",
                                           "title",
-                                          "url",
-                                          "transcription"
+                                          "url"
                                         ],
                                         "additionalProperties": false,
                                         "title": "short-video"
