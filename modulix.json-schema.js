@@ -138,6 +138,41 @@ export const schema = {
                           "element": {
                             "oneOf": [
                               {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "audio"
+                                    ]
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  },
+                                  "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                  },
+                                  "transcription": {
+                                    "type": "string",
+                                    "format": "jodit"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "title",
+                                  "url",
+                                  "transcription"
+                                ],
+                                "additionalProperties": false,
+                                "title": "audio"
+                              },
+                              {
                                 "oneOf": [
                                   {
                                     "type": "object",
@@ -2772,9 +2807,6 @@ export const schema = {
                                             "ariaLabel": {
                                               "type": "string"
                                             },
-                                            "defaultValue": {
-                                              "type": "string"
-                                            },
                                             "tolerances": {
                                               "type": "array",
                                               "uniqueItems": true,
@@ -2813,7 +2845,6 @@ export const schema = {
                                             "display",
                                             "placeholder",
                                             "ariaLabel",
-                                            "defaultValue",
                                             "tolerances",
                                             "solutions"
                                           ],
@@ -2843,9 +2874,6 @@ export const schema = {
                                               "type": "string"
                                             },
                                             "ariaLabel": {
-                                              "type": "string"
-                                            },
-                                            "defaultValue": {
                                               "type": "string"
                                             },
                                             "tolerances": {
@@ -2886,7 +2914,6 @@ export const schema = {
                                             "display",
                                             "placeholder",
                                             "ariaLabel",
-                                            "defaultValue",
                                             "tolerances",
                                             "options",
                                             "solutions"
@@ -3103,6 +3130,41 @@ export const schema = {
                                   "type": "array",
                                   "items": {
                                     "oneOf": [
+                                      {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "audio"
+                                            ]
+                                          },
+                                          "title": {
+                                            "type": "string"
+                                          },
+                                          "url": {
+                                            "type": "string",
+                                            "format": "uri"
+                                          },
+                                          "transcription": {
+                                            "type": "string",
+                                            "format": "jodit"
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "title",
+                                          "url",
+                                          "transcription"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "audio"
+                                      },
                                       {
                                         "oneOf": [
                                           {
@@ -5536,9 +5598,6 @@ export const schema = {
                                                     "ariaLabel": {
                                                       "type": "string"
                                                     },
-                                                    "defaultValue": {
-                                                      "type": "string"
-                                                    },
                                                     "tolerances": {
                                                       "type": "array",
                                                       "uniqueItems": true,
@@ -5577,7 +5636,6 @@ export const schema = {
                                                     "display",
                                                     "placeholder",
                                                     "ariaLabel",
-                                                    "defaultValue",
                                                     "tolerances",
                                                     "solutions"
                                                   ],
@@ -5607,9 +5665,6 @@ export const schema = {
                                                       "type": "string"
                                                     },
                                                     "ariaLabel": {
-                                                      "type": "string"
-                                                    },
-                                                    "defaultValue": {
                                                       "type": "string"
                                                     },
                                                     "tolerances": {
@@ -5650,7 +5705,6 @@ export const schema = {
                                                     "display",
                                                     "placeholder",
                                                     "ariaLabel",
-                                                    "defaultValue",
                                                     "tolerances",
                                                     "options",
                                                     "solutions"
