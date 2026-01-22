@@ -921,6 +921,9 @@ export const schema = {
                                               ],
                                               "title": "message"
                                             }
+                                          },
+                                          "animationSpeed": {
+                                            "type": "number"
                                           }
                                         },
                                         "required": [
@@ -968,51 +971,8 @@ export const schema = {
                                         "properties": {
                                           "titleLevel": {
                                             "type": "number"
-                                          },
-                                          "messages": {
-                                            "type": "array",
-                                            "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "senderName": {
-                                                  "type": "string"
-                                                },
-                                                "content": {
-                                                  "type": "string"
-                                                },
-                                                "title": {
-                                                  "type": "string"
-                                                },
-                                                "goodFeelings": {
-                                                  "type": "array",
-                                                  "items": {
-                                                    "type": "string",
-                                                    "title": "goodFeeling"
-                                                  }
-                                                },
-                                                "victory": {
-                                                  "type": "string"
-                                                },
-                                                "loose": {
-                                                  "type": "string"
-                                                }
-                                              },
-                                              "required": [
-                                                "senderName",
-                                                "content",
-                                                "title",
-                                                "goodFeelings",
-                                                "victory",
-                                                "loose"
-                                              ],
-                                              "additionalProperties": false,
-                                              "title": "message"
-                                            }
                                           }
                                         },
-                                        "required": [
-                                          "messages"
-                                        ],
                                         "additionalProperties": false
                                       }
                                     },
@@ -1471,9 +1431,7 @@ export const schema = {
                                         },
                                         "required": [
                                           "type",
-                                          "slides",
-                                          "randomSlides",
-                                          "disableAnimation"
+                                          "slides"
                                         ],
                                         "additionalProperties": false
                                       }
@@ -3914,6 +3872,9 @@ export const schema = {
                                                       ],
                                                       "title": "message"
                                                     }
+                                                  },
+                                                  "animationSpeed": {
+                                                    "type": "number"
                                                   }
                                                 },
                                                 "required": [
@@ -3961,51 +3922,8 @@ export const schema = {
                                                 "properties": {
                                                   "titleLevel": {
                                                     "type": "number"
-                                                  },
-                                                  "messages": {
-                                                    "type": "array",
-                                                    "items": {
-                                                      "type": "object",
-                                                      "properties": {
-                                                        "senderName": {
-                                                          "type": "string"
-                                                        },
-                                                        "content": {
-                                                          "type": "string"
-                                                        },
-                                                        "title": {
-                                                          "type": "string"
-                                                        },
-                                                        "goodFeelings": {
-                                                          "type": "array",
-                                                          "items": {
-                                                            "type": "string",
-                                                            "title": "goodFeeling"
-                                                          }
-                                                        },
-                                                        "victory": {
-                                                          "type": "string"
-                                                        },
-                                                        "loose": {
-                                                          "type": "string"
-                                                        }
-                                                      },
-                                                      "required": [
-                                                        "senderName",
-                                                        "content",
-                                                        "title",
-                                                        "goodFeelings",
-                                                        "victory",
-                                                        "loose"
-                                                      ],
-                                                      "additionalProperties": false,
-                                                      "title": "message"
-                                                    }
                                                   }
                                                 },
-                                                "required": [
-                                                  "messages"
-                                                ],
                                                 "additionalProperties": false
                                               }
                                             },
@@ -4464,9 +4382,7 @@ export const schema = {
                                                 },
                                                 "required": [
                                                   "type",
-                                                  "slides",
-                                                  "randomSlides",
-                                                  "disableAnimation"
+                                                  "slides"
                                                 ],
                                                 "additionalProperties": false
                                               }
