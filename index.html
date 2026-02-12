@@ -117,8 +117,18 @@
       crossorigin="anonymous"
     ></script>
     <script type="module">
-      import { schema } from './modulix.json-schema.js?v2';
+      import { schema as fallbackSchema } from './modulix.json-schema.js?v2';
       import LocalBackup from './LocalBackup.js';
+
+      const schema = await fetch(
+        'https://api-pr15100.review.pix.fr/api/module-schema/module-json-schema.json',
+        { cache: 'no-cache' }, // misleading name, this will use the cache, but verify the ETag first (https://developer.mozilla.org/en-US/docs/Web/API/Request/cache)
+      )
+        .then((res) => res.json())
+        .catch((err) => {
+          console.error({ err }, 'Error fetching JSON Schema from Pix API');
+          return fallbackSchema;
+        });
 
       const tooltipTriggerList = document.querySelectorAll('[data-tooltip]');
       [...tooltipTriggerList].map(
