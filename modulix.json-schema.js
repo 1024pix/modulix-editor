@@ -2402,6 +2402,9 @@ export const schema = {
                                     "type": "string",
                                     "format": "jodit"
                                   },
+                                  "hasShortProposals": {
+                                    "type": "boolean"
+                                  },
                                   "proposals": {
                                     "type": "array",
                                     "items": {
@@ -2448,10 +2451,63 @@ export const schema = {
                                     "pattern": "^[0-9]+$"
                                   }
                                 },
+                                "if": {
+                                  "properties": {
+                                    "hasShortProposals": {
+                                      "const": true
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "proposals": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "pattern": "^[0-9]+$"
+                                          },
+                                          "content": {
+                                            "maxLength": 20,
+                                            "format": null
+                                          },
+                                          "feedback": {
+                                            "type": "object",
+                                            "properties": {
+                                              "state": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "diagnosis": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              }
+                                            },
+                                            "required": [
+                                              "state",
+                                              "diagnosis"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "content",
+                                          "feedback"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "proposal"
+                                      }
+                                    },
+                                  }
+                                },
                                 "required": [
                                   "id",
                                   "type",
                                   "instruction",
+                                  "hasShortProposals",
                                   "proposals",
                                   "solution"
                                 ],
@@ -2474,6 +2530,9 @@ export const schema = {
                                   "instruction": {
                                     "type": "string",
                                     "format": "jodit"
+                                  },
+                                  "hasShortProposals": {
+                                    "type": "boolean"
                                   },
                                   "proposals": {
                                     "type": "array",
@@ -2512,10 +2571,58 @@ export const schema = {
                                     }
                                   }
                                 },
+                                "if": {
+                                  "properties": {
+                                    "hasShortProposals": {
+                                      "const": true
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "proposals": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "pattern": "^[0-9]+$"
+                                          },
+                                          "content": {
+                                            "maxLength": 20,
+                                            "format": null
+                                          },
+                                          "feedback": {
+                                            "type": "object",
+                                            "properties": {
+                                              "diagnosis": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              }
+                                            },
+                                            "required": [
+                                              "diagnosis"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "content",
+                                          "feedback"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "proposal"
+                                      }
+                                    }
+                                  }
+                                },
                                 "required": [
                                   "id",
                                   "type",
                                   "instruction",
+                                  "hasShortProposals",
                                   "proposals"
                                 ],
                                 "additionalProperties": false,
@@ -2537,6 +2644,9 @@ export const schema = {
                                   "instruction": {
                                     "type": "string",
                                     "format": "jodit"
+                                  },
+                                  "hasShortProposals": {
+                                    "type": "boolean"
                                   },
                                   "proposals": {
                                     "type": "array",
@@ -2579,10 +2689,58 @@ export const schema = {
                                     "pattern": "^[0-9]+$"
                                   }
                                 },
+                                "if": {
+                                  "properties": {
+                                    "hasShortProposals": {
+                                      "const": true
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "proposals": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "pattern": "^[0-9]+$"
+                                          },
+                                          "content": {
+                                            "maxLength": 20,
+                                            "format": null
+                                          },
+                                          "feedback": {
+                                            "type": "object",
+                                            "properties": {
+                                              "diagnosis": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              }
+                                            },
+                                            "required": [
+                                              "diagnosis"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "content",
+                                          "feedback"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "proposal"
+                                      }
+                                    },
+                                  }
+                                },
                                 "required": [
                                   "id",
                                   "type",
                                   "instruction",
+                                  "hasShortProposals",
                                   "proposals",
                                   "solution"
                                 ],
@@ -2598,13 +2756,14 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
-                                    "enum": [
-                                      "qcm"
-                                    ]
+                                    "enum": ["qcm"]
                                   },
                                   "instruction": {
                                     "type": "string",
                                     "format": "jodit"
+                                  },
+                                  "hasShortProposals": {
+                                    "type": "boolean"
                                   },
                                   "proposals": {
                                     "type": "array",
@@ -2640,10 +2799,7 @@ export const schema = {
                                             "format": "jodit"
                                           }
                                         },
-                                        "required": [
-                                          "state",
-                                          "diagnosis"
-                                        ],
+                                        "required": ["state", "diagnosis"],
                                         "additionalProperties": false
                                       },
                                       "invalid": {
@@ -2658,10 +2814,7 @@ export const schema = {
                                             "format": "jodit"
                                           }
                                         },
-                                        "required": [
-                                          "state",
-                                          "diagnosis"
-                                        ],
+                                        "required": ["state", "diagnosis"],
                                         "additionalProperties": false
                                       }
                                     },
@@ -2677,13 +2830,44 @@ export const schema = {
                                     }
                                   }
                                 },
+                                "if": {
+                                  "properties": {
+                                    "hasShortProposals": {
+                                      "const": true
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "properties": {
+                                    "proposals": {
+                                      "type": "array",
+                                      "minItems": 3,
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "pattern": "^[0-9]+$"
+                                          },
+                                          "content": {
+                                            "maxLength": 20,
+                                            "format": null,
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "title": "proposal"
+                                      }
+                                    }
+                                  }
+                                },
                                 "required": [
                                   "id",
                                   "type",
                                   "instruction",
                                   "proposals",
                                   "feedbacks",
-                                  "solutions"
+                                  "solutions",
+                                  "hasShortProposals"
                                 ],
                                 "additionalProperties": false,
                                 "title": "qcm"
@@ -5151,6 +5335,9 @@ export const schema = {
                                             "type": "string",
                                             "format": "jodit"
                                           },
+                                          "hasShortProposals": {
+                                            "type": "boolean"
+                                          },
                                           "proposals": {
                                             "type": "array",
                                             "items": {
@@ -5197,10 +5384,63 @@ export const schema = {
                                             "pattern": "^[0-9]+$"
                                           }
                                         },
+                                        "if": {
+                                          "properties": {
+                                            "hasShortProposals": {
+                                              "const": true
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "proposals": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string",
+                                                    "pattern": "^[0-9]+$"
+                                                  },
+                                                  "content": {
+                                                    "maxLength": 20,
+                                                    "format": null
+                                                  },
+                                                  "feedback": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "state": {
+                                                        "type": "string",
+                                                        "format": "jodit"
+                                                      },
+                                                      "diagnosis": {
+                                                        "type": "string",
+                                                        "format": "jodit"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "state",
+                                                      "diagnosis"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  }
+                                                },
+                                                "required": [
+                                                  "id",
+                                                  "content",
+                                                  "feedback"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "proposal"
+                                              }
+                                            },
+                                          }
+                                        },
                                         "required": [
                                           "id",
                                           "type",
                                           "instruction",
+                                          "hasShortProposals",
                                           "proposals",
                                           "solution"
                                         ],
@@ -5223,6 +5463,9 @@ export const schema = {
                                           "instruction": {
                                             "type": "string",
                                             "format": "jodit"
+                                          },
+                                          "hasShortProposals": {
+                                            "type": "boolean"
                                           },
                                           "proposals": {
                                             "type": "array",
@@ -5261,10 +5504,58 @@ export const schema = {
                                             }
                                           }
                                         },
+                                        "if": {
+                                          "properties": {
+                                            "hasShortProposals": {
+                                              "const": true
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "proposals": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string",
+                                                    "pattern": "^[0-9]+$"
+                                                  },
+                                                  "content": {
+                                                    "maxLength": 20,
+                                                    "format": null
+                                                  },
+                                                  "feedback": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "diagnosis": {
+                                                        "type": "string",
+                                                        "format": "jodit"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "diagnosis"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  }
+                                                },
+                                                "required": [
+                                                  "id",
+                                                  "content",
+                                                  "feedback"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "proposal"
+                                              }
+                                            },
+                                          }
+                                        },
                                         "required": [
                                           "id",
                                           "type",
                                           "instruction",
+                                          "hasShortProposals",
                                           "proposals"
                                         ],
                                         "additionalProperties": false,
@@ -5286,6 +5577,9 @@ export const schema = {
                                           "instruction": {
                                             "type": "string",
                                             "format": "jodit"
+                                          },
+                                          "hasShortProposals": {
+                                            "type": "boolean"
                                           },
                                           "proposals": {
                                             "type": "array",
@@ -5328,10 +5622,58 @@ export const schema = {
                                             "pattern": "^[0-9]+$"
                                           }
                                         },
+                                        "if": {
+                                          "properties": {
+                                            "hasShortProposals": {
+                                              "const": true
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "proposals": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string",
+                                                    "pattern": "^[0-9]+$"
+                                                  },
+                                                  "content": {
+                                                    "type": "string",
+                                                    "format": "jodit"
+                                                  },
+                                                  "feedback": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "diagnosis": {
+                                                        "maxLength": 20,
+                                                        "format": null
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "diagnosis"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  }
+                                                },
+                                                "required": [
+                                                  "id",
+                                                  "content",
+                                                  "feedback"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "proposal"
+                                              }
+                                            },
+                                          }
+                                        },
                                         "required": [
                                           "id",
                                           "type",
                                           "instruction",
+                                          "hasShortProposals",
                                           "proposals",
                                           "solution"
                                         ],
@@ -5354,6 +5696,9 @@ export const schema = {
                                           "instruction": {
                                             "type": "string",
                                             "format": "jodit"
+                                          },
+                                          "hasShortProposals": {
+                                            "type": "boolean"
                                           },
                                           "proposals": {
                                             "type": "array",
@@ -5426,10 +5771,41 @@ export const schema = {
                                             }
                                           }
                                         },
+                                        "if": {
+                                          "properties": {
+                                            "hasShortProposals": {
+                                              "const": true
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "proposals": {
+                                              "type": "array",
+                                              "minItems": 3,
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string",
+                                                    "pattern": "^[0-9]+$"
+                                                  },
+                                                  "content": {
+                                                    "maxLength": 20,
+                                                    "format": null
+                                                  }
+                                                },
+                                                "additionalProperties": false,
+                                                "title": "proposal"
+                                              }
+                                            },
+                                          }
+                                        },
                                         "required": [
                                           "id",
                                           "type",
                                           "instruction",
+                                          "hasShortProposals",
                                           "proposals",
                                           "feedbacks",
                                           "solutions"
