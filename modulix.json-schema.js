@@ -6,20 +6,24 @@ export const schema = {
       "format": "uuid"
     },
     "shortId": {
-      "type": "string"
+      "type": "string",
+      "format": null
     },
     "slug": {
       "type": "string",
+      "format": null,
       "pattern": "^[a-z0-9-]+$"
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "format": null
     },
     "isBeta": {
       "type": "boolean"
     },
     "visibility": {
       "type": "string",
+      "format": null,
       "enum": [
         "private",
         "public"
@@ -43,6 +47,7 @@ export const schema = {
         },
         "level": {
           "type": "string",
+          "format": null,
           "enum": [
             "novice",
             "independent",
@@ -61,6 +66,7 @@ export const schema = {
         },
         "tabletSupport": {
           "type": "string",
+          "format": null,
           "enum": [
             "comfortable",
             "inconvenient",
@@ -89,6 +95,7 @@ export const schema = {
           },
           "type": {
             "type": "string",
+            "format": null,
             "enum": [
               "question-yourself",
               "explore-to-understand",
@@ -109,6 +116,7 @@ export const schema = {
                 },
                 "type": {
                   "type": "string",
+                  "format": null,
                   "enum": [
                     "short-lesson",
                     "discovery",
@@ -120,7 +128,8 @@ export const schema = {
                   ]
                 },
                 "title": {
-                  "type": "string"
+                  "type": "string",
+                  "format": null
                 },
                 "components": {
                   "type": "array",
@@ -131,6 +140,7 @@ export const schema = {
                         "properties": {
                           "type": {
                             "type": "string",
+                            "format": null,
                             "enum": [
                               "element"
                             ]
@@ -146,12 +156,14 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "audio"
                                     ]
                                   },
                                   "title": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "url": {
                                     "type": "string",
@@ -183,6 +195,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -193,6 +206,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "calcul-impact"
                                         ]
@@ -225,6 +239,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -235,6 +250,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "capacity-calculation"
                                         ]
@@ -246,7 +262,8 @@ export const schema = {
                                             "type": "number"
                                           },
                                           "capacityImage": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           }
                                         },
                                         "required": [
@@ -273,6 +290,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -283,6 +301,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "clickable-image"
                                         ]
@@ -294,10 +313,12 @@ export const schema = {
                                             "type": "object",
                                             "properties": {
                                               "src": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "format": null
                                               },
                                               "alt": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "format": null
                                               },
                                               "width": {
                                                 "type": "number"
@@ -355,10 +376,12 @@ export const schema = {
                                                   "additionalProperties": false
                                                 },
                                                 "info": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "tooltipPosition": {
                                                   "type": "string",
+                                                  "format": null,
                                                   "enum": [
                                                     "bottom"
                                                   ]
@@ -398,6 +421,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -408,6 +432,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "complete-phrase"
                                         ]
@@ -426,7 +451,8 @@ export const schema = {
                                                 "type": "object",
                                                 "properties": {
                                                   "name": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "percent": {
                                                     "type": "integer"
@@ -442,15 +468,18 @@ export const schema = {
                                             }
                                           },
                                           "userMessage": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "llmMessage": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "wordsToAdd": {
                                             "type": "array",
                                             "items": {
                                               "type": "string",
+                                              "format": null,
                                               "title": "wordsToAdd"
                                             }
                                           }
@@ -482,6 +511,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -492,6 +522,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "flip-cards"
                                         ]
@@ -503,7 +534,8 @@ export const schema = {
                                             "type": "number"
                                           },
                                           "name": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "cardList": {
                                             "type": "array",
@@ -511,16 +543,20 @@ export const schema = {
                                               "type": "object",
                                               "properties": {
                                                 "name": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "description": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "icon": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "image": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -559,6 +595,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -569,6 +606,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "image-quiz"
                                         ]
@@ -577,10 +615,15 @@ export const schema = {
                                         "type": "object",
                                         "properties": {
                                           "name": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "multiple": {
                                             "type": "boolean"
+                                          },
+                                          "context": {
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "maxChoicesPerLine": {
                                             "type": "number"
@@ -593,6 +636,7 @@ export const schema = {
                                           },
                                           "imageChoicesSize": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "icon",
                                               "medium",
@@ -605,13 +649,15 @@ export const schema = {
                                               "type": "object",
                                               "properties": {
                                                 "name": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "image": {
                                                   "type": "object",
                                                   "properties": {
                                                     "src": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     }
                                                   },
                                                   "required": [
@@ -620,7 +666,8 @@ export const schema = {
                                                   "additionalProperties": true
                                                 },
                                                 "response": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -657,6 +704,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -667,6 +715,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "image-quizzes"
                                         ]
@@ -680,10 +729,15 @@ export const schema = {
                                               "type": "object",
                                               "properties": {
                                                 "name": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "multiple": {
                                                   "type": "boolean"
+                                                },
+                                                "context": {
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "maxChoicesPerLine": {
                                                   "type": "number"
@@ -696,6 +750,7 @@ export const schema = {
                                                 },
                                                 "imageChoicesSize": {
                                                   "type": "string",
+                                                  "format": null,
                                                   "enum": [
                                                     "icon",
                                                     "medium",
@@ -708,13 +763,15 @@ export const schema = {
                                                     "type": "object",
                                                     "properties": {
                                                       "name": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       },
                                                       "image": {
                                                         "type": "object",
                                                         "properties": {
                                                           "src": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "format": null
                                                           }
                                                         },
                                                         "required": [
@@ -723,7 +780,8 @@ export const schema = {
                                                         "additionalProperties": true
                                                       },
                                                       "response": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       }
                                                     },
                                                     "required": [
@@ -768,6 +826,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -778,6 +837,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "message-conversation"
                                         ]
@@ -786,7 +846,8 @@ export const schema = {
                                         "type": "object",
                                         "properties": {
                                           "title": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "messages": {
                                             "type": "array",
@@ -796,10 +857,12 @@ export const schema = {
                                                   "type": "object",
                                                   "properties": {
                                                     "userName": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "direction": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "incoming",
                                                         "outgoing"
@@ -807,12 +870,14 @@ export const schema = {
                                                     },
                                                     "type": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "Texte"
                                                       ]
                                                     },
                                                     "content": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     }
                                                   },
                                                   "required": [
@@ -828,10 +893,12 @@ export const schema = {
                                                   "type": "object",
                                                   "properties": {
                                                     "userName": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "direction": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "incoming",
                                                         "outgoing"
@@ -839,21 +906,25 @@ export const schema = {
                                                     },
                                                     "type": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "Texte + Image"
                                                       ]
                                                     },
                                                     "content": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "image": {
                                                       "type": "object",
                                                       "properties": {
                                                         "src": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "alt": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -877,10 +948,12 @@ export const schema = {
                                                   "type": "object",
                                                   "properties": {
                                                     "userName": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "direction": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "incoming",
                                                         "outgoing"
@@ -888,6 +961,7 @@ export const schema = {
                                                     },
                                                     "type": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "Image seule"
                                                       ]
@@ -896,10 +970,12 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "src": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "alt": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -952,6 +1028,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -962,6 +1039,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "phishing-message"
                                         ]
@@ -994,6 +1072,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1004,6 +1083,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "phishing-notification"
                                         ]
@@ -1017,16 +1097,20 @@ export const schema = {
                                               "type": "object",
                                               "properties": {
                                                 "icon": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "sender": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "content": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "category": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "time": {
                                                   "type": "object",
@@ -1058,10 +1142,12 @@ export const schema = {
                                               "type": "object",
                                               "properties": {
                                                 "name": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "icon": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -1073,7 +1159,8 @@ export const schema = {
                                             }
                                           },
                                           "informationMessage": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "titleLevel": {
                                             "type": "number"
@@ -1105,6 +1192,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1115,6 +1203,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "pix-anonymisation"
                                         ]
@@ -1136,7 +1225,8 @@ export const schema = {
                                                     "type": "object",
                                                     "properties": {
                                                       "content": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       },
                                                       "isAnonymizable": {
                                                         "type": "boolean"
@@ -1150,10 +1240,12 @@ export const schema = {
                                                   }
                                                 },
                                                 "rephrase": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "feedback": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -1186,6 +1278,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1196,6 +1289,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "pix-article"
                                         ]
@@ -1207,26 +1301,32 @@ export const schema = {
                                             "type": "number"
                                           },
                                           "title": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "author": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "date": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "paragraphs": {
                                             "type": "array",
                                             "items": {
                                               "type": "string",
+                                              "format": null,
                                               "title": "paragraph"
                                             }
                                           },
                                           "highlightedSentence": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "colorOfHighlightSentence": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           }
                                         },
                                         "required": [
@@ -1255,6 +1355,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1265,6 +1366,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "pix-carousel"
                                         ]
@@ -1274,6 +1376,7 @@ export const schema = {
                                         "properties": {
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "image",
                                               "image-text",
@@ -1288,10 +1391,12 @@ export const schema = {
                                                   "type": "object",
                                                   "properties": {
                                                     "title": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "description": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "displayWidth": {
                                                       "type": "number",
@@ -1301,10 +1406,12 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "src": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "alt": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -1317,13 +1424,16 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "name": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "attribution": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "url": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -1349,22 +1459,27 @@ export const schema = {
                                                   "type": "object",
                                                   "properties": {
                                                     "title": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "description": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "text": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "image": {
                                                       "type": "object",
                                                       "properties": {
                                                         "src": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "alt": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -1390,13 +1505,16 @@ export const schema = {
                                                   "type": "object",
                                                   "properties": {
                                                     "title": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "description": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "text": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     }
                                                   },
                                                   "required": [
@@ -1426,7 +1544,8 @@ export const schema = {
                                             "type": "boolean"
                                           },
                                           "imageTextDisplay": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           }
                                         },
                                         "required": [
@@ -1455,6 +1574,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1465,6 +1585,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "pix-cursor"
                                         ]
@@ -1478,13 +1599,15 @@ export const schema = {
                                               "type": "object",
                                               "properties": {
                                                 "label": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "feedback": {
                                                   "type": "object",
                                                   "properties": {
                                                     "type": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "bad",
                                                         "neutral",
@@ -1493,7 +1616,8 @@ export const schema = {
                                                       ]
                                                     },
                                                     "text": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     }
                                                   },
                                                   "required": [
@@ -1536,6 +1660,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1546,6 +1671,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "llm-compare-messages"
                                         ]
@@ -1557,10 +1683,12 @@ export const schema = {
                                             "type": "object",
                                             "properties": {
                                               "title": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "format": null
                                               },
                                               "llmName": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "format": null
                                               }
                                             },
                                             "required": [
@@ -1573,10 +1701,12 @@ export const schema = {
                                             "type": "object",
                                             "properties": {
                                               "title": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "format": null
                                               },
                                               "llmName": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "format": null
                                               }
                                             },
                                             "required": [
@@ -1586,7 +1716,8 @@ export const schema = {
                                             "additionalProperties": false
                                           },
                                           "userName": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "messages": {
                                             "type": "array",
@@ -1597,12 +1728,14 @@ export const schema = {
                                                   "properties": {
                                                     "direction": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "outbound"
                                                       ]
                                                     },
                                                     "content": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     }
                                                   },
                                                   "required": [
@@ -1619,12 +1752,14 @@ export const schema = {
                                                     "properties": {
                                                       "direction": {
                                                         "type": "string",
+                                                        "format": null,
                                                         "enum": [
                                                           "inbound"
                                                         ]
                                                       },
                                                       "content": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       }
                                                     },
                                                     "required": [
@@ -1667,6 +1802,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1677,6 +1813,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "llm-messages"
                                         ]
@@ -1691,13 +1828,15 @@ export const schema = {
                                               "properties": {
                                                 "direction": {
                                                   "type": "string",
+                                                  "format": null,
                                                   "enum": [
                                                     "inbound",
                                                     "outbound"
                                                   ]
                                                 },
                                                 "content": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -1734,6 +1873,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1744,6 +1884,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "llm-prompt-select"
                                         ]
@@ -1762,13 +1903,15 @@ export const schema = {
                                               "properties": {
                                                 "direction": {
                                                   "type": "string",
+                                                  "format": null,
                                                   "enum": [
                                                     "inbound",
                                                     "outbound"
                                                   ]
                                                 },
                                                 "content": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -1785,10 +1928,12 @@ export const schema = {
                                               "type": "object",
                                               "properties": {
                                                 "prompt": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "response": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -1826,6 +1971,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1836,6 +1982,7 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "qcm-deepfake"
                                         ]
@@ -1847,16 +1994,20 @@ export const schema = {
                                             "type": "number"
                                           },
                                           "successImage": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "failImage": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "infoImage": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "searchImage": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           }
                                         },
                                         "required": [
@@ -1886,6 +2037,7 @@ export const schema = {
                                       },
                                       "type": {
                                         "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "custom"
                                         ]
@@ -1896,6 +2048,123 @@ export const schema = {
                                       },
                                       "tagName": {
                                         "type": "string",
+                                        "format": null,
+                                        "enum": [
+                                          "quiz-stepper"
+                                        ]
+                                      },
+                                      "props": {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "steps": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "question": {
+                                                  "type": "string",
+                                                  "format": null
+                                                },
+                                                "feedback": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "success": {
+                                                      "type": "string",
+                                                      "format": null
+                                                    },
+                                                    "failed": {
+                                                      "type": "string",
+                                                      "format": null
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "success",
+                                                    "failed"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                "choice1": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "title": {
+                                                      "type": "string",
+                                                      "format": null
+                                                    },
+                                                    "content": {
+                                                      "type": "string",
+                                                      "format": null
+                                                    },
+                                                    "isGoodAnswer": {
+                                                      "type": "boolean"
+                                                    }
+                                                  },
+                                                  "additionalProperties": false
+                                                },
+                                                "choice2": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "title": {
+                                                      "type": "string",
+                                                      "format": null
+                                                    },
+                                                    "content": {
+                                                      "type": "string",
+                                                      "format": null
+                                                    },
+                                                    "isGoodAnswer": {
+                                                      "type": "boolean"
+                                                    }
+                                                  },
+                                                  "additionalProperties": false
+                                                }
+                                              },
+                                              "required": [
+                                                "question",
+                                                "feedback",
+                                                "choice1",
+                                                "choice2"
+                                              ],
+                                              "additionalProperties": false,
+                                              "title": "step"
+                                            }
+                                          }
+                                        },
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "quiz-stepper"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "format": null,
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "format": null,
                                         "enum": [
                                           "select-conversation"
                                         ]
@@ -1910,19 +2179,23 @@ export const schema = {
                                             "type": "object",
                                             "properties": {
                                               "username": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "format": null
                                               },
                                               "content": {
-                                                "type": "string"
+                                                "type": "string",
+                                                "format": null
                                               },
                                               "time": {
                                                 "type": "object",
                                                 "properties": {
                                                   "days": {
-                                                    "type": "number"
+                                                    "type": "number",
+                                                    "maximum": -1
                                                   },
                                                   "minutes": {
-                                                    "type": "number"
+                                                    "type": "number",
+                                                    "maximum": -1
                                                   }
                                                 },
                                                 "additionalProperties": false
@@ -1936,7 +2209,8 @@ export const schema = {
                                             "additionalProperties": false
                                           },
                                           "username": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "responseChoices": {
                                             "type": "array",
@@ -1944,13 +2218,15 @@ export const schema = {
                                               "type": "object",
                                               "properties": {
                                                 "content": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 },
                                                 "goodIdea": {
                                                   "type": "boolean"
                                                 },
                                                 "feedback": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -1979,6 +2255,184 @@ export const schema = {
                                     ],
                                     "additionalProperties": false,
                                     "title": "select-conversation"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "format": null,
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "format": null,
+                                        "enum": [
+                                          "template-mail"
+                                        ]
+                                      },
+                                      "props": {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "subject": {
+                                            "type": "string",
+                                            "format": null
+                                          },
+                                          "mailAddress": {
+                                            "type": "string",
+                                            "format": null
+                                          },
+                                          "avatarColor": {
+                                            "type": "string",
+                                            "format": null
+                                          },
+                                          "expeditor": {
+                                            "type": "string",
+                                            "format": null
+                                          },
+                                          "content": {
+                                            "type": "string",
+                                            "format": null
+                                          },
+                                          "time": {
+                                            "type": "object",
+                                            "properties": {
+                                              "days": {
+                                                "type": "number",
+                                                "maximum": -1
+                                              },
+                                              "minutes": {
+                                                "type": "number",
+                                                "maximum": -1
+                                              }
+                                            },
+                                            "additionalProperties": false
+                                          },
+                                          "previousMail": {
+                                            "type": "object",
+                                            "properties": {
+                                              "name": {
+                                                "type": "string",
+                                                "format": null
+                                              },
+                                              "content": {
+                                                "type": "string",
+                                                "format": null
+                                              },
+                                              "time": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "days": {
+                                                    "type": "number",
+                                                    "maximum": -1
+                                                  },
+                                                  "minutes": {
+                                                    "type": "number",
+                                                    "maximum": -1
+                                                  }
+                                                },
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "name",
+                                              "content",
+                                              "time"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        },
+                                        "required": [
+                                          "subject",
+                                          "mailAddress",
+                                          "expeditor",
+                                          "content",
+                                          "time"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "template-mail"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "format": null,
+                                        "enum": [
+                                          "custom"
+                                        ]
+                                      },
+                                      "instruction": {
+                                        "type": "string",
+                                        "format": "jodit"
+                                      },
+                                      "tagName": {
+                                        "type": "string",
+                                        "format": null,
+                                        "enum": [
+                                          "test-top-mdp"
+                                        ]
+                                      },
+                                      "props": {
+                                        "type": "object",
+                                        "properties": {
+                                          "titleLevel": {
+                                            "type": "number"
+                                          },
+                                          "passwords": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "format": null,
+                                              "title": "password"
+                                            }
+                                          },
+                                          "expectedPassword": {
+                                            "type": "string",
+                                            "format": null
+                                          }
+                                        },
+                                        "required": [
+                                          "passwords",
+                                          "expectedPassword"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "instruction",
+                                      "tagName"
+                                    ],
+                                    "additionalProperties": false,
+                                    "title": "test-top-mdp"
                                   }
                                 ],
                                 "title": "custom"
@@ -1992,12 +2446,14 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "custom-draft"
                                     ]
                                   },
                                   "title": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "url": {
                                     "type": "string",
@@ -2033,6 +2489,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "download"
                                     ]
@@ -2047,7 +2504,8 @@ export const schema = {
                                           "format": "uri"
                                         },
                                         "format": {
-                                          "type": "string"
+                                          "type": "string",
+                                          "format": null
                                         }
                                       },
                                       "required": [
@@ -2076,6 +2534,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "embed"
                                     ]
@@ -2084,7 +2543,8 @@ export const schema = {
                                     "type": "boolean"
                                   },
                                   "title": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "url": {
                                     "type": "string",
@@ -2095,7 +2555,8 @@ export const schema = {
                                     "format": "jodit"
                                   },
                                   "solution": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "height": {
                                     "type": "number",
@@ -2122,12 +2583,14 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "expand"
                                     ]
                                   },
                                   "title": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "content": {
                                     "type": "string",
@@ -2152,6 +2615,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "flashcards"
                                     ]
@@ -2161,7 +2625,8 @@ export const schema = {
                                     "format": "jodit"
                                   },
                                   "title": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "introImage": {
                                     "type": "object",
@@ -2202,7 +2667,8 @@ export const schema = {
                                               "additionalProperties": false
                                             },
                                             "text": {
-                                              "type": "string"
+                                              "type": "string",
+                                              "format": null
                                             }
                                           },
                                           "required": [
@@ -2262,6 +2728,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "image"
                                     ]
@@ -2271,17 +2738,20 @@ export const schema = {
                                     "format": "uri"
                                   },
                                   "alt": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "alternativeText": {
                                     "type": "string",
                                     "format": "jodit"
                                   },
                                   "legend": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "licence": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   }
                                 },
                                 "required": [
@@ -2302,6 +2772,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "qab"
                                     ]
@@ -2321,7 +2792,8 @@ export const schema = {
                                           "format": "uuid"
                                         },
                                         "text": {
-                                          "type": "string"
+                                          "type": "string",
+                                          "format": null
                                         },
                                         "image": {
                                           "type": "object",
@@ -2331,7 +2803,8 @@ export const schema = {
                                               "format": "uri"
                                             },
                                             "altText": {
-                                              "type": "string"
+                                              "type": "string",
+                                              "format": null
                                             }
                                           },
                                           "required": [
@@ -2341,13 +2814,16 @@ export const schema = {
                                           "additionalProperties": false
                                         },
                                         "proposalA": {
-                                          "type": "string"
+                                          "type": "string",
+                                          "format": null
                                         },
                                         "proposalB": {
-                                          "type": "string"
+                                          "type": "string",
+                                          "format": null
                                         },
                                         "solution": {
-                                          "type": "string"
+                                          "type": "string",
+                                          "format": null
                                         }
                                       },
                                       "required": [
@@ -2394,6 +2870,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "qcu"
                                     ]
@@ -2412,6 +2889,7 @@ export const schema = {
                                       "properties": {
                                         "id": {
                                           "type": "string",
+                                          "format": null,
                                           "pattern": "^[0-9]+$"
                                         },
                                         "content": {
@@ -2448,9 +2926,20 @@ export const schema = {
                                   },
                                   "solution": {
                                     "type": "string",
+                                    "format": null,
                                     "pattern": "^[0-9]+$"
                                   }
                                 },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "hasShortProposals",
+                                  "proposals",
+                                  "solution"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qcu",
                                 "if": {
                                   "properties": {
                                     "hasShortProposals": {
@@ -2460,6 +2949,24 @@ export const schema = {
                                 },
                                 "then": {
                                   "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "format": null,
+                                      "enum": [
+                                        "qcu"
+                                      ]
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "hasShortProposals": {
+                                      "type": "boolean"
+                                    },
                                     "proposals": {
                                       "type": "array",
                                       "items": {
@@ -2467,11 +2974,13 @@ export const schema = {
                                         "properties": {
                                           "id": {
                                             "type": "string",
+                                            "format": null,
                                             "pattern": "^[0-9]+$"
                                           },
                                           "content": {
-                                            "maxLength": 20,
-                                            "format": null
+                                            "type": "string",
+                                            "format": null,
+                                            "maxLength": 20
                                           },
                                           "feedback": {
                                             "type": "object",
@@ -2501,18 +3010,13 @@ export const schema = {
                                         "title": "proposal"
                                       }
                                     },
+                                    "solution": {
+                                      "type": "string",
+                                      "format": null,
+                                      "pattern": "^[0-9]+$"
+                                    }
                                   }
-                                },
-                                "required": [
-                                  "id",
-                                  "type",
-                                  "instruction",
-                                  "hasShortProposals",
-                                  "proposals",
-                                  "solution"
-                                ],
-                                "additionalProperties": false,
-                                "title": "qcu"
+                                }
                               },
                               {
                                 "type": "object",
@@ -2523,6 +3027,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "qcu-declarative"
                                     ]
@@ -2541,6 +3046,7 @@ export const schema = {
                                       "properties": {
                                         "id": {
                                           "type": "string",
+                                          "format": null,
                                           "pattern": "^[0-9]+$"
                                         },
                                         "content": {
@@ -2571,6 +3077,15 @@ export const schema = {
                                     }
                                   }
                                 },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "hasShortProposals",
+                                  "proposals"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qcu-declarative",
                                 "if": {
                                   "properties": {
                                     "hasShortProposals": {
@@ -2580,6 +3095,24 @@ export const schema = {
                                 },
                                 "then": {
                                   "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "format": null,
+                                      "enum": [
+                                        "qcu-declarative"
+                                      ]
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "hasShortProposals": {
+                                      "type": "boolean"
+                                    },
                                     "proposals": {
                                       "type": "array",
                                       "items": {
@@ -2587,11 +3120,13 @@ export const schema = {
                                         "properties": {
                                           "id": {
                                             "type": "string",
+                                            "format": null,
                                             "pattern": "^[0-9]+$"
                                           },
                                           "content": {
-                                            "maxLength": 20,
-                                            "format": null
+                                            "type": "string",
+                                            "format": null,
+                                            "maxLength": 20
                                           },
                                           "feedback": {
                                             "type": "object",
@@ -2617,16 +3152,7 @@ export const schema = {
                                       }
                                     }
                                   }
-                                },
-                                "required": [
-                                  "id",
-                                  "type",
-                                  "instruction",
-                                  "hasShortProposals",
-                                  "proposals"
-                                ],
-                                "additionalProperties": false,
-                                "title": "qcu-declarative"
+                                }
                               },
                               {
                                 "type": "object",
@@ -2637,6 +3163,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "qcu-discovery"
                                     ]
@@ -2655,6 +3182,7 @@ export const schema = {
                                       "properties": {
                                         "id": {
                                           "type": "string",
+                                          "format": null,
                                           "pattern": "^[0-9]+$"
                                         },
                                         "content": {
@@ -2686,9 +3214,20 @@ export const schema = {
                                   },
                                   "solution": {
                                     "type": "string",
+                                    "format": null,
                                     "pattern": "^[0-9]+$"
                                   }
                                 },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "hasShortProposals",
+                                  "proposals",
+                                  "solution"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qcu-discovery",
                                 "if": {
                                   "properties": {
                                     "hasShortProposals": {
@@ -2698,6 +3237,24 @@ export const schema = {
                                 },
                                 "then": {
                                   "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "format": null,
+                                      "enum": [
+                                        "qcu-discovery"
+                                      ]
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "hasShortProposals": {
+                                      "type": "boolean"
+                                    },
                                     "proposals": {
                                       "type": "array",
                                       "items": {
@@ -2705,11 +3262,13 @@ export const schema = {
                                         "properties": {
                                           "id": {
                                             "type": "string",
+                                            "format": null,
                                             "pattern": "^[0-9]+$"
                                           },
                                           "content": {
-                                            "maxLength": 20,
-                                            "format": null
+                                            "type": "string",
+                                            "format": null,
+                                            "maxLength": 20
                                           },
                                           "feedback": {
                                             "type": "object",
@@ -2734,18 +3293,13 @@ export const schema = {
                                         "title": "proposal"
                                       }
                                     },
+                                    "solution": {
+                                      "type": "string",
+                                      "format": null,
+                                      "pattern": "^[0-9]+$"
+                                    }
                                   }
-                                },
-                                "required": [
-                                  "id",
-                                  "type",
-                                  "instruction",
-                                  "hasShortProposals",
-                                  "proposals",
-                                  "solution"
-                                ],
-                                "additionalProperties": false,
-                                "title": "qcu-discovery"
+                                }
                               },
                               {
                                 "type": "object",
@@ -2756,7 +3310,10 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
-                                    "enum": ["qcm"]
+                                    "format": null,
+                                    "enum": [
+                                      "qcm"
+                                    ]
                                   },
                                   "instruction": {
                                     "type": "string",
@@ -2773,6 +3330,7 @@ export const schema = {
                                       "properties": {
                                         "id": {
                                           "type": "string",
+                                          "format": null,
                                           "pattern": "^[0-9]+$"
                                         },
                                         "content": {
@@ -2780,6 +3338,10 @@ export const schema = {
                                           "format": "jodit"
                                         }
                                       },
+                                      "required": [
+                                        "id",
+                                        "content"
+                                      ],
                                       "additionalProperties": false,
                                       "title": "proposal"
                                     }
@@ -2799,7 +3361,10 @@ export const schema = {
                                             "format": "jodit"
                                           }
                                         },
-                                        "required": ["state", "diagnosis"],
+                                        "required": [
+                                          "state",
+                                          "diagnosis"
+                                        ],
                                         "additionalProperties": false
                                       },
                                       "invalid": {
@@ -2814,7 +3379,10 @@ export const schema = {
                                             "format": "jodit"
                                           }
                                         },
-                                        "required": ["state", "diagnosis"],
+                                        "required": [
+                                          "state",
+                                          "diagnosis"
+                                        ],
                                         "additionalProperties": false
                                       }
                                     },
@@ -2825,11 +3393,23 @@ export const schema = {
                                     "minItems": 2,
                                     "items": {
                                       "type": "string",
+                                      "format": null,
                                       "pattern": "^[0-9]+$",
                                       "title": "solution"
                                     }
                                   }
                                 },
+                                "required": [
+                                  "id",
+                                  "type",
+                                  "instruction",
+                                  "hasShortProposals",
+                                  "proposals",
+                                  "feedbacks",
+                                  "solutions"
+                                ],
+                                "additionalProperties": false,
+                                "title": "qcm",
                                 "if": {
                                   "properties": {
                                     "hasShortProposals": {
@@ -2839,6 +3419,24 @@ export const schema = {
                                 },
                                 "then": {
                                   "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "format": "uuid"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "format": null,
+                                      "enum": [
+                                        "qcm"
+                                      ]
+                                    },
+                                    "instruction": {
+                                      "type": "string",
+                                      "format": "jodit"
+                                    },
+                                    "hasShortProposals": {
+                                      "type": "boolean"
+                                    },
                                     "proposals": {
                                       "type": "array",
                                       "minItems": 3,
@@ -2847,30 +3445,77 @@ export const schema = {
                                         "properties": {
                                           "id": {
                                             "type": "string",
+                                            "format": null,
                                             "pattern": "^[0-9]+$"
                                           },
                                           "content": {
-                                            "maxLength": 20,
+                                            "type": "string",
                                             "format": null,
+                                            "maxLength": 20
                                           }
                                         },
+                                        "required": [
+                                          "id",
+                                          "content"
+                                        ],
                                         "additionalProperties": false,
                                         "title": "proposal"
                                       }
+                                    },
+                                    "feedbacks": {
+                                      "type": "object",
+                                      "properties": {
+                                        "valid": {
+                                          "type": "object",
+                                          "properties": {
+                                            "state": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "required": [
+                                            "state",
+                                            "diagnosis"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        "invalid": {
+                                          "type": "object",
+                                          "properties": {
+                                            "state": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "diagnosis": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            }
+                                          },
+                                          "required": [
+                                            "state",
+                                            "diagnosis"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "solutions": {
+                                      "type": "array",
+                                      "minItems": 2,
+                                      "items": {
+                                        "type": "string",
+                                        "format": null,
+                                        "pattern": "^[0-9]+$",
+                                        "title": "solution"
+                                      }
                                     }
                                   }
-                                },
-                                "required": [
-                                  "id",
-                                  "type",
-                                  "instruction",
-                                  "proposals",
-                                  "feedbacks",
-                                  "solutions",
-                                  "hasShortProposals"
-                                ],
-                                "additionalProperties": false,
-                                "title": "qcm"
+                                }
                               },
                               {
                                 "type": "object",
@@ -2881,6 +3526,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "qrocm"
                                     ]
@@ -2898,6 +3544,7 @@ export const schema = {
                                           "properties": {
                                             "type": {
                                               "type": "string",
+                                              "format": null,
                                               "enum": [
                                                 "text"
                                               ]
@@ -2917,16 +3564,19 @@ export const schema = {
                                           "type": "object",
                                           "properties": {
                                             "input": {
-                                              "type": "string"
+                                              "type": "string",
+                                              "format": null
                                             },
                                             "type": {
                                               "type": "string",
+                                              "format": null,
                                               "enum": [
                                                 "input"
                                               ]
                                             },
                                             "inputType": {
                                               "type": "string",
+                                              "format": null,
                                               "enum": [
                                                 "text",
                                                 "number"
@@ -2938,22 +3588,26 @@ export const schema = {
                                             },
                                             "display": {
                                               "type": "string",
+                                              "format": null,
                                               "enum": [
                                                 "inline",
                                                 "block"
                                               ]
                                             },
                                             "placeholder": {
-                                              "type": "string"
+                                              "type": "string",
+                                              "format": null
                                             },
                                             "ariaLabel": {
-                                              "type": "string"
+                                              "type": "string",
+                                              "format": null
                                             },
                                             "tolerances": {
                                               "type": "array",
                                               "uniqueItems": true,
                                               "items": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "t1",
                                                   "t2",
@@ -2968,6 +3622,7 @@ export const schema = {
                                                 "oneOf": [
                                                   {
                                                     "type": "string",
+                                                    "format": null,
                                                     "minLength": 1
                                                   },
                                                   {
@@ -2997,26 +3652,31 @@ export const schema = {
                                           "type": "object",
                                           "properties": {
                                             "input": {
-                                              "type": "string"
+                                              "type": "string",
+                                              "format": null
                                             },
                                             "type": {
                                               "type": "string",
+                                              "format": null,
                                               "enum": [
                                                 "select"
                                               ]
                                             },
                                             "display": {
                                               "type": "string",
+                                              "format": null,
                                               "enum": [
                                                 "inline",
                                                 "block"
                                               ]
                                             },
                                             "placeholder": {
-                                              "type": "string"
+                                              "type": "string",
+                                              "format": null
                                             },
                                             "ariaLabel": {
-                                              "type": "string"
+                                              "type": "string",
+                                              "format": null
                                             },
                                             "tolerances": {
                                               "type": "array"
@@ -3028,10 +3688,12 @@ export const schema = {
                                                 "properties": {
                                                   "id": {
                                                     "type": "string",
+                                                    "format": null,
                                                     "pattern": "^[0-9]+$"
                                                   },
                                                   "content": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   }
                                                 },
                                                 "required": [
@@ -3045,6 +3707,7 @@ export const schema = {
                                               "type": "array",
                                               "items": {
                                                 "type": "string",
+                                                "format": null,
                                                 "pattern": "^[0-9]+$",
                                                 "title": "solution"
                                               }
@@ -3129,6 +3792,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "separator"
                                     ]
@@ -3150,12 +3814,14 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "short-video"
                                     ]
                                   },
                                   "title": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "url": {
                                     "type": "string",
@@ -3184,6 +3850,7 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "text"
                                     ]
@@ -3209,12 +3876,14 @@ export const schema = {
                                   },
                                   "type": {
                                     "type": "string",
+                                    "format": null,
                                     "enum": [
                                       "video"
                                     ]
                                   },
                                   "title": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": null
                                   },
                                   "url": {
                                     "type": "string",
@@ -3258,6 +3927,7 @@ export const schema = {
                         "properties": {
                           "type": {
                             "type": "string",
+                            "format": null,
                             "enum": [
                               "stepper"
                             ]
@@ -3281,12 +3951,14 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "audio"
                                             ]
                                           },
                                           "title": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "url": {
                                             "type": "string",
@@ -3318,6 +3990,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -3328,6 +4001,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "calcul-impact"
                                                 ]
@@ -3360,6 +4034,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -3370,6 +4045,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "capacity-calculation"
                                                 ]
@@ -3381,7 +4057,8 @@ export const schema = {
                                                     "type": "number"
                                                   },
                                                   "capacityImage": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   }
                                                 },
                                                 "required": [
@@ -3408,6 +4085,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -3418,6 +4096,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "clickable-image"
                                                 ]
@@ -3429,10 +4108,12 @@ export const schema = {
                                                     "type": "object",
                                                     "properties": {
                                                       "src": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       },
                                                       "alt": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       },
                                                       "width": {
                                                         "type": "number"
@@ -3490,10 +4171,12 @@ export const schema = {
                                                           "additionalProperties": false
                                                         },
                                                         "info": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "tooltipPosition": {
                                                           "type": "string",
+                                                          "format": null,
                                                           "enum": [
                                                             "bottom"
                                                           ]
@@ -3533,6 +4216,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -3543,6 +4227,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "complete-phrase"
                                                 ]
@@ -3561,7 +4246,8 @@ export const schema = {
                                                         "type": "object",
                                                         "properties": {
                                                           "name": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "format": null
                                                           },
                                                           "percent": {
                                                             "type": "integer"
@@ -3577,15 +4263,18 @@ export const schema = {
                                                     }
                                                   },
                                                   "userMessage": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "llmMessage": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "wordsToAdd": {
                                                     "type": "array",
                                                     "items": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "title": "wordsToAdd"
                                                     }
                                                   }
@@ -3617,6 +4306,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -3627,6 +4317,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "flip-cards"
                                                 ]
@@ -3638,7 +4329,8 @@ export const schema = {
                                                     "type": "number"
                                                   },
                                                   "name": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "cardList": {
                                                     "type": "array",
@@ -3646,16 +4338,20 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "name": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "description": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "icon": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "image": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -3694,6 +4390,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -3704,6 +4401,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "image-quiz"
                                                 ]
@@ -3712,10 +4410,15 @@ export const schema = {
                                                 "type": "object",
                                                 "properties": {
                                                   "name": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "multiple": {
                                                     "type": "boolean"
+                                                  },
+                                                  "context": {
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "maxChoicesPerLine": {
                                                     "type": "number"
@@ -3728,6 +4431,7 @@ export const schema = {
                                                   },
                                                   "imageChoicesSize": {
                                                     "type": "string",
+                                                    "format": null,
                                                     "enum": [
                                                       "icon",
                                                       "medium",
@@ -3740,13 +4444,15 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "name": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "image": {
                                                           "type": "object",
                                                           "properties": {
                                                             "src": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             }
                                                           },
                                                           "required": [
@@ -3755,7 +4461,8 @@ export const schema = {
                                                           "additionalProperties": true
                                                         },
                                                         "response": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -3792,6 +4499,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -3802,6 +4510,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "image-quizzes"
                                                 ]
@@ -3815,10 +4524,15 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "name": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "multiple": {
                                                           "type": "boolean"
+                                                        },
+                                                        "context": {
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "maxChoicesPerLine": {
                                                           "type": "number"
@@ -3831,6 +4545,7 @@ export const schema = {
                                                         },
                                                         "imageChoicesSize": {
                                                           "type": "string",
+                                                          "format": null,
                                                           "enum": [
                                                             "icon",
                                                             "medium",
@@ -3843,13 +4558,15 @@ export const schema = {
                                                             "type": "object",
                                                             "properties": {
                                                               "name": {
-                                                                "type": "string"
+                                                                "type": "string",
+                                                                "format": null
                                                               },
                                                               "image": {
                                                                 "type": "object",
                                                                 "properties": {
                                                                   "src": {
-                                                                    "type": "string"
+                                                                    "type": "string",
+                                                                    "format": null
                                                                   }
                                                                 },
                                                                 "required": [
@@ -3858,7 +4575,8 @@ export const schema = {
                                                                 "additionalProperties": true
                                                               },
                                                               "response": {
-                                                                "type": "string"
+                                                                "type": "string",
+                                                                "format": null
                                                               }
                                                             },
                                                             "required": [
@@ -3903,6 +4621,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -3913,6 +4632,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "message-conversation"
                                                 ]
@@ -3921,7 +4641,8 @@ export const schema = {
                                                 "type": "object",
                                                 "properties": {
                                                   "title": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "messages": {
                                                     "type": "array",
@@ -3931,10 +4652,12 @@ export const schema = {
                                                           "type": "object",
                                                           "properties": {
                                                             "userName": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "direction": {
                                                               "type": "string",
+                                                              "format": null,
                                                               "enum": [
                                                                 "incoming",
                                                                 "outgoing"
@@ -3942,12 +4665,14 @@ export const schema = {
                                                             },
                                                             "type": {
                                                               "type": "string",
+                                                              "format": null,
                                                               "enum": [
                                                                 "Texte"
                                                               ]
                                                             },
                                                             "content": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             }
                                                           },
                                                           "required": [
@@ -3963,10 +4688,12 @@ export const schema = {
                                                           "type": "object",
                                                           "properties": {
                                                             "userName": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "direction": {
                                                               "type": "string",
+                                                              "format": null,
                                                               "enum": [
                                                                 "incoming",
                                                                 "outgoing"
@@ -3974,21 +4701,25 @@ export const schema = {
                                                             },
                                                             "type": {
                                                               "type": "string",
+                                                              "format": null,
                                                               "enum": [
                                                                 "Texte + Image"
                                                               ]
                                                             },
                                                             "content": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "image": {
                                                               "type": "object",
                                                               "properties": {
                                                                 "src": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 },
                                                                 "alt": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 }
                                                               },
                                                               "required": [
@@ -4012,10 +4743,12 @@ export const schema = {
                                                           "type": "object",
                                                           "properties": {
                                                             "userName": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "direction": {
                                                               "type": "string",
+                                                              "format": null,
                                                               "enum": [
                                                                 "incoming",
                                                                 "outgoing"
@@ -4023,6 +4756,7 @@ export const schema = {
                                                             },
                                                             "type": {
                                                               "type": "string",
+                                                              "format": null,
                                                               "enum": [
                                                                 "Image seule"
                                                               ]
@@ -4031,10 +4765,12 @@ export const schema = {
                                                               "type": "object",
                                                               "properties": {
                                                                 "src": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 },
                                                                 "alt": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 }
                                                               },
                                                               "required": [
@@ -4087,6 +4823,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4097,6 +4834,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "phishing-message"
                                                 ]
@@ -4129,6 +4867,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4139,6 +4878,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "phishing-notification"
                                                 ]
@@ -4152,16 +4892,20 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "icon": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "sender": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "content": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "category": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "time": {
                                                           "type": "object",
@@ -4193,10 +4937,12 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "name": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "icon": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -4208,7 +4954,8 @@ export const schema = {
                                                     }
                                                   },
                                                   "informationMessage": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "titleLevel": {
                                                     "type": "number"
@@ -4240,6 +4987,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4250,6 +4998,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "pix-anonymisation"
                                                 ]
@@ -4271,7 +5020,8 @@ export const schema = {
                                                             "type": "object",
                                                             "properties": {
                                                               "content": {
-                                                                "type": "string"
+                                                                "type": "string",
+                                                                "format": null
                                                               },
                                                               "isAnonymizable": {
                                                                 "type": "boolean"
@@ -4285,10 +5035,12 @@ export const schema = {
                                                           }
                                                         },
                                                         "rephrase": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "feedback": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -4321,6 +5073,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4331,6 +5084,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "pix-article"
                                                 ]
@@ -4342,26 +5096,32 @@ export const schema = {
                                                     "type": "number"
                                                   },
                                                   "title": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "author": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "date": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "paragraphs": {
                                                     "type": "array",
                                                     "items": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "title": "paragraph"
                                                     }
                                                   },
                                                   "highlightedSentence": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "colorOfHighlightSentence": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   }
                                                 },
                                                 "required": [
@@ -4390,6 +5150,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4400,6 +5161,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "pix-carousel"
                                                 ]
@@ -4409,6 +5171,7 @@ export const schema = {
                                                 "properties": {
                                                   "type": {
                                                     "type": "string",
+                                                    "format": null,
                                                     "enum": [
                                                       "image",
                                                       "image-text",
@@ -4423,10 +5186,12 @@ export const schema = {
                                                           "type": "object",
                                                           "properties": {
                                                             "title": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "description": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "displayWidth": {
                                                               "type": "number",
@@ -4436,10 +5201,12 @@ export const schema = {
                                                               "type": "object",
                                                               "properties": {
                                                                 "src": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 },
                                                                 "alt": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 }
                                                               },
                                                               "required": [
@@ -4452,13 +5219,16 @@ export const schema = {
                                                               "type": "object",
                                                               "properties": {
                                                                 "name": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 },
                                                                 "attribution": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 },
                                                                 "url": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 }
                                                               },
                                                               "required": [
@@ -4484,22 +5254,27 @@ export const schema = {
                                                           "type": "object",
                                                           "properties": {
                                                             "title": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "description": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "text": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "image": {
                                                               "type": "object",
                                                               "properties": {
                                                                 "src": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 },
                                                                 "alt": {
-                                                                  "type": "string"
+                                                                  "type": "string",
+                                                                  "format": null
                                                                 }
                                                               },
                                                               "required": [
@@ -4525,13 +5300,16 @@ export const schema = {
                                                           "type": "object",
                                                           "properties": {
                                                             "title": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "description": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             },
                                                             "text": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             }
                                                           },
                                                           "required": [
@@ -4561,7 +5339,8 @@ export const schema = {
                                                     "type": "boolean"
                                                   },
                                                   "imageTextDisplay": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   }
                                                 },
                                                 "required": [
@@ -4590,6 +5369,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4600,6 +5380,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "pix-cursor"
                                                 ]
@@ -4613,13 +5394,15 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "label": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "feedback": {
                                                           "type": "object",
                                                           "properties": {
                                                             "type": {
                                                               "type": "string",
+                                                              "format": null,
                                                               "enum": [
                                                                 "bad",
                                                                 "neutral",
@@ -4628,7 +5411,8 @@ export const schema = {
                                                               ]
                                                             },
                                                             "text": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             }
                                                           },
                                                           "required": [
@@ -4671,6 +5455,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4681,6 +5466,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "llm-compare-messages"
                                                 ]
@@ -4692,10 +5478,12 @@ export const schema = {
                                                     "type": "object",
                                                     "properties": {
                                                       "title": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       },
                                                       "llmName": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       }
                                                     },
                                                     "required": [
@@ -4708,10 +5496,12 @@ export const schema = {
                                                     "type": "object",
                                                     "properties": {
                                                       "title": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       },
                                                       "llmName": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       }
                                                     },
                                                     "required": [
@@ -4721,7 +5511,8 @@ export const schema = {
                                                     "additionalProperties": false
                                                   },
                                                   "userName": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "messages": {
                                                     "type": "array",
@@ -4732,12 +5523,14 @@ export const schema = {
                                                           "properties": {
                                                             "direction": {
                                                               "type": "string",
+                                                              "format": null,
                                                               "enum": [
                                                                 "outbound"
                                                               ]
                                                             },
                                                             "content": {
-                                                              "type": "string"
+                                                              "type": "string",
+                                                              "format": null
                                                             }
                                                           },
                                                           "required": [
@@ -4754,12 +5547,14 @@ export const schema = {
                                                             "properties": {
                                                               "direction": {
                                                                 "type": "string",
+                                                                "format": null,
                                                                 "enum": [
                                                                   "inbound"
                                                                 ]
                                                               },
                                                               "content": {
-                                                                "type": "string"
+                                                                "type": "string",
+                                                                "format": null
                                                               }
                                                             },
                                                             "required": [
@@ -4802,6 +5597,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4812,6 +5608,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "llm-messages"
                                                 ]
@@ -4826,13 +5623,15 @@ export const schema = {
                                                       "properties": {
                                                         "direction": {
                                                           "type": "string",
+                                                          "format": null,
                                                           "enum": [
                                                             "inbound",
                                                             "outbound"
                                                           ]
                                                         },
                                                         "content": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -4869,6 +5668,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4879,6 +5679,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "llm-prompt-select"
                                                 ]
@@ -4897,13 +5698,15 @@ export const schema = {
                                                       "properties": {
                                                         "direction": {
                                                           "type": "string",
+                                                          "format": null,
                                                           "enum": [
                                                             "inbound",
                                                             "outbound"
                                                           ]
                                                         },
                                                         "content": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -4920,10 +5723,12 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "prompt": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "response": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -4961,6 +5766,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -4971,6 +5777,7 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "qcm-deepfake"
                                                 ]
@@ -4982,16 +5789,20 @@ export const schema = {
                                                     "type": "number"
                                                   },
                                                   "successImage": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "failImage": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "infoImage": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "searchImage": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   }
                                                 },
                                                 "required": [
@@ -5021,6 +5832,7 @@ export const schema = {
                                               },
                                               "type": {
                                                 "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "custom"
                                                 ]
@@ -5031,6 +5843,123 @@ export const schema = {
                                               },
                                               "tagName": {
                                                 "type": "string",
+                                                "format": null,
+                                                "enum": [
+                                                  "quiz-stepper"
+                                                ]
+                                              },
+                                              "props": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "steps": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "question": {
+                                                          "type": "string",
+                                                          "format": null
+                                                        },
+                                                        "feedback": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "success": {
+                                                              "type": "string",
+                                                              "format": null
+                                                            },
+                                                            "failed": {
+                                                              "type": "string",
+                                                              "format": null
+                                                            }
+                                                          },
+                                                          "required": [
+                                                            "success",
+                                                            "failed"
+                                                          ],
+                                                          "additionalProperties": false
+                                                        },
+                                                        "choice1": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "title": {
+                                                              "type": "string",
+                                                              "format": null
+                                                            },
+                                                            "content": {
+                                                              "type": "string",
+                                                              "format": null
+                                                            },
+                                                            "isGoodAnswer": {
+                                                              "type": "boolean"
+                                                            }
+                                                          },
+                                                          "additionalProperties": false
+                                                        },
+                                                        "choice2": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "title": {
+                                                              "type": "string",
+                                                              "format": null
+                                                            },
+                                                            "content": {
+                                                              "type": "string",
+                                                              "format": null
+                                                            },
+                                                            "isGoodAnswer": {
+                                                              "type": "boolean"
+                                                            }
+                                                          },
+                                                          "additionalProperties": false
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "question",
+                                                        "feedback",
+                                                        "choice1",
+                                                        "choice2"
+                                                      ],
+                                                      "additionalProperties": false,
+                                                      "title": "step"
+                                                    }
+                                                  }
+                                                },
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "quiz-stepper"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "format": null,
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "format": null,
                                                 "enum": [
                                                   "select-conversation"
                                                 ]
@@ -5045,19 +5974,23 @@ export const schema = {
                                                     "type": "object",
                                                     "properties": {
                                                       "username": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       },
                                                       "content": {
-                                                        "type": "string"
+                                                        "type": "string",
+                                                        "format": null
                                                       },
                                                       "time": {
                                                         "type": "object",
                                                         "properties": {
                                                           "days": {
-                                                            "type": "number"
+                                                            "type": "number",
+                                                            "maximum": -1
                                                           },
                                                           "minutes": {
-                                                            "type": "number"
+                                                            "type": "number",
+                                                            "maximum": -1
                                                           }
                                                         },
                                                         "additionalProperties": false
@@ -5071,7 +6004,8 @@ export const schema = {
                                                     "additionalProperties": false
                                                   },
                                                   "username": {
-                                                    "type": "string"
+                                                    "type": "string",
+                                                    "format": null
                                                   },
                                                   "responseChoices": {
                                                     "type": "array",
@@ -5079,13 +6013,15 @@ export const schema = {
                                                       "type": "object",
                                                       "properties": {
                                                         "content": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         },
                                                         "goodIdea": {
                                                           "type": "boolean"
                                                         },
                                                         "feedback": {
-                                                          "type": "string"
+                                                          "type": "string",
+                                                          "format": null
                                                         }
                                                       },
                                                       "required": [
@@ -5114,6 +6050,184 @@ export const schema = {
                                             ],
                                             "additionalProperties": false,
                                             "title": "select-conversation"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "format": null,
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "format": null,
+                                                "enum": [
+                                                  "template-mail"
+                                                ]
+                                              },
+                                              "props": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "subject": {
+                                                    "type": "string",
+                                                    "format": null
+                                                  },
+                                                  "mailAddress": {
+                                                    "type": "string",
+                                                    "format": null
+                                                  },
+                                                  "avatarColor": {
+                                                    "type": "string",
+                                                    "format": null
+                                                  },
+                                                  "expeditor": {
+                                                    "type": "string",
+                                                    "format": null
+                                                  },
+                                                  "content": {
+                                                    "type": "string",
+                                                    "format": null
+                                                  },
+                                                  "time": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "days": {
+                                                        "type": "number",
+                                                        "maximum": -1
+                                                      },
+                                                      "minutes": {
+                                                        "type": "number",
+                                                        "maximum": -1
+                                                      }
+                                                    },
+                                                    "additionalProperties": false
+                                                  },
+                                                  "previousMail": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "name": {
+                                                        "type": "string",
+                                                        "format": null
+                                                      },
+                                                      "content": {
+                                                        "type": "string",
+                                                        "format": null
+                                                      },
+                                                      "time": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "days": {
+                                                            "type": "number",
+                                                            "maximum": -1
+                                                          },
+                                                          "minutes": {
+                                                            "type": "number",
+                                                            "maximum": -1
+                                                          }
+                                                        },
+                                                        "additionalProperties": false
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "name",
+                                                      "content",
+                                                      "time"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  }
+                                                },
+                                                "required": [
+                                                  "subject",
+                                                  "mailAddress",
+                                                  "expeditor",
+                                                  "content",
+                                                  "time"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "template-mail"
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "format": null,
+                                                "enum": [
+                                                  "custom"
+                                                ]
+                                              },
+                                              "instruction": {
+                                                "type": "string",
+                                                "format": "jodit"
+                                              },
+                                              "tagName": {
+                                                "type": "string",
+                                                "format": null,
+                                                "enum": [
+                                                  "test-top-mdp"
+                                                ]
+                                              },
+                                              "props": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "titleLevel": {
+                                                    "type": "number"
+                                                  },
+                                                  "passwords": {
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "string",
+                                                      "format": null,
+                                                      "title": "password"
+                                                    }
+                                                  },
+                                                  "expectedPassword": {
+                                                    "type": "string",
+                                                    "format": null
+                                                  }
+                                                },
+                                                "required": [
+                                                  "passwords",
+                                                  "expectedPassword"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "type",
+                                              "instruction",
+                                              "tagName"
+                                            ],
+                                            "additionalProperties": false,
+                                            "title": "test-top-mdp"
                                           }
                                         ],
                                         "title": "custom"
@@ -5127,12 +6241,14 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "custom-draft"
                                             ]
                                           },
                                           "title": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "url": {
                                             "type": "string",
@@ -5168,6 +6284,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "download"
                                             ]
@@ -5182,7 +6299,8 @@ export const schema = {
                                                   "format": "uri"
                                                 },
                                                 "format": {
-                                                  "type": "string"
+                                                  "type": "string",
+                                                  "format": null
                                                 }
                                               },
                                               "required": [
@@ -5211,6 +6329,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "embed"
                                             ]
@@ -5219,7 +6338,8 @@ export const schema = {
                                             "type": "boolean"
                                           },
                                           "title": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "url": {
                                             "type": "string",
@@ -5230,7 +6350,8 @@ export const schema = {
                                             "format": "jodit"
                                           },
                                           "solution": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "height": {
                                             "type": "number",
@@ -5257,12 +6378,14 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "expand"
                                             ]
                                           },
                                           "title": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "content": {
                                             "type": "string",
@@ -5287,6 +6410,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "image"
                                             ]
@@ -5296,17 +6420,20 @@ export const schema = {
                                             "format": "uri"
                                           },
                                           "alt": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "alternativeText": {
                                             "type": "string",
                                             "format": "jodit"
                                           },
                                           "legend": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "licence": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           }
                                         },
                                         "required": [
@@ -5327,6 +6454,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "qcu"
                                             ]
@@ -5345,6 +6473,7 @@ export const schema = {
                                               "properties": {
                                                 "id": {
                                                   "type": "string",
+                                                  "format": null,
                                                   "pattern": "^[0-9]+$"
                                                 },
                                                 "content": {
@@ -5381,9 +6510,20 @@ export const schema = {
                                           },
                                           "solution": {
                                             "type": "string",
+                                            "format": null,
                                             "pattern": "^[0-9]+$"
                                           }
                                         },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "instruction",
+                                          "hasShortProposals",
+                                          "proposals",
+                                          "solution"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qcu",
                                         "if": {
                                           "properties": {
                                             "hasShortProposals": {
@@ -5393,6 +6533,24 @@ export const schema = {
                                         },
                                         "then": {
                                           "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "format": "uuid"
+                                            },
+                                            "type": {
+                                              "type": "string",
+                                              "format": null,
+                                              "enum": [
+                                                "qcu"
+                                              ]
+                                            },
+                                            "instruction": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "hasShortProposals": {
+                                              "type": "boolean"
+                                            },
                                             "proposals": {
                                               "type": "array",
                                               "items": {
@@ -5400,11 +6558,13 @@ export const schema = {
                                                 "properties": {
                                                   "id": {
                                                     "type": "string",
+                                                    "format": null,
                                                     "pattern": "^[0-9]+$"
                                                   },
                                                   "content": {
-                                                    "maxLength": 20,
-                                                    "format": null
+                                                    "type": "string",
+                                                    "format": null,
+                                                    "maxLength": 20
                                                   },
                                                   "feedback": {
                                                     "type": "object",
@@ -5434,18 +6594,13 @@ export const schema = {
                                                 "title": "proposal"
                                               }
                                             },
+                                            "solution": {
+                                              "type": "string",
+                                              "format": null,
+                                              "pattern": "^[0-9]+$"
+                                            }
                                           }
-                                        },
-                                        "required": [
-                                          "id",
-                                          "type",
-                                          "instruction",
-                                          "hasShortProposals",
-                                          "proposals",
-                                          "solution"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "qcu"
+                                        }
                                       },
                                       {
                                         "type": "object",
@@ -5456,6 +6611,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "qcu-declarative"
                                             ]
@@ -5474,6 +6630,7 @@ export const schema = {
                                               "properties": {
                                                 "id": {
                                                   "type": "string",
+                                                  "format": null,
                                                   "pattern": "^[0-9]+$"
                                                 },
                                                 "content": {
@@ -5504,6 +6661,15 @@ export const schema = {
                                             }
                                           }
                                         },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "instruction",
+                                          "hasShortProposals",
+                                          "proposals"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qcu-declarative",
                                         "if": {
                                           "properties": {
                                             "hasShortProposals": {
@@ -5513,6 +6679,24 @@ export const schema = {
                                         },
                                         "then": {
                                           "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "format": "uuid"
+                                            },
+                                            "type": {
+                                              "type": "string",
+                                              "format": null,
+                                              "enum": [
+                                                "qcu-declarative"
+                                              ]
+                                            },
+                                            "instruction": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "hasShortProposals": {
+                                              "type": "boolean"
+                                            },
                                             "proposals": {
                                               "type": "array",
                                               "items": {
@@ -5520,11 +6704,13 @@ export const schema = {
                                                 "properties": {
                                                   "id": {
                                                     "type": "string",
+                                                    "format": null,
                                                     "pattern": "^[0-9]+$"
                                                   },
                                                   "content": {
-                                                    "maxLength": 20,
-                                                    "format": null
+                                                    "type": "string",
+                                                    "format": null,
+                                                    "maxLength": 20
                                                   },
                                                   "feedback": {
                                                     "type": "object",
@@ -5548,18 +6734,9 @@ export const schema = {
                                                 "additionalProperties": false,
                                                 "title": "proposal"
                                               }
-                                            },
+                                            }
                                           }
-                                        },
-                                        "required": [
-                                          "id",
-                                          "type",
-                                          "instruction",
-                                          "hasShortProposals",
-                                          "proposals"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "qcu-declarative"
+                                        }
                                       },
                                       {
                                         "type": "object",
@@ -5570,6 +6747,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "qcu-discovery"
                                             ]
@@ -5588,6 +6766,7 @@ export const schema = {
                                               "properties": {
                                                 "id": {
                                                   "type": "string",
+                                                  "format": null,
                                                   "pattern": "^[0-9]+$"
                                                 },
                                                 "content": {
@@ -5619,9 +6798,20 @@ export const schema = {
                                           },
                                           "solution": {
                                             "type": "string",
+                                            "format": null,
                                             "pattern": "^[0-9]+$"
                                           }
                                         },
+                                        "required": [
+                                          "id",
+                                          "type",
+                                          "instruction",
+                                          "hasShortProposals",
+                                          "proposals",
+                                          "solution"
+                                        ],
+                                        "additionalProperties": false,
+                                        "title": "qcu-discovery",
                                         "if": {
                                           "properties": {
                                             "hasShortProposals": {
@@ -5631,6 +6821,24 @@ export const schema = {
                                         },
                                         "then": {
                                           "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "format": "uuid"
+                                            },
+                                            "type": {
+                                              "type": "string",
+                                              "format": null,
+                                              "enum": [
+                                                "qcu-discovery"
+                                              ]
+                                            },
+                                            "instruction": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "hasShortProposals": {
+                                              "type": "boolean"
+                                            },
                                             "proposals": {
                                               "type": "array",
                                               "items": {
@@ -5638,18 +6846,20 @@ export const schema = {
                                                 "properties": {
                                                   "id": {
                                                     "type": "string",
+                                                    "format": null,
                                                     "pattern": "^[0-9]+$"
                                                   },
                                                   "content": {
                                                     "type": "string",
-                                                    "format": "jodit"
+                                                    "format": null,
+                                                    "maxLength": 20
                                                   },
                                                   "feedback": {
                                                     "type": "object",
                                                     "properties": {
                                                       "diagnosis": {
-                                                        "maxLength": 20,
-                                                        "format": null
+                                                        "type": "string",
+                                                        "format": "jodit"
                                                       }
                                                     },
                                                     "required": [
@@ -5667,18 +6877,13 @@ export const schema = {
                                                 "title": "proposal"
                                               }
                                             },
+                                            "solution": {
+                                              "type": "string",
+                                              "format": null,
+                                              "pattern": "^[0-9]+$"
+                                            }
                                           }
-                                        },
-                                        "required": [
-                                          "id",
-                                          "type",
-                                          "instruction",
-                                          "hasShortProposals",
-                                          "proposals",
-                                          "solution"
-                                        ],
-                                        "additionalProperties": false,
-                                        "title": "qcu-discovery"
+                                        }
                                       },
                                       {
                                         "type": "object",
@@ -5689,6 +6894,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "qcm"
                                             ]
@@ -5708,6 +6914,7 @@ export const schema = {
                                               "properties": {
                                                 "id": {
                                                   "type": "string",
+                                                  "format": null,
                                                   "pattern": "^[0-9]+$"
                                                 },
                                                 "content": {
@@ -5715,6 +6922,10 @@ export const schema = {
                                                   "format": "jodit"
                                                 }
                                               },
+                                              "required": [
+                                                "id",
+                                                "content"
+                                              ],
                                               "additionalProperties": false,
                                               "title": "proposal"
                                             }
@@ -5766,39 +6977,10 @@ export const schema = {
                                             "minItems": 2,
                                             "items": {
                                               "type": "string",
+                                              "format": null,
                                               "pattern": "^[0-9]+$",
                                               "title": "solution"
                                             }
-                                          }
-                                        },
-                                        "if": {
-                                          "properties": {
-                                            "hasShortProposals": {
-                                              "const": true
-                                            }
-                                          }
-                                        },
-                                        "then": {
-                                          "properties": {
-                                            "proposals": {
-                                              "type": "array",
-                                              "minItems": 3,
-                                              "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string",
-                                                    "pattern": "^[0-9]+$"
-                                                  },
-                                                  "content": {
-                                                    "maxLength": 20,
-                                                    "format": null
-                                                  }
-                                                },
-                                                "additionalProperties": false,
-                                                "title": "proposal"
-                                              }
-                                            },
                                           }
                                         },
                                         "required": [
@@ -5811,7 +6993,113 @@ export const schema = {
                                           "solutions"
                                         ],
                                         "additionalProperties": false,
-                                        "title": "qcm"
+                                        "title": "qcm",
+                                        "if": {
+                                          "properties": {
+                                            "hasShortProposals": {
+                                              "const": true
+                                            }
+                                          }
+                                        },
+                                        "then": {
+                                          "properties": {
+                                            "id": {
+                                              "type": "string",
+                                              "format": "uuid"
+                                            },
+                                            "type": {
+                                              "type": "string",
+                                              "format": null,
+                                              "enum": [
+                                                "qcm"
+                                              ]
+                                            },
+                                            "instruction": {
+                                              "type": "string",
+                                              "format": "jodit"
+                                            },
+                                            "hasShortProposals": {
+                                              "type": "boolean"
+                                            },
+                                            "proposals": {
+                                              "type": "array",
+                                              "minItems": 3,
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string",
+                                                    "format": null,
+                                                    "pattern": "^[0-9]+$"
+                                                  },
+                                                  "content": {
+                                                    "type": "string",
+                                                    "format": null,
+                                                    "maxLength": 20
+                                                  }
+                                                },
+                                                "required": [
+                                                  "id",
+                                                  "content"
+                                                ],
+                                                "additionalProperties": false,
+                                                "title": "proposal"
+                                              }
+                                            },
+                                            "feedbacks": {
+                                              "type": "object",
+                                              "properties": {
+                                                "valid": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "state": {
+                                                      "type": "string",
+                                                      "format": "jodit"
+                                                    },
+                                                    "diagnosis": {
+                                                      "type": "string",
+                                                      "format": "jodit"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "state",
+                                                    "diagnosis"
+                                                  ],
+                                                  "additionalProperties": false
+                                                },
+                                                "invalid": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "state": {
+                                                      "type": "string",
+                                                      "format": "jodit"
+                                                    },
+                                                    "diagnosis": {
+                                                      "type": "string",
+                                                      "format": "jodit"
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "state",
+                                                    "diagnosis"
+                                                  ],
+                                                  "additionalProperties": false
+                                                }
+                                              },
+                                              "additionalProperties": false
+                                            },
+                                            "solutions": {
+                                              "type": "array",
+                                              "minItems": 2,
+                                              "items": {
+                                                "type": "string",
+                                                "format": null,
+                                                "pattern": "^[0-9]+$",
+                                                "title": "solution"
+                                              }
+                                            }
+                                          }
+                                        }
                                       },
                                       {
                                         "type": "object",
@@ -5822,6 +7110,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "qrocm"
                                             ]
@@ -5839,6 +7128,7 @@ export const schema = {
                                                   "properties": {
                                                     "type": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "text"
                                                       ]
@@ -5858,16 +7148,19 @@ export const schema = {
                                                   "type": "object",
                                                   "properties": {
                                                     "input": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "type": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "input"
                                                       ]
                                                     },
                                                     "inputType": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "text",
                                                         "number"
@@ -5879,22 +7172,26 @@ export const schema = {
                                                     },
                                                     "display": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "inline",
                                                         "block"
                                                       ]
                                                     },
                                                     "placeholder": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "ariaLabel": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "tolerances": {
                                                       "type": "array",
                                                       "uniqueItems": true,
                                                       "items": {
                                                         "type": "string",
+                                                        "format": null,
                                                         "enum": [
                                                           "t1",
                                                           "t2",
@@ -5909,6 +7206,7 @@ export const schema = {
                                                         "oneOf": [
                                                           {
                                                             "type": "string",
+                                                            "format": null,
                                                             "minLength": 1
                                                           },
                                                           {
@@ -5938,26 +7236,31 @@ export const schema = {
                                                   "type": "object",
                                                   "properties": {
                                                     "input": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "type": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "select"
                                                       ]
                                                     },
                                                     "display": {
                                                       "type": "string",
+                                                      "format": null,
                                                       "enum": [
                                                         "inline",
                                                         "block"
                                                       ]
                                                     },
                                                     "placeholder": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "ariaLabel": {
-                                                      "type": "string"
+                                                      "type": "string",
+                                                      "format": null
                                                     },
                                                     "tolerances": {
                                                       "type": "array"
@@ -5969,10 +7272,12 @@ export const schema = {
                                                         "properties": {
                                                           "id": {
                                                             "type": "string",
+                                                            "format": null,
                                                             "pattern": "^[0-9]+$"
                                                           },
                                                           "content": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "format": null
                                                           }
                                                         },
                                                         "required": [
@@ -5986,6 +7291,7 @@ export const schema = {
                                                       "type": "array",
                                                       "items": {
                                                         "type": "string",
+                                                        "format": null,
                                                         "pattern": "^[0-9]+$",
                                                         "title": "solution"
                                                       }
@@ -6070,6 +7376,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "separator"
                                             ]
@@ -6091,12 +7398,14 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "short-video"
                                             ]
                                           },
                                           "title": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "url": {
                                             "type": "string",
@@ -6125,6 +7434,7 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "text"
                                             ]
@@ -6150,12 +7460,14 @@ export const schema = {
                                           },
                                           "type": {
                                             "type": "string",
+                                            "format": null,
                                             "enum": [
                                               "video"
                                             ]
                                           },
                                           "title": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "format": null
                                           },
                                           "url": {
                                             "type": "string",
