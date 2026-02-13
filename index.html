@@ -182,9 +182,9 @@
 
         schema.format = 'categories';
         schema.properties.sections.items.headerTemplate =
-          '#{{i1}} {{ self.type }}';
+          '#{{i0}} {{ self.type }}';
         schema.properties.sections.items.properties.grains.items.headerTemplate =
-          '#{{i1}} {{ self.title }}';
+          '#{{i0}} {{ self.title }}';
 
         // Force text element in top of list
         schema.properties.sections.items.properties.grains.items.properties.components.items.oneOf[0].properties.element.oneOf.sort(
