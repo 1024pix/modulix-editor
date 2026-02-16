@@ -15,6 +15,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/jodit@4.2.27/es2015/jodit.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
   </head>
@@ -96,11 +103,12 @@
       </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/jodit@4.2.27/es2018/jodit.fat.min.js"></script>
+
     <script type="module">
       import { schema } from './modulix.json-schema.js?v2';
       import LocalBackup from './LocalBackup.js';
       import { JSONEditor } from '@json-editor/json-editor/src/core';
-      import { Jodit } from 'jodit';
       import * as bootstrap from 'bootstrap';
       import './styles.css'
 
