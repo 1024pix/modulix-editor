@@ -9,6 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Modulix Editor</title>
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
       integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
@@ -104,13 +110,15 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/jodit@4.2.27/es2018/jodit.fat.min.js"></script>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
     <script type="module">
       import { schema } from './modulix.json-schema.js?v2';
       import LocalBackup from './LocalBackup.js';
       import { JSONEditor } from '@json-editor/json-editor/src/core';
-      import * as bootstrap from 'bootstrap';
-      import './styles.css'
 
       const tooltipTriggerList = document.querySelectorAll('[data-tooltip]');
       [...tooltipTriggerList].map(
