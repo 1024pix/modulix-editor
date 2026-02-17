@@ -121,7 +121,7 @@
       import LocalBackup from './LocalBackup.js';
 
       const schema = await fetch(
-        'https://api-pr15100.review.pix.fr/api/module-schema/module-json-schema.json',
+        'https://api.integration.pix.fr/api/module-schema/module-json-schema.json',
         { cache: 'no-cache' }, // misleading name, this will use the cache, but verify the ETag first (https://developer.mozilla.org/en-US/docs/Web/API/Request/cache)
       )
         .then((res) => res.json())
@@ -157,7 +157,6 @@
       Jodit.defaultOptions.controls.ol.list = null;
       Jodit.defaultOptions.enter = 'p';
       Jodit.defaultOptions.defaultMode = 3;
-
 
       schema.format = 'categories';
       schema.properties.sections.items.headerTemplate =
