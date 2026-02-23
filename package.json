@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
-    "@json-editor/json-editor": "2.15.2",
+    "@json-editor/json-editor": "2.16.0",
     "bootstrap": "^5.3.3",
     "jodit": "^4.2.27"
   }
