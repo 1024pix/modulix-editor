@@ -4,6 +4,13 @@
 
 ### Start local dev server
 
+copy `sample.env` to `.env` file.
+
+```shell
+cp sample.env .env
+```
+
+then run 
 ```shell
 npm run dev
 ```
