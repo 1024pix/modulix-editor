@@ -1,5 +1,6 @@
 {
   "name": "modulix-editor",
+  "packageManager": "npm",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
