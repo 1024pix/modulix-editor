@@ -5,6 +5,10 @@ const schemaUrls = [
   'https://api.recette.pix.fr/api/module-schema/module-json-schema.json',
 ];
 
+if (import.meta.env.DEV) {
+  schemaUrls.unshift(`http://localhost:${import.meta.env.VITE_API_PORT}/api/module-schema/module-json-schema.json`);
+}
+
 let schema;
 while (!schema && schemaUrls.length > 0) {
   schema = await fetch(
