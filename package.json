@@ -22,7 +22,7 @@
   "description": "",
   "devDependencies": {
     "prettier": "^3.6.2",
-    "vite": "^7.1.5"
+    "vite": "^8.0.0"
   },
   "dependencies": {
     "@1024pix/pix-ui": "^60.2.0"
