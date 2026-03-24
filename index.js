@@ -167,6 +167,13 @@ function init(schema) {
     }
   });
 
+  const documentationButton = document.querySelector('#display-documentation-button');
+  let documentationWindow;
+  documentationButton.addEventListener('click', () => {
+    const windowName = `cheatsheet`;
+    documentationWindow = window.open(`cheatsheet`,'_blank');
+  });
+
   const formatButton = document.getElementById('format-button');
   formatButton.addEventListener('click', () => {
     let jsonValue = JSON.stringify(editor.getValue());
