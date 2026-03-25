@@ -72,11 +72,43 @@ body {
   color: var(--text);
 }
 
+.modulix-editor-render__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.modulix-editor-render__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.modulix-editor-render__copy-button {
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 2px 8px;
+}
+
+.modulix-editor-render__copy-button:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
 .modulix-editor-render__input {
-  height: 100%;
+  height: calc(100% - 37px);
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 0 0 6px 6px;
   font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
   font-size: 13px;
   padding: 8px;

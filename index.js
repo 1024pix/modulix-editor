@@ -152,6 +152,16 @@ function init(schema) {
       : 'none';
   });
 
+  const copyJsonButton = document.querySelector('#copy-json-button');
+  copyJsonButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(jsonOutput.value).then(() => {
+      copyJsonButton.innerHTML = '<span class="fa fa-check me-1"></span> Copié !';
+      setTimeout(() => {
+        copyJsonButton.innerHTML = '<span class="fa fa-copy me-1"></span> Copier';
+      }, 2000);
+    });
+  });
+
   const downloadButton = document.querySelector('#download-json-button');
   downloadButton.addEventListener('click', () => {
     const downloadLink = document.createElement('a');
