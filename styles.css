@@ -96,6 +96,22 @@ body {
   box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
 }
 
+/* ── Reset button (destructive, isolated from action group) ── */
+.modulix-editor__reset-button {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  font-size: 0.875rem;
+  padding: 6px 12px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.modulix-editor__reset-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
 /* ── JSONEditor card depth colors ── */
 /* Level 3 = sections */
 .card.level-3 {
