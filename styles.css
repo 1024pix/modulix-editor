@@ -270,13 +270,18 @@ body {
   border: none !important;
   color: inherit !important;
   opacity: 0.6;
-  padding: 0 4px !important;
-  font-size: 0.75rem;
+  padding: 4px 8px !important;
+  font-size: 0.85rem;
   box-shadow: none !important;
+  margin-right: 4px;
+  min-width: 28px;
+  min-height: 28px;
 }
 
 .json-editor-btn-collapse:hover {
   opacity: 1;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-radius: 4px;
 }
 
 /* Move up/down buttons — unobtrusive */
