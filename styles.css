@@ -49,6 +49,15 @@ body {
   flex: 1;
 }
 
+.modulix-editor__logo {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
 /* ── Layout ── */
 .modulix-editor {
   display: flex;
