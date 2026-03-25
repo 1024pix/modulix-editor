@@ -214,3 +214,141 @@ body {
   content: ' * ';
   color: var(--danger);
 }
+
+/* ══════════════════════════════════════════
+   JSONEditor form improvements
+   ══════════════════════════════════════════ */
+
+/* Root module card — distinct from nested cards */
+#editor_holder > .card.level-1 {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  background: var(--surface);
+}
+
+#editor_holder > .card.level-1 > .card-header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  border-radius: 10px 10px 0 0;
+  padding: 14px 16px;
+}
+
+/* All nested cards */
+.card {
+  border-color: var(--border);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.card + .card {
+  margin-top: 8px;
+}
+
+.card-header {
+  padding: 10px 14px;
+  border-bottom-color: var(--border);
+}
+
+.card-body {
+  padding: 14px 16px;
+}
+
+/* Card title row — collapse button + label */
+.card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Collapse / expand toggle button */
+.json-editor-btn-collapse {
+  background: none !important;
+  border: none !important;
+  color: inherit !important;
+  opacity: 0.6;
+  padding: 0 4px !important;
+  font-size: 0.75rem;
+  box-shadow: none !important;
+}
+
+.json-editor-btn-collapse:hover {
+  opacity: 1;
+}
+
+/* Move up/down buttons — unobtrusive */
+.json-editor-btn-moveup,
+.json-editor-btn-movedown {
+  background: none !important;
+  border-color: var(--border) !important;
+  color: var(--muted) !important;
+  font-size: 0.75rem;
+  padding: 2px 7px !important;
+  box-shadow: none !important;
+}
+
+.json-editor-btn-moveup:hover,
+.json-editor-btn-movedown:hover {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Add item button */
+.json-editor-btn-add {
+  background: none !important;
+  border-color: var(--section-color) !important;
+  color: var(--section-color) !important;
+  font-size: 0.8rem;
+  font-weight: 500;
+  box-shadow: none !important;
+}
+
+.json-editor-btn-add:hover {
+  background: #ebf4ff !important;
+}
+
+/* Form labels */
+.form-group > label,
+.je-form-input-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+/* Form controls */
+.form-control,
+.form-select {
+  border-color: var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text);
+  background-color: var(--surface);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--module-color);
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.12);
+  outline: none;
+}
+
+/* Spacing between fields */
+.form-group {
+  margin-bottom: 14px;
+}
+
+/* Readonly fields (shortId, visibility) — visually muted */
+.form-control[readonly],
+.form-control:disabled {
+  background: var(--bg);
+  color: var(--muted);
+  border-color: var(--border);
+  cursor: default;
+}
