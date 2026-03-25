@@ -96,6 +96,20 @@ body {
   box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
 }
 
+/* ── Save indicator ── */
+.modulix-editor__save-indicator {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  margin-left: auto;
+}
+
+.modulix-editor__save-indicator--visible {
+  opacity: 1;
+}
+
 /* ── Reset button (destructive, isolated from action group) ── */
 .modulix-editor__reset-button {
   border: 1px solid rgba(255, 255, 255, 0.4);

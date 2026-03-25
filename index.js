@@ -1,5 +1,20 @@
 import LocalBackup from './LocalBackup.js';
 
+let saveIndicatorTimeout;
+function showSaveIndicator() {
+  const el = document.getElementById('save-indicator');
+  if (!el) return;
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  el.textContent = `✓ Sauvegardé à ${h}h${m}`;
+  el.classList.add('modulix-editor__save-indicator--visible');
+  clearTimeout(saveIndicatorTimeout);
+  saveIndicatorTimeout = setTimeout(() => {
+    el.classList.remove('modulix-editor__save-indicator--visible');
+  }, 3000);
+}
+
 const schemaUrls = [
   'https://api.integration.pix.fr/api/module-schema/module-json-schema.json',
   'https://api.recette.pix.fr/api/module-schema/module-json-schema.json',
@@ -217,6 +232,7 @@ function init(schema) {
 
     displayJsonOutputError(jsonOutput);
     LocalBackup.save(editor.getValue());
+    showSaveIndicator();
     const moduleContent = editor.getValue();
     sendDataForPreview(previewWindow, moduleContent);
   });
