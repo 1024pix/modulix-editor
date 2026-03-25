@@ -1,64 +1,159 @@
+/* ── Design tokens (shared with cheatsheet) ── */
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #1a202c;
+  --muted: #718096;
+
+  --module-color: #6b46c1;
+  --section-color: #2b6cb0;
+  --grain-color: #2c7a7b;
+  --component-color: #744210;
+  --element-color: #c05621;
+
+  --header-bg: #6b46c1;
+  --header-text: #ffffff;
+  --danger: #e53e3e;
+  --danger-hover: #c53030;
+}
+
+/* ── Base ── */
 body {
-  padding: 8px;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-h1 {
-  color: black;
-}
-
-.modulix-editor {
+/* ── Header / toolbar ── */
+.modulix-editor__header {
+  background: var(--header-bg);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
 }
 
 .modulix-editor__title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  color: var(--header-text);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
 }
 
 .modulix-editor__logo {
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
+}
+
+/* ── Layout ── */
+.modulix-editor {
+  display: flex;
+  gap: 16px;
 }
 
 .modulix-editor__editor {
   flex-grow: 1;
+  min-width: 0;
 }
 
 .modulix-editor__render {
   display: none;
   position: sticky;
-  top: 0;
-  height: calc(100vh - 16px);
+  top: 16px;
+  height: calc(100vh - 32px);
   width: 35%;
 }
 
 .modulix-editor-render__external-link {
-  color: black;
+  color: var(--text);
 }
 
 .modulix-editor-render__input {
   height: 100%;
   width: 100%;
-  border: 1px solid black;
-  border-radius: 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  padding: 8px;
+  color: var(--text);
+  background: var(--surface);
+  resize: none;
 }
 
 .modulix-editor-render__input--has-error {
-  border: 1px solid red;
+  border-color: var(--danger);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
 }
 
+/* ── JSONEditor card depth colors ── */
+/* Level 3 = sections */
+.card.level-3 {
+  border-left: 3px solid var(--section-color) !important;
+  background: #f7faff;
+}
+.card.level-3 > .card-header {
+  background: #ebf4ff;
+  border-bottom-color: #bee3f8;
+  font-weight: 600;
+  color: var(--section-color);
+}
+
+/* Level 5 = grains */
+.card.level-5 {
+  border-left: 3px solid var(--grain-color) !important;
+  background: #f0fafa;
+}
+.card.level-5 > .card-header {
+  background: #e6fffa;
+  border-bottom-color: #b2f5ea;
+  font-weight: 600;
+  color: var(--grain-color);
+}
+
+/* Level 7+ = components / elements */
+.card.level-7,
+.card.level-9,
+.card.level-11 {
+  border-left: 3px solid var(--element-color) !important;
+  background: #fffaf7;
+}
+.card.level-7 > .card-header,
+.card.level-9 > .card-header,
+.card.level-11 > .card-header {
+  background: #fff5ed;
+  border-bottom-color: #fbd38d;
+  color: var(--element-color);
+}
+
+/* ── Delete button danger states ── */
 .card-body:has(
   > .btn-group > .json-editor-btn-delete:hover,
   ~ .btn-group > .json-editor-btn-delete:hover
 ) {
-  border-color: #ff4d4f;
+  border-color: var(--danger);
   transition: border ease-in 0.2s;
 }
 
 .json-editor-btn-delete:hover {
-  background: #ff4d4f;
-  border-color: #ff4d4f;
-  transition: all ease-in 0.2s;
+  background: var(--danger) !important;
+  border-color: var(--danger) !important;
+  color: white !important;
+  transition: all ease-in 0.15s;
+}
+
+/* ── Required field marker ── */
+.required:after {
+  content: ' * ';
+  color: var(--danger);
 }
