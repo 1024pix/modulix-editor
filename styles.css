@@ -38,7 +38,7 @@ body {
   gap: 12px;
 }
 
-.modulix-editor__title {
+h1.modulix-editor__title {
   display: flex;
   align-items: center;
   gap: 10px;
