@@ -57,11 +57,6 @@ h1 {
   transition: border ease-in 0.2s;
 }
 
-.required:after {
-  content: ' * ';
-  color: red;
-}
-
 .json-editor-btn-delete:hover {
   background: #ff4d4f;
   border-color: #ff4d4f;
