@@ -344,8 +344,7 @@ h1.modulix-editor__title {
 }
 
 /* Readonly fields (shortId, visibility) — visually muted */
-.form-control[readonly],
-.form-control:disabled {
+.form-control[readonly] {
   background: var(--bg);
   color: var(--muted);
   border-color: var(--border);
