@@ -230,6 +230,10 @@ h1.modulix-editor__title {
   padding: 14px 16px;
 }
 
+#editor_holder > .card.level-1 > .card-header .json-editor-btn-collapse {
+  display: none;
+}
+
 /* All nested cards */
 .card {
   border-color: var(--border);
