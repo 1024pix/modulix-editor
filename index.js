@@ -248,6 +248,10 @@ function init(schema) {
     if (schema) {
       editor.setValue(schema);
     }
+
+    document.querySelectorAll('#editor_holder [title]').forEach((el) => {
+      new bootstrap.Tooltip(el, { placement: 'top', trigger: 'hover' });
+    });
   });
 }
 
