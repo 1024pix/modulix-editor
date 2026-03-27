@@ -128,7 +128,7 @@ h1.modulix-editor__title {
 }
 
 .modulix-editor-render__input--has-error {
-  border-color: var(--danger);
+  border-color: var(--error);
   outline: none;
   box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
 }
@@ -195,13 +195,13 @@ h1.modulix-editor__title {
   > .btn-group > .json-editor-btn-delete:hover,
   ~ .btn-group > .json-editor-btn-delete:hover
 ) {
-  border-color: var(--danger);
+  border-color: var(--error);
   transition: border ease-in 0.2s;
 }
 
 .json-editor-btn-delete:hover {
-  background: var(--danger) !important;
-  border-color: var(--danger) !important;
+  background: var(--error) !important;
+  border-color: var(--error) !important;
   color: white !important;
   transition: all ease-in 0.15s;
 }
@@ -214,6 +214,10 @@ h1.modulix-editor__title {
   padding: 5px 10px;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+button.jsoneditor-twbs5-text-button {
+  margin-left: 8px !important;
 }
 
 .tooltip.bs-tooltip-bottom .tooltip-arrow::before,
@@ -374,4 +378,8 @@ h1.modulix-editor__title {
   color: var(--muted);
   border-color: var(--border);
   cursor: default;
+}
+
+select.je-switcher {
+  background-color: var(--surface);
 }
