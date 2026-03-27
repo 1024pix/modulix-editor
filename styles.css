@@ -1,64 +1,385 @@
+/* ── Design tokens (shared with cheatsheet) ── */
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #1a202c;
+  --muted: #718096;
+
+  --module-color: #6b46c1;
+  --section-color: #2b6cb0;
+  --grain-color: #2c7a7b;
+  --component-color: #744210;
+  --element-color: #c05621;
+
+  --header-bg: #6b46c1;
+  --header-text: #ffffff;
+  --error: #e53e3e;
+  --error-hover: #c53030;
+}
+
+/* ── Base ── */
 body {
-  padding: 8px;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-h1 {
-  color: black;
+/* ── Header / toolbar ── */
+.modulix-editor__header {
+  background: linear-gradient(135deg, #6b46c1 0%, #2b6cb0 100%);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
 }
 
+h1.modulix-editor__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+}
+
+.modulix-editor__logo {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 3px;
+}
+
+/* ── Layout ── */
 .modulix-editor {
   display: flex;
   gap: 16px;
 }
 
-.modulix-editor__title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.modulix-editor__logo {
-  width: 48px;
-  height: 48px;
-}
-
 .modulix-editor__editor {
   flex-grow: 1;
+  min-width: 0;
 }
 
 .modulix-editor__render {
   display: none;
   position: sticky;
-  top: 0;
-  height: calc(100vh - 16px);
+  top: 16px;
+  height: calc(100vh - 32px);
   width: 35%;
 }
 
 .modulix-editor-render__external-link {
-  color: black;
+  color: var(--text);
+}
+
+.modulix-editor-render__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+
+.modulix-editor-render__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.modulix-editor-render__copy-button {
+  font-size: 0.75rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 2px 8px;
+}
+
+.modulix-editor-render__copy-button:hover {
+  background: var(--bg);
+  color: var(--text);
 }
 
 .modulix-editor-render__input {
-  height: 100%;
+  height: calc(100% - 37px);
   width: 100%;
-  border: 1px solid black;
-  border-radius: 4px;
+  border: 1px solid var(--border);
+  border-radius: 0 0 6px 6px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  padding: 8px;
+  color: var(--text);
+  background: var(--surface);
+  resize: none;
 }
 
 .modulix-editor-render__input--has-error {
-  border: 1px solid red;
+  border-color: var(--error);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
 }
 
+
+/* ── Reset button (destructive, isolated from action group) ── */
+.modulix-editor__reset-button {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  font-size: 0.875rem;
+  padding: 6px 12px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.modulix-editor__reset-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── JSONEditor card depth colors ── */
+/* Level 3 = sections */
+.card.level-3 {
+  border-left: 3px solid var(--section-color) !important;
+  background: #f7faff;
+}
+.card.level-3 > .card-header {
+  background: #ebf4ff;
+  border-bottom-color: #bee3f8;
+  font-weight: 600;
+  color: var(--section-color);
+}
+
+/* Level 5 = grains */
+.card.level-5 {
+  border-left: 3px solid var(--grain-color) !important;
+  background: #f0fafa;
+}
+.card.level-5 > .card-header {
+  background: #e6fffa;
+  border-bottom-color: #b2f5ea;
+  font-weight: 600;
+  color: var(--grain-color);
+}
+
+/* Level 7+ = components / elements */
+.card.level-7,
+.card.level-9,
+.card.level-11 {
+  border-left: 3px solid var(--element-color) !important;
+  background: #fffaf7;
+}
+.card.level-7 > .card-header,
+.card.level-9 > .card-header,
+.card.level-11 > .card-header {
+  background: #fff5ed;
+  border-bottom-color: #fbd38d;
+  color: var(--element-color);
+}
+
+/* ── Delete button danger states ── */
 .card-body:has(
   > .btn-group > .json-editor-btn-delete:hover,
   ~ .btn-group > .json-editor-btn-delete:hover
 ) {
-  border-color: #ff4d4f;
+  border-color: var(--error);
   transition: border ease-in 0.2s;
 }
 
 .json-editor-btn-delete:hover {
-  background: #ff4d4f;
-  border-color: #ff4d4f;
-  transition: all ease-in 0.2s;
+  background: var(--error) !important;
+  border-color: var(--error) !important;
+  color: white !important;
+  transition: all ease-in 0.15s;
+}
+
+/* ── Tooltips ── */
+.tooltip .tooltip-inner {
+  background-color: var(--text);
+  color: #ffffff;
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+button.jsoneditor-twbs5-text-button {
+  margin-left: 8px !important;
+}
+
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before,
+.tooltip.bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before {
+  border-bottom-color: var(--text);
+}
+.tooltip.bs-tooltip-top .tooltip-arrow::before,
+.tooltip.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
+  border-top-color: var(--text);
+}
+.tooltip.bs-tooltip-start .tooltip-arrow::before,
+.tooltip.bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before {
+  border-left-color: var(--text);
+}
+.tooltip.bs-tooltip-end .tooltip-arrow::before,
+.tooltip.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before {
+  border-right-color: var(--text);
+}
+
+/* ══════════════════════════════════════════
+   JSONEditor form improvements
+   ══════════════════════════════════════════ */
+
+/* Root module card — distinct from nested cards */
+#editor_holder > .card.level-1 {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  background: var(--surface);
+}
+
+#editor_holder > .card.level-1 > .card-header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  border-radius: 10px 10px 0 0;
+  padding: 14px 16px;
+}
+
+#editor_holder > .card.level-1 > .card-header .json-editor-btn-collapse {
+  display: none;
+}
+
+/* All nested cards */
+.card {
+  border-color: var(--border);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.card + .card {
+  margin-top: 8px;
+}
+
+.card-header {
+  padding: 10px 14px;
+  border-bottom-color: var(--border);
+}
+
+.card-body {
+  padding: 14px 16px;
+}
+
+/* Card title row — collapse button + label */
+.card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Collapse / expand toggle button */
+.json-editor-btn-collapse {
+  background: none !important;
+  border: none !important;
+  color: inherit !important;
+  opacity: 0.6;
+  padding: 6px 12px !important;
+  font-size: 1.5rem;
+  box-shadow: none !important;
+  margin-right: 4px;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+.json-editor-btn-collapse:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-radius: 4px;
+}
+
+/* Move up/down buttons — unobtrusive */
+.json-editor-btn-moveup,
+.json-editor-btn-movedown {
+  background: none !important;
+  border-color: var(--border) !important;
+  color: var(--muted) !important;
+  font-size: 0.75rem;
+  padding: 2px 7px !important;
+  box-shadow: none !important;
+}
+
+.json-editor-btn-moveup:hover,
+.json-editor-btn-movedown:hover {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Add item button */
+.json-editor-btn-add {
+  background: none !important;
+  border-color: var(--section-color) !important;
+  color: var(--section-color) !important;
+  font-size: 0.8rem;
+  font-weight: 500;
+  box-shadow: none !important;
+}
+
+.json-editor-btn-add:hover {
+  background: #ebf4ff !important;
+}
+
+/* Form labels */
+.form-group > label,
+.je-form-input-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+/* Form controls */
+.form-control,
+.form-select {
+  border-color: var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text);
+  background-color: var(--surface);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--module-color);
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.12);
+  outline: none;
+}
+
+/* Spacing between fields */
+.form-group {
+  margin-bottom: 14px;
+}
+
+/* Readonly fields (shortId, visibility) — visually muted */
+.form-control[readonly] {
+  color: var(--muted);
+  border-color: var(--border);
+  cursor: default;
+}
+
+select.je-switcher {
+  background-color: var(--surface);
 }
