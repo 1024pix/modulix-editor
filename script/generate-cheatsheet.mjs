@@ -21,15 +21,10 @@ const DEFAULT_URLS = [
 
 // ─── CLI args ──────────────────────────────────────────────────────────────
 
-const args = process.argv.slice(2);
-const urlIdx = args.indexOf('--url');
-const outIdx = args.indexOf('--output');
-const schemaUrls = urlIdx >= 0 ? [args[urlIdx + 1]] : DEFAULT_URLS;
-const outputFile = outIdx >= 0 ? args[outIdx + 1] : '../cheatsheet.html';
-const cssFile = join(
-  dirname(outputFile),
-  basename(outputFile, '.html') + '.css',
-);
+const schemaUrls = DEFAULT_URLS;
+const htmlFile = 'cheatsheet.html';
+const cssFile = 'cheatsheet.css';
+
 
 // ─── Fetch schema ──────────────────────────────────────────────────────────
 
@@ -750,8 +745,8 @@ const generatedAt = new Date().toLocaleDateString('fr-FR', {
 const cssFilename = basename(cssFile);
 const html = generateHtml(model, generatedAt, cssFilename);
 
-writeFileSync(outputFile, html, 'utf8');
-console.error(`[ok] ${outputFile} généré (${html.length} octets)`);
+writeFileSync(htmlFile, html, 'utf8');
+console.error(`[ok] ${htmlFile} généré (${html.length} octets)`);
 
 writeFileSync(cssFile, CSS, 'utf8');
 console.error(`[ok] ${cssFile} généré (${CSS.length} octets)`);
