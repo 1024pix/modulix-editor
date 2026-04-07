@@ -58,8 +58,21 @@ function init(schema) {
 
   const element = document.getElementById('editor_holder');
   const jsonOutputContainer = document.getElementById('json_output');
+
+  monaco.json.jsonDefaults.setDiagnosticsOptions({
+    validate: true,
+    schemas: [{ uri: 'inmemory://modulix/module-schema.json', fileMatch: ['module.json'], schema }],
+    schemaValidation: "error"
+  });
+
+  const model = monaco.editor.createModel(
+    '',
+    'json',
+    monaco.Uri.parse('inmemory://modulix/module.json'),
+  );
+
   const monacoEditor = monaco.editor.create(jsonOutputContainer, {
-    language: 'json',
+    model,
     theme: 'vs',
     automaticLayout: true,
     minimap: { enabled: false },
