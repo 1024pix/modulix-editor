@@ -66,6 +66,8 @@ function init(schema) {
     scrollBeyondLastLine: false,
     fontSize: 13,
     fontFamily: "'SF Mono', 'Fira Code', 'Consolas', monospace",
+    wordWrap: 'wordWrapColumn',
+    wordWrapColumn: 60,
   });
 
   Jodit.defaultOptions.toolbarAdaptive = false;
