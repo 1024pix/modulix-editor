@@ -89,6 +89,16 @@ function init(schema) {
     collapsed: true,
   };
 
+  schema.properties.sections.items.options = {
+    collapsed: true,
+  };
+
+  // remove 'key-points' in tag list enumerations
+  const tagNamesEnum = schema.properties.sections.items.properties.grains.items.properties.components.items.oneOf[0].properties.element
+    .oneOf.find(element => element.title === 'text').properties.tag.enum
+  const indexToRemove = tagNamesEnum.indexOf('key-points')
+  tagNamesEnum.splice(indexToRemove, 1);
+
   schema.properties.shortId.default = generateId();
   schema.properties.shortId.readonly = true;
 
