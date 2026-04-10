@@ -1,5 +1,14 @@
 import LocalBackup from './LocalBackup.js';
+import * as monaco from 'monaco-editor';
+import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 
+self.MonacoEnvironment = {
+  getWorker(_, label) {
+    if (label === 'json') return new jsonWorker();
+    return new editorWorker();
+  },
+};
 
 const schemaUrls = [
   'https://api.integration.pix.fr/api/module-schema/module-json-schema.json',
@@ -48,7 +57,16 @@ function init(schema) {
   );
 
   const element = document.getElementById('editor_holder');
-  const jsonOutput = document.getElementById('json_output');
+  const jsonOutputContainer = document.getElementById('json_output');
+  const monacoEditor = monaco.editor.create(jsonOutputContainer, {
+    language: 'json',
+    theme: 'vs',
+    automaticLayout: true,
+    minimap: { enabled: false },
+    scrollBeyondLastLine: false,
+    fontSize: 13,
+    fontFamily: "'SF Mono', 'Fira Code', 'Consolas', monospace",
+  });
 
   Jodit.defaultOptions.toolbarAdaptive = false;
   Jodit.defaultOptions.buttons =
@@ -140,7 +158,7 @@ function init(schema) {
 
   const copyJsonButton = document.querySelector('#copy-json-button');
   copyJsonButton.addEventListener('click', () => {
-    navigator.clipboard.writeText(jsonOutput.value).then(() => {
+    navigator.clipboard.writeText(monacoEditor.getValue()).then(() => {
       copyJsonButton.innerHTML = '<span class="fa fa-check me-1"></span> Copié !';
       setTimeout(() => {
         copyJsonButton.innerHTML = '<span class="fa fa-copy me-1"></span> Copier';
@@ -199,7 +217,7 @@ function init(schema) {
     jsonValue = jsonValue.replaceAll(/'/g, '’');
 
     const output = JSON.parse(jsonValue);
-    jsonOutput.value = JSON.stringify(output, null, 2);
+    monacoEditor.setValue(JSON.stringify(output, null, 2));
     editor.setValue(output);
   });
 
@@ -222,8 +240,9 @@ function init(schema) {
   });
 
   editor.on('change', () => {
-    if (JSON.stringify(editor.getValue(), null, 2) !== jsonOutput.value) {
-      jsonOutput.value = JSON.stringify(editor.getValue(), null, 2);
+    const newJson = JSON.stringify(editor.getValue(), null, 2);
+    if (newJson !== monacoEditor.getValue()) {
+      monacoEditor.setValue(newJson);
     }
 
     displayJsonOutputError(jsonOutput);
@@ -232,9 +251,9 @@ function init(schema) {
     sendDataForPreview(previewWindow, moduleContent);
   });
 
-  jsonOutput.addEventListener('focusout', () => {
+  monacoEditor.onDidBlurEditorText(() => {
     try {
-      const value = JSON.parse(jsonOutput.value);
+      const value = JSON.parse(monacoEditor.getValue());
       editor.setValue(value);
     } catch (error) {
       console.error(error);
