@@ -245,7 +245,6 @@ function init(schema) {
       monacoEditor.setValue(newJson);
     }
 
-    displayJsonOutputError(jsonOutput);
     LocalBackup.save(editor.getValue());
     const moduleContent = editor.getValue();
     sendDataForPreview(previewWindow, moduleContent);
@@ -258,8 +257,6 @@ function init(schema) {
     } catch (error) {
       console.error(error);
     }
-
-    displayJsonOutputError(jsonOutput);
   });
 
   editor.on('ready', () => {
@@ -282,17 +279,6 @@ function generateId() {
   const arr = new Uint8Array((8 || 40) / 2);
   window.crypto.getRandomValues(arr);
   return Array.from(arr, dec2hex).join('');
-}
-
-function displayJsonOutputError(jsonOutput) {
-  try {
-    JSON.parse(jsonOutput.value);
-    jsonOutput.classList.remove(
-      'modulix-editor-render__input--has-error',
-    );
-  } catch {
-    jsonOutput.classList.add('modulix-editor-render__input--has-error');
-  }
 }
 
 /**
