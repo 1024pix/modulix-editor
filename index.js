@@ -81,6 +81,11 @@ function init(schema) {
     fontFamily: "'SF Mono', 'Fira Code', 'Consolas', monospace",
     wordWrap: 'wordWrapColumn',
     wordWrapColumn: 60,
+    unicodeHighlight: {
+      ambiguousCharacters: false,
+      invisibleCharacters: false,
+      nonBasicASCII: false,
+    },
   });
 
   Jodit.defaultOptions.toolbarAdaptive = false;
