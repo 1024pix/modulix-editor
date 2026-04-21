@@ -224,7 +224,6 @@ function init(schema) {
   );
   let documentationWindow;
   documentationButton.addEventListener('click', () => {
-    const windowName = `cheatsheet`;
     documentationWindow = window.open(`cheatsheet`, '_blank');
   });
 
