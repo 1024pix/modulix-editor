@@ -261,21 +261,22 @@ function init(schema) {
   });
 
   editor.on('change', () => {
-    const newJson = JSON.stringify(editor.getValue(), null, 2);
+    const jsonEditorValue = editor.getValue();
+    const newJson = JSON.stringify(jsonEditorValue, null, 2);
     if (newJson !== monacoEditor.getValue()) {
       monacoEditor.setValue(newJson);
     }
 
-    LocalBackup.save(editor.getValue());
-    const moduleContent = editor.getValue();
+    LocalBackup.save(jsonEditorValue);
+    const moduleContent = jsonEditorValue;
     sendDataForPreview(previewWindow, moduleContent);
   });
 
   monacoEditor.onDidBlurEditorText(() => {
-      const monacoEditorValue = monacoEditor.getValue();
-      try {
-          const value = simdjson.parse(monacoEditorValue);
-          editor.setValue(value);
+    const monacoEditorValue = monacoEditor.getValue();
+    try {
+      const value = simdjson.parse(monacoEditorValue);
+      editor.setValue(value);
     } catch (error) {
       console.error(error);
     }
