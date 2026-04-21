@@ -93,6 +93,8 @@ function init(schema) {
     },
   });
 
+  window.monacoEditor = monacoEditor;
+
   Jodit.defaultOptions.toolbarAdaptive = false;
   Jodit.defaultOptions.buttons =
     'paragraph,|,bold,italic,strikethrough,link,eraser,|,ul,ol,|,hr,|,source';
