@@ -2,7 +2,7 @@ import LocalBackup from './LocalBackup.js';
 import * as monaco from 'monaco-editor';
 import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
-
+import simdjson from 'simdjson';
 self.MonacoEnvironment = {
   getWorker(_, label) {
     if (label === 'json') return new jsonWorker();
@@ -242,7 +242,7 @@ function init(schema) {
     jsonValue = jsonValue.replaceAll(/\\n/g, '');
     jsonValue = jsonValue.replaceAll(/'/g, '’');
 
-    const output = JSON.parse(jsonValue);
+    const output = simdjson.parse(jsonValue);
     monacoEditor.setValue(JSON.stringify(output, null, 2));
     editor.setValue(output);
   });
@@ -272,9 +272,10 @@ function init(schema) {
   });
 
   monacoEditor.onDidBlurEditorText(() => {
-    try {
-      const value = JSON.parse(monacoEditor.getValue());
-      editor.setValue(value);
+      const monacoEditorValue = monacoEditor.getValue();
+      try {
+          const value = simdjson.parse(monacoEditorValue);
+          editor.setValue(value);
     } catch (error) {
       console.error(error);
     }
