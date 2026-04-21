@@ -25,7 +25,6 @@ const schemaUrls = DEFAULT_URLS;
 const htmlFile = 'cheatsheet.html';
 const cssFile = 'cheatsheet.css';
 
-
 // ─── Fetch schema ──────────────────────────────────────────────────────────
 
 async function fetchSchema(urls) {
