@@ -5,9 +5,9 @@ export default defineConfig({
   build: {
     rolldownOptions: {
       input: {
-        main:  './index.html',
-        cheatsheet: './cheatsheet.html'
+        main: './index.html',
+        cheatsheet: './cheatsheet.html',
       },
     },
   },
-})
+});

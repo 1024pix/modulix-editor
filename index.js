@@ -16,7 +16,9 @@ const schemaUrls = [
 ];
 
 if (import.meta.env.DEV) {
-  schemaUrls.unshift(`http://localhost:${import.meta.env.VITE_API_PORT}/api/module-schema/module-json-schema.json`);
+  schemaUrls.unshift(
+    `http://localhost:${import.meta.env.VITE_API_PORT}/api/module-schema/module-json-schema.json`,
+  );
 }
 
 let schema;
@@ -32,10 +34,7 @@ while (!schema && schemaUrls.length > 0) {
       return res.json();
     })
     .catch((err) => {
-      console.error(
-        'Error fetching JSON Schema from Pix API:',
-        err.message,
-      );
+      console.error('Error fetching JSON Schema from Pix API:', err.message);
     });
 }
 
@@ -61,8 +60,14 @@ function init(schema) {
 
   monaco.json.jsonDefaults.setDiagnosticsOptions({
     validate: true,
-    schemas: [{ uri: 'inmemory://modulix/module-schema.json', fileMatch: ['module.json'], schema }],
-    schemaValidation: "error"
+    schemas: [
+      {
+        uri: 'inmemory://modulix/module-schema.json',
+        fileMatch: ['module.json'],
+        schema,
+      },
+    ],
+    schemaValidation: 'error',
   });
 
   const model = monaco.editor.createModel(
@@ -88,6 +93,8 @@ function init(schema) {
     },
   });
 
+  window.monacoEditor = monacoEditor;
+
   Jodit.defaultOptions.toolbarAdaptive = false;
   Jodit.defaultOptions.buttons =
     'paragraph,|,bold,italic,strikethrough,link,eraser,|,ul,ol,|,hr,|,source';
@@ -107,8 +114,7 @@ function init(schema) {
   Jodit.defaultOptions.defaultActionOnPaste = Jodit.constants.INSERT_ONLY_TEXT;
 
   schema.format = 'categories';
-  schema.properties.sections.items.headerTemplate =
-    '#{{i0}} {{ self.type }}';
+  schema.properties.sections.items.headerTemplate = '#{{i0}} {{ self.type }}';
   schema.properties.sections.items.properties.grains.items.headerTemplate =
     '#{{i0}} {{ self.title }}';
 
@@ -171,17 +177,17 @@ function init(schema) {
   let jsonOutputPaneDisplayed = false;
   toggleCodeButton.addEventListener('click', () => {
     jsonOutputPaneDisplayed = !jsonOutputPaneDisplayed;
-    jsonOutputPane.style.display = jsonOutputPaneDisplayed
-      ? 'block'
-      : 'none';
+    jsonOutputPane.style.display = jsonOutputPaneDisplayed ? 'block' : 'none';
   });
 
   const copyJsonButton = document.querySelector('#copy-json-button');
   copyJsonButton.addEventListener('click', () => {
     navigator.clipboard.writeText(monacoEditor.getValue()).then(() => {
-      copyJsonButton.innerHTML = '<span class="fa fa-check me-1"></span> Copié !';
+      copyJsonButton.innerHTML =
+        '<span class="fa fa-check me-1"></span> Copié !';
       setTimeout(() => {
-        copyJsonButton.innerHTML = '<span class="fa fa-copy me-1"></span> Copier';
+        copyJsonButton.innerHTML =
+          '<span class="fa fa-copy me-1"></span> Copier';
       }, 2000);
     });
   });
@@ -193,8 +199,7 @@ function init(schema) {
     const jsonContent = JSON.stringify(json, null, 2);
     downloadLink.setAttribute(
       'href',
-      'data:application/json;charset=utf-8,' +
-      encodeURIComponent(jsonContent),
+      'data:application/json;charset=utf-8,' + encodeURIComponent(jsonContent),
     );
     downloadLink.setAttribute('download', `${json.slug}.json`);
 
@@ -216,11 +221,12 @@ function init(schema) {
     }
   });
 
-  const documentationButton = document.querySelector('#display-documentation-button');
+  const documentationButton = document.querySelector(
+    '#display-documentation-button',
+  );
   let documentationWindow;
   documentationButton.addEventListener('click', () => {
-    const windowName = `cheatsheet`;
-    documentationWindow = window.open(`cheatsheet`,'_blank');
+    documentationWindow = window.open(`cheatsheet`, '_blank');
   });
 
   const formatButton = document.getElementById('format-button');
@@ -241,9 +247,7 @@ function init(schema) {
     editor.setValue(output);
   });
 
-  const collapseAllButton = document.getElementById(
-    'collapse-all-button',
-  );
+  const collapseAllButton = document.getElementById('collapse-all-button');
   collapseAllButton.addEventListener('click', () => {
     const grainCollapseButtons = document.querySelectorAll(
       '#sections .card-title.level-5 button[title="Collapse"]',
@@ -251,10 +255,7 @@ function init(schema) {
     const sectionCollapseButtons = document.querySelectorAll(
       '#sections .card-title.level-3 button[title="Collapse"]',
     );
-    for (const button of [
-      ...grainCollapseButtons,
-      ...sectionCollapseButtons,
-    ]) {
+    for (const button of [...grainCollapseButtons, ...sectionCollapseButtons]) {
       button.click();
     }
   });
@@ -307,10 +308,7 @@ function generateId() {
  * @param previewWindow
  */
 function sendDataForPreview(previewWindow, moduleContent) {
-  previewWindow?.postMessage(
-    { from: 'modulix-editor', moduleContent },
-    '*',
-  );
+  previewWindow?.postMessage({ from: 'modulix-editor', moduleContent }, '*');
 }
 
 function sortTextElementFirst(elementA, elementB) {

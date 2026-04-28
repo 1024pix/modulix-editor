@@ -4,3 +4,5 @@ dist
 .env
 cheatsheet.css
 cheatsheet.html
+test-results
+playwright-report

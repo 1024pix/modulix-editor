@@ -10,7 +10,8 @@ copy `sample.env` to `.env` file.
 cp sample.env .env
 ```
 
-then run 
+then run
+
 ```shell
 npm run dev
 ```
