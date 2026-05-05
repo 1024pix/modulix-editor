@@ -3,6 +3,8 @@ import * as monaco from 'monaco-editor';
 import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 
+let moduleData;
+let currentTabSelected='Basic';
 self.MonacoEnvironment = {
   getWorker(_, label) {
     if (label === 'json') return new jsonWorker();
@@ -142,7 +144,7 @@ function init(schema) {
     disable_properties: true,
     disable_array_reorder: false,
     form_name_root: 'Module',
-    show_errors: 'always',
+    show_errors: 'interaction',
   });
 
   const previewButton = document.querySelector('#preview-button');
@@ -219,7 +221,6 @@ function init(schema) {
   const documentationButton = document.querySelector('#display-documentation-button');
   let documentationWindow;
   documentationButton.addEventListener('click', () => {
-    const windowName = `cheatsheet`;
     documentationWindow = window.open(`cheatsheet`,'_blank');
   });
 
@@ -272,22 +273,30 @@ function init(schema) {
 
   monacoEditor.onDidBlurEditorText(() => {
     try {
-      const value = JSON.parse(monacoEditor.getValue());
-      editor.setValue(value);
+      const data = JSON.parse(monacoEditor.getValue());
+      moduleData = data;
+      updateEditor(editor);
     } catch (error) {
       console.error(error);
     }
   });
 
   editor.on('ready', () => {
-    const schema = LocalBackup.load();
-    if (schema) {
-      editor.setValue(schema);
-    }
-
     document.querySelectorAll('#editor_holder [title]').forEach((el) => {
       new bootstrap.Tooltip(el, { placement: 'top', trigger: 'hover' });
     });
+
+    document.querySelectorAll('.nav-tabs .nav-link').forEach((tabEl) => {
+      tabEl.addEventListener('click', (event) => {
+        console.log('ici')
+        currentTabSelected = event.currentTarget.innerText.trim();
+        updateEditor(editor)
+      });
+    });
+    const schema = LocalBackup.load();
+    if (schema) {
+      updateEditor(editor);
+    }
   });
 }
 
@@ -320,4 +329,25 @@ function sortTextElementFirst(elementA, elementB) {
     return 1;
   }
   return 0; // keep the original order for other elements
+}
+
+function updateEditor(editor) {
+  console.log('active tab ', currentTabSelected);
+  if(currentTabSelected === 'Basic') {
+    editor.getEditor('Module.id').setValue(moduleData?.id);
+    editor.getEditor('Module.shortId').setValue(moduleData?.shortId);
+    editor.getEditor('Module.slug').setValue(moduleData?.slug);
+    editor.getEditor('Module.title').setValue(moduleData?.title);
+    editor.getEditor('Module.isBeta').setValue(moduleData?.isBeta);
+    editor.getEditor('Module.visibility').setValue(moduleData?.visibility);
+  }
+  if(currentTabSelected === 'details') {
+    editor.getEditor('Module.details').setValue(moduleData?.details);
+  }
+  if(currentTabSelected === 'sections') {
+    editor.getEditor('Module.sections').setValue(moduleData?.sections);
+  }
+  if(currentTabSelected === 'glossary') {
+    editor.getEditor('Module.glossary').setValue(moduleData?.glossary);
+  }
 }
