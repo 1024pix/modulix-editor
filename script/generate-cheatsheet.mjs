@@ -12,7 +12,7 @@
  */
 
 import { writeFileSync } from 'fs';
-import { basename, dirname, join } from 'path';
+import { basename } from 'path';
 
 const DEFAULT_URLS = [
   'https://api.integration.pix.fr/api/module-schema/module-json-schema.json',
@@ -52,8 +52,31 @@ function getDesc(s) {
   return raw.replace(/jodit/gi, 'wysiwyg');
 }
 
-function propInfo(name, schema, requiredList = []) {
+/**
+ * Builds a prop descriptor. Recursively extracts nested object/array-item
+ * props up to MAX_NEST levels so the cheatsheet can render them inline.
+ */
+function propInfo(name, schema, requiredList = [], _depth = 0) {
+  const MAX_NEST = 3;
   const fmt = schema?.format || null;
+
+  let objectProps = null;
+  let arrayItemProps = null;
+
+  if (_depth < MAX_NEST) {
+    if (schema?.type === 'object' && schema?.properties) {
+      objectProps = Object.entries(schema.properties).map(([n, s]) =>
+        propInfo(n, s, schema?.required || [], _depth + 1),
+      );
+    }
+    const items = schema?.items;
+    if (schema?.type === 'array' && items?.type === 'object' && items?.properties) {
+      arrayItemProps = Object.entries(items.properties).map(([n, s]) =>
+        propInfo(n, s, items?.required || [], _depth + 1),
+      );
+    }
+  }
+
   return {
     name,
     type: schema?.type || '',
@@ -64,9 +87,12 @@ function propInfo(name, schema, requiredList = []) {
     min: schema?.minimum ?? null,
     max: schema?.maximum ?? null,
     minLength: schema?.minLength ?? null,
+    minItems: schema?.minItems ?? null,
     pattern: schema?.pattern || null,
     items: schema?.items || null,
     oneOf: schema?.oneOf || null,
+    objectProps,
+    arrayItemProps,
   };
 }
 
@@ -76,7 +102,7 @@ function extractProps(schemaObj, requiredList = []) {
   );
 }
 
-/** Résumé court du contenu d'un array items, pour affichage inline. */
+/** Résumé court du contenu d'un array items (pour les cas sans expansion). */
 function describeItems(itemsSchema) {
   if (!itemsSchema) return '';
   if (itemsSchema.oneOf) {
@@ -140,9 +166,12 @@ function parseSchema(schema) {
             required: false,
             min: null,
             max: null,
+            minItems: null,
             pattern: null,
             items: null,
             oneOf: null,
+            objectProps: null,
+            arrayItemProps: null,
           },
           {
             name: 'instruction',
@@ -153,9 +182,12 @@ function parseSchema(schema) {
             required: false,
             min: null,
             max: null,
+            minItems: null,
             pattern: null,
             items: null,
             oneOf: null,
+            objectProps: null,
+            arrayItemProps: null,
           },
           {
             name: 'functionalInstruction',
@@ -166,9 +198,12 @@ function parseSchema(schema) {
             required: false,
             min: null,
             max: null,
+            minItems: null,
             pattern: null,
             items: null,
             oneOf: null,
+            objectProps: null,
+            arrayItemProps: null,
           },
           {
             name: 'props',
@@ -179,9 +214,12 @@ function parseSchema(schema) {
             required: false,
             min: null,
             max: null,
+            minItems: null,
             pattern: null,
             items: null,
             oneOf: null,
+            objectProps: null,
+            arrayItemProps: null,
           },
         ],
       };
@@ -258,20 +296,45 @@ function inlineCode(str) {
   return `<code>${esc(str)}</code>`;
 }
 
-function propRow(p) {
+/**
+ * Renders one or more <tr> elements for a property.
+ * Nested objectProps / arrayItemProps are rendered as indented sub-rows
+ * directly below the parent row, making object structures fully explicit.
+ *
+ * @param {object} p        - prop descriptor from propInfo()
+ * @param {number} depth    - nesting depth (0 = top-level)
+ */
+function propRow(p, depth = 0) {
   const emptyStringOk = p.required && p.type === 'string' && p.minLength === 0;
   const showStar = p.required && !emptyStringOk;
-  const nameHtml = `<span class="prop-name pix-monospace pix-body-weight-bold">${esc(p.name)}${showStar ? '<span class="req-star">*</span>' : ''}</span>`;
 
-  // Type cell: type tag + items hint if array
+  // Visual indentation + nesting arrow for sub-props
+  const indent = depth * 16;
+  const arrow =
+    depth > 0
+      ? `<span class="nest-arrow">&#8627;</span>`
+      : '';
+  const nameHtml =
+    `<span class="prop-name pix-monospace pix-body-weight-bold"` +
+    (indent ? ` style="padding-left:${indent}px;"` : '') +
+    `>${arrow}${esc(p.name)}${showStar ? '<span class="req-star">*</span>' : ''}</span>`;
+
+  // Type cell
   let typeCell = typeTag(p.type);
-  if (p.type === 'array' && p.items) {
-    const hint = describeItems(p.items);
-    if (hint)
-      typeCell += ` <span class="prop-desc" style="font-size:11px;">de ${esc(hint)}</span>`;
+  if (p.type === 'array') {
+    if (p.arrayItemProps) {
+      // Sub-rows will show the item fields; just annotate minItems if set
+      if (p.minItems !== null && p.minItems > 0) {
+        typeCell += ` <span class="constraint-note">&ge;${p.minItems}</span>`;
+      }
+    } else if (p.items) {
+      const hint = describeItems(p.items);
+      if (hint)
+        typeCell += ` <span class="prop-desc" style="font-size:11px;">de ${esc(hint)}</span>`;
+    }
   }
 
-  // Value cell: enum > format + pattern + range
+  // Value cell
   let valCell = '';
   if (p.enum?.length) {
     valCell = enumPills(p.enum);
@@ -293,7 +356,32 @@ function propRow(p) {
     );
   const descCell = descParts.join('');
 
-  return `<tr><td>${nameHtml}</td><td>${typeCell}</td><td>${valCell}</td><td>${descCell}</td></tr>`;
+  // Background alternates with depth for visual hierarchy
+  const bg =
+    depth === 0 ? '' :
+    depth % 2 === 1 ? ' class="nested-row-odd"' :
+    ' class="nested-row-even"';
+
+  let rows = `<tr${bg}><td>${nameHtml}</td><td>${typeCell}</td><td>${valCell}</td><td>${descCell}</td></tr>`;
+
+  // Render nested object sub-fields
+  if (p.objectProps && p.objectProps.length > 0) {
+    rows += p.objectProps.map((np) => propRow(np, depth + 1)).join('');
+  }
+
+  // Render nested array item fields with a label row
+  if (p.arrayItemProps && p.arrayItemProps.length > 0) {
+    const labelIndent = (depth + 1) * 16;
+    const labelBg = (depth + 1) % 2 === 1 ? 'nested-row-odd' : 'nested-row-even';
+    rows +=
+      `<tr class="${labelBg} items-label-row">` +
+      `<td colspan="4" style="padding-left:${labelIndent}px;">` +
+      `<span class="items-label">items[ ]</span>` +
+      `</td></tr>`;
+    rows += p.arrayItemProps.map((np) => propRow(np, depth + 2)).join('');
+  }
+
+  return rows;
 }
 
 function propTable(props, compact = false) {
@@ -301,7 +389,7 @@ function propTable(props, compact = false) {
   const ths = ['Propriété', 'Type', 'Valeurs / Format', 'Description']
     .map((h) => `<th>${h}</th>`)
     .join('');
-  const rows = props.map(propRow).join('');
+  const rows = props.map((p) => propRow(p)).join('');
   return `<div class="table-wrap">
   <table class="prop-table"${style}>
     <thead><tr>${ths}</tr></thead>
@@ -339,18 +427,17 @@ function renderElementType(el) {
     const body = `
       <div class="custom-grid" style="padding:8px 0 4px;">${tagNamesHtml}</div>
       <div class="table-wrap"><table class="prop-table" style="font-size:12px;">
-        <tbody>${el.sharedProps.map(propRow).join('')}</tbody>
+        <tbody>${el.sharedProps.map((p) => propRow(p)).join('')}</tbody>
       </table></div>`;
     return elementCard(titleHtml, body);
   }
 
   const titleStr = el.title;
-  const isElementOnly = [
-    'qab',
-    'qcu-declarative',
-    'qcu-discovery',
-    'flashcards',
-  ].includes(titleStr);
+
+  // Elements NOT available in a stepper (derived from schema comparison,
+  // but kept here as a static safety net for display label only).
+  const isElementOnly = ['qab', 'flashcards'].includes(titleStr);
+
   const badge = isElementOnly
     ? ` <small style="font-weight:400; color:var(--muted); font-size:11px;">(element only)</small>`
     : '';
@@ -364,7 +451,7 @@ function renderElementType(el) {
     props.length === 0
       ? `<div class="prop-desc" style="padding-top:4px;">Aucune propriété supplémentaire (id + type uniquement).</div>`
       : `<div class="table-wrap"><table class="prop-table" style="font-size:12px;">
-          <tbody>${props.map(propRow).join('')}</tbody>
+          <tbody>${props.map((p) => propRow(p)).join('')}</tbody>
         </table></div>`;
 
   return elementCard(`${esc(titleStr)}${badge}${qrocmLink}`, body);
@@ -506,6 +593,15 @@ main { margin: 0 auto; padding: var(--pix-spacing-8x) var(--pix-spacing-10x) var
 .legend { display:flex; flex-wrap:wrap; gap:var(--pix-spacing-2x); padding:var(--pix-spacing-3x) var(--pix-spacing-6x); border-bottom:1px solid var(--border); align-items:center; color:var(--muted); }
 .table-wrap { overflow-x:auto; }
 .empty-ok-note { display:block; margin-top:4px; color:var(--pix-info-700); background:var(--pix-info-50); border:1px solid var(--pix-info-100); border-radius:4px; padding:2px 6px; font-size:0.6875rem; }
+
+/* ── Nested sub-props (object / array items expansion) ───────────────────── */
+.nested-row-odd td  { background: var(--pix-neutral-20); border-bottom-color: var(--pix-neutral-100); }
+.nested-row-even td { background: var(--pix-info-50);    border-bottom-color: var(--pix-info-100); }
+.nest-arrow { color: var(--muted); margin-right: 3px; font-size: 0.75rem; }
+.items-label-row td { padding-top: 2px; padding-bottom: 2px; }
+.items-label { font-family: var(--_pix-font-family-monospace); font-size: 0.625rem; color: var(--muted); font-style: italic; letter-spacing: 0.04em; }
+.constraint-note { font-size: 0.625rem; color: var(--muted); margin-left: 2px; }
+
 @media(max-width:768px){ main{padding:var(--pix-spacing-4x);} header{padding:var(--pix-spacing-6x);} nav{padding:var(--pix-spacing-3x) var(--pix-spacing-4x);} }
 `;
 
@@ -524,10 +620,9 @@ function generateHtml(model, generatedAt, cssFilename) {
     qrocmProposals,
   } = model;
 
-  // Module section: split details/sections from the rest
   const topProps = moduleProps;
 
-  // Stepper note: elements NOT in stepper
+  // Stepper note: elements NOT in stepper (computed dynamically from schema)
   const allElementTitles = elementTypes
     .filter((e) => !e.isCustomGroup)
     .map((e) => e.title);
@@ -670,7 +765,8 @@ ${sectionBlock(
   'hd-element',
   'Elements',
   `Chaque élément possède <code>id</code> (uuid, requis) et <code>type</code> (requis).
-   Les éléments marqués <em>(element only)</em> ne sont pas disponibles dans un stepper.`,
+   Les éléments marqués <em>(element only)</em> ne sont pas disponibles dans un stepper.
+   Les sous-champs des objets et tableaux sont détaillés en retrait.`,
   `${legendHtml}
   <div class="element-grid">${elementTypes.map(renderElementType).join('')}</div>`,
 )}
@@ -706,7 +802,7 @@ ${
                   : `<div class="table-wrap"><table class="prop-table" style="font-size:12px;">
                       <tbody>
                         <tr><td><span class="prop-name pix-monospace pix-body-weight-bold">type<span class="req-star">*</span></span></td><td><span class="enum-pill pix-monospace">${esc(p.typeValue)}</span></td></tr>
-                        ${p.props.map(propRow).join('')}
+                        ${p.props.map((prop) => propRow(prop)).join('')}
                       </tbody>
                     </table></div>`;
               return elementCard(esc(p.title), body);
