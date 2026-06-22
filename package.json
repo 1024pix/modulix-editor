@@ -29,7 +29,7 @@
     "vite": "^8.0.0"
   },
   "dependencies": {
-    "@1024pix/pix-ui": "^60.5.0",
+    "@1024pix/pix-ui": "^61.0.0",
     "monaco-editor": "^0.55.1"
   }
 }
