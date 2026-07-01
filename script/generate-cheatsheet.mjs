@@ -70,7 +70,11 @@ function propInfo(name, schema, requiredList = [], _depth = 0) {
       );
     }
     const items = schema?.items;
-    if (schema?.type === 'array' && items?.type === 'object' && items?.properties) {
+    if (
+      schema?.type === 'array' &&
+      items?.type === 'object' &&
+      items?.properties
+    ) {
       arrayItemProps = Object.entries(items.properties).map(([n, s]) =>
         propInfo(n, s, items?.required || [], _depth + 1),
       );
@@ -310,10 +314,7 @@ function propRow(p, depth = 0) {
 
   // Visual indentation + nesting arrow for sub-props
   const indent = depth * 16;
-  const arrow =
-    depth > 0
-      ? `<span class="nest-arrow">&#8627;</span>`
-      : '';
+  const arrow = depth > 0 ? `<span class="nest-arrow">&#8627;</span>` : '';
   const nameHtml =
     `<span class="prop-name pix-monospace pix-body-weight-bold"` +
     (indent ? ` style="padding-left:${indent}px;"` : '') +
@@ -358,9 +359,11 @@ function propRow(p, depth = 0) {
 
   // Background alternates with depth for visual hierarchy
   const bg =
-    depth === 0 ? '' :
-    depth % 2 === 1 ? ' class="nested-row-odd"' :
-    ' class="nested-row-even"';
+    depth === 0
+      ? ''
+      : depth % 2 === 1
+        ? ' class="nested-row-odd"'
+        : ' class="nested-row-even"';
 
   let rows = `<tr${bg}><td>${nameHtml}</td><td>${typeCell}</td><td>${valCell}</td><td>${descCell}</td></tr>`;
 
@@ -372,7 +375,8 @@ function propRow(p, depth = 0) {
   // Render nested array item fields with a label row
   if (p.arrayItemProps && p.arrayItemProps.length > 0) {
     const labelIndent = (depth + 1) * 16;
-    const labelBg = (depth + 1) % 2 === 1 ? 'nested-row-odd' : 'nested-row-even';
+    const labelBg =
+      (depth + 1) % 2 === 1 ? 'nested-row-odd' : 'nested-row-even';
     rows +=
       `<tr class="${labelBg} items-label-row">` +
       `<td colspan="4" style="padding-left:${labelIndent}px;">` +
@@ -425,6 +429,7 @@ function renderElementType(el) {
       .join('');
     const titleHtml = `custom <a href="#custom" style="font-size:11px; font-weight:400; color:var(--custom-color);">voir subtypes</a>`;
     const body = `
+      <div class="element-note">POI (Petits Objets Interactifs). Sélectionner le type via <code>tagName</code>, configurer via <code>props</code>. Disponible uniquement dans un composant <strong>element</strong> (pas dans un stepper).</div>
       <div class="custom-grid" style="padding:8px 0 4px;">${tagNamesHtml}</div>
       <div class="table-wrap"><table class="prop-table" style="font-size:12px;">
         <tbody>${el.sharedProps.map((p) => propRow(p)).join('')}</tbody>
@@ -433,6 +438,7 @@ function renderElementType(el) {
   }
 
   const titleStr = el.title;
+  const note = ELEMENT_NOTES[titleStr.toLowerCase()] || null;
 
   // Elements NOT available in a stepper (derived from schema comparison,
   // but kept here as a static safety net for display label only).
@@ -446,11 +452,12 @@ function renderElementType(el) {
       ? ` <small style="font-size:11px; font-weight:400;"><a href="#qrocm" style="color:var(--element-color);">voir details</a></small>`
       : '';
 
+  const noteHtml = note ? `<div class="element-note">${note}</div>` : '';
   const props = el.props.filter((p) => p.name !== 'id');
   const body =
     props.length === 0
-      ? `<div class="prop-desc" style="padding-top:4px;">Aucune propriété supplémentaire (id + type uniquement).</div>`
-      : `<div class="table-wrap"><table class="prop-table" style="font-size:12px;">
+      ? `${noteHtml}<div class="prop-desc" style="padding-top:4px;">Aucune propriété supplémentaire (id + type uniquement).</div>`
+      : `${noteHtml}<div class="table-wrap"><table class="prop-table" style="font-size:12px;">
           <tbody>${props.map((p) => propRow(p)).join('')}</tbody>
         </table></div>`;
 
@@ -602,14 +609,149 @@ main { margin: 0 auto; padding: var(--pix-spacing-8x) var(--pix-spacing-10x) var
 .items-label { font-family: var(--_pix-font-family-monospace); font-size: 0.625rem; color: var(--muted); font-style: italic; letter-spacing: 0.04em; }
 .constraint-note { font-size: 0.625rem; color: var(--muted); margin-left: 2px; }
 
+/* ── Notes d'éléments ──────────────────────────────────────────────────── */
+.element-note { font-size:0.6875rem; color:var(--pix-neutral-800); background:var(--pix-neutral-20); border-left:3px solid var(--pix-neutral-300); padding:4px 8px; margin:2px 0 6px; border-radius:0 4px 4px 0; line-height:1.6; }
+.element-note code { font-size:0.6875rem; }
+/* ── Types de grains ───────────────────────────────────────────────────── */
+.grain-type-notes { padding:var(--pix-spacing-2x) var(--pix-spacing-6x) var(--pix-spacing-4x); border-top:1px solid var(--border); }
+.grain-type-notes ul { margin-top:4px; padding-left:16px; }
+.grain-type-notes li { margin-bottom:2px; font-size:0.6875rem; color:var(--muted); }
+/* ── Règles stepper ────────────────────────────────────────────────────── */
+.stepper-rules { margin-top:8px; padding:6px 10px; background:var(--pix-warning-50); border-radius:4px; }
+.stepper-rules ul { padding-left:14px; margin:0; }
+.stepper-rules li { font-size:0.6875rem; color:var(--pix-warning-700); margin-bottom:3px; }
+/* ── Dépréciation ──────────────────────────────────────────────────────── */
+.deprecation-callout { margin:var(--pix-spacing-2x) var(--pix-spacing-6x); padding:6px 10px; background:var(--pix-warning-50); border:1px solid var(--pix-warning-100); border-radius:6px; font-size:0.6875rem; color:var(--pix-warning-700); }
+/* ── Bonnes pratiques ──────────────────────────────────────────────────── */
+.bp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:0; }
+.bp-card { border-right:1px solid var(--border); border-bottom:1px solid var(--border); padding:var(--pix-spacing-4x) var(--pix-spacing-6x); }
+.bp-card h3 { font-size:0.8125rem; font-weight:var(--pix-font-bold); margin-bottom:var(--pix-spacing-2x); color:var(--pix-neutral-800); }
+.bp-card p, .bp-card li { font-size:0.75rem; color:var(--muted); margin-bottom:4px; line-height:1.5; }
+.bp-card ul { padding-left:16px; }
+.nav-pratiques { background:var(--pix-neutral-20); color:var(--muted); border-color:var(--pix-neutral-100); }
+
 @media(max-width:768px){ main{padding:var(--pix-spacing-4x);} header{padding:var(--pix-spacing-6x);} nav{padding:var(--pix-spacing-3x) var(--pix-spacing-4x);} }
 `;
+
+// ─── Static documentation notes (from contributor guide) ──────────────────
+
+const BR = '<br>';
+
+const ELEMENT_NOTES = {
+  custom:
+    `À utiliser pour les objets interactifs en version définitive.${BR}` +
+    `Sélectionner le type via <code>tagName</code>, puis configurer les <code>props</code> selon le type choisi.${BR}` +
+    `Disponible uniquement dans un composant <strong>element</strong> (pas dans un stepper!).`,
+
+  'custom-draft':
+    `À utiliser pour les objets interactifs en version draft (càd HTML hébergé sur GitHub, ex&nbsp;: <code>1024pix/atelier-contenus</code>).${BR}` +
+    `Renseigner l'URL du fichier <code>.html</code> et la hauteur (<code>height</code> max 550&nbsp;px).${BR}` +
+    `Le champ <code>instruction</code> affiche une consigne en gras.`,
+
+  download:
+    `Fichier téléchargeable.${BR}` +
+    `URL pointant vers un fichier hébergé dans Pix&nbsp;Editor (espace Modulix).${BR}` +
+    `Le champ <code>format</code> est le seul texte contribuable (ex&nbsp;: <em>PDF, 2 Mo</em>&nbsp;; le reste du libellé est automatique).`,
+
+  embed:
+    `Simulateur intégré en <code>&lt;iframe&gt;</code>.${BR}` +
+    `<code>isCompletionRequired: true</code>&nbsp;→ bouton "continuer" masqué jusqu'à la complétion&nbsp;;${BR}` +
+    `<code>false</code>&nbsp;→ "continuer" disponible immédiatement.${BR}` +
+    `Hauteur par défaut&nbsp;: <strong>150&nbsp;px</strong>.${BR}` +
+    `<strong>Non disponible dans un stepper.</strong>`,
+
+  expand:
+    `Bloc de texte rétractable, principalement pour les indices.${BR}` +
+    `<code>title</code> est visible et cliquable (en gras).${BR}` +
+    `<code>content</code> s'affiche après le clic.`,
+
+  flashcards:
+    `Deck de flashcards.${BR}` +
+    `La 1ère et la dernière carte affichent le titre et l'image d'intro (<code>introImage</code>).${BR}` +
+    `Chaque carte a un recto et un verso (image optionnelle + texte).${BR}` +
+    `<strong>Non disponible dans un stepper.</strong>`,
+
+  image:
+    `Format optimal&nbsp;: 16/9 (autres formats acceptés).${BR}` +
+    `<code>alt</code> est lu par les lecteurs d'écran.${BR}` +
+    `<code>alternativeText</code> s'affiche en modal au clic (informations exhaustives).${BR}` +
+    `<code>legend</code> s'affiche sous l'image.${BR}` +
+    `<code>licence</code> à renseigner uniquement si nécessaire.`,
+
+  qab:
+    `Question A ou B&nbsp;: deck de cartes à catégoriser.${BR}` +
+    `<code>proposalA</code> et <code>proposalB</code> doivent être identiques pour toutes les cartes.${BR}` +
+    `<code>solution</code>&nbsp;: valeur <code>A</code> ou <code>B</code>.`,
+
+  qcu:
+    `<code>hasShortProposals: true</code>&nbsp;→ affichage en grille (contrainte de 20&nbsp;car. sur <code>content</code>, pas de balises HTML).${BR}` +
+    `<code>solution</code>&nbsp;= id de la bonne proposition.${BR}` +
+    `Chaque proposal a un <code>feedback</code> affiché après vérification.`,
+
+  'qcu-declarative':
+    `Pas de bonne ou mauvaise réponse affichée côté apprenant.${BR}` +
+    `Même contribution que QCU (solution facultative).`,
+
+  'qcu-discovery':
+    `Pas de bonne ou mauvaise réponse affichée.${BR}` +
+    `Les données de réponse sont collectées.${BR}` +
+    `Même contribution que QCU.`,
+
+  qcm:
+    `<code>hasShortProposals: true</code>&nbsp;→ affichage en grille (contrainte de 20&nbsp;car. sur <code>content</code>).${BR}` +
+    `<code>solutions</code>&nbsp;: tableau des ids des bonnes propositions.`,
+
+  'qcm-declarative':
+    `L'utilisateur doit cocher au moins 1 proposition (prévoir une option "Aucune ne me convient").${BR}` +
+    `Pas de champ <code>solutions</code>.${BR}` +
+    `Le feedback ne contient qu'un champ <code>diagnosis</code>.`,
+
+  qrocm:
+    `Séquence de proposals (<code>text</code>, <code>input</code>, <code>select</code>).${BR}` +
+    `Tolerances&nbsp;: <code>t1</code> ignore espaces/accents/casse — <code>t2</code> ignore la ponctuation — <code>t3</code> accepte 25&nbsp;% d'erreur (1&nbsp;car. sur 4).${BR}` +
+    `Feedbacks <code>valid</code> et <code>invalid</code>.`,
+
+  separator:
+    `Trace un trait horizontal dans le grain.${BR}` +
+    `Aucune propriété supplémentaire.`,
+
+  'short-video':
+    `Vidéo courte lue automatiquement en boucle (équivalent d'un GIF animé de meilleure qualité).${BR}` +
+    `Format MP4 sur Pix&nbsp;Assets.${BR}` +
+    `<code>transcription</code> au format HTML.`,
+
+  video:
+    `Vidéo avec lecteur et sous-titres.${BR}` +
+    `<code>poster</code>&nbsp;: vignette avant la lecture.${BR}` +
+    `<code>subtitles</code>&nbsp;: URL du fichier <code>.vtt</code>.${BR}` +
+    `<code>transcription</code> au format HTML.`,
+
+  audio:
+    `Fichier audio MP3 hébergé sur Pix&nbsp;Assets.${BR}` +
+    `<code>transcription</code> au format HTML.`,
+};
+
+const GRAIN_TYPE_NOTES = {
+  'short-lesson': 'Modalité passive — lecture, vidéo, image.',
+  activity: 'Modalité avec action — exercice interactif, évaluation.',
+  transition:
+    'Grain de transition (remplace les <code>transitionTexts</code> dépréciés).',
+};
+
+const STEPPER_RULES = [
+  'Un seul stepper par grain.',
+  'Minimum 2 <code>steps</code> par stepper.',
+  'Aucun élément <em>answerable</em> ne peut être ajouté à côté du stepper dans le même grain.',
+  'Les éléments <code>embed</code> et <code>flashcards</code> ne sont pas disponibles dans un stepper.',
+  'Après une réponse KO vérifiée, le bouton "Suivant" reste visible même si l\'utilisateur réessaie.',
+];
 
 // ─── Generate HTML ─────────────────────────────────────────────────────────
 
 function generateHtml(model, generatedAt, cssFilename) {
   const {
     moduleProps,
+    moduleAllProps,
     detailsProps,
     sectionTypes,
     sectionRequired,
@@ -667,6 +809,7 @@ function generateHtml(model, generatedAt, cssFilename) {
 
 <nav>
   <a href="#structure"  class="nav-module">Structure</a>
+  <a href="#pratiques" class="nav-pratiques">Bonnes pratiques</a>
   <a href="#module"     class="nav-module">Module</a>
   <a href="#sections"   class="nav-section">Sections</a>
   <a href="#grains"     class="nav-grain">Grains</a>
@@ -674,6 +817,7 @@ function generateHtml(model, generatedAt, cssFilename) {
   <a href="#elements"   class="nav-element">Elements</a>
   <a href="#custom"     class="nav-custom">Focus Custom</a>
   ${qrocmProposals.length ? '<a href="#qrocm" class="nav-element">Focus QROCM proposals</a>' : ''}
+  
 </nav>
 
 <main>
@@ -698,12 +842,61 @@ ${sectionBlock(
 )}
 
 ${sectionBlock(
+  'pratiques',
+  'hd-module',
+  'Bonnes pratiques',
+  '',
+  `<div class="bp-grid">
+    <div class="bp-card">
+      <h3>Champs facultatifs</h3>
+      <p>Si un champ est facultatif et non renseigné, <strong>supprimer entièrement la propriété</strong> du JSON plutôt que de la laisser vide (<code>""</code> ou <code>null</code>) — une valeur vide provoque une erreur de validation.</p>
+    </div>
+    <div class="bp-card">
+      <h3>Feedbacks — classe CSS</h3>
+      <p>La classe <code>feedback__state</code> colore dynamiquement le texte en vert (réponse valide) ou en rouge (réponse invalide).</p>
+      <p>Exemple&nbsp;: <code>&lt;span class="feedback__state"&gt;Bien vu&nbsp;!&lt;/span&gt;</code></p>
+    </div>
+    <div class="bp-card">
+      <h3>Éditeur WYSIWYG</h3>
+      <ul>
+        <li>Basculer en mode HTML (<code>&lt;/&gt;</code>) pour nettoyer les balises inutiles générées automatiquement.</li>
+        <li>Préférer "Insert only Text" lors d'un collage pour obtenir un code HTML propre.</li>
+        <li>Les hyperliens sont mal gérés par l'éditeur&nbsp;: les saisir directement en mode HTML.</li>
+      </ul>
+    </div>
+    <div class="bp-card">
+      <h3>Bouton "Nettoyer"</h3>
+      <ul>
+        <li>Remplace les espaces classiques avant <code>!&nbsp;?&nbsp;:&nbsp;;&nbsp;«&nbsp;»</code> par des espaces insécables.</li>
+        <li>Supprime les balises <code>&lt;p&gt;&lt;br&gt;&lt;/p&gt;</code> parasites ajoutées par le WYSIWYG.</li>
+        <li>Convertit les apostrophes droites <code>'</code> en apostrophes typographiques <code>'</code>.</li>
+      </ul>
+    </div>
+    <div class="bp-card">
+      <h3>Élément &lt;details&gt; (indice cliquable)</h3>
+      <p>Utiliser la balise HTML <code>&lt;details&gt;</code> directement dans un champ WYSIWYG pour créer des indices masqués par défaut.</p>
+      <p><code>&lt;details&gt;&lt;summary&gt;Indice 1&lt;/summary&gt;&lt;p&gt;…&lt;/p&gt;&lt;/details&gt;</code></p>
+    </div>
+    <div class="bp-card">
+      <h3>Pix LLM (ChatPix)</h3>
+      <p>Créer un élément <code>embed</code> avec <code>height: 600</code> et l'URL&nbsp;: <code>https://epreuves.pix.fr/pixllm/pix-llm.html?mode=configXXX/</code></p>
+      <p>Pour la validation automatique&nbsp;: <code>isCompletionRequired: true</code> et <code>solution: "pix-llm-success"</code>.</p>
+    </div>
+  </div>`,
+)}
+
+${sectionBlock(
   'module',
   'hd-module',
   'Module',
   'Propriétés du module au niveau racine.',
   `${legendHtml}
   ${propTable(topProps)}
+  ${
+    moduleAllProps.some((p) => p.name === 'transitionTexts')
+      ? `<div class="deprecation-callout">⚠️ <strong>transitionTexts</strong> est déprécié. Utiliser désormais le type de grain <code>transition</code> à la place.</div>`
+      : ''
+  }
   ${subTitle('details.*')}
   ${propTable(detailsProps)}`,
 )}
@@ -732,7 +925,16 @@ ${sectionBlock(
     propInfo('type', { type: 'string', enum: grainTypes }, grainRequired),
     propInfo('title', { type: 'string' }, grainRequired),
     propInfo('components', { type: 'array' }, grainRequired),
-  ])}`,
+  ])}
+  <div class="grain-type-notes pix-body-xs">
+    <strong>Types de grain :</strong>
+    <ul>${grainTypes
+      .map(
+        (t) =>
+          `<li><code>${esc(t)}</code>${GRAIN_TYPE_NOTES[t] ? ` — ${GRAIN_TYPE_NOTES[t]}` : ''}</li>`,
+      )
+      .join('')}</ul>
+  </div>`,
 )}
 
 ${sectionBlock(
@@ -756,6 +958,7 @@ ${sectionBlock(
         <tr><td><span class="prop-name pix-monospace pix-body-weight-bold">steps<span class="req-star">*</span></span></td><td>${typeTag('array')} de <code>{ elements: Element[] }</code></td></tr>
       </tbody></table>
       ${notInStepperNote ? `<div class="prop-desc" style="margin-top:10px; font-size:12px;">${notInStepperNote}</div>` : ''}
+      <div class="stepper-rules"><ul>${STEPPER_RULES.map((r) => `<li>${r}</li>`).join('')}</ul></div>
     </div>
   </div>`,
 )}
