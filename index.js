@@ -174,6 +174,16 @@ function init(schema) {
     );
   });
 
+  const isWindowOpenedFromPixEditor = window.opener !== null;
+  let pixEditorModuleContent;
+  const updateEditorDialog = document.getElementById('update-editor-dialog');
+  if (isWindowOpenedFromPixEditor) {
+    window.opener.postMessage(
+      { from: 'modulix-editor', message: 'ready' },
+      '*',
+    );
+  }
+
   window.addEventListener('message', (event) => {
     if (
       event.data?.from === 'pix-app' &&
@@ -181,6 +191,11 @@ function init(schema) {
     ) {
       const moduleContent = editor.getValue();
       sendDataForPreview(previewWindow, moduleContent);
+    }
+
+    if (event.data?.from === 'pix-editor' && event.data?.moduleContent) {
+      pixEditorModuleContent = event.data.moduleContent;
+      updateEditorDialog.showModal();
     }
   });
 
@@ -271,6 +286,14 @@ function init(schema) {
       button.click();
     }
   });
+
+  const editorDialogValidateButton = document.getElementById(
+    'editor-dialog-confirm-button',
+  );
+  editorDialogValidateButton.addEventListener('click', () => {
+    editor.setValue(pixEditorModuleContent);
+    updateEditorDialog.close();
+  })
 
   editor.on('change', () => {
     const newJson = JSON.stringify(editor.getValue(), null, 2);
