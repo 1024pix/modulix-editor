@@ -59,18 +59,14 @@ function init(schema) {
   const jsonOutputContainer = document.getElementById('json_output');
   const loadingOverlay = document.getElementById('loading-overlay');
 
-  // Charger un module volumineux dans JSONEditor bloque le thread principal
-  // (parfois plus de 10s, cf. cout de resolution des oneOf imbriques du schema).
-  // On affiche l'overlay et on laisse le navigateur peindre (double rAF) avant
-  // de lancer le traitement synchrone, pour que le blocage se voie comme un
-  // chargement plutot que comme un gel de l'interface.
-  function setValueWithLoadingOverlay(work) {
+  function setValueWithLoadingOverlay(setEditorValue) {
     loadingOverlay.hidden = false;
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        work();
-        loadingOverlay.hidden = true;
-      });
+
+    const waitForThreadToBeAvailable = requestAnimationFrame;
+
+    waitForThreadToBeAvailable(() => {
+      setEditorValue();
+      loadingOverlay.hidden = true;
     });
   }
 
