@@ -1,8 +1,9 @@
 import { pageTitle } from 'ember-page-title';
+import ModulixEditorHeader from 'modulix-editor/components/header';
 
 <template>
-  {{pageTitle "ModulixEditorEmber"}}
-  <h2 id="title">Welcome to Ember</h2>
+  {{pageTitle "Modulix Editor"}}
+  <ModulixEditorHeader />
 
   {{outlet}}
 </template>
