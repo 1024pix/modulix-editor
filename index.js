@@ -57,6 +57,18 @@ function init(schema) {
 
   const element = document.getElementById('editor_holder');
   const jsonOutputContainer = document.getElementById('json_output');
+  const loadingOverlay = document.getElementById('loading-overlay');
+
+  function setValueWithLoadingOverlay(setEditorValue) {
+    loadingOverlay.hidden = false;
+
+    const waitForThreadToBeAvailable = requestAnimationFrame;
+
+    waitForThreadToBeAvailable(() => {
+      setEditorValue();
+      loadingOverlay.hidden = true;
+    });
+  }
 
   monaco.json.jsonDefaults.setDiagnosticsOptions({
     validate: true,
@@ -274,7 +286,7 @@ function init(schema) {
   monacoEditor.onDidBlurEditorText(() => {
     try {
       const value = JSON.parse(monacoEditor.getValue());
-      editor.setValue(value);
+      setValueWithLoadingOverlay(() => editor.setValue(value));
     } catch (error) {
       console.error(error);
     }
@@ -283,7 +295,7 @@ function init(schema) {
   editor.on('ready', () => {
     const schema = LocalBackup.load();
     if (schema) {
-      editor.setValue(schema);
+      setValueWithLoadingOverlay(() => editor.setValue(schema));
     }
 
     document.querySelectorAll('#editor_holder [title]').forEach((el) => {
