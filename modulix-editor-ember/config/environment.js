@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'modulix-editor-ember',
+    modulePrefix: 'modulix-editor',
     environment,
     rootURL: '/',
     locationType: 'history',

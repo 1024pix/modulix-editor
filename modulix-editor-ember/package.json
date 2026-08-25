@@ -1,8 +1,8 @@
 {
-  "name": "modulix-editor-ember",
+  "name": "modulix-editor",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for modulix-editor-ember goes here",
+  "description": "Small description for modulix-editor goes here",
   "repository": "",
   "license": "MIT",
   "author": "",
@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "dev": "npm start",
     "format": "prettier . --cache --write",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:css": "stylelint \"**/*.css\"",

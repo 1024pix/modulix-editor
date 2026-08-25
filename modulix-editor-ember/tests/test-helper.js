@@ -1,5 +1,5 @@
-import Application from 'modulix-editor-ember/app';
-import config from 'modulix-editor-ember/config/environment';
+import Application from 'modulix-editor/app';
+import config from 'modulix-editor/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

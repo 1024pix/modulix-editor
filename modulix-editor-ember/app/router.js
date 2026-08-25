@@ -1,5 +1,5 @@
 import EmberRouter from '@embroider/router';
-import config from 'modulix-editor-ember/config/environment';
+import config from 'modulix-editor/config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;
