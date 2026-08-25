@@ -4,5 +4,7 @@
     "local>1024pix/renovate-config:default",
     "local>1024pix/renovate-config:js-app"
   ],
-  "enabled": true
+  "enabled": true,
+  "automerge": true,
+  "automergeType": "pr"
 }
