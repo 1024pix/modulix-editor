@@ -1,0 +1,25 @@
+.pix-dialog {
+    width: 25rem;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+
+    .pix-dialog__header {
+        padding: 0 16px 16px 0;
+        color: var(--pix-neutral-900);
+
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .pix-dialog__footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+}
+
+.pix-dialog::backdrop {
+    --pix-neutral-800-inline: 37, 56, 88;
+
+    background-color: rgba(var(--pix-neutral-800-inline), 0.4);
+}
