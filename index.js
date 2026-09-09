@@ -11,8 +11,8 @@ self.MonacoEnvironment = {
 };
 
 const schemaUrls = [
-  'https://api.integration.pix.fr/api/module-schema/module-json-schema.json',
-  'https://api.recette.pix.fr/api/module-schema/module-json-schema.json',
+  'https://editor.integration.pix.fr/api/module-schema/module-json-schema.json',
+  'https://editor.pix.fr/api/module-schema/module-json-schema.json',
 ];
 
 if (import.meta.env.DEV) {
