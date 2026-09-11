@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import sortableGroup from 'ember-sortable/modifiers/sortable-group';
@@ -12,6 +13,29 @@ function makeGrain() {
 }
 
 export default class GrainsField extends Component {
+  // État d'affichage uniquement (pas dans les données du module : ne doit
+  // pas apparaître dans le JSON exporté). On suit les grains DÉPLIÉS
+  // (plutôt que repliés) pour que replié soit l'état par défaut — y
+  // compris pour les grains ajoutés ensuite, comme le fait l'actuel
+  // modulix-editor via `options: { collapsed: true }`.
+  @tracked expandedGrainIds = new Set();
+
+  @action
+  isCollapsed(grain) {
+    return !this.expandedGrainIds.has(grain.id);
+  }
+
+  @action
+  toggleCollapsed(grain) {
+    const next = new Set(this.expandedGrainIds);
+    if (next.has(grain.id)) {
+      next.delete(grain.id);
+    } else {
+      next.add(grain.id);
+    }
+    this.expandedGrainIds = next;
+  }
+
   @action
   reorder(items) {
     this.args.onChange(items);
@@ -54,22 +78,32 @@ export default class GrainsField extends Component {
           {{sortableItem groupName=@groupName model=grain}}
         >
           <div class="card-body">
-            <div class="d-flex align-items-start gap-2 mb-2">
+            <div class="d-flex align-items-center gap-2 mb-2">
               <span
                 class="grains-field__handle btn btn-sm btn-light"
                 {{sortableHandle}}
               >⠿</span>
               <button
                 type="button"
+                class="btn btn-sm btn-light"
+                data-test-toggle-grain
+                {{on "click" (fn this.toggleCollapsed grain)}}
+              >{{if (this.isCollapsed grain) "▸" "▾"}}</button>
+              <strong>Grain —
+                {{if grain.title grain.title "(sans titre)"}}</strong>
+              <button
+                type="button"
                 class="btn btn-sm btn-outline-danger ms-auto"
                 {{on "click" (fn this.removeGrain grain)}}
               >Supprimer le grain</button>
             </div>
-            <GrainEditor
-              @grain={{grain}}
-              @onChange={{fn this.updateGrainField grain}}
-              @onComponentsChange={{this.updateGrainComponents}}
-            />
+            {{#unless (this.isCollapsed grain)}}
+              <GrainEditor
+                @grain={{grain}}
+                @onChange={{fn this.updateGrainField grain}}
+                @onComponentsChange={{this.updateGrainComponents}}
+              />
+            {{/unless}}
           </div>
         </li>
       {{/each}}

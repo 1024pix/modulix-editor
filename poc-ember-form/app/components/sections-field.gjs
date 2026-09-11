@@ -14,23 +14,26 @@ function makeSection() {
 
 export default class SectionsField extends Component {
   // État d'affichage uniquement (pas dans les données du module : ne doit
-  // pas apparaître dans le JSON exporté).
-  @tracked collapsedSectionIds = new Set();
+  // pas apparaître dans le JSON exporté). On suit les sections DÉPLIÉES
+  // (plutôt que repliées) pour que replié soit l'état par défaut — y
+  // compris pour les sections ajoutées ensuite, comme le fait l'actuel
+  // modulix-editor via `options: { collapsed: true }`.
+  @tracked expandedSectionIds = new Set();
 
   @action
   isCollapsed(section) {
-    return this.collapsedSectionIds.has(section.id);
+    return !this.expandedSectionIds.has(section.id);
   }
 
   @action
   toggleCollapsed(section) {
-    const next = new Set(this.collapsedSectionIds);
+    const next = new Set(this.expandedSectionIds);
     if (next.has(section.id)) {
       next.delete(section.id);
     } else {
       next.add(section.id);
     }
-    this.collapsedSectionIds = next;
+    this.expandedSectionIds = next;
   }
 
   @action

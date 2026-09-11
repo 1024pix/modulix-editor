@@ -23,9 +23,26 @@ module('Integration | Component | module-form-poc', function (hooks) {
     assert.strictEqual(json.sections[0].grains[0].components[1].type, 'image');
   });
 
+  test('sections and grains are collapsed by default', async function (assert) {
+    await render(<template><ModuleFormPoc /></template>);
+
+    assert
+      .dom('.section-editor')
+      .doesNotExist('the section content is hidden by default');
+
+    await click('[data-test-toggle-section]');
+    assert
+      .dom('.grain-editor')
+      .doesNotExist(
+        'the grain content is hidden by default, even once its section is expanded',
+      );
+  });
+
   test('editing a text component field updates the generated JSON', async function (assert) {
     await render(<template><ModuleFormPoc /></template>);
 
+    await click('[data-test-toggle-section]');
+    await click('[data-test-toggle-grain]');
     await fillIn(
       '.component-editor--text textarea',
       'Contenu modifié via le formulaire Ember',
@@ -53,6 +70,9 @@ module('Integration | Component | module-form-poc', function (hooks) {
 
   test('adding and removing components updates the polymorphic list', async function (assert) {
     await render(<template><ModuleFormPoc /></template>);
+
+    await click('[data-test-toggle-section]');
+    await click('[data-test-toggle-grain]');
 
     await click('[data-test-add-component="text"]');
     let json = JSON.parse(
@@ -87,6 +107,9 @@ module('Integration | Component | module-form-poc', function (hooks) {
   skip('keyboard reordering (ember-sortable a11y mode) updates the order in the JSON', async function (assert) {
     await render(<template><ModuleFormPoc /></template>);
 
+    await click('[data-test-toggle-section]');
+    await click('[data-test-toggle-grain]');
+
     let json = JSON.parse(
       this.element.querySelector('.module-form-poc__json').textContent,
     );
@@ -120,12 +143,7 @@ module('Integration | Component | module-form-poc', function (hooks) {
 
     assert
       .dom('.section-editor')
-      .exists('the section content is visible by default');
-
-    await click('[data-test-toggle-section]');
-    assert
-      .dom('.section-editor')
-      .doesNotExist('the section content is hidden once collapsed');
+      .doesNotExist('the section content is hidden by default');
 
     const collapsedJson = this.element.querySelector(
       '.module-form-poc__json',
@@ -134,7 +152,7 @@ module('Integration | Component | module-form-poc', function (hooks) {
     await click('[data-test-toggle-section]');
     assert
       .dom('.section-editor')
-      .exists('the section content is visible again once expanded');
+      .exists('the section content is visible once expanded');
 
     const expandedJson = this.element.querySelector(
       '.module-form-poc__json',
@@ -144,6 +162,11 @@ module('Integration | Component | module-form-poc', function (hooks) {
       expandedJson,
       'collapsing is a display-only concern, not part of the module data',
     );
+
+    await click('[data-test-toggle-section]');
+    assert
+      .dom('.section-editor')
+      .doesNotExist('the section content is hidden again once collapsed');
   });
 
   test('each nested sortable list (sections/grains/components) has its own isolated ember-sortable group', async function (assert) {
@@ -152,6 +175,15 @@ module('Integration | Component | module-form-poc', function (hooks) {
     // 2 sections, the 2nd one gets its own grain -> 2 grains-field instances,
     // each with their own components-field instance, all mounted at once.
     await click('[data-test-add-section]');
+
+    const toggleSectionButtons = this.element.querySelectorAll(
+      '[data-test-toggle-section]',
+    );
+    assert.strictEqual(toggleSectionButtons.length, 2, 'two sections exist');
+    for (const button of toggleSectionButtons) {
+      await click(button); // expand both, sections are collapsed by default
+    }
+
     const addGrainButtons = this.element.querySelectorAll(
       '[data-test-add-grain]',
     );
@@ -192,6 +224,38 @@ module('Integration | Component | module-form-poc', function (hooks) {
         `group "${name}" must not mix sections/grains/components together`,
       );
     }
+  });
+
+  test('collapsing a grain hides its content without changing the JSON', async function (assert) {
+    await render(<template><ModuleFormPoc /></template>);
+
+    await click('[data-test-toggle-section]');
+    assert
+      .dom('.grain-editor')
+      .doesNotExist('the grain content is hidden by default');
+
+    const collapsedJson = this.element.querySelector(
+      '.module-form-poc__json',
+    ).textContent;
+
+    await click('[data-test-toggle-grain]');
+    assert
+      .dom('.grain-editor')
+      .exists('the grain content is visible once expanded');
+
+    const expandedJson = this.element.querySelector(
+      '.module-form-poc__json',
+    ).textContent;
+    assert.strictEqual(
+      collapsedJson,
+      expandedJson,
+      'collapsing is a display-only concern, not part of the module data',
+    );
+
+    await click('[data-test-toggle-grain]');
+    assert
+      .dom('.grain-editor')
+      .doesNotExist('the grain content is hidden again once collapsed');
   });
 
   test('adding a section adds it with the default type', async function (assert) {
