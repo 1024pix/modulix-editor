@@ -51,22 +51,35 @@ export default class SectionsField extends Component {
   @action
   updateSectionField(section, field, event) {
     this.args.onChange(
-      this.args.sections.map((s) => (s === section ? { ...s, [field]: event.target.value } : s)),
+      this.args.sections.map((s) =>
+        s === section ? { ...s, [field]: event.target.value } : s,
+      ),
     );
   }
 
   @action
   updateSectionGrains(section, grains) {
-    this.args.onChange(this.args.sections.map((s) => (s === section ? { ...s, grains } : s)));
+    this.args.onChange(
+      this.args.sections.map((s) => (s === section ? { ...s, grains } : s)),
+    );
   }
 
   <template>
-    <ol class="sections-field list-unstyled d-flex flex-column gap-3 mb-3" {{sortableGroup onChange=this.reorder}}>
+    <ol
+      class="sections-field list-unstyled d-flex flex-column gap-3 mb-3"
+      {{sortableGroup groupName="sections" onChange=this.reorder}}
+    >
       {{#each @sections as |section|}}
-        <li class="sections-field__item card" {{sortableItem model=section}}>
+        <li
+          class="sections-field__item card"
+          {{sortableItem groupName="sections" model=section}}
+        >
           <div class="card-body">
             <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="sections-field__handle btn btn-sm btn-light" {{sortableHandle}}>⠿</span>
+              <span
+                class="sections-field__handle btn btn-sm btn-light"
+                {{sortableHandle}}
+              >⠿</span>
               <button
                 type="button"
                 class="btn btn-sm btn-light"
@@ -92,6 +105,11 @@ export default class SectionsField extends Component {
         </li>
       {{/each}}
     </ol>
-    <button type="button" class="btn btn-outline-primary" data-test-add-section {{on "click" this.addSection}}>+ Section</button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      data-test-add-section
+      {{on "click" this.addSection}}
+    >+ Section</button>
   </template>
 }

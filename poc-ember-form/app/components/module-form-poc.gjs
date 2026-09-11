@@ -24,7 +24,11 @@ function sampleModule() {
             id: crypto.randomUUID(),
             title: 'Premier grain',
             components: [
-              { id: crypto.randomUUID(), type: 'text', content: 'Un premier composant texte.' },
+              {
+                id: crypto.randomUUID(),
+                type: 'text',
+                content: 'Un premier composant texte.',
+              },
               { id: crypto.randomUUID(), type: 'image', url: '', alt: '' },
             ],
           },
@@ -53,12 +57,18 @@ export default class ModuleFormPoc extends Component {
 
   <template>
     <div class="module-form-poc container py-4">
-      <h1 class="h3 mb-4">POC — Formulaire Modulix généré avec Ember, sans json-editor</h1>
+      <h1 class="h3 mb-4">POC — Formulaire Modulix généré avec Ember, sans
+        json-editor</h1>
 
       <div class="field mb-3">
         <label class="form-label">
           shortId (lecture seule, généré)
-          <input type="text" class="form-control" value={{this.module.shortId}} readonly />
+          <input
+            type="text"
+            class="form-control"
+            value={{this.module.shortId}}
+            readonly
+          />
         </label>
       </div>
 
@@ -67,17 +77,24 @@ export default class ModuleFormPoc extends Component {
           Visibilité
           <select class="form-select" {{on "change" this.updateVisibility}}>
             {{#each VISIBILITIES as |v|}}
-              <option value={{v}} selected={{eq v this.module.visibility}}>{{v}}</option>
+              <option
+                value={{v}}
+                selected={{eq v this.module.visibility}}
+              >{{v}}</option>
             {{/each}}
           </select>
         </label>
       </div>
 
       <h2 class="h5 mb-3">Sections</h2>
-      <SectionsField @sections={{this.module.sections}} @onChange={{this.updateSections}} />
+      <SectionsField
+        @sections={{this.module.sections}}
+        @onChange={{this.updateSections}}
+      />
 
       <h2 class="h5 mt-4 mb-3">JSON généré (vérification)</h2>
-      <pre class="module-form-poc__json bg-light border rounded p-3 mb-0"><code>{{this.json}}</code></pre>
+      <pre class="module-form-poc__json bg-light border rounded p-3 mb-0"><code
+        >{{this.json}}</code></pre>
     </div>
   </template>
 }

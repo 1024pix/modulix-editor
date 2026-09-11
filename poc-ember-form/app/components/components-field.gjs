@@ -44,30 +44,43 @@ export default class ComponentsField extends Component {
   @action
   updateComponent(component, field, event) {
     this.args.onChange(
-      this.args.components.map((c) => (c === component ? { ...c, [field]: event.target.value } : c)),
+      this.args.components.map((c) =>
+        c === component ? { ...c, [field]: event.target.value } : c,
+      ),
     );
   }
 
   <template>
-    <ol class="components-field list-unstyled d-flex flex-column gap-2 mb-2" {{sortableGroup onChange=this.reorder}}>
-      {{#each @components as |component|}}
+    <ol
+      class="components-field list-unstyled d-flex flex-column gap-2 mb-2"
+      {{sortableGroup groupName=@groupName onChange=this.reorder}}
+    >
+      {{#each @components as |moduleComponent|}}
         <li
           class="components-field__item border rounded bg-white p-2"
-          data-test-component-id={{component.id}}
-          {{sortableItem model=component}}
+          data-test-component-id={{moduleComponent.id}}
+          {{sortableItem model=moduleComponent groupName=@groupName}}
         >
           <div class="d-flex align-items-center gap-2 mb-2">
-            <span class="components-field__handle btn btn-sm btn-light" {{sortableHandle}}>⠿</span>
-            <span class="badge text-bg-secondary">{{component.type}}</span>
+            <span
+              class="components-field__handle btn btn-sm btn-light"
+              {{sortableHandle}}
+            >⠿</span>
+            <span
+              class="badge text-bg-secondary"
+            >{{moduleComponent.type}}</span>
             <button
               type="button"
               class="btn btn-sm btn-outline-danger ms-auto"
               data-test-remove-component
-              {{on "click" (fn this.removeComponent component)}}
+              {{on "click" (fn this.removeComponent moduleComponent)}}
             >Supprimer</button>
           </div>
-          {{#let (editorFor component.type) as |Editor|}}
-            <Editor @component={{component}} @onChange={{fn this.updateComponent component}} />
+          {{#let (editorFor moduleComponent.type) as |Editor|}}
+            <Editor
+              @component={{moduleComponent}}
+              @onChange={{fn this.updateComponent moduleComponent}}
+            />
           {{/let}}
         </li>
       {{/each}}

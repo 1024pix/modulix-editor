@@ -4,7 +4,8 @@ import { on } from '@ember/modifier';
 <template>
   <div class="component-editor component-editor--text">
     <label class="form-label">
-      Contenu (placeholder — remplacerait le champ <code>jodit</code>)
+      Contenu (placeholder — remplacerait le champ
+      <code>jodit</code>)
       <textarea
         class="form-control"
         rows="2"
