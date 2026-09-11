@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'modulix-form-poc-scaffold-pristine',
+    modulePrefix: 'modulix-form-poc',
     environment,
     rootURL: '/',
     locationType: 'history',

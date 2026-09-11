@@ -1,12 +1,8 @@
 import { pageTitle } from 'ember-page-title';
-import { WelcomePage } from 'ember-welcome-page';
+import ModuleFormPoc from '../components/module-form-poc';
 
 <template>
-  {{pageTitle "ModulixFormPocScaffoldPristine"}}
+  {{pageTitle "Modulix Form POC"}}
 
-  {{outlet}}
-
-  {{! The following component displays Ember's default welcome message. }}
-  <WelcomePage @extension="gjs" />
-  {{! Feel free to remove this! }}
+  <ModuleFormPoc />
 </template>
