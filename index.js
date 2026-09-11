@@ -162,6 +162,7 @@ function init(schema) {
     disable_edit_json: true,
     disable_properties: true,
     disable_array_reorder: false,
+    enable_array_copy: true,
     form_name_root: 'Module',
     show_errors: 'always',
   });
