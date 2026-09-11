@@ -1,16 +1,18 @@
-import { fn } from '@ember/helper';
+import { concat, fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 
 <template>
   <div class="component-editor component-editor--text">
-    <label class="form-label">
-      Contenu (placeholder — remplacerait le champ
-      <code>jodit</code>)
+    <div class="form-floating">
       <textarea
-        class="form-control"
-        rows="2"
+        class="form-control component-editor-textarea"
+        id={{concat "component-content-" @component.id}}
+        placeholder="Contenu"
         {{on "input" (fn @onChange "content")}}
       >{{@component.content}}</textarea>
-    </label>
+      <label for={{concat "component-content-" @component.id}}>Contenu</label>
+    </div>
+    <div class="form-text">Placeholder — remplacerait le champ
+      <code>jodit</code></div>
   </div>
 </template>

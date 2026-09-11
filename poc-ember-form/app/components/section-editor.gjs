@@ -14,18 +14,20 @@ const SECTION_TYPES = [
 
 <template>
   <div class="section-editor">
-    <div class="mb-3">
-      <label class="form-label">
-        Type de section
-        <select class="form-select" {{on "change" (fn @onChange "type")}}>
-          {{#each SECTION_TYPES as |type|}}
-            <option
-              value={{type}}
-              selected={{eq type @section.type}}
-            >{{type}}</option>
-          {{/each}}
-        </select>
-      </label>
+    <div class="form-floating mb-3">
+      <select
+        class="form-select"
+        id={{concat "section-type-" @section.id}}
+        {{on "change" (fn @onChange "type")}}
+      >
+        {{#each SECTION_TYPES as |type|}}
+          <option
+            value={{type}}
+            selected={{eq type @section.type}}
+          >{{type}}</option>
+        {{/each}}
+      </select>
+      <label for={{concat "section-type-" @section.id}}>Type de section</label>
     </div>
 
     <GrainsField

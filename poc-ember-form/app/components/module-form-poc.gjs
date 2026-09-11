@@ -60,30 +60,32 @@ export default class ModuleFormPoc extends Component {
       <h1 class="h3 mb-4">POC — Formulaire Modulix généré avec Ember, sans
         json-editor</h1>
 
-      <div class="field mb-3">
-        <label class="form-label">
-          shortId (lecture seule, généré)
-          <input
-            type="text"
-            class="form-control"
-            value={{this.module.shortId}}
-            readonly
-          />
-        </label>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="module-short-id"
+          placeholder="shortId"
+          value={{this.module.shortId}}
+          readonly
+        />
+        <label for="module-short-id">shortId (lecture seule, généré)</label>
       </div>
 
-      <div class="field mb-4">
-        <label class="form-label">
-          Visibilité
-          <select class="form-select" {{on "change" this.updateVisibility}}>
-            {{#each VISIBILITIES as |v|}}
-              <option
-                value={{v}}
-                selected={{eq v this.module.visibility}}
-              >{{v}}</option>
-            {{/each}}
-          </select>
-        </label>
+      <div class="form-floating mb-4">
+        <select
+          class="form-select"
+          id="module-visibility"
+          {{on "change" this.updateVisibility}}
+        >
+          {{#each VISIBILITIES as |v|}}
+            <option
+              value={{v}}
+              selected={{eq v this.module.visibility}}
+            >{{v}}</option>
+          {{/each}}
+        </select>
+        <label for="module-visibility">Visibilité</label>
       </div>
 
       <h2 class="h5 mb-3">Sections</h2>
