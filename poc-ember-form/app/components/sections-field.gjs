@@ -72,7 +72,7 @@ export default class SectionsField extends Component {
       class="sections-field list-unstyled d-flex flex-column gap-3 mb-3"
       {{sortableGroup groupName="sections" onChange=this.reorder}}
     >
-      {{#each @sections as |section|}}
+      {{#each @sections key="id" as |section|}}
         <li
           class="sections-field__item card"
           {{sortableItem groupName="sections" model=section}}

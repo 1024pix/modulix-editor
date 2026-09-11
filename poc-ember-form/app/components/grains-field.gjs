@@ -72,7 +72,7 @@ export default class GrainsField extends Component {
       class="grains-field list-unstyled d-flex flex-column gap-2 mb-2"
       {{sortableGroup groupName=@groupName onChange=this.reorder}}
     >
-      {{#each @grains as |grain|}}
+      {{#each @grains key="id" as |grain|}}
         <li
           class="grains-field__item card bg-light"
           {{sortableItem groupName=@groupName model=grain}}

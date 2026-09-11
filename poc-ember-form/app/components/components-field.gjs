@@ -55,7 +55,7 @@ export default class ComponentsField extends Component {
       class="components-field list-unstyled d-flex flex-column gap-2 mb-2"
       {{sortableGroup groupName=@groupName onChange=this.reorder}}
     >
-      {{#each @components as |moduleComponent|}}
+      {{#each @components key="id" as |moduleComponent|}}
         <li
           class="components-field__item border rounded bg-white p-2"
           data-test-component-id={{moduleComponent.id}}
