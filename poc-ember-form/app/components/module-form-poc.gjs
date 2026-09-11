@@ -52,20 +52,20 @@ export default class ModuleFormPoc extends Component {
   }
 
   <template>
-    <div class="module-form-poc">
-      <h1>POC — Formulaire Modulix généré avec Ember, sans json-editor</h1>
+    <div class="module-form-poc container py-4">
+      <h1 class="h3 mb-4">POC — Formulaire Modulix généré avec Ember, sans json-editor</h1>
 
-      <div class="field">
-        <label>
+      <div class="field mb-3">
+        <label class="form-label">
           shortId (lecture seule, généré)
-          <input type="text" value={{this.module.shortId}} readonly />
+          <input type="text" class="form-control" value={{this.module.shortId}} readonly />
         </label>
       </div>
 
-      <div class="field">
-        <label>
+      <div class="field mb-4">
+        <label class="form-label">
           Visibilité
-          <select {{on "change" this.updateVisibility}}>
+          <select class="form-select" {{on "change" this.updateVisibility}}>
             {{#each VISIBILITIES as |v|}}
               <option value={{v}} selected={{eq v this.module.visibility}}>{{v}}</option>
             {{/each}}
@@ -73,11 +73,11 @@ export default class ModuleFormPoc extends Component {
         </label>
       </div>
 
-      <h2>Sections</h2>
+      <h2 class="h5 mb-3">Sections</h2>
       <SectionsField @sections={{this.module.sections}} @onChange={{this.updateSections}} />
 
-      <h2>JSON généré (vérification)</h2>
-      <pre class="module-form-poc__json">{{this.json}}</pre>
+      <h2 class="h5 mt-4 mb-3">JSON généré (vérification)</h2>
+      <pre class="module-form-poc__json bg-light border rounded p-3 mb-0"><code>{{this.json}}</code></pre>
     </div>
   </template>
 }

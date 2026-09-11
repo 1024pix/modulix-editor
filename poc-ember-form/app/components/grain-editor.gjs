@@ -4,10 +4,12 @@ import ComponentsField from './components-field';
 
 <template>
   <div class="grain-editor">
-    <label>
-      Titre du grain
-      <input type="text" value={{@grain.title}} {{on "input" (fn @onChange "title")}} />
-    </label>
+    <div class="mb-2">
+      <label class="form-label">
+        Titre du grain
+        <input type="text" class="form-control" value={{@grain.title}} {{on "input" (fn @onChange "title")}} />
+      </label>
+    </div>
 
     <ComponentsField
       @components={{@grain.components}}

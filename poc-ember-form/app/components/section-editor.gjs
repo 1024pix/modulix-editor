@@ -14,14 +14,16 @@ const SECTION_TYPES = [
 
 <template>
   <div class="section-editor">
-    <label>
-      Type de section
-      <select {{on "change" (fn @onChange "type")}}>
-        {{#each SECTION_TYPES as |type|}}
-          <option value={{type}} selected={{eq type @section.type}}>{{type}}</option>
-        {{/each}}
-      </select>
-    </label>
+    <div class="mb-3">
+      <label class="form-label">
+        Type de section
+        <select class="form-select" {{on "change" (fn @onChange "type")}}>
+          {{#each SECTION_TYPES as |type|}}
+            <option value={{type}} selected={{eq type @section.type}}>{{type}}</option>
+          {{/each}}
+        </select>
+      </label>
+    </div>
 
     <GrainsField @grains={{@section.grains}} @onChange={{fn @onGrainsChange @section}} />
   </div>

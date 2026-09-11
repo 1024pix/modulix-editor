@@ -49,19 +49,40 @@ export default class ComponentsField extends Component {
   }
 
   <template>
-    <ol class="components-field" {{sortableGroup onChange=this.reorder}}>
+    <ol class="components-field list-unstyled d-flex flex-column gap-2 mb-2" {{sortableGroup onChange=this.reorder}}>
       {{#each @components as |component|}}
-        <li class="components-field__item" data-test-component-id={{component.id}} {{sortableItem model=component}}>
-          <span class="components-field__handle" {{sortableHandle}}>⠿</span>
-          <strong>{{component.type}}</strong>
+        <li
+          class="components-field__item border rounded bg-white p-2"
+          data-test-component-id={{component.id}}
+          {{sortableItem model=component}}
+        >
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="components-field__handle btn btn-sm btn-light" {{sortableHandle}}>⠿</span>
+            <span class="badge text-bg-secondary">{{component.type}}</span>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-danger ms-auto"
+              data-test-remove-component
+              {{on "click" (fn this.removeComponent component)}}
+            >Supprimer</button>
+          </div>
           {{#let (editorFor component.type) as |Editor|}}
             <Editor @component={{component}} @onChange={{fn this.updateComponent component}} />
           {{/let}}
-          <button type="button" data-test-remove-component {{on "click" (fn this.removeComponent component)}}>Supprimer</button>
         </li>
       {{/each}}
     </ol>
-    <button type="button" data-test-add-component="text" {{on "click" (fn this.addComponent "text")}}>+ Composant texte</button>
-    <button type="button" data-test-add-component="image" {{on "click" (fn this.addComponent "image")}}>+ Composant image</button>
+    <button
+      type="button"
+      class="btn btn-sm btn-outline-primary me-2"
+      data-test-add-component="text"
+      {{on "click" (fn this.addComponent "text")}}
+    >+ Composant texte</button>
+    <button
+      type="button"
+      class="btn btn-sm btn-outline-primary"
+      data-test-add-component="image"
+      {{on "click" (fn this.addComponent "image")}}
+    >+ Composant image</button>
   </template>
 }

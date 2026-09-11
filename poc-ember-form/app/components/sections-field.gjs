@@ -40,19 +40,28 @@ export default class SectionsField extends Component {
   }
 
   <template>
-    <ol class="sections-field" {{sortableGroup onChange=this.reorder}}>
+    <ol class="sections-field list-unstyled d-flex flex-column gap-3 mb-3" {{sortableGroup onChange=this.reorder}}>
       {{#each @sections as |section|}}
-        <li class="sections-field__item" {{sortableItem model=section}}>
-          <span class="sections-field__handle" {{sortableHandle}}>⠿</span>
-          <SectionEditor
-            @section={{section}}
-            @onChange={{fn this.updateSectionField section}}
-            @onGrainsChange={{this.updateSectionGrains}}
-          />
-          <button type="button" data-test-remove-section {{on "click" (fn this.removeSection section)}}>Supprimer la section</button>
+        <li class="sections-field__item card" {{sortableItem model=section}}>
+          <div class="card-body">
+            <div class="d-flex align-items-start gap-2 mb-2">
+              <span class="sections-field__handle btn btn-sm btn-light" {{sortableHandle}}>⠿</span>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-danger ms-auto"
+                data-test-remove-section
+                {{on "click" (fn this.removeSection section)}}
+              >Supprimer la section</button>
+            </div>
+            <SectionEditor
+              @section={{section}}
+              @onChange={{fn this.updateSectionField section}}
+              @onGrainsChange={{this.updateSectionGrains}}
+            />
+          </div>
         </li>
       {{/each}}
     </ol>
-    <button type="button" data-test-add-section {{on "click" this.addSection}}>+ Section</button>
+    <button type="button" class="btn btn-outline-primary" data-test-add-section {{on "click" this.addSection}}>+ Section</button>
   </template>
 }

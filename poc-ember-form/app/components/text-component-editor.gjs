@@ -3,9 +3,10 @@ import { on } from '@ember/modifier';
 
 <template>
   <div class="component-editor component-editor--text">
-    <label>
+    <label class="form-label">
       Contenu (placeholder — remplacerait le champ <code>jodit</code>)
       <textarea
+        class="form-control"
         rows="2"
         {{on "input" (fn @onChange "content")}}
       >{{@component.content}}</textarea>

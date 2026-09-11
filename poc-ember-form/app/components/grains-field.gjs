@@ -38,19 +38,27 @@ export default class GrainsField extends Component {
   }
 
   <template>
-    <ol class="grains-field" {{sortableGroup onChange=this.reorder}}>
+    <ol class="grains-field list-unstyled d-flex flex-column gap-2 mb-2" {{sortableGroup onChange=this.reorder}}>
       {{#each @grains as |grain|}}
-        <li class="grains-field__item" {{sortableItem model=grain}}>
-          <span class="grains-field__handle" {{sortableHandle}}>⠿</span>
-          <GrainEditor
-            @grain={{grain}}
-            @onChange={{fn this.updateGrainField grain}}
-            @onComponentsChange={{this.updateGrainComponents}}
-          />
-          <button type="button" {{on "click" (fn this.removeGrain grain)}}>Supprimer le grain</button>
+        <li class="grains-field__item card bg-light" {{sortableItem model=grain}}>
+          <div class="card-body">
+            <div class="d-flex align-items-start gap-2 mb-2">
+              <span class="grains-field__handle btn btn-sm btn-light" {{sortableHandle}}>⠿</span>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-danger ms-auto"
+                {{on "click" (fn this.removeGrain grain)}}
+              >Supprimer le grain</button>
+            </div>
+            <GrainEditor
+              @grain={{grain}}
+              @onChange={{fn this.updateGrainField grain}}
+              @onComponentsChange={{this.updateGrainComponents}}
+            />
+          </div>
         </li>
       {{/each}}
     </ol>
-    <button type="button" {{on "click" this.addGrain}}>+ Grain</button>
+    <button type="button" class="btn btn-sm btn-outline-primary" {{on "click" this.addGrain}}>+ Grain</button>
   </template>
 }
