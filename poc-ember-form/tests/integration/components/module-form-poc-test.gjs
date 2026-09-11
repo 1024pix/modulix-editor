@@ -78,6 +78,23 @@ module('Integration | Component | module-form-poc', function (hooks) {
     assert.strictEqual(json.sections[0].grains[0].components[1].id, textComponent.id, 'text is now second');
   });
 
+  test('collapsing a section hides its content without changing the JSON', async function (assert) {
+    await render(<template><ModuleFormPoc /></template>);
+
+    assert.dom('.section-editor').exists('the section content is visible by default');
+
+    await click('[data-test-toggle-section]');
+    assert.dom('.section-editor').doesNotExist('the section content is hidden once collapsed');
+
+    const collapsedJson = this.element.querySelector('.module-form-poc__json').textContent;
+
+    await click('[data-test-toggle-section]');
+    assert.dom('.section-editor').exists('the section content is visible again once expanded');
+
+    const expandedJson = this.element.querySelector('.module-form-poc__json').textContent;
+    assert.strictEqual(collapsedJson, expandedJson, 'collapsing is a display-only concern, not part of the module data');
+  });
+
   test('adding a section adds it with the default type', async function (assert) {
     await render(<template><ModuleFormPoc /></template>);
 

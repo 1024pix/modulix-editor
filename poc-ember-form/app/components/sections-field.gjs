@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import sortableGroup from 'ember-sortable/modifiers/sortable-group';
@@ -12,6 +13,26 @@ function makeSection() {
 }
 
 export default class SectionsField extends Component {
+  // État d'affichage uniquement (pas dans les données du module : ne doit
+  // pas apparaître dans le JSON exporté).
+  @tracked collapsedSectionIds = new Set();
+
+  @action
+  isCollapsed(section) {
+    return this.collapsedSectionIds.has(section.id);
+  }
+
+  @action
+  toggleCollapsed(section) {
+    const next = new Set(this.collapsedSectionIds);
+    if (next.has(section.id)) {
+      next.delete(section.id);
+    } else {
+      next.add(section.id);
+    }
+    this.collapsedSectionIds = next;
+  }
+
   @action
   reorder(items) {
     this.args.onChange(items);
@@ -44,8 +65,15 @@ export default class SectionsField extends Component {
       {{#each @sections as |section|}}
         <li class="sections-field__item card" {{sortableItem model=section}}>
           <div class="card-body">
-            <div class="d-flex align-items-start gap-2 mb-2">
+            <div class="d-flex align-items-center gap-2 mb-2">
               <span class="sections-field__handle btn btn-sm btn-light" {{sortableHandle}}>⠿</span>
+              <button
+                type="button"
+                class="btn btn-sm btn-light"
+                data-test-toggle-section
+                {{on "click" (fn this.toggleCollapsed section)}}
+              >{{if (this.isCollapsed section) "▸" "▾"}}</button>
+              <strong>Section — {{section.type}}</strong>
               <button
                 type="button"
                 class="btn btn-sm btn-outline-danger ms-auto"
@@ -53,11 +81,13 @@ export default class SectionsField extends Component {
                 {{on "click" (fn this.removeSection section)}}
               >Supprimer la section</button>
             </div>
-            <SectionEditor
-              @section={{section}}
-              @onChange={{fn this.updateSectionField section}}
-              @onGrainsChange={{this.updateSectionGrains}}
-            />
+            {{#unless (this.isCollapsed section)}}
+              <SectionEditor
+                @section={{section}}
+                @onChange={{fn this.updateSectionField section}}
+                @onGrainsChange={{this.updateSectionGrains}}
+              />
+            {{/unless}}
           </div>
         </li>
       {{/each}}
