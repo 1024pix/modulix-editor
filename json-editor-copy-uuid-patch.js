@@ -69,11 +69,26 @@ function patchTableEditorCopyButton(TableEditor) {
   };
 }
 
-export function applyJsonEditorCopyUuidPatch() {
-  const editors = window.JSONEditor?.defaults?.editors;
-  if (!editors?.array || !editors?.table) {
-    console.warn(
-      'json-editor UUID patch not applied: JSONEditor.defaults.editors.array/table not found.',
+export function regenerateUUIDs(value, schema) {
+  if (!schema) return deepCopy(value);
+
+  if (schema.type === 'string' && schema.format === 'uuid') {
+    return generateUUID();
+  }
+
+  if (schema.type === 'object' && schema.properties) {
+    const newObj = { ...value };
+    for (const key of Object.keys(newObj)) {
+      if (schema.properties[key]) {
+        newObj[key] = regenerateUUIDs(newObj[key], schema.properties[key]);
+      }
+    }
+    return newObj;
+  }
+
+  if (schema.type === 'array' && schema.items) {
+    return (Array.isArray(value) ? value : []).map((item) =>
+      regenerateUUIDs(item, schema.items),
     );
   }
 
