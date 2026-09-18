@@ -15,8 +15,8 @@ import { writeFileSync } from 'fs';
 import { basename } from 'path';
 
 const DEFAULT_URLS = [
-  'https://api.integration.pix.fr/api/module-schema/module-json-schema.json',
-  'https://api.recette.pix.fr/api/module-schema/module-json-schema.json',
+  'https://editor.integration.pix.fr/api/module-schema/module-json-schema.json',
+  'https://editor.pix.fr/api/module-schema/module-json-schema.json',
 ];
 
 // ─── CLI args ──────────────────────────────────────────────────────────────

@@ -1,7 +1,10 @@
 import LocalBackup from './LocalBackup.js';
+import { applyJsonEditorCopyUuidPatch } from './json-editor-copy-uuid-patch.js';
 import * as monaco from 'monaco-editor';
 import editorWorker from 'monaco-editor/editor/editor.worker?worker';
 import jsonWorker from 'monaco-editor/language/json/json.worker?worker';
+
+applyJsonEditorCopyUuidPatch();
 
 self.MonacoEnvironment = {
   getWorker(_, label) {
@@ -159,6 +162,7 @@ function init(schema) {
     disable_edit_json: true,
     disable_properties: true,
     disable_array_reorder: false,
+    enable_array_copy: true,
     form_name_root: 'Module',
     show_errors: 'always',
   });
