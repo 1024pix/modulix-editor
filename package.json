@@ -30,6 +30,6 @@
   },
   "dependencies": {
     "@1024pix/pix-ui": "68.2.7",
-    "monaco-editor": "0.56.0"
+    "monaco-editor": "0.57.0"
   }
 }
