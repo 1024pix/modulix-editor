@@ -1,0 +1,6 @@
+/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+
+/* Bootstrap floating labels need a fixed textarea height (https://getbootstrap.com/docs/5.0/forms/floating-labels/) */
+.component-editor-textarea {
+  height: 100px;
+}
