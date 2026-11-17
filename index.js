@@ -179,9 +179,11 @@ function init(schema) {
   });
 
   const isWindowOpenedFromPixEditor = window.opener !== null;
+  const isReloadedAfterReset = sessionStorage.getItem('isReloadedAfterReset') === 'true';
+  sessionStorage.removeItem('isReloadedAfterReset');
   let pixEditorModuleContent;
   const updateEditorDialog = document.getElementById('update-editor-dialog');
-  if (isWindowOpenedFromPixEditor) {
+  if (isWindowOpenedFromPixEditor && !isReloadedAfterReset) {
     window.opener.postMessage(
       { from: 'modulix-editor', message: 'ready' },
       '*',
@@ -248,6 +250,7 @@ function init(schema) {
       )
     ) {
       LocalBackup.delete();
+      sessionStorage.setItem("isReloadedAfterReset", "true");
       window.location.reload();
     }
   });
