@@ -66,20 +66,52 @@ test.describe('Sauvegarde automatique locale', () => {
     expect(parsed).toHaveProperty('shortId');
   });
 
-  test('supprimer efface la sauvegarde du localStorage', async ({ page }) => {
-    await gotoEditor(page);
+  test.describe('quand l’utilisateur clique sur Supprimer', () => {
+    test('une popup est affichée, puis la sauvegarde du localStorage est supprimée', async ({
+      page,
+    }) => {
+      // given
+      const savedModule = {
+        id: '123e4567-e89b-12d3-a456-426614174000',
+        shortId: 'deadbeef',
+        slug: 'module-saved',
+        title: 'Module sauvegardé',
+        visibility: 'public',
+        sections: [],
+      };
+      await gotoEditor(page);
 
-    const shortIdAvantReset = JSON.parse(
-      await page.evaluate((key) => localStorage.getItem(key), LOCALSTORAGE_KEY),
-    ).shortId;
+      await page.evaluate(
+        ({ key, value }) => localStorage.setItem(key, value),
+        { key: LOCALSTORAGE_KEY, value: JSON.stringify(savedModule) },
+      );
 
-    page.on('dialog', (dialog) => dialog.accept());
-    await page.click('#reset-button');
+      // To display page with module already saved on local-storage
+      await page.reload();
 
-    await page.waitForSelector('[name="Module[shortId]"]', { timeout: 30_000 });
-    const saved = JSON.parse(
-      await page.evaluate((key) => localStorage.getItem(key), LOCALSTORAGE_KEY),
-    );
-    expect(saved.shortId).not.toBe(shortIdAvantReset);
+      const shortIdAvantReset = JSON.parse(
+        await page.evaluate(
+          (key) => localStorage.getItem(key),
+          LOCALSTORAGE_KEY,
+        ),
+      ).shortId;
+
+      page.on('dialog', (dialog) => dialog.accept());
+
+      // when
+      await page.click('#reset-button');
+      await page.waitForSelector('[name="Module[shortId]"]', {
+        timeout: 10_000,
+      });
+
+      // then
+      const saved = JSON.parse(
+        await page.evaluate(
+          (key) => localStorage.getItem(key),
+          LOCALSTORAGE_KEY,
+        ),
+      );
+      expect(saved.shortId).not.toBe(shortIdAvantReset);
+    });
   });
 });
